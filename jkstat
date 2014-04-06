@@ -1,0 +1,242 @@
+#!/bin/sh
+#
+# run the jkstat utilities
+#
+
+JKDIR=`dirname $0`
+LIBDIR=${JKDIR}/lib
+ARCHLIBDIR=${LIBDIR}/`/usr/bin/uname -p`
+ARCHLIBDIR_64=${LIBDIR}/`/usr/bin/isainfo -k`
+JARLIBDIR=${LIBDIR}/java
+JAVA=/usr/bin/java
+#JAVA=/packages/java/jdk1.7/bin/java
+
+#
+# if installed then the locations change
+#
+INSTALLED=false
+if [ "$INSTALLED" = "true" ]; then
+    ARCHLIBDIR=/usr/lib
+    ARCHLIBDIR_64=/usr/lib/64
+    JARLIBDIR=/usr/share/jkstat
+fi
+
+usage() {
+    echo "Usage: jkstat subcommand [options]"
+    echo "Available subcommands:"
+    echo " browser (the interactive kstat browser)"
+    echo " remotebrowser -s|-S [server_url] (browser, network client)"
+    echo " browser -z zipfile (browser, reading kar output)"
+    echo " server -p port (kstat server)"
+    echo " cpustate [-s|-S server_url] [ chart | vertical ] (like xcpustate)"
+    echo " kstat (emulates the kstat CLI)"
+    echo " nfsstat [-s|-S server_url] (tabular nfsstat)"
+    echo " iostat [-s|-S server_url] (tabular iostat)"
+    echo " psrinfo [-v] [-p] (emulate psrinfo)"
+    echo " chartbuilder [-s|-S server_url] (graphical chart builder)"
+    echo " chartbuilder -z zipfile (chart builder, reading kar output)"
+    echo " chart [-z zipfile] kstat (graphical chart)"
+    echo " png -z zipfile -o output kstat (graphical chart, direct to file)"
+    echo " areachart [-z zipfile] kstat (graphical chart)"
+    echo " areapng -z zipfile -o output kstat (graphical chart, direct to file)"
+    echo " uptime (prints out load averages like uptime)"
+    echo " loadchart (chart of load averages)"
+    echo " mpstat [-s|-S server_url] (tabular mpstat)"
+    echo " netload [-s|-S server_url] (graphical network traffic)"
+    echo " kmemalloc [-s|-S server_url] (show kernel memory allocations)"
+}
+
+case $1 in
+-64)
+#
+# attempt to use a 64-bit version if possible
+#
+if [ -f "${ARCHLIBDIR_64}/libkstat_jni.so" ]; then
+    if [ "${ARCHLIBDIR}" != "${ARCHLIBDIR_64}" ]; then
+	ARCHLIBDIR="${ARCHLIBDIR_64}"
+	JFLAGS="-d64"
+    fi
+fi
+shift
+;;
+esac
+
+case $# in
+0)
+    usage
+    exit 1
+    ;;
+*)
+    SUBCOMMAND=$1
+    shift
+    ;;
+esac
+
+JCJAR=${JARLIBDIR}/jcommon-1.0.21.jar
+JFJAR=${JARLIBDIR}/jfreechart-1.0.17.jar
+JSONJAR=${JARLIBDIR}/org-json.jar
+JINGLEJAR=${JARLIBDIR}/jingle.jar
+JUMBLEJAR=${JARLIBDIR}/jumble.jar
+JSTRIPJAR=${JARLIBDIR}/jstripchart.jar
+JKJAR=${JARLIBDIR}/jkstat.jar
+JKAPIJAR=${JARLIBDIR}/jkstat-api.jar
+ALLJARS=${JCJAR}:${JFJAR}:${JSONJAR}:${JINGLEJAR}:${JUMBLEJAR}:${JSTRIPJAR}:${JKJAR}
+DEMOPKG="uk.co.petertribble.jkstat.demo"
+SERVERJARS=${JARLIBDIR}/xmlrpc-common-3.1.3.jar:${JARLIBDIR}/xmlrpc-server-3.1.3.jar:${JARLIBDIR}/commons-logging-1.1.1.jar:${JARLIBDIR}/ws-commons-util-1.0.2.jar
+HTTPJARS=${JARLIBDIR}/httpclient-4.2.3.jar:${JARLIBDIR}/httpcore-4.2.2.jar:${JARLIBDIR}/commons-codec-1.6.jar
+CLIENTJARS=${JARLIBDIR}/xmlrpc-common-3.1.3.jar:${JARLIBDIR}/xmlrpc-client-3.1.3.jar:${JARLIBDIR}/commons-logging-1.1.1.jar:${JARLIBDIR}/ws-commons-util-1.0.2.jar
+
+#
+# Normally, -s or -S means we're a client and need the client-side jars
+# for remote access
+#
+case $1 in
+-s|-S)
+    ALLJARS="${ALLJARS}:${CLIENTJARS}:${HTTPJARS}"
+    ;;
+esac
+
+case $SUBCOMMAND in
+
+'browser')
+    LD_LIBRARY_PATH=${ARCHLIBDIR} $JAVA ${JFLAGS} -Dswing.aatext=true -jar ${JKJAR} $*
+    exit 0
+    ;;
+
+'remotebrowser')
+    JKCLASS="uk.co.petertribble.jkstat.browser.KstatBrowser"
+    ;;
+
+'cpustate')
+    JKCLASS=${DEMOPKG}.JCpuState
+    ;;
+
+'kstat')
+    JKCLASS=${DEMOPKG}.KstatCmd
+    ;;
+
+'nfsstat')
+    JKCLASS=${DEMOPKG}.Jnfsstat
+    ;;
+
+'iostat')
+    JKCLASS=${DEMOPKG}.JIOstat
+    ;;
+
+'psrinfo')
+    JKCLASS=${DEMOPKG}.PsrInfo
+    ;;
+
+'chartbuilder')
+    JKCLASS=uk.co.petertribble.jkstat.gui.ChartBuilderFrame
+    ;;
+
+'chart')
+    JKCLASS=uk.co.petertribble.jkstat.gui.KstatChartFrame
+    ;;
+
+'png')
+    JFLAGS="${JFLAGS} -Djava.awt.headless=true"
+    JKCLASS=uk.co.petertribble.jkstat.gui.KstatPngImage
+    ;;
+
+'areachart')
+    JKCLASS=uk.co.petertribble.jkstat.gui.KstatAreaChartFrame
+    ;;
+
+'areapng')
+    JFLAGS="${JFLAGS} -Djava.awt.headless=true"
+    JKCLASS=uk.co.petertribble.jkstat.gui.KstatAreaPngImage
+    ;;
+
+'uptime')
+    JKCLASS=${DEMOPKG}.Uptime
+    ;;
+
+'loadchart')
+    JKCLASS=${DEMOPKG}.JLoadChart
+    ;;
+
+'stripcpu')
+    JKCLASS=${DEMOPKG}.JCpuState
+    EXTRAFLAGS="chart"
+    ;;
+
+'mpstat')
+    JKCLASS=${DEMOPKG}.JMPstat
+    ;;
+
+'netload')
+    JKCLASS=${DEMOPKG}.JNetLoad
+    ;;
+
+'kmemalloc')
+    JKCLASS=${DEMOPKG}.JKmemAlloc
+    ;;
+
+'netspark')
+    JKCLASS=${DEMOPKG}.JNetSpark
+    ;;
+
+'server')
+    JKCLASS=uk.co.petertribble.jkstat.server.KServer1
+    ALLJARS=${JKJAR}:${SERVERJARS}
+    ;;
+
+#
+# EXPERIMENTAL
+#
+'jmxserver')
+    JKCLASS=uk.co.petertribble.jkstat.server.JKstatMXserver
+    # the following works for jconsole
+    JFLAGS="${JFLAGS} -Dcom.sun.management.jmxremote"
+    # the following for a remote client like jmanage
+    JFLAGS="${JFLAGS} -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=9999 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false"
+    ALLJARS=${JKJAR}:${SERVERJARS}
+    ;;
+
+#
+# EXPERIMENTAL
+#
+'jmxclient')
+    /usr/java/bin/jconsole -J-Djava.class.path=/usr/java/lib/jconsole.jar:/usr/java/lib/tools.jar:${JKAPIJAR}
+    exit 0
+    ;;
+
+#
+# EXPERIMENTAL
+#
+'groovychart')
+    LD_LIBRARY_PATH=${ARCHLIBDIR} JAVA_HOME=/usr/java groovy -cp ${JKAPIJAR}:${JFJAR}:${JCJAR} ${JKDIR}/groovychart
+    exit 0
+    ;;
+
+#
+# undocumented for debugging only
+#
+'jsondump')
+    JKCLASS=${DEMOPKG}.JSONdump
+    ;;
+
+#
+# undocumented for debugging only
+#
+'parsetest')
+    JKCLASS=uk.co.petertribble.jkstat.parse.ParseableParser
+    ;;
+
+'jsontest')
+    JKCLASS=uk.co.petertribble.jkstat.parse.JSONParser
+    ;;
+
+*)
+    usage
+    exit 1
+    ;;
+
+esac
+
+#
+# launch the class specified
+#
+LD_LIBRARY_PATH=${ARCHLIBDIR} $JAVA ${JFLAGS} -Dswing.aatext=true -cp ${ALLJARS} ${JKCLASS} ${EXTRAFLAGS} $*

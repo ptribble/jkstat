@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Name=JKstat
+Comment=Graphical kstat browser
+Exec=jkstat browser
+Icon=jkstat
+Terminal=false
+Type=Application
+Categories=System;Utility;

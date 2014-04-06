@@ -1,0 +1,196 @@
+#!/bin/sh
+#
+# build jkstat
+#
+# Usage:
+#
+# ./build -jni
+#    (Re)Creates the jni header file. Only needed if the native interface
+#    changes, which it shouldn't
+#
+# ./build -doc
+#    Generates the javadoc
+#
+# ./build
+#    Builds all the java classes, and recompiles the native library.
+#
+# ./build clean
+#    Removes all the class files, ready for distribution
+#
+# ./build pmd
+#    Runs the pmd static code analysis tool, if it's installed
+#
+# ./build packages [deps]
+#    Creates SVR4 packages
+#
+# If you have the ON build tools installed, then jstyle gets run.
+#
+
+PATH=/usr/jdk/instances/jdk1.6.0/bin:$PATH
+export PATH
+
+JKDIR=`dirname $0`
+LIBDIR=${JKDIR}/lib
+ARCHLIBDIR=${LIBDIR}/`/usr/bin/uname -p`
+JARLIBDIR=${LIBDIR}/java
+ARCHLIBDIR_64=${LIBDIR}/`/usr/bin/isainfo -k`
+JAVA=java
+JAVAC=javac
+
+JCJAR=${JARLIBDIR}/jcommon-1.0.21.jar
+JFJAR=${JARLIBDIR}/jfreechart-1.0.17.jar
+JSONJAR=${JARLIBDIR}/org-json.jar
+JINGLEJAR=${JARLIBDIR}/jingle.jar
+JUMBLEJAR=${JARLIBDIR}/jumble.jar
+JSTRIPJAR=${JARLIBDIR}/jstripchart.jar
+JKJAR=${JARLIBDIR}/jkstat.jar
+JKAPIJAR=${JARLIBDIR}/jkstat-api.jar
+HTTPJARS=${JARLIBDIR}/httpclient-4.2.3.jar:${JARLIBDIR}/httpcore-4.2.2.jar
+ALLJARS=${JCJAR}:${JFJAR}:${JINGLEJAR}:${JUMBLEJAR}:${JSONJAR}:${JSTRIPJAR}:${JKJAR}
+SERVERJARS=${JUMBLEJAR}:${JARLIBDIR}/xmlrpc-common-3.1.3.jar:${JARLIBDIR}/xmlrpc-server-3.1.3.jar
+CLIENTJARS=${JUMBLEJAR}:${JARLIBDIR}/xmlrpc-common-3.1.3.jar:${JARLIBDIR}/xmlrpc-client-3.1.3.jar
+REMOTEJARS=${JARLIBDIR}/xmlrpc-common-3.1.3.jar:${JARLIBDIR}/xmlrpc-server-3.1.3.jar:${JARLIBDIR}/xmlrpc-client-3.1.3.jar
+BUILDJARS=${JCJAR}:${JFJAR}:${JSONJAR}:${JINGLEJAR}:${JUMBLEJAR}:${JSTRIPJAR}:${REMOTEJARS}:${HTTPJARS}
+
+#
+# run
+# ./build pmd
+# to use this, these checks should always pass, it's a regression if
+# any warnings appear. Of course, you must have pmd in your path
+#
+PMDCHECKS="braces,imports,unusedcode,typeresolution,coupling,clone,sunsecure,finalizers,migrating"
+
+#
+# This is to build a RESTful server using jersey.
+#
+JSKDIR="jersey"
+JERSEYDIR="../jersey-archive-1.13"
+
+case $1 in
+-jni)
+	javac uk/co/petertribble/jkstat/api/NativeJKstat.java
+	javah -jni uk.co.petertribble.jkstat.api.NativeJKstat
+	exit 0
+	;;
+-doc)
+	rm -fr javadoc
+	mkdir javadoc
+	javadoc -classpath $BUILDJARS:. -d javadoc uk.co.petertribble.jkstat.api uk.co.petertribble.jkstat.browser uk.co.petertribble.jkstat.gui uk.co.petertribble.jkstat.demo uk.co.petertribble.jkstat.util uk.co.petertribble.jkstat.client uk.co.petertribble.jkstat.server uk.co.petertribble.jkstat.parse
+	exit 0
+	;;
+clean)
+	rm -f `find uk/co -type f -name '*.class'`
+	rm -f `find . -type f -name '*~'`
+	rm -fr javadoc
+	rm -f jkstat.war
+	rm -f jkrest.war
+	exit 0
+	;;
+pmd)
+	pmd uk $PMDCHECKS
+	exit 0
+	;;
+packages)
+	cat jkstat | sed s:INSTALLED=false:INSTALLED=true: > jkstat.installed
+	./mkproto i386 $2 > prototype.i386
+	./mkproto sparc $2 > prototype.sparc
+	pkgmk -d /tmp -f prototype.i386 -r `pwd` TRIBjkstat
+	pkgtrans -s /tmp /tmp/TRIBjkstat-i386.pkg TRIBjkstat
+	rm -fr /tmp/TRIBjkstat
+	pkgmk -d /tmp -f prototype.sparc -r `pwd` TRIBjkstat
+	pkgtrans -s /tmp /tmp/TRIBjkstat-sparc.pkg TRIBjkstat
+	rm -fr /tmp/TRIBjkstat
+	ls -lh /tmp/TRIBjkstat-sparc.pkg /tmp/TRIBjkstat-i386.pkg
+	rm prototype.i386 prototype.sparc
+	rm jkstat.installed
+	rm -f depend
+	exit 0
+	;;
+jkstat.war)
+	# this is the vanilla jkstat war, which will enable tomcat
+	# to be a jkstat server
+	mkdir war
+	cd war
+	mkdir -p WEB-INF/lib org/apache/xmlrpc/webserver
+	cp -p ../properties/KServer1.properties org/apache/xmlrpc/webserver/XmlRpcServlet.properties
+	jar cf WEB-INF/lib/props.jar org
+	rm -fr org
+	# only copy the jars we need
+	cp ../lib/java/jkstat.jar ../lib/java/ws* ../lib/java/xmlrpc* ../lib/java/commons-logging* WEB-INF/lib
+	cp ../WEB-INF/web.xml WEB-INF
+	# create the war file
+	jar cf ../jkstat.war *
+	cd ..
+	rm -fr war
+	exit 0
+	;;
+jkrest.war)
+	# this is an extended war using jersey, allowing RESTful services
+	# and enabling the applet version
+	if [ ! -d "${JERSEYDIR}" ]; then
+	    echo "Unable to find jersey, exiting..."
+	    exit 1
+	fi
+	mkdir war
+	cd war
+	mkdir -p WEB-INF/lib org/apache/xmlrpc/webserver
+	cp -p ../properties/KServer1.properties org/apache/xmlrpc/webserver/XmlRpcServlet.properties
+	jar cf WEB-INF/lib/props.jar org
+	rm -fr org
+	# only copy the jars we need
+	cp ../lib/java/jkstat.jar ../lib/java/ws* ../lib/java/xmlrpc* ../lib/java/commons-logging* WEB-INF/lib
+	cp ../${JERSEYDIR}/lib/*.jar WEB-INF/lib
+	cp ../jersey/web.xml WEB-INF/web.xml
+	mkdir -p WEB-INF/classes/uk/co/petertribble/jkrest
+	cp ../jersey/uk/co/petertribble/jkrest/*.class WEB-INF/classes/uk/co/petertribble/jkrest
+	# this is for the applet, which will only work with REST
+	cp ../lib/java/jkstat.jar .
+	cp ../lib/java/jcommon*jar .
+	cp ../lib/java/jfreechart*jar .
+	cp ../lib/java/jstripchart*jar .
+	cp ../lib/java/jingle.jar .
+	cp ../lib/java/jumble.jar .
+	cp ../lib/java/org-json.jar .
+	cp ../lib/java/http*jar .
+	cp ../lib/java/commons*jar .
+	jar -umf ../jkstat-rest.manifest jkstat.jar
+	cp -p ../jersey/*.html .
+	cp -p ../jskstat/jskstat.html .
+	unzip -q ../jskstat/flot-0.7.zip
+	rm -fr flot/examples
+	rm flot/*.txt
+	unzip -q ../jskstat/jstree_pre1.0_fix_1.zip
+	rm -fr _demo _docs _lib
+	# create the war file
+	jar cf ../jkrest.war *
+	cd ..
+	rm -fr war
+	exit 0
+	;;
+esac
+
+XFLAGS="-Xlint -Xlint:-serial"
+
+if [ -x /opt/onbld/bin/jstyle ]; then
+	/opt/onbld/bin/jstyle uk/co/petertribble/jkstat/*/*.java
+fi
+
+javac ${XFLAGS} -classpath .:${BUILDJARS} uk/co/petertribble/jkstat/*/*.java
+
+cc -G -I/usr/java/include -I/usr/java/include/solaris -h libkstat_jni.so -lkstat -o ${ARCHLIBDIR}/libkstat_jni.so uk_co_petertribble_jkstat_api_NativeJKstat.c
+
+#
+# compiling 64-bit objects is more complex
+#
+case `isainfo -k` in
+amd64)
+    cc -Kpic -shared -m64 -I/usr/java/include -I/usr/java/include/solaris -h libkstat_jni.so -lkstat -o ${ARCHLIBDIR_64}/libkstat_jni.so uk_co_petertribble_jkstat_api_NativeJKstat.c
+    ;;
+sparcv9)
+    cc -xcode=pic13 -shared -m64 -I/usr/java/include -I/usr/java/include/solaris -h libkstat_jni.so -lkstat -o ${ARCHLIBDIR_64}/libkstat_jni.so uk_co_petertribble_jkstat_api_NativeJKstat.c
+    ;;
+esac
+
+jar -cmf jkstat.manifest ${JKJAR} help/* pixmaps/* properties/* `find uk/co -name '*.class'`
+
+jar -cf ${JKAPIJAR} `find uk/co/petertribble/jkstat/api -name '*.class'` uk/co/petertribble/jkstat/util/NumericStringComparator.class

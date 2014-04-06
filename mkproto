@@ -1,0 +1,98 @@
+#!/bin/sh
+#
+# generate a prototype file for input to pkgmk
+#
+# feed to pkgmk like so:
+#  pkgmk -d /tmp -f tt -r `pwd` TRIBjkstat
+#
+
+JARDIR=usr/share/jkstat
+LIBDIR=usr/lib
+OWNER="root bin"
+SYSOWNER="root sys"
+JLIB="libkstat_jni.so"
+
+MYARCH=$1
+PKGTYPE="standalone"
+
+echo "i pkginfo=./pkginfo.${MYARCH}"
+
+if [ "X$2" = "Xdeps" ]; then
+  HCVERS="4.2.3"
+  HCPKGVER="423"
+  JFCVERS="1.0.17"
+  JFCPKGVER="1017"
+  XMLVERS="3.1.3"
+  XMLPKGVER="313"
+  PKGTYPE="withdeps"
+cat > depend <<EOF
+P TRIBapache-hc-client-${HCPKGVER}
+P TRIBapache-xmlrpc-${XMLPKGVER}
+P TRIBjfreechart-${JFCPKGVER}
+EOF
+  echo "i depend=./depend"
+fi
+
+case $MYARCH in
+i386)
+	echo "f none /${LIBDIR}/${JLIB}=lib/i386/${JLIB} 0755 ${OWNER}"
+	echo "f none /${LIBDIR}/amd64/${JLIB}=lib/amd64/${JLIB} 0755 ${OWNER}"
+	;;
+sparc)
+	echo "f none /${LIBDIR}/${JLIB}=lib/sparc/${JLIB} 0755 ${OWNER}"
+	echo "f none /${LIBDIR}/sparcv9/${JLIB}=lib/sparcv9/${JLIB} 0755 ${OWNER}"
+	;;
+esac
+
+echo "f none /usr/bin/jkstat=jkstat.installed 0755 ${OWNER}"
+echo "d none /usr/share 0755 ${SYSOWNER}"
+echo "d none /usr/share/jkstat 0755 ${OWNER}"
+echo "d none /usr/share/man 0755 ${OWNER}"
+echo "f none /usr/share/man/man1/jkstat.1=man1/jkstat.1 0644 ${OWNER}"
+echo "f none /usr/share/jkstat/jkstat.xml=./jkstat.xml 0644 ${OWNER}"
+echo "f none /usr/share/jkstat/README=./README 0644 ${OWNER}"
+
+#
+# desktop files and their icons
+#
+for thisapp in jkstat jcpustate
+do
+  echo "f none /usr/share/applications/${thisapp}.desktop=./${thisapp}.desktop 0644 ${OWNER}"
+  echo "f none /usr/share/pixmaps/${thisapp}.png=./pixmaps/${thisapp}.png 0644 ${OWNER}"
+done
+
+
+#
+# if depending on installed packages, then:
+#   commons* http* come from TRIBapache-hc-client-###
+#   jcommon jfreechart come from TRIBjfreechart-###
+#   ws-commons* xmlrpc* come from TRIBapache-xmlrpc-###
+#
+if [ "X$PKGTYPE" = "Xstandalone" ]; then
+  for path in lib/java/*
+  do
+	pname=`basename $path`
+	echo "f none /${JARDIR}/${pname}=${path} 0644 ${OWNER}"
+  done
+else
+  for path in lib/java/commons* lib/java/http*
+  do
+	pname=`basename $path`
+	echo "s none /${JARDIR}/${pname}=../httpcomponents-client-${HCVERS}/${pname}"
+  done
+  for path in lib/java/jcommon* lib/java/jfreechart*
+  do
+	pname=`basename $path`
+	echo "s none /${JARDIR}/${pname}=../jfreechart-${JFCVERS}/${pname}"
+  done
+  for path in lib/java/jingle.jar lib/java/jk* lib/java/jstripchart.jar lib/java/jumble.jar lib/java/org-json.jar
+  do
+	pname=`basename $path`
+	echo "f none /${JARDIR}/${pname}=${path} 0644 ${OWNER}"
+  done
+  for path in lib/java/ws-commons* lib/java/xmlrpc*
+  do
+	pname=`basename $path`
+	echo "s none /${JARDIR}/${pname}=../apache-xmlrpc-${XMLVERS}/${pname}"
+  done
+fi

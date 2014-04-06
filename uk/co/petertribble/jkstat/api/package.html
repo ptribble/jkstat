@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+</head>
+<body bgcolor="white">
+<p>The JKstat API allows programmatic access to Solaris kstats from java
+code.</p>
+
+<p>To start, instantiate a JKstat. If working locally, this would be a
+NativeJKstat.</p>
+<pre>
+JKstat jkstat = new NativeJKstat();
+</pre>
+
+<p>Once you have a JKstat, you can either read a single Kstat or
+enumerate the Kstats. To read a whole kstat, you need to know the
+module, instance, and name. Given a kstat, you can then read all its
+statistics, or an individual statistic.</p>
+<pre>
+Kstat ks = jkstat.getKstat("unix", 0, "system_misc");
+Set &lt;String&gt; stats = ks.statistics();
+Object data = ks.getData("statistic");
+long l1 = ls.longData("avenrun_1min");
+</pre>
+<p>The Set of statistics is sorted, being backed by a TreeSet. The data
+object will be either a String, or a Long for all the numeric values.</p>
+
+@since 0.25
+</body>
+</html>

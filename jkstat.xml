@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!DOCTYPE service_bundle SYSTEM "/usr/share/lib/xml/dtd/service_bundle.dtd.1">
+
+<service_bundle type='manifest' name='jkstat'>
+
+<service
+        name='system/jkstat'
+        type='service'
+        version='1'>
+
+        <create_default_instance enabled='false' />
+
+        <single_instance />
+
+        <dependency
+                name='filesystems'
+                type='service'
+                grouping='require_all'
+                restart_on='none'>
+                <service_fmri value='svc:/system/filesystem/local' />
+        </dependency>
+
+        <exec_method
+                type='method'
+                name='start'
+                exec='/usr/bin/jkstat server -p %{port} &amp;'
+                timeout_seconds='60'>
+                <method_context>
+                        <method_credential user='noaccess' group='noaccess' />
+                </method_context>
+        </exec_method>
+ 
+       <exec_method
+                type='method'
+                name='stop'
+                exec=':kill'
+                timeout_seconds='60'>
+        </exec_method>
+
+        <property_group name='application' type='application'>
+                <propval name='port' type='integer' value='3000' />
+        </property_group>
+
+        <stability value='External' />
+        <template>
+                <common_name>
+                        <loctext xml:lang='C'>
+JKstat provides a jni interface for Java applications to access Solaris kstats.
+                        </loctext>
+                </common_name>
+        <documentation>
+          <doc_link name='petertribble.co.uk'
+            uri='http://www.petertribble.co.uk/Solaris/jkstat.html'/>
+        </documentation>
+        </template>
+</service>
+
+</service_bundle>

@@ -1,0 +1,80 @@
+JK stat user guide
+==================
+
+The JKstat API is designed to be very simple to use. If it's not, then
+complain!
+
+
+1. Before you start
+===================
+
+The jkstat shared library needs to be in a directory that's in the
+library search path (eg. a directory named in LD_LIBRARY_PATH), and you
+need to include jkstat.jar in the java classpath.
+
+
+2. First steps
+==============
+
+All JKstat clients need to do two things:
+
+import uk.co.petertribble.jkstat.api.*;
+
+and then call
+
+JKstat jkstat = new NativeJKstat();
+
+Once you've got a JKstat to play with, there are 2 different things you
+can do with it:
+
+ - read a kstat
+ - enumerate all the kstats
+
+
+3. Getting a kstat
+==================
+
+To read a whole kstat, you need to know the module, instance, and
+name.
+
+Kstat ks = jkstat.getKstat("unix", 0, "system_misc");
+
+The list of available statistics can then be extracted:
+
+Set <String> m = ks.statistics();
+
+This Set is sorted, being backed by a TreeSet.
+
+If you know the names of the statistics you're interested in, then you
+can get the data out of the relevant KstatData with
+
+Object data = ks.getData("statistic");
+
+which will be either a String or a Long. As many of them are longs, you
+can shortcut the process, for example:
+
+long l1 = ls.longData("avenrun_1min");
+
+
+3. Getting all the kstats
+=========================
+
+First you need to enumerate all the kstats
+
+If you just wanted all the kstats, then
+
+Set <Kstat> kset = jkstat.getKstats();
+
+Alternatively, if you want a specific subset you can apply a filter to
+pick out the ones you're interested in:
+
+KstatFilter ksf = new KstatFilter(jkstat);
+ksf.setFilterClass("misc");
+ksf.addFilter("cpu_stat:::");
+Set <Kstat> vfilter = ksf.getKstats();
+
+4. Enjoy
+========
+
+If you find bugs, want to see new features, or just find JKstat useful,
+please let me know.

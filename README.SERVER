@@ -1,0 +1,89 @@
+This is currently a hack.
+
+Standalone Server
+=================
+
+On the server machine, run
+
+./jkstat server -p 7777
+
+this will listen on port 7777 (which might conflict with something else -
+choose something different if it does)
+
+On the client machine, run
+
+./jkstat remotebrowser -s server_url
+
+where server_url is of the form
+
+http://server_name:7777/
+
+The file jkstat.xml is a sample SMF manifest for starting the server,
+courtesy of Fabrice Bacchella. You'll want to change the 'port' and
+'root' properties to suit your system, and also the user and group in
+the method_credential. (Accessing kstats requires no privileges.)
+
+
+Embedded servlet
+================
+
+Run
+
+./build war
+
+which will create a file jkstat.war. You need to deploy that (for
+tomcat, just copy it into the webapps directory), and then start your
+servlet container so that it can find libkstat_jni.so (for example, set
+LD_LIBRARY_PATH so it points to the directory containing the library).
+
+Then on the client
+
+./jkstat remotebrowser -s server_url
+
+where server_url is of the form
+
+http://server_name:8080/jkstat/xmlrpc
+
+
+Tomcat notes
+============
+
+The simplest way to configure tomcat is to
+
+cd $CATALINA_HOME
+
+whee CATALINA_HOME is the main directory where tomcat lives. Then
+create a lib directory
+
+mkdir lib
+
+and copy the shared library in there
+
+cp .../path/to/libkstat_jni.so lib
+
+then create a file $CATALINA_HOME/bin/setenv.sh that contains the
+following two lines
+
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CATALINA_HOME/lib
+export LD_LIBRARY_PATH
+
+
+Node Server
+===========
+
+To use the RESTful client talking to a node.js server, you'll need
+node-kstat:
+
+https://github.com/ptribble/node-kstat
+
+If you need help getting Node running on Solaris, see here:
+
+http://www.petertribble.co.uk/Solaris/node.html
+
+And then all you'll need to do is run
+
+node jkstat.js
+
+and the use the clients like so:
+
+./jkstat remotebrowser -S http://my.node.server:3000/kstat/

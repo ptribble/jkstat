@@ -1,0 +1,67 @@
+/*
+ * An example of using groovy to access kstats. As groovy supports java
+ * this looks just like a java program, but with a lot less boiler plate.
+ *
+ * This code was lifted from one of the JMX examples 
+ * http://groovy.codehaus.org/Groovy+and+JMX
+ */
+import org.jfree.chart.ChartFactory
+import org.jfree.data.category.DefaultCategoryDataset as Dataset
+import org.jfree.chart.plot.PlotOrientation as Orientation
+import groovy.swing.SwingBuilder
+import javax.swing.WindowConstants as WC
+import uk.co.petertribble.jkstat.api.*
+
+def dataset = new Dataset()
+
+/*
+ * Open up a JKstat, filter on cpu::sys kstats, and get the set of
+ * matching kstats.
+ */
+def jkstat = new NativeJKstat()
+def filter = new KstatFilter(jkstat)
+filter.addFilter("cpu::sys")
+def kss = new KstatSet(jkstat, filter)
+def kstats = kss.getKstats()
+
+/*
+ * The vmap map saves the current values, so we can display deltas.
+ * (Although we ought to read the time and display rates.) The cpu
+ * instance is the key in the map.
+ */
+def vmap = [:]
+kstats.each { m ->
+    vmap[m.getInstance()] = jkstat.getKstat(m).longData("cpu_nsec_user")
+    dataset.addValue jkstat.getKstat(m).longData("cpu_nsec_user"), 0, m.getInstance()
+}
+
+/*
+ * This just creates a simple chart using jfreechart,
+ */
+def labels = ['User Time per CPU', 'CPU', 'Time']
+def options = [false, true, true]
+def chart = ChartFactory.createBarChart(*labels, dataset,
+                Orientation.VERTICAL, *options)
+def swing = new SwingBuilder()
+def frame = swing.frame(title:'CPU usage',
+        defaultCloseOperation:WC.EXIT_ON_CLOSE) {
+    panel(id:'canvas') { rigidArea(width:600, height:250) }
+}
+frame.pack()
+frame.show()
+chart.draw(swing.canvas.graphics, swing.canvas.bounds)
+
+/*
+ * Keep updating the chart. This looks visually terrible, as it's redrawn
+ * from scratch each time we go round the loop. There doesn't seem to be
+ * any repaint logic either, as if you expose the chart it doesn't repaint
+ * itself properly, so the draw here does that job as well.
+ */
+while (true) {
+	sleep(1000)
+	kstats.each { m ->
+		dataset.setValue jkstat.getKstat(m).longData("cpu_nsec_user")-vmap[m.getInstance()], 0, m.getInstance()
+		vmap[m.getInstance()] = jkstat.getKstat(m).longData("cpu_nsec_user")
+		chart.draw(swing.canvas.graphics, swing.canvas.bounds)
+	}
+}

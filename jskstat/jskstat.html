@@ -1,0 +1,356 @@
+<html>
+<head>
+<title>jkstat - web client edition</title>
+<script src="flot/jquery.min.js"></script>
+<script src="flot/jquery.flot.js"></script>
+<script src="jquery.jstree.js"></script>
+<script type="text/javascript">
+
+var server_host = location.host
+var server_protocol = location.protocol;
+var server_pathname = location.pathname;
+var slashloc = server_pathname.lastIndexOf('/');
+var pathroot = server_pathname.substring(0, slashloc);
+
+var display_max = 60;
+var icolor = 0;
+
+var kmodule = '';
+var kinstance = '';
+var kname = '';
+
+// variables for the graph
+var series_map = {};
+var displayed_map = {};
+var plot;
+
+var request = new XMLHttpRequest();
+
+var oldks;
+
+//empty graph options to be customized later
+var graph_options = {
+	series: { shadowSize: 0 },
+};
+
+function get_graph_series() {
+	var series = [];
+	for (stat in series_map) {
+		if (displayed_map[stat] == 'y') {
+			series.push(series_map[stat]);
+		}
+	}
+	return series;
+}
+
+function update_graph() {
+	plot.setData(get_graph_series());
+	plot.setupGrid();
+	plot.draw();
+}
+
+function selectSeries() {
+	var out_div = $("#kstat_table");
+	for (stat in displayed_map) {
+		displayed_map[stat] = 'n';
+	}
+	out_div.find("input:checked").each(function () {
+		var key = $(this).attr("name");
+		if (key && displayed_map[key]) {
+			displayed_map[key] = 'y';
+		}
+	});
+	update_graph();
+}
+
+function pullKstats() {
+	var url = server_protocol + '//' + server_host + pathroot +
+		  '/kstat/list';
+
+	request.open('GET', url, true);
+	request.send(null);
+	request.onreadystatechange = handleResponse;
+}
+
+function doKstat(module, instance, name) {
+	stopIt();
+	kmodule = module;
+	kinstance = instance;
+	kname = name;
+	doIt();
+}
+
+function getKstat()
+{
+	var url = server_protocol + '//' + server_host + pathroot +
+		  '/kstat/get/'+ kmodule + '/' + kinstance
+		  + '/' + kname;
+
+	request.open('GET', url, true);
+	request.send(null);
+	request.onreadystatechange = showKstat;
+}
+
+function sortKstat(a, b) {
+  if (a['module'] !== b['module']) {
+    return (a['module']>b['module']);
+  }
+  if (a['instance'] !== b['instance']) {
+    return (a['instance'] - b['instance']);
+  }
+  return (a['name']>b['name']);
+}
+
+function showKstat()
+{
+	if (request.readyState == 4 && request.status == 200) {
+		var freshKstats = JSON.parse(request.responseText);
+		var out_div = document.getElementById("kstat_output");
+		var reader = {};
+		var data = {};
+		var olddata = {};
+		var mpout = '<p id="kstat_table">';
+		mpout += '<table>';
+		mpout += '<tr><th>Graph</th><th>Statistic</th><th>Value</th><th>Rate</th></tr>';
+		reader = freshKstats;
+		data = reader['data'];
+		var dtime = reader['snaptime'];
+		var stime = dtime;
+		stime /= 1000000000.0;
+		if (oldks) {
+			dtime -= oldks['snaptime'];
+			olddata = oldks['data'];
+		}
+		dtime /= 1000000000.0;
+		for (stat in data) {
+			var value = data[stat];
+			var delta = value;
+			if (oldks) {
+				delta -= olddata[stat];
+			}
+			var rate = delta/dtime;
+			var this_series = series_map[stat];
+			if (this_series) {
+				this_series.data.push([stime,rate]);
+				if (this_series.data.length > display_max) {
+					this_series.data.shift();
+				}
+			} else {
+				// labels don't work well for long lists
+				// this_series = {color: icolor, label: stat};
+				this_series = {color: icolor};
+				icolor++;
+				this_series.data = [];
+				this_series.data.push([stime,rate]);
+				series_map[stat] = this_series;
+				displayed_map[stat] = 'y';
+			}
+			mpout += '<tr><td>';
+			mpout += '<input type="checkbox" name="' + stat + '" ';
+			if (displayed_map[stat] == 'y') {
+				mpout += 'checked = "checked" ';
+			}
+			mpout += 'id="id' + stat + '">';
+			mpout += '</td><td>';
+			mpout += '<label for="id'+stat+'">';
+			// colors don't seem to change
+			mpout += '<font style="color:' + this_series.color + '">';
+			mpout += stat;
+			mpout += '</font>';
+			mpout += '</label>';
+			mpout += ":";
+			mpout += '</td><td>';
+			mpout += value;
+			mpout += '</td><td>';
+			mpout += rate;
+			mpout += '</td></tr>';
+		}
+		mpout += '</table></p>';
+
+		out_div.innerHTML = mpout;
+		// out_div.scrollTop = out_div.scrollHeight;
+		out_div.scrollTop = 0;
+		var my_div = $("#kstat_table");
+		my_div.find("input").click(selectSeries);
+
+		oldks = reader;
+
+		update_graph();
+
+	} else {
+		return;
+	}
+}
+
+function handleResponse()
+{
+	if (request.readyState == 4 && request.status == 200) {
+		var freshKstats = JSON.parse(request.responseText);
+
+		var out_div = document.getElementById("tree_panel");
+		var reader = [];
+		var mpout = '';
+		var curmod = '';
+		var curinst = '';
+		var curname = '';
+		var indent = 0;
+		reader = freshKstats;
+		reader.sort(sortKstat);
+		mpout += '<div id="kslist2">';
+		mpout += '<ul id="kslist">';
+		for (i = 0; i < reader.length; i++) {
+			var kstat = reader[i];
+			if (curmod !== kstat['module']) {
+				curmod = kstat['module'];
+				curinst = '';
+				if (indent == 0) {
+					indent = 1;
+				} else if (indent == 1) {
+					mpout += '</ul></li>';
+				} else {
+					mpout += '</ul></li></ul></li>';
+					indent = 1;
+				}
+				mpout += '<li><a href="#">';
+				mpout += kstat['module'];
+				mpout += '</a><ul>'
+			}
+			if (curinst !== kstat['instance']) {
+				curinst = kstat['instance'];
+				if (indent == 1) {
+					indent = 2;
+				} else {
+					mpout += '</ul></li>';
+				}
+				mpout += '<li><a href="#">';
+				mpout += kstat['instance'];
+				mpout += '</a><ul>'
+			}
+			mpout += '<li>';
+			mpout += '<a href="#" onClick="doKstat('
+			mpout += "'";
+			mpout += kstat['module'];
+			mpout += "','";
+			mpout += kstat['instance'];
+			mpout += "','";
+			mpout += kstat['name'];
+			mpout += "'";
+			mpout += '); return false">';
+			mpout += kstat['name'];
+			mpout += '</a>';
+			mpout += "</li>\n";
+		}
+		// close the last module
+		mpout += '</ul></li></ul></li>';
+		mpout += '</ul>';
+		mpout += '</div>';
+
+		out_div.innerHTML = mpout;
+		out_div.scrollTop = 0;
+
+		// this doesn't work, I've changed the name so it
+		// doesn't match in order to disable it
+		$(function () {
+		$("#kslist2").jstree({ 
+			"plugins" : [ "themes", "html_data" ]
+			});
+		});
+
+	} else {
+		return;
+	}
+}
+
+var running;
+
+function doIt() {
+	running = setInterval(getKstat, 1000);
+}
+
+function stopIt() {
+	if (running) {
+		clearInterval(running);
+	}
+	running = null;
+	oldks = null;
+	series_map = {};
+	displayed_map = {};
+	icolor = 0;
+}
+
+window.onload=function() {
+	document.getElementById("start").onclick = function() {
+		pullKstats();
+		stopIt();
+		document.getElementById("kstat_output").innerHTML = '';
+		return false;
+	}
+
+	document.getElementById("stop").onclick = function() {
+		stopIt();
+		return false;
+	}
+	pullKstats();
+
+	plot = $.plot($("#graph_area"),
+	    [], graph_options);
+
+	plot.draw();
+}
+</script>
+<style type="text/css">
+body {
+margin:0;
+padding:0;
+height:100%;
+}
+#tree_panel {
+position:absolute;
+left:0;
+top:0;
+padding:0;
+width:200px;
+height:100%; /* works only if parent container is assigned a height value */
+color:#333;
+background:#eaeaea;
+border:1px solid #333;
+overflow:auto;
+}
+.content {
+margin-left:210px;
+margin-right:10px;
+margin-bottom:10px;
+color:#333;
+background:#ffc;
+border:1px solid #333;
+padding:0 10px;
+}
+</style>
+</head>
+<body>
+
+<div class="content">
+<h2>Kstat remote access</h2>
+<p>Select a kstat from the tree on the left.</p>
+<hr>
+<form id="controller">
+<input id="start" type="submit" value="Start Over">
+<input id="stop" type="submit" value="Stop Updating">
+</form>
+<div id="graph_area" style="width: 630px; height: 300px"></div>
+<hr>
+<div id="kstat_output" style="width:630px;height:550px;overflow:auto;">
+</div>
+</div>
+<pre>
+<div id="tree_panel">
+</div>
+</pre>
+<hr>
+<p>
+Part of <a
+href="http://www.petertribble.co.uk/Solaris/jkstat.html">JKstat</a>.
+Enhanced by <a href="http://code.google.com/p/flot/">Flot</a> and <a href="http://www.jstree.com/">jsTree</a>.
+</p>
+</body>
+</html>

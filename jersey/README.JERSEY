@@ -1,0 +1,50 @@
+The REST interface is supplied by the files in
+uk/co/petertribble/jkrest. These need to be compiled using Java 6.
+
+The automatic detection only works if you deploy the files as classes;
+supplying a jar doesn't work. So you need to copy the class files into
+the right place in the war file
+
+mkdir -p .../WEB-INF/classes/uk/co/petertribble/jkrest
+cp uk/co/petertribble/jkrest/*.class .../WEB-INF/classes/uk/co/petertribble/jkrest
+
+and use the web.xml file form here that has the jersey extensions
+added.
+
+I'm not shipping the jersey libs with jkstat; they just make the
+download bigger. To build with jersey support, unpack the jersey
+archive in the same directory you unpacked jkstat, and run './build
+jkrest.war'. (If the jersey version isn't 1.17, then you'll need to fix
+the build script.)
+
+Deployment:
+===========
+
+The tomcat route is very simple.
+
+unzip /path/to/apache-tomcat-7.0.37.zip
+cd apache-tomcat-7.0.37
+mkdir -p lib
+cp .../jkstat-1.0/lib/i386/libkstat_jni.so lib
+cd bin
+cat > setenv.sh <<_EOF
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CATALINA_HOME/lib
+export LD_LIBRARY_PATH
+_EOF
+chmod a+x *.sh
+env JAVA_HOME=/packages/java/jdk1.6 ./startup.sh
+
+Copy the war file:
+
+cp .../jkrest.war ../webapps
+
+As the war file supports both RESTful and XML-RPC jkstat services, both
+the following jkstat invocations will work:
+
+
+./jkstat remotebrowser -s http://localhost:8080/jkrest/xmlrpc
+./jkstat remotebrowser -S http://localhost:8080/jkrest/kstat
+
+As will the demo, both the javascript and applet version:
+
+http://localhost:8080/jkrest/

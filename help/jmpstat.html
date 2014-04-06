@@ -1,0 +1,54 @@
+<html>
+<head>
+<title>jmpstat help</title>
+</head>
+<body>
+
+<h1>JMPstat</h1>
+
+<p>JMPstat is a tabular display of per-processor statistics, almost
+identical to the mpstat command.</p>
+
+<p>The fields displayed are:</p>
+
+<ul>
+<li>CPU: the processor id</li>
+<li>minf: minor faults</li>
+<li>mjf: major faults</li>
+<li>xcal: inter-processor cross-calls</li>
+<li>intr: interrupts</li>
+<li>ithr: interrupts as threads (not counting clock interrupts)</li>
+<li>csw: context switches</li>
+<li>icsw: involuntary context switches</li>
+<li>migr: thread migrations (to another processor)</li>
+<li>smtx: spins on mutexes (lock not acquired on first try)</li>
+<li>srw: spins on readers/writer locks (lock not acquired on first try)</li>
+<li>syscl: system calls</li>
+<li>usr: percent user time</li>
+<li>sys: percent system time</li>
+<li>idl: percent idle time</li>
+</ul>
+
+<p>The I/O wait time is not shown, as in Solaris 10 it is no longer
+calculated and will always return zero.</P.
+
+<p>The rows can be sorted by selecting the column header.</p>
+
+<h2>The toolbar</h2>
+
+<p>The toolbar contains a small number of menus.</p>
+
+<ul>
+
+<li>File - allows you to exit jmpstat.</li>
+
+<li>Update every - allows you to set how rapidly the statistics are
+updated.</li>
+
+<li>Help - shows this help file, and the CDDL license that this
+software is licensed under.</li>
+
+</ul>
+
+</body>
+</html>

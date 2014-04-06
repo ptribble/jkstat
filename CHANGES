@@ -1,0 +1,1150 @@
+From 1.0 to 1.1
+
+Add application icons
+
+Add desktop files for jkstat and jcpustate
+
+Update jfreechart to 1.0.17
+
+NOTE: As a result, Java 6 or later is now required
+
+From 0.70 to 1.0
+
+NOTE: Post version 1.0, new features will appear in v2.0 and later
+which will require a minimum Java 7
+
+Update httpclient to 4.2.3
+
+Remove JLoad and the loadgraph subcommand
+
+Remove unused statlist from KstatSetChart
+
+Clean up chart max age setting
+
+Clean up unused constructors in KstatChart, KstaSetChart, KstatAreaChart
+
+Remove old usage of statisticsMenu
+
+Catch potential null pointer
+
+Remove play sample
+
+Better defaults for SMF service in jkstat.xml
+
+Smarten up package build
+
+From 0.69 to 0.70
+
+Add RESTful support via jersey (see 'build jkrest.war')
+
+Update build - war target is now jkstat.war
+
+Integrate jskstat (including flot and jstree)
+
+From 0.68 to 0.69
+
+Update license details
+
+Chartable IOstat - also calculate asvc_t and wsvc_t.
+
+Add ChartableMPstat, remove MPstatData
+
+ChartableKstat.getValue() defaults to zero not null
+
+Refactor mpstat so it's like iostat
+
+Add right-click menu to mpstat
+
+From 0.67 to 0.68
+
+Update httpclient to 4.1.3
+
+Clean javadoc
+
+Remove unused ParseableKstat
+
+Allow a way to disable the cache in ParseableJSONZipJKstat
+
+From 0.66 to 0.67
+
+ChartableKstat update(ks) replaced by update()
+
+Add ChartableIOKstat; remove IOstatData; rework IOstatTableModel.
+
+Add IOstatTable. Rework iostat demo. Rework IO accessory.
+
+Can create a chart and a chart frame that uses a ChartableKstat as the
+data source.
+
+Add right-click menu for charts to iostat demo. This charts the iostat
+data, not the underlying kstat data.
+
+Tweak KstatFilter.
+
+Remove IFB accessory.
+
+Separate help file for applet; tweak other help files.
+
+From 0.65 to 0.66
+
+Improve popup menu code
+
+Accessory misc cleanups and tidying
+
+Clean up KServerConfig; remove auth as the embedded server doesn't
+support it.
+
+Remove regex from KstatFilter, as nothing used it.
+
+Tweak bge accessory
+
+ChartableKstat and ChartableKstatAggregate abstract away the
+calculation of rates for the charts.
+
+Add applet - if deploy a server, can deploy the applet with it to talk
+back to the same server. Only works with a RESTful interface,
+unfortunately.
+
+Building a war can build one supporting a restful server and the applet
+(only works for me at the present time as it depends on extra code that
+isn't yet released)
+
+Add ChartableIOKstat; remove IOstatData; rework IOstatTableModel.
+
+From 0.64 to 0.65
+
+Tweaks to json and xmlrpc clients.
+
+Rely on implicit null initialization in KstatFilter.PatternFilterQuartet
+
+cpustate demo supports remoting
+
+refactor main() in remotable demos
+
+From 0.63 to 0.64
+
+Update jingle
+
+Play! sample - see the file play/README.PLAY
+
+kmemalloc demo supports client/server
+
+Remove option for browser and chart builder to load their config from a
+file.
+
+From 0.62 to 0.63
+
+JFreeChart 1.0.14
+
+From 0.61 to 0.62
+
+jmxserver works in 64-bit mode
+
+remove some places where we had version numbers
+
+Spit and polish
+
+Remove duplicate jars from client/server commands
+
+From 0.60 to 0.61
+
+Enhance makeGraph() in KstatPngImage and KstatAreaPngImage to toggle
+between rates and values
+
+Tweak NumericStringComparator; pass pmd braces rule
+
+Tighten if(enumerated) in JKstat.getKstats().
+
+KClientConfig protocol array is public, avoiding need for
+getProtocols() which PMD didn't like the look of anyway
+
+Remove JSONParser(File) constructor
+
+Scrap temporary variables in JSONParser
+
+From 0.53 to 0.60
+
+Native enumerate() now deletes the right local references
+
+Java 7 compatibility: don't instantiate KstatResources
+
+Java 7 compatibility: fix getColumnClass()
+
+Native getKCID() always updates the kstat chain
+
+Now that getKCID always does the chain update for us, remove the
+unnecessary explicit chainUpdate()
+
+JKstat.enumerate() now returns the chainid.
+
+The above three are incompatible changes, hence the version step
+
+Tidy up KstatTreeNode
+
+KstatTreeModel extends DefaultTreeModel
+
+From 0.52 to 0.53
+
+Reworked Http client no longer leaks connections
+
+Removed 'interesting' demo and subcommand. It turned out to be not that
+interesting.
+
+Don't print an extra newline for psrinfo -vp
+
+Fix: KstatCmd doesn't handle "kstat -l nge:::rbytes64" correctly
+
+From 0.51 to 0.52
+
+Spark accessories can scale the tooltip display
+
+Sync up Cpu accessories with the aggregate accessories in solview.
+
+Remove kstat -p support.
+
+Add RESTful support to the chart builder
+
+From 0.50 to 0.51
+
+Remove javafx demos. JavaFX 1.x wasn't available on sparc; 2.x beta isn't
+on Solaris at all; version incompatibilities make supporting this a
+nightmare
+
+Add apache httpclient 4.1.1 jars
+
+Update commons-logging from 1.1 to 1.1.1
+
+Add HTTP client, that can talk to a RESTful server implemented either
+in node.js or jersey
+
+KClientConfig extended to add communication protocol, and reworked
+KClientDialog to prompt for it
+
+RemoteJKstat is now a shim for whichever remote protocol is actually in
+use.
+
+Remote browser has -S to connect to a RESTful server
+
+JSONparser tries to parse a kstat as both an object and an array
+containing an object
+
+Client mode added to the iostat, mpstat, netload, and nfsstat demos
+
+From 0.45 to 0.50
+
+Remove support for old kar format. Support for kstat -p output is
+retained, but may be removed later.
+
+From 0.44 to 0.45
+
+FLAG DAY: this is the last version that includes support for the "old"
+kar formats.
+
+Tooltip support for spark accessories
+
+War file build doesn't include unnecessary jars
+
+Kstat toJSON method
+
+KstatSet toJSON method
+
+jsondump subcommand for debugging
+
+JSONParser can parse the output of jsondump (which may be the next
+generation kar format). JSONParser is about twice as quick as
+ParseableParser.
+
+(Tried jackson, stringtree, and simple-json as alternative json
+parsers; they are slower than the basic org.json parser. At least on my
+data, which is what matters.)
+
+ParseableParser and JSONParser have main() so they can be called
+directly, which is useful for testing and performance analysis
+
+Use JSON as the remote format.
+
+Using JSON means we no longer need to use the apache vendor extensions
+for xml-rpc.
+
+From 0.43 to 0.44
+
+update jumble
+
+preview of "interesting" subcommand
+
+typos in NumericStringComparator and elsewhere
+
+missing javadoc
+
+ProcessorTree and psrinfo subcommand moved back to jkstat from solview
+
+AccessoryKmemAlloc moved back to jkstat from solview, and added to
+accessory registry
+
+JKmemAlloc demo moved back to jkstat from solview
+
+Tidy up JKmemAlloc alignment issues
+
+Merge JCpuChart into JCpuState. Use 'jkstat cpustate chart' to run.
+
+Remove JLoad2 demo and stripload subcommand
+
+Remove old iostat demo; iostat2 demo now called iostat
+
+Tidy up chartbuilder
+
+Chartbuilder doesn't display fm kstats, as they're not likely to be
+interesting to chart; a number of other definitely uninteresting kstats
+are filtered out to reduce clutter
+
+Cut down the RemoteJKstat constructors
+
+AccessoryCpuPanel can be vertical as well as horizontal
+
+The cpustate demo can show cpu activity in vertical bars, laid out side
+by side rather than above each other. Use 'jkstat cpustate vertical' to
+run. Handy for systems with higher processor counts.
+
+load subcommand replaced by uptime subcommand
+
+KstatAreaChart fixed so it displays the statistics in the requested
+order
+
+Charts can set the colors used in the chart
+
+AccessoryCpuChart displays kernel and user usage in the same order as
+the cpustate and chart displays
+
+Preliminary atttempt to bring in sparklines (they aren't really, just
+a different chart)
+
+AccessoryCpuChart now 150 pixels wide, to match the sparkline charts
+
+Separate SparkRateAccessory and SparkValueAccessory, so I can produce
+charts of both rates and values (eg., load average is a value)
+
+Fix horrid bug in KstatFilter where negative filters would match any
+component of the filter
+
+Refactor KstatFilter in light of the previous change
+
+From 0.42 to 0.43
+
+Pass pmd migrating rule
+
+nits in KstatCmd
+
+update jumble
+
+Cut down on unnecessary static initialization blocks
+
+@author tags
+
+Tidy up KstatTableModel
+
+Eliminate unnecessary separate calls to setLayout
+
+Tidy up popup menus
+
+Fix AccessoryNetPanel so it gets the network speed correctly.
+
+Clean up initialization of some of the other accessories.
+
+netload demo works if you resize it, rather than going blank
+
+Browser gets reset and backwards; needed fixes to begin() in
+SequencedJKstat
+
+Show menu in chart frame gets a mnemonic
+
+Add KstatUtil.numericStatistics()
+
+Add and remove a statistic works for area charts.
+
+Line charts save all statistics and only display the specified
+subset. This makes adding and removing statistics on a chart of a
+sequenced jkstat work, and also means that if you add a statistic to a
+live chart you see the past data.
+
+Added package.html files for javadoc, and javadoc cleanups.
+
+KstatFilter.filteredStatistics()
+
+kstat subcommand doesn't print crtime, snaptime, or class in parsable
+output
+
+The jkstat script iif installed as a package now works correctly (thanks
+to Fabrice Bacchella for pointing this out).
+
+From 0.41 to 0.42
+
+Sample JMX server and client - try './jkstat jmxserver' and './jkstat
+jmxclient' to use them.
+
+For the above, Kstat and KstatData now implement Serializable.
+
+Sample groovy code - look at the groovychart script, and the groovychart
+subcommand will run it (assumes you have groovy in your path).
+
+kaboom()
+
+JCpuChart, JCpuState now extend JKdemo
+
+NPE in updateLabel() in ChartBuilderPanel
+
+Fix nits in ChartBuilderPanel
+
+Tidy KstatTableModel
+
+ParseableJKstat and ParseableZipJKstat cache the data they read. They
+also now implement previous() (which required next() to be reworked).
+
+SequencedJKstat now gets begin()
+
+New Browser should get a new instance of a SequencedJKstat
+
+Remove karinfo subcommand (as it wasn't implemented here any more)
+
+The browser now correctly detects whether kstat type information is
+available and shows output (such as the By Type tab and the type
+information in the summary) as appropriate.
+
+In KstatPngImage and KstatAreaPngImage, a public makeGraph() method
+that is called by KAR.
+
+From 0.40 to 0.41
+
+Add jstripchart.jar
+
+Added strip charts - try './jkstat stripload' or './jkstat stripcpu'
+for a couple of examples.
+
+Updated jingle and jumble.
+
+Following on from Kstat implementing Comparable, add Kstat.statistics()
+to get the sorted list of statistic names, and remove Kstat.getMap(),
+and clean up corresponding consumers of those apis.
+
+From 0.39 to 0.40
+
+Cleanup nits in client and server code
+
+The supplied JavaFX jars are now built for JavaFX 1.3, and tested with
+1.3.1
+
+Basic manpage
+
+netload implemented atop KstatAccessorySet
+
+Kstat now implements Comparable, making sorting much easier
+
+KstatCmd output is sorted
+
+Reimplemented sorting (and correctly) in iostat demo
+
+Cpustate demo now sorts
+
+Netload demo now sorts
+
+From 0.38 to 0.39
+
+Thanks to Fabrice Bacchella, improvements to the JKstatClient
+interface.
+
+iostat demo sorts devices
+
+Additional checking in ParseableParser
+
+Duplicate code in KstatFilter refactored
+
+Javafx packaged into jars
+
+build script can build svr4 packages
+
+From 0.37 to 0.38
+
+New kar 0.2 parsed format support.
+
+From 0.36 to 0.37
+
+JavaFX examples updated for JavaFX 1.3 - you will need to recompile
+them ('./build -fx' with javafxc in your PATH) to match whichever
+version you have. (And remember to copy libkstat_jni.so into the javafx
+lib/desktop directory.)
+
+Now 64-bit. You can add the -64 flag to jkstat (as the first argument)
+to run in 64-bit mode, but this shouldn't be necessary for jkstat itself;
+this is really just adding a 64-bit shared library to allow jkstat to be
+used from java instances that have to run 64-bit for some other reason.
+
+Jnfsstat help file was missing.
+
+Remove unnecessary class variables from Jnfsstat
+
+more pmd nits, and a pmd subcommand to the build script to automate pmd
+checks
+
+png and areapng subcommands for scripted chart generation
+
+From 0.35 to 0.36
+
+Apache xml-rpc update to version 3.1.3.
+
+loadgraph demo hooked up to the sleep menu
+
+some pmd nits cleaned up
+
+Update every mnemonic fixup
+
+By Type tree not shown in browser for Sequenced kstats
+
+Reimplement MPstatTableModel using KstatSet
+
+Demo code tidying
+
+load panel accessory should always print 2 decimal places
+
+From 0.34 to 0.35
+
+Many changes and enhancements for SequencedJKstat support:
+
+In KstatTableModel, replace updateKstat by update().
+
+Add update() to KstatTable()
+
+In the browser, update the accessory from the main browser timer loop
+not from its own timer.
+
+In the browser, update the table from the main browser timer loop
+not from its own timer.
+
+SequencedJKstat needs a method to return the number of data points
+available, so we can show progress.
+
+Sequences must always be explicitly stepped through; remove steppedmode
+and stepIfNeeded()
+
+Sequences need to enumerate() - is this just a first read? In that
+case, nead a readFile() and call it to get the first point.
+
+SequencedJKstat next() needs to return a value so we know if it
+succeeds
+
+Should we increment the step index in readNextFile() or in next()? Do
+we even need readNextFile() now?
+
+Need a simple step() in the browser. This needs to shift to the next
+time point, but need to make sure that it's only advanced once: the
+accessories, tables, shouldn't advance the timer. (They just use
+getKstat() to get the current data, the data is stepped from above.)
+
+Need to decide whether the first call to next returns the first data
+point or the second. Currently it's the first. Looks like the browser
+thinks it ought to be the second. In which case need to read the first
+point at startup.
+
+enumerate() ought to read the current data. Or, if we read the first
+point at initialization, enumerate() becomes a no-op.
+
+Handle things sanely when the browser runs out of data. (Basically,
+stop updating - call stopLoop() if next() is false.)
+
+Replace sleep for by update every
+
+No demos in browser if sequenced
+
+Add progress bar to browser; time should be the text inside it.
+
+Charts from the browser don't work at all.
+
+SequencedJKstat has newInstance() so multiple consumers can step
+through the data independently
+
+Clean up SequencedJKstat method inheritance
+
+Browser usage message update.
+
+Add sequenced inputs to chartbuilder.
+
+Extend parsed understanding to Set charts.
+
+Refactor shared code between readAll() and updateAccessory() in charts
+
+From 0.33 to 0.34
+
+Classes in demo package now public. And now have javadoc.
+
+So I remembered what javafx looked like, a jnetloadfx demo
+
+KstatAccessorySet allows multiple accessories to be updated as a whole,
+without requiring each to have its own timer running
+
+KstatAccessoryPanel has a slight behaviour change - if started with a
+negative time, it won't start a timer to automatically update itself
+
+iostat demo updated to take advantage of the above two changes, saving
+a measurable amount of memory and cpu. cpustate demo updated similarly
+
+From 0.32 to 0.33
+
+mpstat demo refactored, so that solview can incorporate it.
+
+Major changes to support parsing of kstat -p output; this support is
+experimental and subject to change.
+
+parse package: can parse the output from kstat -p. Usage:
+
+jkstat browser -p dir
+
+where dir is a directory containing files, each of which is the output
+from kstat -p. The files are read in timestamp order. Or,
+
+jkstat browser -z file
+
+where file is a zip file containing just the files with the kstat -p
+output. At the moment, parsing kstat -p output essentially works but
+has a large number of rough edges (ie. bugs).
+
+JKstat gains a getTime() method. For parsed subclasses, this is the
+timestamp of the file (although we could later extend the scheme to
+parse the time from kstat -T); for Native and Remote we use the current
+time.
+
+The parsed JKstat classes extend a new SequencedJkstat class, which
+adds next() and previous() methods - so that you can step through one
+snapshot at a time.
+
+Some charts have been extended to support the parsed output. However,
+Set charts don't work correctly yet, nor does the chart builder. But
+something like
+
+jkstat areachart -z /var/adm/ka/ka-2009-12-03.zip cpu_stat:: user kernel idle
+
+should work.
+
+From 0.31 to 0.32
+
+Updated jingle
+
+Cleaned up more nits from pmd
+
+Errors printed to System.err not System.out
+
+RemoteJKstat throws KstatException on errors, rather than pretending
+that nothing happened. This extends RuntimeException, so doesn't have
+to be declared, but allows consumers to catch KstatException
+specifically to detect our errors.
+
+Exception handling generally cleaned up
+
+From 0.30 to 0.31
+
+Tidying demo code
+
+@Override where appropriate
+
+Table models don't need to implement isCellEditable()
+
+Table models shouldn't fireTableStructureChanged when you've just
+changed the number of rows
+
+Removed browsernew and chooser - failed experiment
+
+Cleaned up JLoadChart
+
+Fixed up deprecated usage of TimeSeries
+
+Tightened up javac lint flags, and annotated the warnings that are in
+error
+
+From 0.29 to 0.30
+
+More javadoc, almost complete
+
+Javadoc generation now warning-free
+
+Update Apache XML-RPC to 3.1.2
+
+Fixed the README
+
+mpstat sorts correctly
+
+KstatCmd now implements most of the kstat CLI
+
+KstatTreeMap abstracts the kstat maps out of the browser
+
+Interactive chart builder
+
+From 0.28 to 0.29
+
+Refactoring: accessories called by Kstat rather than
+module:instance:name
+
+Clean up javadoc
+
+Updated jfreechart
+
+Added JavaFX example - see jkstatfx directory
+
+Started work on interactive chart builder
+
+From 0.27 to 0.28
+
+Fixed jkstat calling of charts
+
+Fixed charts, so the initial time axis is scaled properly
+
+Refactoring of the entire chart code
+
+Charts can display KstatAggregates
+
+Charts can display KstatSets
+
+From 0.26 to 0.27
+
+Added ability to run the server as a servlet under tomcat.
+
+Renamed libjkstat to libkstat_jni (was actually changed in 0.25, but
+0.26 regressed)
+
+Enhanced server and client configuration
+
+Interactive client configuration prompt
+
+Client runs on windows - run jkstat.bat to start the browser
+
+From 0.25 to 0.26
+
+Found a few nits with findbugs
+Update jfreechart to 1.0.12
+
+Client-server mode using XML-RPC added. See README.SERVER for details.
+
+From 0.24 to 0.25
+
+Some demos removed: jkmemalloc, arcstat, jfsstat, in order to slim
+JKstat back down to something sensible. The cpustate demo also reverts
+to the older simplified version.
+
+All the removed stuff has been migrated into solview, so it's not
+been lost. I decided that solview was a better plce for some of the
+more advanced demos.
+
+Updated jfreechart to 1.0.11
+
+More gardening courtesy of checkstyle and pmd
+
+Rely on java initializing fields correctly
+
+Clean up flow in the browser
+
+KstatData types now an enumerated type (Thanks to Mike Duigou)
+
+Removed external classes (they're all in jingle anyway)
+
+Put the browser code in a separate browser hierarchy
+
+Merged the chart, table, and accessory classes into a single gui area
+
+Moved the main api clases into their own api area of the
+hierarchy. There's also a jar file jkstat-api.jar that contains just the
+api and none of the gui classes.
+
+From 0.23 to 0.24
+
+arcstat demo
+
+From 0.22 to 0.23
+
+General code gardening - unused imports etc. Both manually and using
+PMD.
+
+Fix stacktrace for unix:0:system_misc in the browser
+
+Updated jfreechart
+
+From 0.21 to 0.22
+
+Added psrinfo subcommand
+
+The cpustate demo improved: aggregates threads and cores
+
+Added KstatAggregate class to support the above
+
+Area Charts
+
+chart and areachart accept multiple statistics
+
+cpustate right-click menu offers a chart
+
+updated jingle and jumble to match published source
+
+netload right-clock menu offers a chart
+
+From 0.20 to 0.21
+
+Updated jfreechart to 1.0.9
+
+Remove kstatbrowser wrapper script - use 'jkstat browser' instead
+
+Remove unused method from KstatAccessoryRegistry
+
+KstatCmd accepts -p, -l, -c, -m, -i, -n, and -s just like kstat(1). The
+statistics are sorted by name in the output. (Although the kstats
+aren't, yet.)
+
+KstatSet has methods to return which modules, instances, names are used
+
+KstatFilter no longer uses Vector
+
+Network accessory now scales the rates into humanized units
+
+Fix that catches empty kstats and doesn't generate NPEs in the browser
+
+From 0.19 to 0.20
+
+Regular expression support in KstatFilter.
+
+First pass at extracting strings into ResourceBundles, so that
+localization is possible
+
+Updated jingle to localized version
+
+Updated jfreechart to 1.0.6
+
+KstatChart can have statistics added and removed
+
+KstatChartFrame has a menu to add and remove statistics
+
+JKMemAlloc tracks requested sleep interval
+
+Label for demos is common and should be done in JKdemo
+
+From 0.18 to 0.19
+
+Added KstatToolsMenu so that we can launch the demos from a menu
+
+Refactored the demos so they can be called from a menu (so they can
+inherit a jkstat object, and closing them doesn't kill off the parent)
+
+More cleanup of javadoc
+
+Scrapped the individual demo commands in favour of a single jkstat
+command which takes subcommands
+
+Fixed loadchart bug where only one of the load averages was being
+displayed
+
+Added CDDL header block to source files
+
+Added nfsstat demo
+
+Removed use of the native lookup methods
+
+Added start of kstat demo - emulate kstat(1M)
+
+Implemented KstatSet and chain updates
+
+Removed KstatTree - the trees have custom Models instead
+
+Got the browser to track chain updates
+
+Removed the lookup methods entirely, along with the native type and
+data type methods
+
+From 0.17 to 0.18
+
+Cleaned up the help files
+
+Updated jingle - help windows now have titles
+
+JKstat.enumerate() now private, and enumeration done by getKstats() if
+necessary.
+
+Added jkmemalloc demo application.
+
+JKdemo class, most demos extend JKdemo to eliminate lots of duplicate
+code
+
+More refactoring
+
+jkchart utility to show simple charts
+
+From 0.16 to 0.17
+
+jmpstat shows whole numbers and no decimals
+
+jmpstat starts with average since boot
+
+KstatFilter returns a Set, just like JKstat
+
+JKstat.getKstats() returns a defensive copy
+
+JKstat.cacheids() now in the static initialization block
+
+No more Hashtables! No more Enumerations either!
+
+jmpstat no longer uses ticks, doesn't need HZ
+
+JNI change: addKstat is now passed the crtime as an extra argument
+during enumeration. This makes the averages in jmpstat and jiostat
+accurate.
+
+jiostat2 starts with average since boot
+
+jiostat starts with average since boot
+
+Removed setData() from Kstat and KstatData
+
+Now ships with jfreechart jars (note that jfreechart is many times
+bigger than jkstat itself)
+
+Added chart package
+
+Added jloadchart and testchart demos to test chart package
+
+Intermediate KstatTable class - adds popup menus
+
+KstatTable - right click anywhere to get a chart
+
+KstatData has the data types defined
+
+In KstatType, the switch should be on the symbolic values.
+
+Tweaked speed detection in AccessoryNetPanel
+
+No more unpackaged java files
+
+KstatFilter enumerates, so demos don't have to.
+
+KstatFilter.matchFilter now private, checks for null kstats, and
+calls the regular JKstat.getKstat() method
+
+JKstat.getKstatObject() now private, so we can validate calls to it
+
+Added Save As.. to chart frame
+
+Chart frames should have the interval menu.
+
+Charts use Millisecond rather than Second - this should avoid the
+problem of two consecutive datapoints coming in the same interval.
+
+Chart save error checking.
+
+Remove unnecessary Kstat.getAge...() methods
+
+Get the addData to use the types out of KstatData rather than just the
+raw numbers (the IO data insert, for example); the types for IO
+statistics are now correct.
+
+Remove unused native kctl and ksp from Kstat
+
+All bars in jiostat rescale if necessary
+
+From 0.15 to 0.16
+
+Renamed KstatObject -> Kstat
+Renamed KstatDataObject -> KstatData
+Renamed JKstatTree -> KstatTree
+Renamed JKstatTreePanel -> KstatTreePanel
+Renamed JKstatBrowser -> KstatBrowser
+
+Moved the Hashtables into the browser (KTreePanel)
+
+Replaced JKstat.updateKstat() with JKstat.getKstat()
+JKstat.getKstat() now takes a Kstat as an argument
+
+In JKstat, the kstats are stored in a HashSet not a Vector
+
+JKstat.getKstat() now updates the list
+
+As Tom pointed out, I had forgotten NumericStringComparator, which
+meant that while I was getting sorted output it wasn't being sorted as
+well as it might have been.
+
+Removed SortedHashMap - TreeMap is enough
+
+Tweaked NumericStringComparator to make it go a little faster
+
+Completely jstyle clean
+
+Enhaced the javadoc
+
+Do JKstat.getKstats() rather than simply accessing the kstats member.
+
+KstatFilter now takes filters of the form module:name:instance:statistic
+(in other words, as a single String argument) which it parses to
+convert to its internal form.
+
+From 0.14 to 0.15
+
+Cleanup for OpenSolaris project release
+
+jstyle clean - some line length issues skipped for now pending code
+restructure
+
+StringBuilder instead of StringBuffer
+
+moved TableSorter to the external directory
+
+added KstatType class
+
+KstatFilter can filter on type
+
+KstatFilter can do negative filtering
+
+JIOstat and JIOstat2 rewritten to use filters
+
+build script builds the external stuff too
+
+Starting to convert to use generics
+
+Removed the unimplemented JKstat.update() method
+
+KstatObject now uses a HashMap rather than a Hashtable to store the
+internal data
+
+jcpustate rewritten to use a filter
+
+implemented KstatObject.equals()
+
+removed JKstatUtils
+
+jfsstat rewritten to use a filter
+
+Added Tom's SortedHashMap and JKstatTree classes, and converted the API
+and the browser to use them - the tree in the browser is now sorted!
+
+First cut at jmpstat
+
+Remove wt from jmpstat, added the CPU column, added major and minor
+faults
+
+KststFilter takes an Integer rather than a String as the instance (it
+can't take an int because an int cannot be null)
+
+Streamlined AccessoryBgePanel
+
+TODO:
+ -Xlint:unchecked
+
+From 0.13 to 0.14
+
+Added KstatFilter class
+
+jnetio rewritten to use a filter
+
+Removed JKstat.getKstatByModule(), as filters do this and more
+
+jnetio now jnetload, and fully graphical, and with borders to identify
+the interfaces.
+
+File and Sleep menus cleaned up - all now have mnemonics, Sleep is now
+a RadioButton menu
+
+From 0.12 to 0.13
+
+bumped the version because I had forgotten where I had got to.
+
+Some typos cleaned up.
+
+added mm:0:phys_installed
+
+Fix bge accessory panel corruption
+
+browser has variable update times, just like the other demo
+utilities. And the rates in the browser really are rates now, and are
+accurate.
+
+If the delay is zero or negative, then don't loop.
+
+Right-click popup menu for jcpustate.
+
+Right click popup menu like iostat -E for jiostat.
+
+Converted jcpustate to use SpringLayout
+
+Converted AccessoryIOPanel to use SpringLayout
+
+Converted AccessoryIfbPanel and AccessoryNetPanel to use SpringLayout
+
+Cleaned up AccessoryCpuPanel
+
+Cleaned some display bugs from kstatbrowser
+
+From 0.11 to 0.12
+
+Reimplemented jiostat using tables.
+
+Correctly handle kstats being deleted.
+
+Show and Sleep menus use radio buttons to show which item is currently
+selected.
+
+More sanity and error checking in jiostat and jfsstat
+
+
+From 0.10 to 0.11
+
+Added proper tables using JTable to present data, rather than html
+views
+
+Tables update automatically, so remove the update menu from the browser
+
+Don't show crtime, snaptime - they don't mean anything to me
+
+Start of jfsstat utility, parallel to new fsstat - require OpenSolaris
+build 35 or later.
+
+jfsstat can now show sorted data - just click on the column headings.
+
+
+From 0.09 to 0.10
+
+jiostat is much less of a performance hog
+
+Cache method IDs
+
+Keep kstat_ctl_t permanently open
+
+jiostat doesn't show usba stats
+
+
+From 0.08 to 0.09
+
+Cleaned out dead variables.
+
+jiostat utility, plus supporting classes
+
+IO rates no longer subject to integer truncation
+
+JKstatUtils, moving some utility functions somewhere common where they
+can be reused.
+
+
+From 0.07 to 0.08
+
+Most of the work here has been on the accessory panels.
+
+Added bge accessory panel to show distribution of packet sizes.
+
+Fixed sizes of that and the cpu_stat accessory panel (setPreferredSize
+as well as setMinimumSize) and they look much better.
+
+Added accesory panel for dma transfer rate of the ifb (Expert3D)
+graphics card.
+
+Fixed types in load averages.
+
+GUI scripts enable antialiasing.
+
+Tree enumeration doesn't read any actual data; this makes it rather
+more efficient.
+
+Rates in accessories now use the snaptime for greater accuracy. (This
+tends to reduce the rates by approximately 1%.)
+
+The accessory code has been cleaned up significantly.
+
+Changed return type of JKstat.updateKstat() so it returns the kstat we
+just updated, making it much easier to access.

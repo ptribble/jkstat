@@ -1,0 +1,57 @@
+<html>
+<head>
+<title>jskstat - jkstat and javascript</title>
+<script type="text/javascript">
+
+var server_host = location.host
+var server_protocol = location.protocol;
+var server_pathname = location.pathname;
+var slashloc = server_pathname.lastIndexOf('/');
+var pathroot = server_pathname.substring(0, slashloc);
+var my_base_url = server_protocol + '//' + server_host + pathroot;
+</script>
+</head>
+<body>
+
+<h1>JKstat via Javascript</h1>
+
+<p>The following are some examples of accessing <a
+href="http://www.petertribble.co.uk/Solaris/jkstat.html">JKstat</a>
+data and displaying it in a browser using Javascript.</p>
+
+<p>Some of these examples are based directly on <a
+href="http://blog.harschsystems.com/uncategorized/remote-cpu-monitoring-using-node-kstat/">Mike
+Harsch's blog entry</a> describing the use of node-kstat. The server
+implementation here is <a
+href="http://www.petertribble.co.uk/Solaris/jkstat.html">JKstat</a> and
+<a href="http://jersey.java.net/">Jersey</a>.</p>
+
+<h2>Javascript example</h2>
+
+<ul>
+<li>The <a href="jskstat.html">kstat browser</a>.</li>
+</ul>
+
+<h2>Java applet example</h2>
+
+<ul>
+<li>The <a href="jkstat.html">jkstat browser applet</a>.</li>
+</ul>
+
+<h2>JKstat client/server</h2>
+
+<p>This server supports delivery of kstat information to clients using
+both a RESTful service (as used by the demos above) and an XML-RPC
+service. You can access these from the <a
+href="http://www.petertribble.co.uk/Solaris/jkstat.html">JKstat</a>
+client as follows:</p>
+
+<dl>
+<dt>REST</dt>
+<dd>./jkstat remotebrowser -S <script type="text/javascript">document.write(my_base_url)</script>/kstat</dd>
+<dt>XML-RPC</dt>
+<dd>./jkstat remotebrowser -s <script type="text/javascript">document.write(my_base_url)</script>/xmlrpc</dd>
+</dl>
+
+</body>
+</html>

@@ -14,7 +14,7 @@ added.
 I'm not shipping the jersey libs with jkstat; they just make the
 download bigger. To build with jersey support, unpack the jersey
 archive in the same directory you unpacked jkstat, and run './build
-jkrest.war'. (If the jersey version isn't 1.17, then you'll need to fix
+jkrest.war'. (If the jersey version isn't 1.18, then you'll need to fix
 the build script.)
 
 Deployment:
@@ -22,10 +22,10 @@ Deployment:
 
 The tomcat route is very simple.
 
-unzip /path/to/apache-tomcat-7.0.37.zip
-cd apache-tomcat-7.0.37
+unzip /path/to/apache-tomcat-7.0.53.zip
+cd apache-tomcat-7.0.53
 mkdir -p lib
-cp .../jkstat-1.0/lib/i386/libkstat_jni.so lib
+cp .../jkstat-1.2/lib/i386/libkstat_jni.so lib
 cd bin
 cat > setenv.sh <<_EOF
 LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CATALINA_HOME/lib

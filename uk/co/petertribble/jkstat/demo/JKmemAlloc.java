@@ -35,7 +35,7 @@ public class JKmemAlloc extends JKdemo {
 
     private JKmemPanel kmPanel;
 
-    private static final String VERSION = "JKmemAlloc version 1.0";
+    private static final String VERSION = "JKmemAlloc version 1.2";
 
     /**
      * Create a standalone JKmemAlloc application.

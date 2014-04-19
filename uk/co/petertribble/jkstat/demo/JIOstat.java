@@ -37,7 +37,7 @@ public class JIOstat extends JKdemo {
 
     private IOstatTable iotable;
 
-    private static final String VERSION = "JIOstat version 1.0";
+    private static final String VERSION = "JIOstat version 1.2";
 
     /**
      * Construct a new JIOstat application.

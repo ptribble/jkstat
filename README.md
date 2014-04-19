@@ -48,5 +48,5 @@ Foundation, and Apache HttpComponents Client, Copyright 1999-2012 The
 Apache Software Foundation. See the file APACHE-LICENSE.txt for the
 details of the license for these products.
 
-The javascript client uses Flot http://code.google.com/p/flot/
+The javascript client uses Flot http://www.flotcharts.org/
 and jsTree http://www.jstree.com/, both under the MIT License.

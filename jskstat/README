@@ -1,0 +1,23 @@
+The JavaScript page depends on jquery, jstree and flot
+
+http://www.jstree.com/
+
+jstree
+
+unzip ../../vakata-jstree-3.0.0-0-gb446e66.zip
+mv vakata-jstree-b446e66/dist/jstree.min.js .
+mv vakata-jstree-b446e66/dist/libs/* .
+mv vakata-jstree-b446e66/dist/themes .
+rm -fr vakata-jstree-b446e66
+
+flot
+
+unzip ../../flot-0.8.2.zip
+rm -fr flot/examples
+rm flot/*.md flot/Makefile
+mkdir t
+mv flot/*.min.js t
+rm flot/*.js
+mv t/*.js flot
+rmdir t
+rm flot/jquery.min.jsx

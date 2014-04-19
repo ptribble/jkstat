@@ -38,7 +38,7 @@ public class JMPstat extends JKdemo {
 
     private MPstatTable mptable;
 
-    private static final String VERSION = "JMPstat version 1.0";
+    private static final String VERSION = "JMPstat version 1.2";
 
     /**
      * Construct a client JMPstat application.

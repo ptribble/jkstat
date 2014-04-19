@@ -64,7 +64,7 @@ PMDCHECKS="braces,imports,unusedcode,typeresolution,coupling,clone,sunsecure,fin
 # This is to build a RESTful server using jersey.
 #
 JSKDIR="jersey"
-JERSEYDIR="../jersey-archive-1.13"
+JERSEYDIR="../jersey-archive-1.18"
 
 case $1 in
 -jni)
@@ -155,12 +155,7 @@ jkrest.war)
 	cp ../lib/java/commons*jar .
 	jar -umf ../jkstat-rest.manifest jkstat.jar
 	cp -p ../jersey/*.html .
-	cp -p ../jskstat/jskstat.html .
-	unzip -q ../jskstat/flot-0.7.zip
-	rm -fr flot/examples
-	rm flot/*.txt
-	unzip -q ../jskstat/jstree_pre1.0_fix_1.zip
-	rm -fr _demo _docs _lib
+	cp -pr ../jskstat/* .
 	# create the war file
 	jar cf ../jkrest.war *
 	cd ..

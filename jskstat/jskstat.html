@@ -1,9 +1,10 @@
 <html>
 <head>
 <title>jkstat - web client edition</title>
-<script src="flot/jquery.min.js"></script>
-<script src="flot/jquery.flot.js"></script>
-<script src="jquery.jstree.js"></script>
+<link rel="stylesheet" href="themes/default/style.min.css" type="text/css">
+<script src="jquery.js"></script>
+<script src="flot/jquery.flot.min.js"></script>
+<script src="jstree.min.js"></script>
 <script type="text/javascript">
 
 var server_host = location.host
@@ -250,11 +251,7 @@ function handleResponse()
 
 		// this doesn't work, I've changed the name so it
 		// doesn't match in order to disable it
-		$(function () {
-		$("#kslist2").jstree({ 
-			"plugins" : [ "themes", "html_data" ]
-			});
-		});
+		$(function () { $('#kslist2').jstree(); });
 
 	} else {
 		return;
@@ -350,7 +347,7 @@ padding:0 10px;
 <p>
 Part of <a
 href="http://www.petertribble.co.uk/Solaris/jkstat.html">JKstat</a>.
-Enhanced by <a href="http://code.google.com/p/flot/">Flot</a> and <a href="http://www.jstree.com/">jsTree</a>.
+Enhanced by <a href="http://www.flotcharts.org/">Flot</a> and <a href="http://www.jstree.com/">jsTree</a>.
 </p>
 </body>
 </html>

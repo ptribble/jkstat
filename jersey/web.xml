@@ -22,9 +22,9 @@
 </servlet-mapping>
 <servlet>
 	<servlet-name>Jersey Web Application</servlet-name>
-	<servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+	<servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
 	<init-param>
-		<param-name>com.sun.jersey.config.property.packages</param-name>
+		<param-name>jersey.config.server.provider.packages</param-name>
 		<param-value>uk.co.petertribble.jkrest</param-value>
 	</init-param>
 </servlet>

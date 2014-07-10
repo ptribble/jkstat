@@ -64,7 +64,7 @@ PMDCHECKS="braces,imports,unusedcode,typeresolution,coupling,clone,sunsecure,fin
 # This is to build a RESTful server using jersey.
 #
 JSKDIR="jersey"
-JERSEYDIR="../jersey-archive-1.18"
+JERSEYDIR="../jaxrs-ri"
 
 case $1 in
 -jni)
@@ -140,6 +140,8 @@ jkrest.war)
 	# only copy the jars we need
 	cp ../lib/java/jkstat.jar ../lib/java/ws* ../lib/java/xmlrpc* ../lib/java/commons-logging* WEB-INF/lib
 	cp ../${JERSEYDIR}/lib/*.jar WEB-INF/lib
+	cp ../${JERSEYDIR}/api/*.jar WEB-INF/lib
+	cp ../${JERSEYDIR}/ext/*.jar WEB-INF/lib
 	cp ../jersey/web.xml WEB-INF/web.xml
 	mkdir -p WEB-INF/classes/uk/co/petertribble/jkrest
 	cp ../jersey/uk/co/petertribble/jkrest/*.class WEB-INF/classes/uk/co/petertribble/jkrest

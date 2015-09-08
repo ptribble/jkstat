@@ -9,7 +9,6 @@ ARCHLIBDIR=${LIBDIR}/`/usr/bin/uname -p`
 ARCHLIBDIR_64=${LIBDIR}/`/usr/bin/isainfo -k`
 JARLIBDIR=${LIBDIR}/java
 JAVA=/usr/bin/java
-#JAVA=/packages/java/jdk1.7/bin/java
 
 #
 # if installed then the locations change
@@ -46,8 +45,15 @@ usage() {
     echo " kmemalloc [-s|-S server_url] (show kernel memory allocations)"
 }
 
+#
+# former versions supported -64, so ignore it
+#
 case $1 in
 -64)
+shift
+;;
+esac
+
 #
 # attempt to use a 64-bit version if possible
 #
@@ -57,9 +63,6 @@ if [ -f "${ARCHLIBDIR_64}/libkstat_jni.so" ]; then
 	JFLAGS="-d64"
     fi
 fi
-shift
-;;
-esac
 
 case $# in
 0)
@@ -85,6 +88,14 @@ DEMOPKG="uk.co.petertribble.jkstat.demo"
 SERVERJARS=${JARLIBDIR}/xmlrpc-common-3.1.3.jar:${JARLIBDIR}/xmlrpc-server-3.1.3.jar:${JARLIBDIR}/commons-logging-1.1.1.jar:${JARLIBDIR}/ws-commons-util-1.0.2.jar
 HTTPJARS=${JARLIBDIR}/httpclient-4.2.3.jar:${JARLIBDIR}/httpcore-4.2.2.jar:${JARLIBDIR}/commons-codec-1.6.jar
 CLIENTJARS=${JARLIBDIR}/xmlrpc-common-3.1.3.jar:${JARLIBDIR}/xmlrpc-client-3.1.3.jar:${JARLIBDIR}/commons-logging-1.1.1.jar:${JARLIBDIR}/ws-commons-util-1.0.2.jar
+
+#
+# need to find where java is
+#
+JLOC=/usr/java
+if [ -d /usr/jdk/latest/bin ]; then
+    JLOC=/usr/jdk/latest
+fi
 
 #
 # Normally, -s or -S means we're a client and need the client-side jars
@@ -199,7 +210,7 @@ case $SUBCOMMAND in
 # EXPERIMENTAL
 #
 'jmxclient')
-    /usr/java/bin/jconsole -J-Djava.class.path=/usr/java/lib/jconsole.jar:/usr/java/lib/tools.jar:${JKAPIJAR}
+    ${JLOC}/bin/jconsole -J-Djava.class.path=${JLOC}/lib/jconsole.jar:${JLOC}/lib/tools.jar:${JKAPIJAR}
     exit 0
     ;;
 
@@ -207,7 +218,7 @@ case $SUBCOMMAND in
 # EXPERIMENTAL
 #
 'groovychart')
-    LD_LIBRARY_PATH=${ARCHLIBDIR} JAVA_HOME=/usr/java groovy -cp ${JKAPIJAR}:${JFJAR}:${JCJAR} ${JKDIR}/groovychart
+    LD_LIBRARY_PATH=${ARCHLIBDIR} JAVA_HOME=${JLOC} groovy -cp ${JKAPIJAR}:${JFJAR}:${JCJAR} ${JKDIR}/groovychart
     exit 0
     ;;
 

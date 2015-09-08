@@ -50,7 +50,7 @@ echo "d none /usr/share/jkstat 0755 ${OWNER}"
 echo "d none /usr/share/man 0755 ${OWNER}"
 echo "f none /usr/share/man/man1/jkstat.1=man1/jkstat.1 0644 ${OWNER}"
 echo "f none /usr/share/jkstat/jkstat.xml=./jkstat.xml 0644 ${OWNER}"
-echo "f none /usr/share/jkstat/README=./README 0644 ${OWNER}"
+echo "f none /usr/share/jkstat/README=./README.md 0644 ${OWNER}"
 
 #
 # desktop files and their icons

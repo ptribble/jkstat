@@ -32,7 +32,7 @@ import java.text.DateFormat;
 public class ProcessorTree {
 
     private JKstat jkstat;
-    private Map <Long, Map> map;
+    private Map <Long, ChipMap> map;
     private boolean is_threaded;
     private boolean is_multicore;
     private static final DateFormat df = DateFormat.getInstance();
@@ -61,8 +61,7 @@ public class ProcessorTree {
      */
     @SuppressWarnings("unchecked")
     private void build_tree(Set <Kstat> kstats) {
-	// TreeMap so we sort
-	map = new TreeMap <Long, Map> ();
+	map = new TreeMap <Long, ChipMap> ();
 
 	for (Kstat ks : kstats) {
 	    ks = jkstat.getKstat(ks);
@@ -81,9 +80,9 @@ public class ProcessorTree {
 	    }
 
 	    if (!map.containsKey(lchip)) {
-		map.put(lchip, new TreeMap());
+		map.put(lchip, new ChipMap (lchip));
 	    }
-	    Map chipmap = map.get(lchip);
+	    ChipMap chipmap = map.get(lchip);
 
 	    /*
 	     * If we don't have threads, make up a thread id.
@@ -104,9 +103,9 @@ public class ProcessorTree {
 		// this must be an additional thread in the same core
 		is_threaded = true;
 	    } else {
-		chipmap.put(lcore, new TreeMap());
+		chipmap.put(lcore, new CoreMap(lchip, lcore));
 	    }
-	    Map coremap = (Map) chipmap.get(lcore);
+	    CoreMap coremap = chipmap.get(lcore);
 	    coremap.put(lclog, ks);
 
 	    // now test for multicore
@@ -162,7 +161,7 @@ public class ProcessorTree {
      * @return the number of cores in a given chip
      */
     public int numCores(long chipid) {
-	Map m = map.get(chipid);
+	ChipMap m = map.get(chipid);
 	return (m == null) ? 0 : m.size();
     }
 
@@ -174,12 +173,10 @@ public class ProcessorTree {
      * @return the Set of core ids for a given chip
      */
     public Set <Long> getCores(long chipid) {
-	Map m = map.get(chipid);
+	ChipMap m = map.get(chipid);
 	Set <Long> set = new TreeSet <Long> ();
 	if (m != null) {
-	    for (Object o : m.keySet()) {
-		set.add((Long) o);
-	    }
+	    set.addAll(m.keySet());
 	}
 	return set;
     }
@@ -194,11 +191,11 @@ public class ProcessorTree {
      * @return the number of threads in the given core
      */
     public int numThreads(long chipid, long coreid) {
-	Map m = map.get(chipid);
+	ChipMap m = map.get(chipid);
 	if (m == null) {
 	    return 0;
 	}
-	Map mm = (Map) m.get(coreid);
+	CoreMap mm = m.get(coreid);
 	return (mm == null) ? 0 : mm.size();
     }
 
@@ -226,13 +223,10 @@ public class ProcessorTree {
      */
     public Set <Kstat> chipInfoStats(long chipid) {
 	Set <Kstat> kss = new TreeSet <Kstat> ();
-	Map m = map.get(chipid);
+	ChipMap m = map.get(chipid);
 	if (m != null) {
-	    for (Object o : m.values()) {
-		Map mm = (Map) o;
-		for (Object oo : mm.values()) {
-		    kss.add((Kstat) oo);
-		}
+	    for (CoreMap mm : m.values()) {
+		kss.addAll(mm.values());
 	    }
 	}
 	return kss;
@@ -265,17 +259,15 @@ public class ProcessorTree {
      */
     public Set <Kstat> coreInfoStats(long chipid, long coreid) {
 	Set <Kstat> kss = new TreeSet <Kstat> ();
-	Map m = map.get(chipid);
+	ChipMap m = map.get(chipid);
 	if (m == null) {
 	    return kss;
 	}
-	Map mm = (Map) m.get(coreid);
+	CoreMap mm = m.get(coreid);
 	if (mm == null) {
 	    return kss;
 	}
-	for (Object o : mm.values()) {
-	    kss.add((Kstat) o);
-	}
+	kss.addAll(mm.values());
 	return kss;
     }
 
@@ -304,12 +296,11 @@ public class ProcessorTree {
      * @return a String representing the brand of the given chip
      */
     public String getBrand(long chipid) {
-	Map m = map.get(chipid);
+	ChipMap m = map.get(chipid);
 	if (m != null) {
-	    for (Object o : m.values()) {
-		Map mm = (Map) o;
-		for (Object oo : mm.values()) {
-		    return (String) ((Kstat) oo).getData("brand");
+	    for (CoreMap mm : m.values()) {
+		for (Kstat oo : mm.values()) {
+		    return (String) oo.getData("brand");
 		}
 	    }
 	}
@@ -325,16 +316,16 @@ public class ProcessorTree {
      * @return a String representing the brand of the given core
      */
     public String getBrand(long chipid, long coreid) {
-	Map m = map.get(chipid);
+	ChipMap m = map.get(chipid);
 	if (m == null) {
 	    return null;
 	}
-	Map mm = (Map) m.get(coreid);
+	CoreMap mm = m.get(coreid);
 	if (mm == null) {
 	    return null;
 	}
-	for (Object o : mm.values()) {
-	    return (String) ((Kstat) o).getData("brand");
+	for (Kstat o : mm.values()) {
+	    return (String) o.getData("brand");
 	}
 	return null;
     }

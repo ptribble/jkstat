@@ -38,7 +38,7 @@ public class KClientDialog implements ActionListener {
     private KClientConfig kcc;
 
     private JTextField sfield;
-    private JComboBox protobox;
+    private JComboBox <String> protobox;
     private JTextField ufield;
     private JPasswordField pfield;
     private JCheckBox authbox;
@@ -60,7 +60,7 @@ public class KClientDialog implements ActionListener {
 	 *  - OK button, active if data filled in
 	 */
 	sfield = new JTextField();
-	protobox = new JComboBox(kcc.PROTOCOLS);
+	protobox = new JComboBox <String> (KClientConfig.PROTOCOLS);
 	protobox.setSelectedIndex(defproto);
 	ufield = new JTextField();
 	pfield = new JPasswordField();

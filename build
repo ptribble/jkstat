@@ -126,7 +126,6 @@ jkstat.war)
 	;;
 jkrest.war)
 	# this is an extended war using jersey, allowing RESTful services
-	# and enabling the applet version
 	if [ ! -d "${JERSEYDIR}" ]; then
 	    echo "Unable to find jersey, exiting..."
 	    exit 1
@@ -145,18 +144,7 @@ jkrest.war)
 	cp ../jersey/web.xml WEB-INF/web.xml
 	mkdir -p WEB-INF/classes/uk/co/petertribble/jkrest
 	cp ../jersey/uk/co/petertribble/jkrest/*.class WEB-INF/classes/uk/co/petertribble/jkrest
-	# this is for the applet, which will only work with REST
-	cp ../lib/java/jkstat.jar .
-	cp ../lib/java/jcommon*jar .
-	cp ../lib/java/jfreechart*jar .
-	cp ../lib/java/jstripchart*jar .
-	cp ../lib/java/jingle.jar .
-	cp ../lib/java/jumble.jar .
-	cp ../lib/java/org-json.jar .
-	cp ../lib/java/http*jar .
-	cp ../lib/java/commons*jar .
-	jar -umf ../jkstat-rest.manifest jkstat.jar
-	cp -p ../jersey/*.html .
+	cp -p ../jersey/index.html .
 	cp -pr ../jskstat/* .
 	# create the war file
 	jar cf ../jkrest.war *

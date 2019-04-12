@@ -1,3 +1,5 @@
+Remove the applet, nothing can use it any more.
+
 From 1.1 to 1.1.1
 
 Update jskstat components flot, jstree

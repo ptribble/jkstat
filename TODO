@@ -14,9 +14,6 @@ CPU stat - color gradient the bars, like a flame.
 
 Chartbuilder needs to understand chartable
 
-Polish applet - polish the html page so it doesn't look quite so awful
-(having a border round the app would help).
-
 Batch remote: multiple requests, aka mget.
 
 Multi-scaled charts (so each attribute has a different scale).

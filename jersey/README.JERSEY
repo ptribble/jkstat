@@ -45,7 +45,6 @@ the following jkstat invocations will work:
 ./jkstat remotebrowser -s http://localhost:8080/jkrest/xmlrpc
 ./jkstat remotebrowser -S http://localhost:8080/jkrest/kstat
 
-As will the demo, both the javascript and applet version (although the
-applet may well be blocked by security settings):
+As will the javascript demo:
 
 http://localhost:8080/jkrest/

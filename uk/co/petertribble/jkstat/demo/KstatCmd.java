@@ -203,10 +203,13 @@ public class KstatCmd {
 	displayTimeHeader();
 
 	for (Kstat ks : new TreeSet <Kstat> (ksf.getKstats())) {
-	    if (lflag) {
-		printlist(jkstat.getKstat(ks));
-	    } else {
-		printkstat(jkstat.getKstat(ks));
+	    Kstat ks2 = jkstat.getKstat(ks);
+	    if (ks2 != null) {
+		if (lflag) {
+		    printlist(ks2);
+		} else {
+		    printkstat(ks2);
+		}
 	    }
 	}
     }

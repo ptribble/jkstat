@@ -55,10 +55,12 @@ BUILDJARS=${JCJAR}:${JFJAR}:${JSONJAR}:${JINGLEJAR}:${JUMBLEJAR}:${JSTRIPJAR}:${
 #
 # run
 # ./build pmd
-# to use this, these checks should always pass, it's a regression if
-# any warnings appear. Of course, you must have pmd in your path
+# to use this, you must have pmd in your path
 #
-PMDCHECKS="braces,imports,unusedcode,typeresolution,coupling,clone,sunsecure,finalizers,migrating"
+# new PMD version has rulesets
+#
+PMDRULES="imports typeresolution clone finalizers sunsecure unusedcode braces migrating strictexception"
+PMDCATRULES="security"
 
 #
 # This is to build a RESTful server using jersey.
@@ -67,18 +69,18 @@ JSKDIR="jersey"
 JERSEYDIR="../jaxrs-ri"
 
 case $1 in
--jni)
+jni|-jni)
 	javac uk/co/petertribble/jkstat/api/NativeJKstat.java
 	javah -jni uk.co.petertribble.jkstat.api.NativeJKstat
 	exit 0
 	;;
--doc)
+doc|-doc)
 	rm -fr javadoc
 	mkdir javadoc
 	javadoc -classpath $BUILDJARS:. -d javadoc uk.co.petertribble.jkstat.api uk.co.petertribble.jkstat.browser uk.co.petertribble.jkstat.gui uk.co.petertribble.jkstat.demo uk.co.petertribble.jkstat.util uk.co.petertribble.jkstat.client uk.co.petertribble.jkstat.server uk.co.petertribble.jkstat.parse
 	exit 0
 	;;
-clean)
+clean|-clean)
 	rm -f `find uk/co -type f -name '*.class'`
 	rm -f `find . -type f -name '*~'`
 	rm -fr javadoc
@@ -86,8 +88,18 @@ clean)
 	rm -f jkrest.war
 	exit 0
 	;;
-pmd)
-	pmd uk $PMDCHECKS
+pmd|-pmd)
+	RULESETS=""
+	for RULE in $PMDRULES
+	do
+	    RULESETS="${RULESETS},rulesets/java/${RULE}.xml"
+	done
+	for RULE in $PMDCATRULES
+	do
+	    RULESETS="${RULESETS},category/java/${RULE}.xml"
+	done
+	RULESETS=`echo $RULESETS|sed s:,::`
+	pmd -d uk -R $RULESETS -version 1.5 -auxclasspath `echo lib/java/* | sed 's= =:=g'` 2>/dev/null
 	exit 0
 	;;
 packages)

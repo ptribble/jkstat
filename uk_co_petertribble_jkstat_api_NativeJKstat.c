@@ -76,6 +76,9 @@ JNIEXPORT jobject JNICALL Java_uk_co_petertribble_jkstat_api_NativeJKstat_getKst
   jobject dataobject;
   jstring nameobject;
   int n;
+  char dchar[17];
+  char *dcharptr;
+  dcharptr = dchar;
 
   kname = (*env)->GetStringUTFChars(env,jname,NULL);
   kmodule = (*env)->GetStringUTFChars(env,jmodule,NULL);
@@ -139,7 +142,8 @@ JNIEXPORT jobject JNICALL Java_uk_co_petertribble_jkstat_api_NativeJKstat_getKst
 	(*env)->CallVoidMethod(env, kstatobject, kso_adddata_mid, nameobject, kn->data_type, dataobject);
 	break;
       case KSTAT_DATA_CHAR:
-	dataobject = (*env)->NewStringUTF(env, kn->value.c);
+	strlcpy(dcharptr, kn->value.c, 16);
+	dataobject = (*env)->NewStringUTF(env, dchar);
 	(*env)->CallVoidMethod(env, kstatobject, kso_adddata_mid, nameobject, kn->data_type, dataobject);
 	break;
       default:

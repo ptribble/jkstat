@@ -26,7 +26,7 @@
 # If you have the ON build tools installed, then jstyle gets run.
 #
 
-PATH=/usr/jdk/instances/jdk1.6.0/bin:$PATH
+PATH=/usr/jdk/instances/jdk1.8.0/bin:$PATH
 export PATH
 
 JKDIR=`dirname $0`
@@ -162,17 +162,19 @@ fi
 
 javac ${XFLAGS} -classpath .:${BUILDJARS} uk/co/petertribble/jkstat/*/*.java
 
-cc -G -I/usr/java/include -I/usr/java/include/solaris -h libkstat_jni.so -lkstat -o ${ARCHLIBDIR}/libkstat_jni.so uk_co_petertribble_jkstat_api_NativeJKstat.c
+JINCLUDE=/usr/jdk/instances/jdk1.8.0
+
+cc -G -I${JINCLUDE}/include -I${JINCLUDE}/include/solaris -h libkstat_jni.so -lkstat -o ${ARCHLIBDIR}/libkstat_jni.so uk_co_petertribble_jkstat_api_NativeJKstat.c
 
 #
 # compiling 64-bit objects is more complex
 #
 case `isainfo -k` in
 amd64)
-    cc -Kpic -shared -m64 -I/usr/java/include -I/usr/java/include/solaris -h libkstat_jni.so -lkstat -o ${ARCHLIBDIR_64}/libkstat_jni.so uk_co_petertribble_jkstat_api_NativeJKstat.c
+    cc -Kpic -shared -m64 -I${JINCLUDE}/include -I${JINCLUDE}/include/solaris -h libkstat_jni.so -lkstat -o ${ARCHLIBDIR_64}/libkstat_jni.so uk_co_petertribble_jkstat_api_NativeJKstat.c
     ;;
 sparcv9)
-    cc -xcode=pic13 -shared -m64 -I/usr/java/include -I/usr/java/include/solaris -h libkstat_jni.so -lkstat -o ${ARCHLIBDIR_64}/libkstat_jni.so uk_co_petertribble_jkstat_api_NativeJKstat.c
+    cc -xcode=pic13 -shared -m64 -I${JINCLUDE}/include -I${JINCLUDE}/include/solaris -h libkstat_jni.so -lkstat -o ${ARCHLIBDIR_64}/libkstat_jni.so uk_co_petertribble_jkstat_api_NativeJKstat.c
     ;;
 esac
 

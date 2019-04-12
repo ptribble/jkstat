@@ -20,19 +20,19 @@ the build script.)
 Deployment:
 ===========
 
-The tomcat route is very simple. You must use java 7.
+The tomcat route is very simple. You must use java 8.
 
-unzip /path/to/apache-tomcat-7.0.53.zip
-cd apache-tomcat-7.0.53
+unzip /path/to/apache-tomcat-9.0.17.zip
+cd apache-tomcat-9.0.17
 mkdir -p lib
-cp .../jkstat-1.2/lib/i386/libkstat_jni.so lib
+cp .../jkstat-1.x/lib/amd64/libkstat_jni.so lib
 cd bin
 cat > setenv.sh <<_EOF
 LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CATALINA_HOME/lib
 export LD_LIBRARY_PATH
 _EOF
 chmod a+x *.sh
-env JAVA_HOME=/packages/java/jdk1.7 ./startup.sh
+env JAVA_HOME=/usr/jdk/instances/jdk1.8.0 ./startup.sh
 
 Copy the war file:
 

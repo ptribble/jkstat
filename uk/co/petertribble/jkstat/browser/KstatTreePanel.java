@@ -70,9 +70,9 @@ public class KstatTreePanel extends JPanel implements TreeSelectionListener,
 
     private KstatSet kss;
     private KstatTreeMap ksm;
-    private SortedMap <String, SortedMap> kstatMap;
-    private SortedMap <String, SortedMap> kstatClassMap;
-    private SortedMap <String, SortedMap> kstatTypeMap;
+    private KstatModuleMap kstatMap;
+    private SortedMap <String, KstatModuleMap> kstatClassMap;
+    private SortedMap <String, KstatModuleMap> kstatTypeMap;
 
     private final KstatTreeModel moduleModel;
     private final KstatTreeModel classModel;
@@ -389,9 +389,10 @@ public class KstatTreePanel extends JPanel implements TreeSelectionListener,
     }
 
     /*
-     * Return the number of items in a Map, recursively descending
-     * into contained Maps.
+     * Return the number of items (leaf nodes) in a Map, recursively descending
+     * into contained Maps. We do not care about types, really.
      */
+    @SuppressWarnings("rawtypes")
     private int countEntries(Map m) {
 	int i = 0;
 	for (Object o : m.values()) {

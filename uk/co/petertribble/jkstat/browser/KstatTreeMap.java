@@ -35,9 +35,9 @@ import uk.co.petertribble.jkstat.util.NumericStringComparator;
  */
 public class KstatTreeMap {
 
-    private SortedMap <String, SortedMap> kstatMap;
-    private SortedMap <String, SortedMap> kstatClassMap;
-    private SortedMap <String, SortedMap> kstatTypeMap;
+    private KstatModuleMap kstatMap;
+    private SortedMap <String, KstatModuleMap> kstatClassMap;
+    private SortedMap <String, KstatModuleMap> kstatTypeMap;
 
     /**
      * Constructs a KstatTreeMap.
@@ -49,11 +49,10 @@ public class KstatTreeMap {
 	 * Create SortedMaps to store the Kstats in a hierarchical structure
 	 * and populate them with the contents of the list.
 	 */
-	kstatMap = new TreeMap <String, SortedMap> (
+	kstatMap = new KstatModuleMap();
+	kstatTypeMap = new TreeMap <String, KstatModuleMap> (
 		NumericStringComparator.getInstance());
-	kstatTypeMap = new TreeMap <String, SortedMap> (
-		NumericStringComparator.getInstance());
-	kstatClassMap = new TreeMap <String, SortedMap> (
+	kstatClassMap = new TreeMap <String, KstatModuleMap> (
 		NumericStringComparator.getInstance());
 	for (Kstat ks : kss.getKstats()) {
 	    addKstat(ks);
@@ -65,7 +64,7 @@ public class KstatTreeMap {
      *
      * @return The kstat Map
      */
-    public SortedMap <String, SortedMap> getKstatMap() {
+    public KstatModuleMap getKstatMap() {
 	return kstatMap;
     }
 
@@ -74,7 +73,7 @@ public class KstatTreeMap {
      *
      * @return The kstat Map, including the class hierarchy
      */
-    public SortedMap <String, SortedMap> getKstatClassMap() {
+    public SortedMap <String, KstatModuleMap> getKstatClassMap() {
 	return kstatClassMap;
     }
 
@@ -83,7 +82,7 @@ public class KstatTreeMap {
      *
      * @return The kstat Map, including the type hierarchy
      */
-    public SortedMap <String, SortedMap> getKstatTypeMap() {
+    public SortedMap <String, KstatModuleMap> getKstatTypeMap() {
 	return kstatTypeMap;
     }
 
@@ -112,44 +111,38 @@ public class KstatTreeMap {
     /*
      * Add a Kstat to the right place in the Map.
      */
-    private void addToTypeMap(SortedMap <String, SortedMap> hc, Kstat ks) {
+    private void addToTypeMap(SortedMap <String, KstatModuleMap> hc, Kstat ks) {
 	String ktype = ks.getTypeAsString();
 	if (!hc.containsKey(ktype)) {
-	    hc.put(ktype, new TreeMap <String, SortedMap> (
-		NumericStringComparator.getInstance()));
+	    hc.put(ktype, new KstatModuleMap());
 	}
-	@SuppressWarnings("unchecked")
-	SortedMap <String, SortedMap> hm = hc.get(ktype);
+	KstatModuleMap hm = hc.get(ktype);
 	addToModuleMap(hm, ks);
     }
 
     /*
      * Add a Kstat to the right place in the Map.
      */
-    private void addToClassMap(SortedMap <String, SortedMap> hc, Kstat ks) {
+    private void addToClassMap(SortedMap <String, KstatModuleMap> hc, Kstat ks) {
 	String kc = ks.getKstatClass();
 	if (!hc.containsKey(kc)) {
-	    hc.put(kc, new TreeMap <String, SortedMap> (
-		NumericStringComparator.getInstance()));
+	    hc.put(kc, new KstatModuleMap());
 	}
-	@SuppressWarnings("unchecked")
-	SortedMap <String, SortedMap> hm = hc.get(kc);
+	KstatModuleMap hm = hc.get(kc);
 	addToModuleMap(hm, ks);
     }
 
     /*
      * Add a Kstat to the right place in the Map.
      */
-    private void addToModuleMap(SortedMap <String, SortedMap> hm, Kstat ks) {
+    private void addToModuleMap(KstatModuleMap hm, Kstat ks) {
 	String km = ks.getModule();
-	SortedMap <String, SortedMap> hi;
+	KstatInstanceMap hi;
 	if (hm.containsKey(km)) {
-	    @SuppressWarnings("unchecked")
-	    SortedMap <String, SortedMap> tmp = hm.get(km);
+	    KstatInstanceMap tmp = hm.get(km);
 	    hi = tmp;
 	} else {
-	    hi = new TreeMap <String, SortedMap> (
-		NumericStringComparator.getInstance());
+	    hi = new KstatInstanceMap();
 	    hm.put(km, hi);
 	}
 	addToInstanceMap(hi, ks);
@@ -158,46 +151,41 @@ public class KstatTreeMap {
     /*
      * Add a Kstat to the right place in the Map.
      */
-    private void addToInstanceMap(SortedMap <String, SortedMap> hi, Kstat ks) {
+    private void addToInstanceMap(KstatInstanceMap hi, Kstat ks) {
 	String ki = ks.getInstance();
-	SortedMap <String, Kstat> hn;
+	KstatNameMap hn;
 	if (hi.containsKey(ki)) {
-	    @SuppressWarnings("unchecked")
-	    SortedMap <String, Kstat> tmp = hi.get(ki);
+	    KstatNameMap tmp = hi.get(ki);
 	    hn = tmp;
 	} else {
-	    hn = new TreeMap <String, Kstat> (
-		NumericStringComparator.getInstance());
+	    hn = new KstatNameMap();
 	    hi.put(ki, hn);
 	}
 	hn.put(ks.getName(), ks);
     }
 
-    private void removeFromTypeMap(SortedMap <String, SortedMap> ht, Kstat ks) {
-	@SuppressWarnings("unchecked")
-	SortedMap <String, SortedMap> hm = ht.get(ks.getTypeAsString());
+    private void removeFromTypeMap(SortedMap <String, KstatModuleMap> ht,
+		Kstat ks) {
+	KstatModuleMap hm = ht.get(ks.getTypeAsString());
 	removeFromModuleMap(hm, ks);
     }
 
-    private void removeFromClassMap(SortedMap <String, SortedMap> hc,
+    private void removeFromClassMap(SortedMap <String, KstatModuleMap> hc,
 		Kstat ks) {
-	@SuppressWarnings("unchecked")
-	SortedMap <String, SortedMap> hm = hc.get(ks.getKstatClass());
+	KstatModuleMap hm = hc.get(ks.getKstatClass());
 	removeFromModuleMap(hm, ks);
     }
 
     /*
      * Delete the kstat from the Maps.
      */
-    private void removeFromModuleMap(SortedMap <String, SortedMap> hm,
+    private void removeFromModuleMap(KstatModuleMap hm,
 		Kstat ks) {
-	@SuppressWarnings("unchecked")
-	SortedMap <String, SortedMap> h_1 = hm.get(ks.getModule());
+	KstatInstanceMap h_1 = hm.get(ks.getModule());
 	if (h_1 == null) {
 	    return;
 	}
-	@SuppressWarnings("unchecked")
-	SortedMap <String, Kstat> h_2 = h_1.get(ks.getInstance());
+	KstatNameMap h_2 = h_1.get(ks.getInstance());
 	if (h_2 != null) {
 	    h_2.remove(ks.getName());
 	}

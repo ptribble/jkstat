@@ -152,7 +152,7 @@ public class KstatCmd {
 			} else {
 			    interval = ii;
 			}
-		    } catch (Exception e) {
+		    } catch (NumberFormatException e) {
 			usage();
 		    }
 		}

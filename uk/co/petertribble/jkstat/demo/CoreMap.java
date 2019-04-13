@@ -22,7 +22,6 @@
 
 package uk.co.petertribble.jkstat.demo;
 
-import java.util.Map;
 import java.util.TreeMap;
 import uk.co.petertribble.jkstat.api.Kstat;
 

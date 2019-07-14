@@ -180,7 +180,7 @@ public class Kstat implements Serializable, Comparable<Kstat> {
      *
      * @return the data, or null if the statistic doesn't exist
      *
-     * @throws an IllegalArgumentException if the requested statistic isn't a
+     * @throws IllegalArgumentException if the requested statistic isn't a
      * numeric type
      */
     public long longData(String s) {

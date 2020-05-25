@@ -1,3 +1,5 @@
+Suppress the unfixable lint warnings
+
 Fix the KSTAT_DATA_CHAR error
 https://ptribble.blogspot.com/2019/04/a-teeny-bug-in-jkstat-char-handling.html
 

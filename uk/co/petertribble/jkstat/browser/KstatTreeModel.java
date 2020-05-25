@@ -40,6 +40,7 @@ public class KstatTreeModel extends DefaultTreeModel {
      *
      * @param m the Map of Kstats
      */
+    @SuppressWarnings("rawtypes")
     public KstatTreeModel(Map m) {
 	this(new KstatTreeNode("Kstats", m));
     }

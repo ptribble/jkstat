@@ -122,6 +122,7 @@ public class JSONParser {
 	return nkstats;
     }
 
+    @SuppressWarnings("rawtypes")
     private static Kstat getKstat(JSONObject jo) {
 	try {
 	    JSONObject jd = jo.getJSONObject("data");

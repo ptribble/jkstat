@@ -44,6 +44,7 @@ public class KstatTreeNode extends DefaultMutableTreeNode {
      * @param s the name of the node
      * @param m a Map containing a Kstat hierarchy
      */
+    @SuppressWarnings("rawtypes")
     public KstatTreeNode(String s, Map m) {
 	setUserObject(s);
 	nodeMap = new HashMap <String, KstatTreeNode> ();

@@ -80,7 +80,7 @@ public class ProcessorTree {
 	    }
 
 	    if (!map.containsKey(lchip)) {
-		map.put(lchip, new ChipMap (lchip));
+		map.put(lchip, new ChipMap(lchip));
 	    }
 	    ChipMap chipmap = map.get(lchip);
 

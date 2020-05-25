@@ -32,7 +32,7 @@ public class CoreMap extends TreeMap <Long, Kstat> {
 
     private long chip_id;
     private long core_id;
-    
+
     public CoreMap(long chip_id, long core_id) {
 	this.chip_id = chip_id;
 	this.core_id = core_id;

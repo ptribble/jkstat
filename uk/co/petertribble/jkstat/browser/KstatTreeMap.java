@@ -123,7 +123,8 @@ public class KstatTreeMap {
     /*
      * Add a Kstat to the right place in the Map.
      */
-    private void addToClassMap(SortedMap <String, KstatModuleMap> hc, Kstat ks) {
+    private void addToClassMap(SortedMap <String, KstatModuleMap> hc,
+		Kstat ks) {
 	String kc = ks.getKstatClass();
 	if (!hc.containsKey(kc)) {
 	    hc.put(kc, new KstatModuleMap());

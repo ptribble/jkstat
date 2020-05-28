@@ -330,7 +330,7 @@ Charts can set the colors used in the chart
 AccessoryCpuChart displays kernel and user usage in the same order as
 the cpustate and chart displays
 
-Preliminary atttempt to bring in sparklines (they aren't really, just
+Preliminary attempt to bring in sparklines (they aren't really, just
 a different chart)
 
 AccessoryCpuChart now 150 pixels wide, to match the sparkline charts
@@ -1146,7 +1146,7 @@ Added bge accessory panel to show distribution of packet sizes.
 Fixed sizes of that and the cpu_stat accessory panel (setPreferredSize
 as well as setMinimumSize) and they look much better.
 
-Added accesory panel for dma transfer rate of the ifb (Expert3D)
+Added accessory panel for dma transfer rate of the ifb (Expert3D)
 graphics card.
 
 Fixed types in load averages.

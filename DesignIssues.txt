@@ -5,7 +5,7 @@ Issues with the prototype design
 ====================
 
 The core API is very simple, but there are a number of issues that
-heven't been fully resolved for which additional input would be very
+haven't been fully resolved for which additional input would be very
 helpful.
 
 The basic JKstat methods are:

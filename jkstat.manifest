@@ -1,2 +1,2 @@
 Main-Class: uk.co.petertribble.jkstat.browser.KstatBrowser
-Class-Path: jingle.jar jumble.jar jstripchart.jar jfreechart-1.0.17.jar jcommon-1.0.21.jar org-json.jar
+Class-Path: jingle.jar jumble.jar jstripchart.jar jfreechart-1.5.0.jar jcommon-1.0.24.jar org-json.jar

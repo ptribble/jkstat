@@ -48,7 +48,10 @@ public final class JSONdump {
 	    } else {
 		System.out.println(",");
 	    }
-	    System.out.println(jkstat.getKstat(ks).toJSON());
+	    Kstat nks = jkstat.getKstat(ks);
+	    if (nks != null) {
+		System.out.println(jkstat.getKstat(ks).toJSON());
+	    }
 	}
 	System.out.println("]");
     }

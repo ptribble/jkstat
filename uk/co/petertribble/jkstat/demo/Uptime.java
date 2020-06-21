@@ -57,7 +57,7 @@ public final class Uptime {
 	long mins = l/60;
 
 	if (days > 1) {
-	    System.out.print(days + "days ");
+	    System.out.print(days + " days ");
 	} else if (days == 1) {
 	    System.out.print("1 day ");
 	}

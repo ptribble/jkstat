@@ -41,7 +41,7 @@ public abstract class JKstat {
     /**
      * A flag to mark whether the kstats have been enumerated.
      */
-    protected boolean enumerated = false;
+    protected boolean enumerated;
 
     /**
      * The id of the kstat chain.

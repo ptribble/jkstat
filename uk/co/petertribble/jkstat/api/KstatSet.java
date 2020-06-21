@@ -273,10 +273,10 @@ public class KstatSet {
 	/*
 	 * This is constructed by hand. This minimizes dependencies and
 	 * guarantees the representation stays fixed. Besides, generating
-	 * JSON isn't hard..
+	 * JSON isn't hard.
 	 */
 	boolean firstdata = true;
-	StringBuilder sb = new StringBuilder();
+	StringBuilder sb = new StringBuilder(120);
 	// start the array
 	sb.append("[\n");
 	// loop over all the kstats
@@ -286,12 +286,11 @@ public class KstatSet {
 	    } else {
 		sb.append(",\n");
 	    }
-	    sb.append("{");
-	    sb.append("\"class\":\"").append(ks.getKstatClass()).append("\",");
-	    sb.append("\"type\":").append(ks.getType()).append(",");
-	    sb.append("\"module\":\"").append(ks.getModule()).append("\",");
-	    sb.append("\"name\":\"").append(ks.getName()).append("\",");
-	    sb.append("\"instance\":").append(ks.getInst());
+	    sb.append("{\"class\":\"").append(ks.getKstatClass());
+	    sb.append("\",\"type\":").append(ks.getType());
+	    sb.append(",\"module\":\"").append(ks.getModule());
+	    sb.append("\",\"name\":\"").append(ks.getName());
+	    sb.append("\",\"instance\":").append(ks.getInst());
 	    sb.append("}\n");
 	}
 	// end the array

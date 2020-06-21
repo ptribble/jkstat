@@ -371,7 +371,7 @@ public class KstatTreePanel extends JPanel implements TreeSelectionListener,
     }
 
     private void setKstatInfo(Kstat ks) {
-	StringBuilder sb = new StringBuilder();
+	StringBuilder sb = new StringBuilder(34);
 	if (ks == null) {
 	    sb.append("Invalid kstat");
 	} else {
@@ -443,11 +443,11 @@ public class KstatTreePanel extends JPanel implements TreeSelectionListener,
      * Display summary statistics in the right-hand frame.
      */
     public void showStats() {
-	StringBuilder sb = new StringBuilder();
+	StringBuilder sb = new StringBuilder(256);
 	sb.append("<h2>").append(
 			KstatResources.getString("BROWSERUI.STATISTICS.TEXT"));
 	sb.append("</h2>");
-	sb.append(KstatResources.getString("BROWSERUI.TOTAL.TEXT")).append(" ");
+	sb.append(KstatResources.getString("BROWSERUI.TOTAL.TEXT")).append(' ');
 	sb.append(countEntries(kstatMap));
 	sb.append("<table border=\"1\">");
 

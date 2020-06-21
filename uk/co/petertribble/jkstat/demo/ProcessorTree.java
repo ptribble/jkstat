@@ -338,7 +338,7 @@ public class ProcessorTree {
      * @return a String similar to psrinfo -v output for the given Kstat
      */
     public static String details(Kstat ks) {
-	StringBuilder sb = new StringBuilder();
+	StringBuilder sb = new StringBuilder(160);
 	if (ks != null) {
 	    sb.append("Status of virtual processor ").append(ks.getInstance());
 	    sb.append(" as of: ").append(df.format(new Date()));
@@ -361,7 +361,7 @@ public class ProcessorTree {
      * @return a String similar to psrinfo -vp output for the given chip
      */
     public String chipDetails(Long l) {
-	StringBuilder sb = new StringBuilder();
+	StringBuilder sb = new StringBuilder(256);
 	sb.append("Physical processor ").append(l).append(" has ");
 	if (numCores(l) == 1) {
 	    sb.append("1 core\n");
@@ -374,8 +374,8 @@ public class ProcessorTree {
 		sb.append(numThreads(l, ll)).append(" threads\n");
 	    }
 	}
-	sb.append("        ").append(getBrand(l)).append("\n");
-	sb.append("        Clock speed: ");
+	sb.append("        ").append(getBrand(l));
+	sb.append("\n        Clock speed: ");
 	sb.append(chipInfoStats(l).iterator().next().getData("clock_MHz"));
 	sb.append(" MHz\n");
 	return sb.toString();

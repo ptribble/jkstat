@@ -350,35 +350,33 @@ public class Kstat implements Serializable, Comparable<Kstat> {
 	 * representation stays fixed. Besides, generating JSON isn't hard.
 	 */
 	boolean firstdata = true;
-	StringBuilder sb = new StringBuilder();
-	sb.append("{");
+	StringBuilder sb = new StringBuilder(148);
 	// metadata
-	sb.append("\"class\":\"").append(kstatClass).append("\",");
-	sb.append("\"type\":").append(type).append(",");
-	sb.append("\"module\":\"").append(module).append("\",");
-	sb.append("\"instance\":").append(instance).append(",");
-	sb.append("\"name\":\"").append(name).append("\",");
-	sb.append("\"crtime\":").append(crtime).append(",");
-	sb.append("\"snaptime\":").append(snaptime).append(",");
+	sb.append("{\"class\":\"").append(kstatClass);
+	sb.append("\",\"type\":").append(type);
+	sb.append(",\"module\":\"").append(module);
+	sb.append("\",\"instance\":").append(instance);
+	sb.append(",\"name\":\"").append(name);
+	sb.append("\",\"crtime\":").append(crtime);
+	sb.append(",\"snaptime\":").append(snaptime);
 	// data
-	sb.append("\"data\":{");
+	sb.append(",\"data\":{");
 	for (String s : dataMap.keySet()) {
 	    if (firstdata) {
 		firstdata = false;
 	    } else {
-		sb.append(",");
+		sb.append(',');
 	    }
 	    KstatData kd = dataMap.get(s);
-	    sb.append("\"").append(s).append("\":");
+	    sb.append('\"').append(s).append("\":");
 	    if (kd.isNumeric()) {
 		sb.append(kd.getData());
 	    } else {
-		sb.append("\"").append(kd.getData()).append("\"");
+		sb.append('\"').append(kd.getData()).append('\"');
 	    }
 	}
-	sb.append("}");
 	// end data
-	sb.append("}");
+	sb.append("}}");
 	return sb.toString();
     }
 

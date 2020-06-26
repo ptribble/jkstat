@@ -36,6 +36,7 @@ JARLIBDIR=${LIBDIR}/java
 ARCHLIBDIR_64=${LIBDIR}/`/usr/bin/isainfo -k`
 JAVA=java
 JAVAC=javac
+XFLAGS="-Xlint -Xlint:-serial"
 
 JCJAR=${JARLIBDIR}/jcommon-1.0.24.jar
 JFJAR=${JARLIBDIR}/jfreechart-1.5.0.jar
@@ -65,8 +66,8 @@ PMDCATRULES="security"
 #
 # This is to build a RESTful server using jersey.
 #
-JSKDIR="jersey"
 JERSEYDIR="../jaxrs-ri"
+JAXRSJAR="../${JERSEYDIR}/api/jakarta.ws.rs-api-2.1.5.jar"
 
 case $1 in
 jni|-jni)
@@ -142,6 +143,13 @@ jkrest.war)
 	    echo "Unable to find jersey, exiting..."
 	    exit 1
 	fi
+	cd jersey
+	if [ ! -f "${JAXRSJAR}" ]; then
+	    echo "Unable to find javax.ws.rs jar, exiting..."
+	    exit 1
+	fi
+	javac ${XFLAGS} -classpath ../lib/java/jkstat.jar:${JAXRSJAR} uk/co/petertribble/jkrest/*.java
+	cd ..
 	mkdir war
 	cd war
 	mkdir -p WEB-INF/lib org/apache/xmlrpc/webserver
@@ -162,11 +170,10 @@ jkrest.war)
 	jar cf ../jkrest.war *
 	cd ..
 	rm -fr war
+	rm -f jersey/uk/co/petertribble/jkrest/*.class
 	exit 0
 	;;
 esac
-
-XFLAGS="-Xlint -Xlint:-serial"
 
 if [ -x /opt/onbld/bin/jstyle ]; then
 	/opt/onbld/bin/jstyle uk/co/petertribble/jkstat/*/*.java

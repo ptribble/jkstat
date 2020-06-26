@@ -4,10 +4,6 @@ import uk.co.petertribble.jkstat.api.*;
 
 @Path("mget/{module}/{instance}/{namespecifier}")
 
-     /*
-      * 
-      */
-
 public class KstatMget {
 
     static final JKstat jkstat = new NativeJKstat();

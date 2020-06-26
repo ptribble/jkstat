@@ -22,10 +22,10 @@ Deployment:
 
 The tomcat route is very simple. You must use java 8.
 
-unzip /path/to/apache-tomcat-9.0.17.zip
-cd apache-tomcat-9.0.17
+unzip /path/to/apache-tomcat-9.0.36.zip
+cd apache-tomcat-9.0.36
 mkdir -p lib
-cp .../jkstat-1.x/lib/amd64/libkstat_jni.so lib
+cp .../jkstat/lib/amd64/libkstat_jni.so lib
 cd bin
 cat > setenv.sh <<_EOF
 LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CATALINA_HOME/lib

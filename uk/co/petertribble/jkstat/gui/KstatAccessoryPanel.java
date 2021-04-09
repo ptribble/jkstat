@@ -58,7 +58,7 @@ public class KstatAccessoryPanel extends JPanel implements ActionListener {
     /**
      * The initial update delay, in milliseconds.
      */
-    protected int delay = 1000;
+    protected int delay;
 
     /**
      * A reference to a JKstat object.

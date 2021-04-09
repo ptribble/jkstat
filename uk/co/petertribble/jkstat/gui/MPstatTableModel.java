@@ -53,7 +53,7 @@ public final class MPstatTableModel extends AbstractTableModel
 
     private List <ChartableMPstat> mpdata;
     private Timer timer;
-    private int delay = 1000;
+    private int delay;
     private JKstat jkstat;
     private KstatSet kss;
 

@@ -42,7 +42,7 @@ public final class IOstatTableModel extends AbstractTableModel
 
     private List <ChartableIOKstat> iodata;
     private Timer timer;
-    private int delay = 1000;
+    private int delay;
     private JKstat jkstat;
     private KstatSet kss;
 

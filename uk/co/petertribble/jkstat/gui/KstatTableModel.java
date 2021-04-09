@@ -47,7 +47,7 @@ public class KstatTableModel extends AbstractTableModel
     /**
      * The initial update delay, in milliseconds.
      */
-    protected int delay = 1000;
+    protected int delay;
 
     private JKstat jkstat;
     private Kstat ks;

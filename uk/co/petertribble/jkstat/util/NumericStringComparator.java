@@ -67,10 +67,12 @@ public class NumericStringComparator implements Comparator <String> {
     public int
     compare(String s1, String s2)
     {
-	char c1, c2;
-	boolean d1, d2;
-
-	int n1, n2;
+	char c1;
+	char c2;
+	boolean d1;
+	boolean d2;
+	int n1;
+	int n2;
 
 	int i = 0;
 	int len1 = s1.length();

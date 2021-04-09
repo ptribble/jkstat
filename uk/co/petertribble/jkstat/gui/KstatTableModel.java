@@ -111,6 +111,7 @@ public class KstatTableModel extends AbstractTableModel
 	}
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
 	update();
     }
@@ -129,10 +130,12 @@ public class KstatTableModel extends AbstractTableModel
 	fireTableDataChanged();
     }
 
+    @Override
     public int getColumnCount() {
 	return (delay < 0) ? columnNames.length - 1 : columnNames.length;
     }
 
+    @Override
     public int getRowCount() {
 	return rowNames.length;
     }
@@ -142,6 +145,7 @@ public class KstatTableModel extends AbstractTableModel
 	return columnNames[col];
     }
 
+    @Override
     public Object getValueAt(int row, int col) {
 	if (col == 0) {
 	    return rowNames[row];

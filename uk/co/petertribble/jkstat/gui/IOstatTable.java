@@ -63,10 +63,12 @@ public class IOstatTable extends JTable {
      */
     class PopupListener extends MouseAdapter {
 
+	@Override
 	public void mousePressed(MouseEvent e) {
 	    showPopup(e);
 	}
 
+	@Override
 	public void mouseReleased(MouseEvent e) {
 	    showPopup(e);
 	}
@@ -102,6 +104,7 @@ public class IOstatTable extends JTable {
 		KstatResources.getString("TABLE.CHART.TEXT") + " " + s
 		+ " for device " + cks);
 	showChartItem.addActionListener(new ActionListener() {
+	    @Override
 	    public void actionPerformed(ActionEvent e) {
 		new KstatChartFrame(jkstat, cks.getKstat(), cks, s);
 	    }

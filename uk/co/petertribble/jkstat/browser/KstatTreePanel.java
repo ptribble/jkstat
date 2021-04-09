@@ -488,6 +488,7 @@ public class KstatTreePanel extends JPanel implements TreeSelectionListener,
     }
 
     // handle TreeSelectionListener events
+    @Override
     public void valueChanged(TreeSelectionEvent e) {
 	TreePath tpth = e.getNewLeadSelectionPath();
 	if (tpth != null) {
@@ -496,6 +497,7 @@ public class KstatTreePanel extends JPanel implements TreeSelectionListener,
     }
 
     // handle timer events
+    @Override
     public void actionPerformed(ActionEvent e) {
 	if (e.getSource() == startB) {
 	    startLoop();

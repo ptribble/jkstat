@@ -148,10 +148,12 @@ public class JNetLoad extends JKdemo implements ActionListener {
 	    this.popup = popup;
 	}
 
+	@Override
 	public void mousePressed(MouseEvent e) {
 	    showPopup(e);
 	}
 
+	@Override
 	public void mouseReleased(MouseEvent e) {
 	    showPopup(e);
 	}

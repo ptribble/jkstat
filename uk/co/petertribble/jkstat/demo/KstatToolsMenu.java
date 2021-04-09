@@ -90,6 +90,7 @@ public class KstatToolsMenu extends JMenu implements ActionListener {
 	jnfsstatItem.addActionListener(this);
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
 	if (e.getSource() == kstatbrowserItem) {
 	    new KstatBrowser();

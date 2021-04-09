@@ -258,6 +258,7 @@ public class KstatSet {
      *
      * @return a String representation of this KstatSet
      */
+    @Override
     public String toString() {
 	return title;
     }

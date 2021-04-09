@@ -39,14 +39,17 @@ public class JKstatMX implements JKstatMXMBean {
      *
      * @return The full set of kstats
      */
+    @Override
     public Set <Kstat> getKstats() {
 	return jkstat.getKstats();
     }
 
+    @Override
     public Kstat getKstat(String module, int inst, String name) {
 	return jkstat.getKstat(module, inst, name);
     }
 
+    @Override
     public Object getKstatData(String module, int inst, String name,
 				String statistic) {
 	return jkstat.getKstat(module, inst, name).getData(statistic);

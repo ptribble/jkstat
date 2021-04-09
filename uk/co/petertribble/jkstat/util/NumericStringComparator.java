@@ -64,9 +64,8 @@ public class NumericStringComparator implements Comparator <String> {
      * @return 0 if the two Strings are equal, 1 if s1 sorts after (is larger
      * than) s2, and -1 if s2 sorts after s1
      */
-    public int
-    compare(String s1, String s2)
-    {
+    @Override
+    public int compare(String s1, String s2) {
 	char c1;
 	char c2;
 	boolean d1;

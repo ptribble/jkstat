@@ -120,11 +120,13 @@ public final class JLoadChart extends JFrame implements ActionListener {
     }
 
     static class winExit extends WindowAdapter {
+	@Override
 	public void windowClosing(WindowEvent we) {
 	    System.exit(0);
 	}
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
 	if (e.getSource() == exitItem) {
 	    System.exit(0);

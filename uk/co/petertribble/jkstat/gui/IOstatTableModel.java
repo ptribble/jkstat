@@ -106,6 +106,7 @@ public final class IOstatTableModel extends AbstractTableModel
 	}
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
 	updateKstat();
     }
@@ -133,10 +134,12 @@ public final class IOstatTableModel extends AbstractTableModel
 	fireTableDataChanged();
     }
 
+    @Override
     public int getColumnCount() {
 	return columnNames.length;
     }
 
+    @Override
     public int getRowCount() {
 	return iodata.size();
     }
@@ -160,6 +163,7 @@ public final class IOstatTableModel extends AbstractTableModel
     /**
      * Return the appropriate data.
      */
+    @Override
     public Object getValueAt(int row, int col) {
 	return (col == columnNames.length-1) ?
 	    iodata.get(row).toString() :

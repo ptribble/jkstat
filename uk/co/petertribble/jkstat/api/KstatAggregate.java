@@ -211,6 +211,7 @@ public class KstatAggregate {
      *
      * @return a String representation of this KstatAggregate
      */
+    @Override
     public String toString() {
 	return title;
     }

@@ -168,6 +168,7 @@ public class KstatBrowser extends JFrame implements ActionListener {
     }
 
     class winExit extends WindowAdapter {
+	@Override
 	public void windowClosing(WindowEvent we) {
 	    JingleMultiFrame.unregister(KstatBrowser.this);
 	}
@@ -182,6 +183,7 @@ public class KstatBrowser extends JFrame implements ActionListener {
 	ktp.setDelay(i);
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
 	if (e.getSource() == cloneItem) {
 	    if (jkstat instanceof SequencedJKstat) {

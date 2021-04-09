@@ -91,6 +91,7 @@ public class KstatAccessorySet implements ActionListener {
 	}
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
 	updateAccessories();
     }

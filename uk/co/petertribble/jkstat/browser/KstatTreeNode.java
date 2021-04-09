@@ -81,10 +81,12 @@ public class KstatTreeNode extends DefaultMutableTreeNode {
 	setUserObject(ks);
     }
 
+    @Override
     public boolean getAllowsChildren() {
 	return !isleaf;
     }
 
+    @Override
     public boolean isLeaf() {
 	return isleaf;
     }

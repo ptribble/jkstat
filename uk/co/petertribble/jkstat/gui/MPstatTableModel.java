@@ -117,6 +117,7 @@ public final class MPstatTableModel extends AbstractTableModel
 	}
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
 	updateKstat();
     }
@@ -144,10 +145,12 @@ public final class MPstatTableModel extends AbstractTableModel
 	fireTableDataChanged();
     }
 
+    @Override
     public int getColumnCount() {
 	return columnNames.length;
     }
 
+    @Override
     public int getRowCount() {
 	return mpdata.size();
     }
@@ -171,6 +174,7 @@ public final class MPstatTableModel extends AbstractTableModel
     /**
      * Return the appropriate data.
      */
+    @Override
     public Object getValueAt(int row, int col) {
 	return (col == 0) ?
 	    mpdata.get(row).toString() :

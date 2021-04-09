@@ -169,6 +169,7 @@ public class JCpuState extends JKdemo implements ActionListener {
 	kas.stopLoop();
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
 	super.actionPerformed(e);
 	for (int i = 0; i < ncpus; i++) {
@@ -193,10 +194,12 @@ public class JCpuState extends JKdemo implements ActionListener {
 	    this.popup = popup;
 	}
 
+	@Override
 	public void mousePressed(MouseEvent e) {
 	    showPopup(e);
 	}
 
+	@Override
 	public void mouseReleased(MouseEvent e) {
 	    showPopup(e);
 	}

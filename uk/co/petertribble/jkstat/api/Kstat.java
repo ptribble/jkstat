@@ -435,6 +435,7 @@ public class Kstat implements Serializable, Comparable<Kstat> {
      * @return the signed comparison of the supplied {@code Kstat} with this
      * {@code Kstat}
      */
+    @Override
     public int compareTo(Kstat ks) {
 	if (this == ks) {
 	    return 0;

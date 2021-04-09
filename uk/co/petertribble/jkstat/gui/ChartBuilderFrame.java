@@ -86,11 +86,13 @@ public class ChartBuilderFrame extends JFrame implements ActionListener {
     }
 
     class winExit extends WindowAdapter {
+	@Override
 	public void windowClosing(WindowEvent we) {
 	    dispose();
 	}
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
 	if (e.getSource() == exitItem) {
 	    setVisible(false);

@@ -121,6 +121,7 @@ public class KClientDialog implements ActionListener {
 	return kcc;
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
 	if (e.getSource() == authbox) {
 	    ufield.setEditable(authbox.isSelected());

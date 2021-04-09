@@ -297,6 +297,7 @@ public class ChartBuilderPanel extends JPanel implements TreeSelectionListener,
 	}
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
 	if (e.getSource() == allInstanceButton) {
 	    aggrInstanceButton.setEnabled(allInstanceButton.isSelected());
@@ -307,6 +308,7 @@ public class ChartBuilderPanel extends JPanel implements TreeSelectionListener,
     }
 
     // handle TreeSelectionListener events
+    @Override
     public void valueChanged(TreeSelectionEvent e) {
 	TreePath tpth = e.getNewLeadSelectionPath();
 	if (tpth != null) {

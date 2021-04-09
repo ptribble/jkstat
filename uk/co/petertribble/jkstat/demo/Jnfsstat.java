@@ -296,6 +296,7 @@ public class Jnfsstat extends JKdemo implements ChangeListener {
     }
 
     // for ChangeListener
+    @Override
     public void stateChanged(ChangeEvent ce) {
 	stopLoop();
 	activateCurrentTab();

@@ -232,6 +232,7 @@ public class KstatCmd {
      * Inner class to implement the Task in the Timer loop
      */
     class DisplayTask extends TimerTask {
+	@Override
 	public void run() {
 	    doDisplay();
 	    if (count > 0) {

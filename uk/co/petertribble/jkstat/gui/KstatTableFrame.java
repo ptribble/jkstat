@@ -90,11 +90,13 @@ public class KstatTableFrame extends JFrame implements ActionListener {
      * On closure, stop the table updating.
      */
     class winExit extends WindowAdapter {
+	@Override
 	public void windowClosing(WindowEvent we) {
 	    kt.stopLoop();
 	}
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
 	kt.stopLoop();
 	setVisible(false);

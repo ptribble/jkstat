@@ -87,10 +87,12 @@ public class KstatTable extends JTable {
      */
     class PopupListener extends MouseAdapter {
 
+	@Override
 	public void mousePressed(MouseEvent e) {
 	    showPopup(e);
 	}
 
+	@Override
 	public void mouseReleased(MouseEvent e) {
 	    showPopup(e);
 	}
@@ -120,6 +122,7 @@ public class KstatTable extends JTable {
 	JMenuItem showChartItem = new JMenuItem(
 		KstatResources.getString("TABLE.CHART.TEXT") + " " + s);
 	showChartItem.addActionListener(new ActionListener() {
+	    @Override
 	    public void actionPerformed(ActionEvent e) {
 		new KstatChartFrame(jkstat, ks, s);
 	    }

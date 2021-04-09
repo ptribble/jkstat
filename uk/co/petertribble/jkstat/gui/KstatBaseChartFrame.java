@@ -221,6 +221,7 @@ public class KstatBaseChartFrame extends JFrame implements ActionListener {
     }
 
     class winExit extends WindowAdapter {
+	@Override
 	public void windowClosing(WindowEvent we) {
 	    kbc.stopLoop();
 	    dispose();
@@ -273,6 +274,7 @@ public class KstatBaseChartFrame extends JFrame implements ActionListener {
 	kbc.setDelay(delay);
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
 	if (e.getSource() == exitItem) {
 	    kbc.stopLoop();

@@ -185,6 +185,7 @@ public abstract class KstatBaseChart implements ActionListener {
 	}
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
 	updateAccessory();
     }

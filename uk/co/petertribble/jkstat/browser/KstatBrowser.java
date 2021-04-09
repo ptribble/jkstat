@@ -238,8 +238,8 @@ public class KstatBrowser extends JFrame implements ActionListener {
 	if (args.length == 0) {
 	    new KstatBrowser();
 	} else if (args.length == 1) {
-	    if (args[0].equals("-s") || args[0].equals("-S")) {
-		KClientDialog kcd = new KClientDialog(args[0].equals("-s") ?
+	    if ("-s".equals(args[0]) || "-S".equals(args[0])) {
+		KClientDialog kcd = new KClientDialog("-s".equals(args[0]) ?
 					KClientConfig.CLIENT_XMLRPC :
 					KClientConfig.CLIENT_REST);
 		KClientConfig kcc = kcd.getConfig();
@@ -250,13 +250,13 @@ public class KstatBrowser extends JFrame implements ActionListener {
 		usage();
 	    }
 	} else if (args.length == 2) {
-	    if (args[0].equals("-s")) {
+	    if ("-s".equals(args[0])) {
 		new KstatBrowser(
 		    new KClientConfig(args[1], KClientConfig.CLIENT_XMLRPC));
-	    } else if (args[0].equals("-S")) {
+	    } else if ("-S".equals(args[0])) {
 		new KstatBrowser(
 		    new KClientConfig(args[1], KClientConfig.CLIENT_REST));
-	    } else if (args[0].equals("-z")) {
+	    } else if ("-z".equals(args[0])) {
 		try {
 		    new KstatBrowser(new ParseableJSONZipJKstat(args[1], true));
 		} catch (Exception e) {

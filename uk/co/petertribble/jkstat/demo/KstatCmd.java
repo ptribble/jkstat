@@ -77,11 +77,11 @@ public class KstatCmd {
 	 */
 	int i = 0;
 	while (i < args.length) {
-	    if (args[i].equals("-p")) {
+	    if ("-p".equals(args[i])) {
 		pflag = true;
-	    } else if (args[i].equals("-l")) {
+	    } else if ("-l".equals(args[i])) {
 		lflag = true;
-	    } else if (args[i].equals("-c")) {
+	    } else if ("-c".equals(args[i])) {
 		if (i+1 < args.length) {
 		    cflag = true;
 		    i++;
@@ -89,7 +89,7 @@ public class KstatCmd {
 		} else {
 		    usage("missing argument to -c flag");
 		}
-	    } else if (args[i].equals("-m")) {
+	    } else if ("-m".equals(args[i])) {
 		if (i+1 < args.length) {
 		    mflag = true;
 		    i++;
@@ -97,7 +97,7 @@ public class KstatCmd {
 		} else {
 		    usage("missing argument to -m flag");
 		}
-	    } else if (args[i].equals("-i")) {
+	    } else if ("-i".equals(args[i])) {
 		if (i+1 < args.length) {
 		    iflag = true;
 		    i++;
@@ -105,7 +105,7 @@ public class KstatCmd {
 		} else {
 		    usage("missing argument to -i flag");
 		}
-	    } else if (args[i].equals("-n")) {
+	    } else if ("-n".equals(args[i])) {
 		if (i+1 < args.length) {
 		    nflag = true;
 		    i++;
@@ -113,7 +113,7 @@ public class KstatCmd {
 		} else {
 		    usage("missing argument to -n flag");
 		}
-	    } else if (args[i].equals("-s")) {
+	    } else if ("-s".equals(args[i])) {
 		if (i+1 < args.length) {
 		    sflag = true;
 		    i++;
@@ -121,7 +121,7 @@ public class KstatCmd {
 		} else {
 		    usage("missing argument to -s flag");
 		}
-	    } else if (args[i].equals("-T")) {
+	    } else if ("-T".equals(args[i])) {
 		if (i+1 < args.length) {
 		    tflag = true;
 		    i++;

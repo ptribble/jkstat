@@ -109,13 +109,13 @@ public class PsrInfo {
 
     private void parseArgs(String[] args) {
 	for (String arg : args) {
-	    if (arg.equals("-p")) {
+	    if ("-p".equals(arg)) {
 		flag_p = true;
 	    }
-	    if (arg.equals("-v")) {
+	    if ("-v".equals(arg)) {
 		flag_v = true;
 	    }
-	    if (arg.equals("-vp") || arg.equals("-pv")) {
+	    if ("-vp".equals(arg) || "-pv".equals(arg)) {
 		flag_p = true;
 		flag_v = true;
 	    }

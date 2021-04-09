@@ -84,13 +84,13 @@ public class KServer1 {
 	if (args.length == 0) {
 	    new KServer1(8080);
 	} else if (args.length == 2) {
-	    if (args[0].equals("-p")) {
+	    if ("-p".equals(args[0])) {
 		try {
 		    new KServer1(new KServerConfig(Integer.parseInt(args[1])));
 		} catch (NumberFormatException nfe) {
 		    usage();
 		}
-	    } else if (args[0].equals("-f")) {
+	    } else if ("-f".equals(args[0])) {
 		File f = new File(args[1]);
 		if (f.exists()) {
 		    new KServer1(new KServerConfig(f));

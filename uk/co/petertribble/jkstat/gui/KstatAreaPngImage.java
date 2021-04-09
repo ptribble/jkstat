@@ -311,7 +311,7 @@ public class KstatAreaPngImage {
 	}
 	String[] nargs = new String[args.length-4];
 	System.arraycopy(args, 4, nargs, 0, args.length-4);
-	if (args[0].equals("-z")) {
+	if ("-z".equals(args[0])) {
 	    try {
 		doMain(args[2], args[3], nargs,
 				new ParseableJSONZipJKstat(args[1]));

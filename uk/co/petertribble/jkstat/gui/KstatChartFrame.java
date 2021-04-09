@@ -299,7 +299,7 @@ public class KstatChartFrame extends KstatBaseChartFrame {
 	if (args.length == 0) {
 	    usage("Missing arguments.");
 	}
-	if (args[0].equals("-z")) {
+	if ("-z".equals(args[0])) {
 	    String[] nargs = new String[args.length-2];
 	    System.arraycopy(args, 2, nargs, 0, args.length-2);
 	    try {

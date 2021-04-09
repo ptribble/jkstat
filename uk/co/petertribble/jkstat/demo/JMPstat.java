@@ -102,10 +102,10 @@ public class JMPstat extends JKdemo {
     public static void main(String[] args) {
 	if (args.length == 0) {
 	    new JMPstat();
-	} else if (args.length == 2 && args[0].equals("-s")) {
+	} else if (args.length == 2 && "-s".equals(args[0])) {
 	    new JMPstat(
 		    new KClientConfig(args[1], KClientConfig.CLIENT_XMLRPC));
-	} else if (args.length == 2 && args[0].equals("-S")) {
+	} else if (args.length == 2 && "-S".equals(args[0])) {
 	    new JMPstat(
 		    new KClientConfig(args[1], KClientConfig.CLIENT_REST));
 	} else {

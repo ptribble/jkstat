@@ -225,10 +225,10 @@ public class JCpuState extends JKdemo implements ActionListener {
 		orientation = SwingConstants.VERTICAL;
 	    }
 	}
-	if (args.length >= 2 && args[0].equals("-s")) {
+	if (args.length >= 2 && "-s".equals(args[0])) {
 	    new JCpuState(
 		    new KClientConfig(args[1], KClientConfig.CLIENT_XMLRPC));
-	} else if (args.length >= 2 && args[0].equals("-S")) {
+	} else if (args.length >= 2 && "-S".equals(args[0])) {
 	    new JCpuState(
 		    new KClientConfig(args[1], KClientConfig.CLIENT_REST));
 	} else {

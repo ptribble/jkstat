@@ -140,19 +140,19 @@ public class KstatFilter {
 	// Deliberately fall through the switch
 	switch (s.length) {
 	    case 4:
-		if (!s[3].equals("") && !s[3].equals("*")) {
+		if (!"".equals(s[3]) && !"*".equals(s[3])) {
 		    statistic = s[3];
 		}
 	    case 3:
-		if (!s[2].equals("") && !s[2].equals("*")) {
+		if (!"".equals(s[2]) && !"*".equals(s[2])) {
 		    name = s[2];
 		}
 	    case 2:
-		if (!s[1].equals("") && !s[1].equals("*")) {
+		if (!"".equals(s[1]) && !"*".equals(s[1])) {
 		    instance = Integer.valueOf(s[1]);
 		}
 	    case 1:
-		if (!s[0].equals("") && !s[0].equals("*")) {
+		if (!"".equals(s[0]) && !"*".equals(s[0])) {
 		    module = s[0];
 		}
 	}

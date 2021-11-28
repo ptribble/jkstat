@@ -182,6 +182,22 @@ public class ProcessorTree {
     }
 
     /**
+     * Return the number of threads in a given chip,
+     * If invalid, return zero.
+     *
+     * @param chipid the chip to query
+     *
+     * @return the number of threads in the given chip
+     */
+    public int numThreads(long chipid) {
+	int nthreads = 0;
+	for (Long coreid : getCores(chipid)) {
+	    nthreads += numThreads(chipid, coreid);
+	}
+	return nthreads;
+    }
+
+    /**
      * Return the number of threads in a given core, identified by both chipid
      * and coreid. If invalid, return zero.
      *
@@ -364,14 +380,28 @@ public class ProcessorTree {
 	StringBuilder sb = new StringBuilder(256);
 	sb.append("Physical processor ").append(l).append(" has ");
 	if (numCores(l) == 1) {
-	    sb.append("1 core\n");
+	    sb.append("1 core");
 	} else {
-	    sb.append(numCores(l)).append(" cores\n");
+	    sb.append(numCores(l)).append(" cores");
 	}
+	if (isThreaded()) {
+	    sb.append(" and ").append(numThreads(l)).append(" threads");
+	}
+	sb.append("\n");
 	if (isThreaded()) {
 	    for (Long ll : getCores(l)) {
 		sb.append("    Core ").append(ll).append(" has ");
-		sb.append(numThreads(l, ll)).append(" threads\n");
+		int nt = numThreads(l, ll);
+		sb.append(nt).append(" threads (");
+		int ni = 0;
+		for (Kstat kst : coreStats(l, ll)) {
+		    sb.append(kst.getInst());
+		    ni++;
+		    if (ni < nt) {
+			sb.append(" ");
+		    }
+		}
+		sb.append(")\n");
 	    }
 	}
 	sb.append("        ").append(getBrand(l));

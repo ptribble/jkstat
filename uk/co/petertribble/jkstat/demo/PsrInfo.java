@@ -36,27 +36,14 @@ public class PsrInfo {
     private JKstat jkstat;
 
     // for arguments
-    private boolean flag_v;
-    private boolean flag_p;
+    private static boolean flag_v;
+    private static boolean flag_p;
 
     /**
      * Emulate psrinfo(1M) output.
-     *
-     * @param args Command line arguments
      */
-    public PsrInfo(String[] args) {
-	this(new NativeJKstat(), args);
-    }
-
-    /**
-     * Emulate psrinfo(1M) output.
-     *
-     * @param args Command line arguments
-     * @param jkstat a JKstat object
-     */
-    public PsrInfo(JKstat jkstat, String[] args) {
-	parseArgs(args);
-	this.jkstat = jkstat;
+    public PsrInfo() {
+	jkstat = new NativeJKstat();
 	KstatFilter ksf = new KstatFilter(jkstat);
 	ksf.addFilter("cpu_info:::");
 
@@ -107,7 +94,12 @@ public class PsrInfo {
 	}
     }
 
-    private void parseArgs(String[] args) {
+    /**
+     * Run the command line PsrInfo application.
+     *
+     * @param args Command line arguments
+     */
+    public static void main(String[] args) {
 	for (String arg : args) {
 	    if ("-p".equals(arg)) {
 		flag_p = true;
@@ -120,14 +112,6 @@ public class PsrInfo {
 		flag_v = true;
 	    }
 	}
-    }
-
-    /**
-     * Run the command line PsrInfo application.
-     *
-     * @param args Command line arguments
-     */
-    public static void main(String[] args) {
-	new PsrInfo(args);
+	new PsrInfo();
     }
 }

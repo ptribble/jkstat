@@ -60,7 +60,7 @@ BUILDJARS=${JCJAR}:${JFJAR}:${JSONJAR}:${JINGLEJAR}:${JUMBLEJAR}:${JSTRIPJAR}:${
 #
 # new PMD version has rulesets
 #
-PMDRULES="imports typeresolution clone finalizers sunsecure unusedcode braces migrating strictexception"
+PMDRULES="braces clone finalizers imports migrating strictexception sunsecure typeresolution unusedcode"
 PMDCATRULES="security"
 
 #
@@ -91,7 +91,8 @@ clean|-clean)
 	;;
 pmd|-pmd)
 	RULESETS=""
-	for RULE in $PMDRULES
+	shift
+	for RULE in $PMDRULES $*
 	do
 	    RULESETS="${RULESETS},rulesets/java/${RULE}.xml"
 	done

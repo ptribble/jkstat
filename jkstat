@@ -46,21 +46,11 @@ usage() {
 }
 
 #
-# former versions supported -64, so ignore it
-#
-case $1 in
--64)
-shift
-;;
-esac
-
-#
 # attempt to use a 64-bit version if possible
 #
 if [ -f "${ARCHLIBDIR_64}/libkstat_jni.so" ]; then
     if [ "${ARCHLIBDIR}" != "${ARCHLIBDIR_64}" ]; then
 	ARCHLIBDIR="${ARCHLIBDIR_64}"
-	JFLAGS="-d64"
     fi
 fi
 
@@ -110,7 +100,7 @@ esac
 case $SUBCOMMAND in
 
 'browser')
-    LD_LIBRARY_PATH=${ARCHLIBDIR} $JAVA ${JFLAGS} -Dswing.aatext=true -jar ${JKJAR} $*
+    LD_LIBRARY_PATH=${ARCHLIBDIR} $JAVA -Dswing.aatext=true -jar ${JKJAR} $*
     exit 0
     ;;
 
@@ -147,7 +137,7 @@ case $SUBCOMMAND in
     ;;
 
 'png')
-    JFLAGS="${JFLAGS} -Djava.awt.headless=true"
+    JFLAGS="-Djava.awt.headless=true"
     JKCLASS=uk.co.petertribble.jkstat.gui.KstatPngImage
     ;;
 
@@ -156,7 +146,7 @@ case $SUBCOMMAND in
     ;;
 
 'areapng')
-    JFLAGS="${JFLAGS} -Djava.awt.headless=true"
+    JFLAGS="-Djava.awt.headless=true"
     JKCLASS=uk.co.petertribble.jkstat.gui.KstatAreaPngImage
     ;;
 
@@ -200,9 +190,9 @@ case $SUBCOMMAND in
 'jmxserver')
     JKCLASS=uk.co.petertribble.jkstat.server.JKstatMXserver
     # the following works for jconsole
-    JFLAGS="${JFLAGS} -Dcom.sun.management.jmxremote"
+    JFLAGS="-Dcom.sun.management.jmxremote"
     # the following for a remote client like jmanage
-    JFLAGS="${JFLAGS} -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=9999 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false"
+    JFLAGS="-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=9999 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false"
     ALLJARS=${JKJAR}:${SERVERJARS}
     ;;
 

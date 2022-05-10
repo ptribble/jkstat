@@ -1,5 +1,3 @@
-desktop file
-
 Everything that calls ChartableKstat.update() should check the return
 code
 

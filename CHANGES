@@ -868,7 +868,7 @@ Added nfsstat demo
 
 Removed use of the native lookup methods
 
-Added start of kstat demo - emulate kstat(1M)
+Added start of kstat demo - emulate kstat(8)
 
 Implemented KstatSet and chain updates
 

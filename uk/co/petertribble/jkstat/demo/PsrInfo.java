@@ -29,7 +29,7 @@ import java.util.TreeSet;
 import java.text.DateFormat;
 
 /**
- * Emulates psrinfo(1M).
+ * Emulates psrinfo(8).
  */
 public class PsrInfo {
 
@@ -40,7 +40,7 @@ public class PsrInfo {
     private static boolean flag_p;
 
     /**
-     * Emulate psrinfo(1M) output.
+     * Emulate psrinfo(8) output.
      */
     public PsrInfo() {
 	jkstat = new NativeJKstat();

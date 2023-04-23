@@ -131,7 +131,7 @@ public class KstatFilter {
 	 * module:instance:name:statistic.
 	 *
 	 * If we have less than that number of fields, assume the rest are
-	 * effectively wildcards. This mirrors the behaviour of kstat(1M).
+	 * effectively wildcards. This mirrors the behaviour of kstat(8).
 	 */
 	String module = null;
 	Integer instance = null;

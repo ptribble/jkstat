@@ -65,7 +65,7 @@ done
 #
 # if depending on installed packages, then:
 #   commons* http* come from TRIBapache-hc-client-###
-#   jcommon jfreechart come from TRIBjfreechart-###
+#   jfreechart come from TRIBjfreechart-###
 #   ws-commons* xmlrpc* come from TRIBapache-xmlrpc-###
 #
 if [ "X$PKGTYPE" = "Xstandalone" ]; then
@@ -80,7 +80,7 @@ else
 	pname=`basename $path`
 	echo "s none /${JARDIR}/${pname}=../httpcomponents-client-${HCVERS}/${pname}"
   done
-  for path in lib/java/jcommon* lib/java/jfreechart*
+  for path in lib/java/jfreechart*
   do
 	pname=`basename $path`
 	echo "s none /${JARDIR}/${pname}=../jfreechart-${JFCVERS}/${pname}"

@@ -41,7 +41,6 @@ JAVA=java
 JAVAC=javac
 XFLAGS="-Xlint -Xlint:-serial"
 
-JCJAR=${JARLIBDIR}/jcommon-1.0.24.jar
 JFJAR=${JARLIBDIR}/jfreechart-1.5.0.jar
 JSONJAR=${JARLIBDIR}/org-json.jar
 JINGLEJAR=${JARLIBDIR}/jingle.jar
@@ -50,11 +49,11 @@ JSTRIPJAR=${JARLIBDIR}/jstripchart.jar
 JKJAR=${JARLIBDIR}/jkstat.jar
 JKAPIJAR=${JARLIBDIR}/jkstat-api.jar
 HTTPJARS=${JARLIBDIR}/httpclient-4.2.3.jar:${JARLIBDIR}/httpcore-4.2.2.jar
-ALLJARS=${JCJAR}:${JFJAR}:${JINGLEJAR}:${JUMBLEJAR}:${JSONJAR}:${JSTRIPJAR}:${JKJAR}
+ALLJARS=${JFJAR}:${JINGLEJAR}:${JUMBLEJAR}:${JSONJAR}:${JSTRIPJAR}:${JKJAR}
 SERVERJARS=${JUMBLEJAR}:${JARLIBDIR}/xmlrpc-common-3.1.3.jar:${JARLIBDIR}/xmlrpc-server-3.1.3.jar
 CLIENTJARS=${JUMBLEJAR}:${JARLIBDIR}/xmlrpc-common-3.1.3.jar:${JARLIBDIR}/xmlrpc-client-3.1.3.jar
 REMOTEJARS=${JARLIBDIR}/xmlrpc-common-3.1.3.jar:${JARLIBDIR}/xmlrpc-server-3.1.3.jar:${JARLIBDIR}/xmlrpc-client-3.1.3.jar
-BUILDJARS=${JCJAR}:${JFJAR}:${JSONJAR}:${JINGLEJAR}:${JUMBLEJAR}:${JSTRIPJAR}:${REMOTEJARS}:${HTTPJARS}
+BUILDJARS=${JFJAR}:${JSONJAR}:${JINGLEJAR}:${JUMBLEJAR}:${JSTRIPJAR}:${REMOTEJARS}:${HTTPJARS}
 
 #
 # run

@@ -1,3 +1,7 @@
+From 1.4.0 to 1.5.0
+
+Update jfreechart to 1.5.4, and drop jcommon as it's no longer needed.
+
 From 1.3.0 to 1.4.0
 
 Don't package the 32-bit shared library, as all supported systems are

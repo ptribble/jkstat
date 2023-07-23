@@ -41,7 +41,7 @@ JAVA=java
 JAVAC=javac
 XFLAGS="-Xlint -Xlint:-serial"
 
-JFJAR=${JARLIBDIR}/jfreechart-1.5.0.jar
+JFJAR=${JARLIBDIR}/jfreechart-1.5.4.jar
 JSONJAR=${JARLIBDIR}/org-json.jar
 JINGLEJAR=${JARLIBDIR}/jingle.jar
 JUMBLEJAR=${JARLIBDIR}/jumble.jar

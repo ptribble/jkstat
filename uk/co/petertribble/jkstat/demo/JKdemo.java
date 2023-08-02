@@ -269,8 +269,10 @@ public class JKdemo extends JFrame implements ActionListener {
      * @param i the update delay in seconds
      */
     protected void setLabelDelay(int i) {
-	infoLabel.setText(KstatResources.getString("SLEEP.TEXT") + " " + i
+	if (infoLabel != null) {
+	    infoLabel.setText(KstatResources.getString("SLEEP.TEXT") + " " + i
 		+ KstatResources.getString("SLEEP.SEC"));
+	}
     }
 
     /**

@@ -29,12 +29,14 @@ Embedded servlet
 
 Run
 
-./build war
+./build jkstat.war
 
-which will create a file jkstat.war. You need to deploy that (for
-tomcat, just copy it into the webapps directory), and then start your
-servlet container so that it can find libkstat_jni.so (for example, set
-LD_LIBRARY_PATH so it points to the directory containing the library).
+which will create a file jkstat.war. You need to deploy that (for tomcat 8
+or 9, just copy it into the webapps directory; for tomcat 10 or later, create
+a webapps-javaee directory and put the war file in there and it will be
+automatically converted), and then start your servlet container so that it
+can find libkstat_jni.so (for example, set LD_LIBRARY_PATH so it points to
+the directory containing the library).
 
 Then on the client
 
@@ -66,6 +68,10 @@ following two lines
 
 LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CATALINA_HOME/lib
 export LD_LIBRARY_PATH
+
+Also note the differences between tomcat 10 and earlier versions; the
+current jar will only work directly for tomcat 9 and earlier, but using
+the automatic conversion on tomcat 10 works just fine.
 
 
 Node Server

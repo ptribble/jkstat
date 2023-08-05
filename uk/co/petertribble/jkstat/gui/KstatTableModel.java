@@ -159,8 +159,8 @@ public class KstatTableModel extends AbstractTableModel
 		    return Long.valueOf(0L);
 		}
 		long snapdelta = ks.getSnaptime() - oldks.getSnaptime();
-		return (snapdelta == 0) ? new Double(Double.NaN)
-		    : new Double(ll*(1000000000.0/snapdelta));
+		return (snapdelta == 0) ? Double.valueOf(Double.NaN)
+		    : Double.valueOf(ll*(1000000000.0/snapdelta));
 	    } else {
 		return "-";
 	    }

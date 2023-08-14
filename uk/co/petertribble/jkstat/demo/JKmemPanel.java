@@ -85,7 +85,7 @@ public class JKmemPanel extends JingleVPanel {
     }
 
     /**
-     * Stop the display udating.
+     * Stop the display updating.
      */
     public void stopLoop() {
 	kas.stopLoop();

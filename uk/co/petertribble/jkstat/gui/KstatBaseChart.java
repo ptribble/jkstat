@@ -88,7 +88,7 @@ public abstract class KstatBaseChart implements ActionListener {
 
 	DateAxis daxis = new DateAxis(KstatResources.getString("CHART.TIME"));
 	daxis.setAutoRange(true);
-	// let a sequnce show its full date range
+	// let a sequence show its full date range
 	if (!(jkstat instanceof SequencedJKstat)) {
 	    daxis.setFixedAutoRange(maxage);
 	}

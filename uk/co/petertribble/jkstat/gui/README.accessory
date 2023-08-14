@@ -1,11 +1,11 @@
 How the accessory panels work.
 
 Each Accessory panel is a JPanel, but all extend the base
-KstatAccesoryPanel. All external control (start, stop, create, destroy,
-change the loop interval) is via the KstatAccesoryPanel interface - so
+KstatAccessoryPanel. All external control (start, stop, create, destroy,
+change the loop interval) is via the KstatAccessoryPanel interface - so
 the application normally casts the accessory panel to a
-KstatAccesoryPanel.
+KstatAccessoryPanel.
 
 The registry serves two functions: it can be queried to ask if an
 accessory panel exists for a given Kstat, and it can return an instance
-of the correct accesory panel - again, cast to a KstatAccesoryPanel
+of the correct accessory panel - again, cast to a KstatAccessoryPanel

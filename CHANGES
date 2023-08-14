@@ -411,7 +411,7 @@ KstatFilter.filteredStatistics()
 kstat subcommand doesn't print crtime, snaptime, or class in parsable
 output
 
-The jkstat script iif installed as a package now works correctly (thanks
+The jkstat script if installed as a package now works correctly (thanks
 to Fabrice Bacchella for pointing this out).
 
 From 0.41 to 0.42
@@ -563,7 +563,7 @@ Sequences must always be explicitly stepped through; remove steppedmode
 and stepIfNeeded()
 
 Sequences need to enumerate() - is this just a first read? In that
-case, nead a readFile() and call it to get the first point.
+case, need a readFile() and call it to get the first point.
 
 SequencedJKstat next() needs to return a value so we know if it
 succeeds
@@ -784,7 +784,7 @@ Put the browser code in a separate browser hierarchy
 
 Merged the chart, table, and accessory classes into a single gui area
 
-Moved the main api clases into their own api area of the
+Moved the main api classes into their own api area of the
 hierarchy. There's also a jar file jkstat-api.jar that contains just the
 api and none of the gui classes.
 
@@ -1006,7 +1006,7 @@ Tweaked NumericStringComparator to make it go a little faster
 
 Completely jstyle clean
 
-Enhaced the javadoc
+Enhanced the javadoc
 
 Do JKstat.getKstats() rather than simply accessing the kstats member.
 

@@ -112,7 +112,7 @@ pmd|-pmd)
 	exit 0
 	;;
 packages)
-	cat jkstat | sed s:INSTALLED=false:INSTALLED=true: > jkstat.installed
+	sed s:INSTALLED=false:INSTALLED=true: jkstat > jkstat.installed
 	./mkproto i386 $2 > prototype.i386
 	./mkproto sparc $2 > prototype.sparc
 	pkgmk -d /tmp -f prototype.i386 -r `pwd` TRIBjkstat

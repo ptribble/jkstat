@@ -71,28 +71,28 @@ done
 if [ "X$PKGTYPE" = "Xstandalone" ]; then
   for path in lib/java/*
   do
-	pname=`basename $path`
+	pname=${path##*/}
 	echo "f none /${JARDIR}/${pname}=${path} 0644 ${OWNER}"
   done
 else
   for path in lib/java/commons* lib/java/http*
   do
-	pname=`basename $path`
+	pname=${path##*/}
 	echo "s none /${JARDIR}/${pname}=../httpcomponents-client-${HCVERS}/${pname}"
   done
   for path in lib/java/jfreechart*
   do
-	pname=`basename $path`
+	pname=${path##*/}
 	echo "s none /${JARDIR}/${pname}=../jfreechart-${JFCVERS}/${pname}"
   done
   for path in lib/java/jingle.jar lib/java/jk* lib/java/jstripchart.jar lib/java/jumble.jar lib/java/org-json.jar
   do
-	pname=`basename $path`
+	pname=${path##*/}
 	echo "f none /${JARDIR}/${pname}=${path} 0644 ${OWNER}"
   done
   for path in lib/java/ws-commons* lib/java/xmlrpc*
   do
-	pname=`basename $path`
+	pname=${path##*/}
 	echo "s none /${JARDIR}/${pname}=../apache-xmlrpc-${XMLVERS}/${pname}"
   done
 fi

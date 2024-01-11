@@ -1,3 +1,11 @@
+From 1.5.0 to 1.6.0
+
+Rates in browser tables limited to 4 decimal places
+
+General tidying
+
+Update HttpClient to 4.5.14
+
 From 1.4.0 to 1.5.0
 
 Update jfreechart to 1.5.4, and drop jcommon as it's no longer needed.

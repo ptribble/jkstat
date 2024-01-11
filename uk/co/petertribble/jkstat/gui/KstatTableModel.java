@@ -26,6 +26,7 @@ import javax.swing.table.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.Timer;
+import java.text.DecimalFormat;
 import uk.co.petertribble.jkstat.api.Kstat;
 import uk.co.petertribble.jkstat.api.JKstat;
 
@@ -38,6 +39,7 @@ public class KstatTableModel extends AbstractTableModel
 	implements ActionListener {
 
     private static final String[] columnNames = { "Name", "Value", "Rate" };
+    private DecimalFormat df = new DecimalFormat("##0.0###");
 
     /**
      * A Timer, to update the model in a loop.
@@ -160,7 +162,7 @@ public class KstatTableModel extends AbstractTableModel
 		}
 		long snapdelta = ks.getSnaptime() - oldks.getSnaptime();
 		return (snapdelta == 0) ? Double.valueOf(Double.NaN)
-		    : Double.valueOf(ll*(1000000000.0/snapdelta));
+		    : df.format(ll*(1000000000.0/snapdelta));
 	    } else {
 		return "-";
 	    }

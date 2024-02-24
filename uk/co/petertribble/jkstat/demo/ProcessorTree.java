@@ -154,6 +154,19 @@ public class ProcessorTree {
     }
 
     /**
+     * Return the number of cores.
+     *
+     * @return the total number of distinct cores
+     */
+    public int numCores() {
+	int nc = 0;
+	for (Long lc : getChips()) {
+	    nc += numCores(lc);
+	}
+	return nc;
+    }
+
+    /**
      * Return the number of cores in a given chip. If invalid, return zero.
      *
      * @param chipid the chip to query

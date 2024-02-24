@@ -36,8 +36,10 @@ public class PsrInfo {
     private JKstat jkstat;
 
     // for arguments
-    private static boolean flag_v;
+    private static boolean flag_c;
     private static boolean flag_p;
+    private static boolean flag_t;
+    private static boolean flag_v;
 
     /**
      * Emulate psrinfo(8) output.
@@ -47,7 +49,9 @@ public class PsrInfo {
 	KstatFilter ksf = new KstatFilter(jkstat);
 	ksf.addFilter("cpu_info:::");
 
-	if (flag_p && flag_v) {
+	if (flag_t) {
+	    display_t(new TreeSet <Kstat> (ksf.getKstats()));
+	} else if (flag_p && flag_v) {
 	    display_vp();
 	} else if (flag_v) {
 	    display_v(new TreeSet <Kstat> (ksf.getKstats()));
@@ -71,6 +75,16 @@ public class PsrInfo {
 
     private void display_p() {
 	System.out.println(new ProcessorTree(jkstat).numChips());
+    }
+
+    private void display_t(Set <Kstat> kstats) {
+	if (flag_p) {
+	    System.out.println(new ProcessorTree(jkstat).numChips());
+	} else if (flag_c) {
+	    System.out.println(new ProcessorTree(jkstat).numCores());
+	} else {
+	    System.out.println(kstats.size());
+	}
     }
 
     private void display_v(Set <Kstat> kstats) {
@@ -101,6 +115,12 @@ public class PsrInfo {
      */
     public static void main(String[] args) {
 	for (String arg : args) {
+	    if ("-t".equals(arg)) {
+		flag_t = true;
+	    }
+	    if ("-c".equals(arg)) {
+		flag_c = true;
+	    }
 	    if ("-p".equals(arg)) {
 		flag_p = true;
 	    }

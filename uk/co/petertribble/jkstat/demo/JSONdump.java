@@ -43,13 +43,13 @@ public final class JSONdump {
 	JKstat jkstat = new NativeJKstat();
 	System.out.println("[");
 	for (Kstat ks : jkstat.getKstats()) {
-	    if (firstentry) {
-		firstentry = false;
-	    } else {
-		System.out.println(",");
-	    }
 	    Kstat nks = jkstat.getKstat(ks);
 	    if (nks != null) {
+		if (firstentry) {
+		    firstentry = false;
+		} else {
+		    System.out.println(",");
+		}
 		System.out.println(jkstat.getKstat(ks).toJSON());
 	    }
 	}

@@ -218,17 +218,6 @@ case $SUBCOMMAND in
     JKCLASS=${DEMOPKG}.JSONdump
     ;;
 
-#
-# undocumented for debugging only
-#
-'parsetest')
-    JKCLASS=uk.co.petertribble.jkstat.parse.ParseableParser
-    ;;
-
-'jsontest')
-    JKCLASS=uk.co.petertribble.jkstat.parse.JSONParser
-    ;;
-
 *)
     usage
     exit 1

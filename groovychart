@@ -37,11 +37,13 @@ kstats.each { m ->
 
 /*
  * This just creates a simple chart using jfreechart,
+ * setting the vertical range so the axes are fixed.
  */
 def labels = ['User Time per CPU', 'CPU', 'Time']
 def options = [false, true, true]
 def chart = ChartFactory.createBarChart(*labels, dataset,
                 Orientation.VERTICAL, *options)
+chart.getCategoryPlot().getRangeAxis().setRange(0.0, 1E9)
 def swing = new SwingBuilder()
 def frame = swing.frame(title:'CPU usage',
         defaultCloseOperation:WC.EXIT_ON_CLOSE) {
@@ -52,7 +54,7 @@ frame.show()
 chart.draw(swing.canvas.graphics, swing.canvas.bounds)
 
 /*
- * Keep updating the chart. This looks visually terrible, as it's redrawn
+ * Keep updating the chart. This is a bit clunky, as it's redrawn
  * from scratch each time we go round the loop. There doesn't seem to be
  * any repaint logic either, as if you expose the chart it doesn't repaint
  * itself properly, so the draw here does that job as well.

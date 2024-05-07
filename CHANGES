@@ -4,6 +4,8 @@ Added jmdns-3.5.9.jar and slf4j-api-2.0.13.jar to support mdns
 
 Added mdns registration to the server, enabled by the -m argument
 
+Client dialog allows port to be entered
+
 From 1.5.0 to 1.6.0
 
 Rates in browser tables limited to 4 decimal places

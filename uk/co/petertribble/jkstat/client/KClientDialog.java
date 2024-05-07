@@ -38,6 +38,7 @@ public class KClientDialog implements ActionListener {
     private KClientConfig kcc;
 
     private JTextField sfield;
+    private JTextField portfield;
     private JComboBox <String> protobox;
     private JTextField ufield;
     private JPasswordField pfield;
@@ -52,14 +53,15 @@ public class KClientDialog implements ActionListener {
 	kcc = new KClientConfig();
 	/*
 	 * From the top, we have:
-	 *  - Prompt for server | entry box
+	 *  - Prompt for server name and port number
 	 *  - dropdown menu for protocol
 	 *  - tickbox for authentication
-	 *  - if authenticated prompt for username | entry box
-	 *  - if authenticated prompt for password | entry box
+	 *  - if authenticated prompt for username
+	 *  - if authenticated prompt for password
 	 *  - OK button, active if data filled in
 	 */
 	sfield = new JTextField();
+	portfield = new JTextField("8080");
 	protobox = new JComboBox <String> (KClientConfig.PROTOCOLS);
 	protobox.setSelectedIndex(defproto);
 	ufield = new JTextField();
@@ -76,7 +78,9 @@ public class KClientDialog implements ActionListener {
 	JPanel qpanel1 = new JPanel(new SpringLayout());
 	qpanel1.add(new JLabel(KstatResources.getString("CLIENT.SERVER")));
 	qpanel1.add(sfield);
-	SpringUtilities.makeCompactGrid(qpanel1, 1, 2, 6, 3, 3, 3);
+	qpanel1.add(new JLabel(KstatResources.getString("CLIENT.PORT")));
+	qpanel1.add(portfield);
+	SpringUtilities.makeCompactGrid(qpanel1, 1, 4, 6, 3, 3, 3);
 	qpanel.add(qpanel1);
 
 	JPanel qpanel2 = new JPanel(new SpringLayout());
@@ -112,7 +116,7 @@ public class KClientDialog implements ActionListener {
      */
     @SuppressWarnings("deprecation")
     public KClientConfig getConfig() {
-	kcc.setServerURL(sfield.getText());
+	kcc.setServerURL("http://"+sfield.getText()+":"+portfield.getText());
 	kcc.setProtocol(protobox.getSelectedIndex());
 	if (authbox.isSelected()) {
 	    kcc.setUser(ufield.getText());

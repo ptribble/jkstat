@@ -60,10 +60,9 @@ BUILDJARS=${JFJAR}:${JSONJAR}:${JINGLEJAR}:${JUMBLEJAR}:${JSTRIPJAR}:${REMOTEJAR
 # ./build pmd
 # to use this, you must have pmd in your path
 #
-# new PMD version has rulesets
+# new PMD version 7 only has categories, configured in pmd-ruleset.xml
 #
-PMDRULES="braces clone finalizers imports migrating strictexception sunsecure typeresolution unusedcode"
-PMDCATRULES="security"
+PMDRULES="./pmd-ruleset.xml"
 PMDCACHE="${HOME}/.pmd/cache.jkstat"
 
 #
@@ -93,22 +92,11 @@ clean|-clean)
 	exit 0
 	;;
 pmd|-pmd)
-	RULESETS=""
-	shift
-	for RULE in $PMDRULES $*
-	do
-	    RULESETS="${RULESETS},rulesets/java/${RULE}.xml"
-	done
-	for RULE in $PMDCATRULES
-	do
-	    RULESETS="${RULESETS},category/java/${RULE}.xml"
-	done
-	RULESETS=${RULESETS/,/}
 	if [ ! -d ${HOME}/.pmd ]; then
 	    mkdir -p ${HOME}/.pmd
 	fi
-	pmd check --cache ${PMDCACHE} -d uk -R $RULESETS --use-version java-1.8 --aux-classpath `echo lib/java/* | sed 's= =:=g'` 2>/dev/null
-	pmd check --cache ${PMDCACHE}.html -d help/*.html  -R category/html/bestpractices.xml 2>/dev/null
+	pmd check --cache "${PMDCACHE}" -d uk -R ${PMDRULES} --use-version java-1.8 --aux-classpath $(echo lib/java/* | sed 's= =:=g') 2>/dev/null
+	pmd check --cache "${PMDCACHE}".html -d help/*.html -R category/html/bestpractices.xml 2>/dev/null
 	exit 0
 	;;
 packages)

@@ -26,7 +26,11 @@ import org.apache.xmlrpc.server.PropertyHandlerMapping;
 import org.apache.xmlrpc.server.XmlRpcServer;
 import org.apache.xmlrpc.server.XmlRpcServerConfigImpl;
 import org.apache.xmlrpc.webserver.WebServer;
+import java.io.IOException;
 import java.io.File;
+import java.net.InetAddress;
+import javax.jmdns.JmDNS;
+import javax.jmdns.ServiceInfo;
 
 /**
  * A simple kstat server using the xml-rpc WebServer class. Taken straight
@@ -36,15 +40,9 @@ import java.io.File;
  */
 public class KServer1 {
 
-    /**
-     * Constructs a KServer1 object.
-     *
-     * @param port the port to listen on
-     */
-    public KServer1(int port) {
-	this(new KServerConfig(port));
-    }
-
+    // global so can be called at shutdown
+    private JmDNS jmdns;
+    
     /**
      * Constructs a KServer1 object.
      *
@@ -63,9 +61,38 @@ public class KServer1 {
 	    serverConfig.setContentLengthOptional(false);
 
 	    webServer.start();
+	    if (ksc.getRegister()) {
+		registerService(ksc);
+	    }
 	} catch (Exception e) {
 	    System.err.println("Server failed to start!");
 	}
+    }
+
+    /*
+     * Register this server in mdns, with the type "_jkstat._tcp"
+     */
+    private void registerService(KServerConfig ksc) {
+	try {
+	    jmdns = JmDNS.create(ksc.getInetAddress());
+	    ServiceInfo serviceInfo = ServiceInfo.create("_jkstat._tcp.local.",
+		    "JKstat/"+ksc.getHostname(),
+		    ksc.getPort(),
+		    "path=/ protocol=xmlrpc");
+            jmdns.registerService(serviceInfo);
+	    Thread exitHook = new Thread(() -> this.unRegisterService());
+	    Runtime.getRuntime().addShutdownHook(exitHook);
+	    System.out.println("Service registered");
+	} catch (IOException e) {
+            System.err.println(e.getMessage());
+        }
+    }
+
+    /*
+     * Called as a shutdown hook.
+     */
+    private void unRegisterService() {
+	jmdns.unregisterAllServices();
     }
 
     private static void usage() {
@@ -74,34 +101,46 @@ public class KServer1 {
     }
 
     /**
-     * Start the server. A -p argument specifies a listener port, or
-     * a -f argument specifies a configuration file. Without arguments,
-     * listens on port 8080.
+     * Start the server. A -p argument specifies a listener port, default
+     * 8080. A -f argument specifies a configuration file. A -m argument
+     * causes the server to be registered in mdns.
      *
      * @param args command line arguments
      */
     public static void main(String[] args) {
-	if (args.length == 0) {
-	    new KServer1(8080);
-	} else if (args.length == 2) {
-	    if ("-p".equals(args[0])) {
-		try {
-		    new KServer1(new KServerConfig(Integer.parseInt(args[1])));
-		} catch (NumberFormatException nfe) {
+	KServerConfig ksc = new KServerConfig();
+	int i = 0;
+	while (i < args.length) {
+	    if ("-m".equals(args[i])) {
+		ksc.setRegister(true);
+	    } else if ("-p".equals(args[i])) {
+		if (i+1 < args.length) {
+		    i++;
+		    try {
+			ksc.setPort(Integer.parseInt(args[i]));
+		    } catch (NumberFormatException nfe) {
+			usage();
+		    }
+		} else {
 		    usage();
 		}
-	    } else if ("-f".equals(args[0])) {
-		File f = new File(args[1]);
-		if (f.exists()) {
-		    new KServer1(new KServerConfig(f));
+	    } else if ("-f".equals(args[i])) {
+		if (i+1 < args.length) {
+		    i++;
+		    File f = new File(args[i]);
+		    if (f.exists()) {
+			ksc.parseConfig(f);
+		    } else {
+			usage();
+		    }
 		} else {
 		    usage();
 		}
 	    } else {
 		usage();
 	    }
-	} else {
-	    usage();
+	    i++;
 	}
+	new KServer1(ksc);
     }
 }

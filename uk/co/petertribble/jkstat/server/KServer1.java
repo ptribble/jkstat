@@ -78,7 +78,7 @@ public class KServer1 {
 	    ServiceInfo serviceInfo = ServiceInfo.create("_jkstat._tcp.local.",
 		    "JKstat/"+ksc.getHostname(),
 		    ksc.getPort(),
-		    "path=/ protocol=xmlrpc");
+		    "path=/");
             jmdns.registerService(serviceInfo);
 	    Thread exitHook = new Thread(() -> this.unRegisterService());
 	    Runtime.getRuntime().addShutdownHook(exitHook);

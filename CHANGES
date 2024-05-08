@@ -6,6 +6,11 @@ Added mdns registration to the server, enabled by the -m argument
 
 Client dialog allows port to be entered
 
+Added mdns remote client, invoked by
+  jkstat remotebrowser -m
+
+PMD is now version 7 (and very noisy)
+
 From 1.5.0 to 1.6.0
 
 Rates in browser tables limited to 4 decimal places

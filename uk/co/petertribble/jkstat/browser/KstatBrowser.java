@@ -246,6 +246,12 @@ public class KstatBrowser extends JFrame implements ActionListener {
 		if (kcc.isConfigured()) {
 		    new KstatBrowser(kcc);
 		}
+	    } else if ("-m".equals(args[0])) {
+		KBrowseDialog kbd = new KBrowseDialog();
+		KClientConfig kcc = kbd.getConfig();
+		if (kcc.isConfigured()) {
+		    new KstatBrowser(kcc);
+		}
 	    } else {
 		usage();
 	    }

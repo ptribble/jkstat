@@ -116,7 +116,9 @@ public class KClientDialog implements ActionListener {
      */
     @SuppressWarnings("deprecation")
     public KClientConfig getConfig() {
-	kcc.setServerURL("http://"+sfield.getText()+":"+portfield.getText());
+	if (!sfield.getText().isEmpty()) {
+	    kcc.setServerURL("http://"+sfield.getText()+":"+portfield.getText());
+	}
 	kcc.setProtocol(protobox.getSelectedIndex());
 	if (authbox.isSelected()) {
 	    kcc.setUser(ufield.getText());

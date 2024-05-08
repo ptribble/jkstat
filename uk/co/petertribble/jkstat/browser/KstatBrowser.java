@@ -225,6 +225,7 @@ public class KstatBrowser extends JFrame implements ActionListener {
 
     private static void usage() {
 	System.err.println("Usage: browser [-s|-S [url]]");
+	System.err.println("       browser [-m]");
 	System.err.println("       browser [-z zipfile]");
 	System.exit(1);
     }
@@ -245,12 +246,18 @@ public class KstatBrowser extends JFrame implements ActionListener {
 		KClientConfig kcc = kcd.getConfig();
 		if (kcc.isConfigured()) {
 		    new KstatBrowser(kcc);
+		} else {
+		    System.err.println("No servers");
+		    usage();
 		}
 	    } else if ("-m".equals(args[0])) {
 		KBrowseDialog kbd = new KBrowseDialog();
 		KClientConfig kcc = kbd.getConfig();
 		if (kcc.isConfigured()) {
 		    new KstatBrowser(kcc);
+		} else {
+		    System.err.println("No servers");
+		    usage();
 		}
 	    } else {
 		usage();

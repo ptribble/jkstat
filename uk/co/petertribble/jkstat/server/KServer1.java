@@ -42,7 +42,7 @@ public class KServer1 {
 
     // global so can be called at shutdown
     private JmDNS jmdns;
-    
+
     /**
      * Constructs a KServer1 object.
      *

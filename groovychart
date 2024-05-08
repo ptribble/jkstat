@@ -2,7 +2,7 @@
  * An example of using groovy to access kstats. As groovy supports java
  * this looks just like a java program, but with a lot less boiler plate.
  *
- * This code was lifted from one of the JMX examples 
+ * This code was lifted from one of the JMX examples
  * http://groovy.codehaus.org/Groovy+and+JMX
  */
 import org.jfree.chart.ChartFactory

@@ -80,7 +80,7 @@ PMDCACHE="${HOME}/.pmd/cache.jkstat"
 # This is to build a RESTful server using jersey.
 #
 JERSEYDIR="../jaxrs-ri"
-JAXRSJAR="../${JERSEYDIR}/api/jakarta.ws.rs-api-2.1.5.jar"
+JAXRSJAR="../${JERSEYDIR}/api/jakarta.ws.rs-api-2.1.6.jar"
 
 case $1 in
 jni|-jni)

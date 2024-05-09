@@ -43,6 +43,7 @@ public class KClientDialog implements ActionListener {
     private JTextField ufield;
     private JPasswordField pfield;
     private JCheckBox authbox;
+    private int dialogStatus;
 
     /**
      * Create a dialog for the user to choose the server settings.
@@ -101,7 +102,7 @@ public class KClientDialog implements ActionListener {
 
 	String[] options =  { KstatResources.getString("CLIENT.CONNECT"),
 			KstatResources.getString("CLIENT.CANCEL") };
-	JOptionPane.showOptionDialog(null, qpanel,
+	dialogStatus = JOptionPane.showOptionDialog(null, qpanel,
 				KstatResources.getString("CLIENT.DETAIL"),
 				JOptionPane.OK_CANCEL_OPTION,
 				JOptionPane.QUESTION_MESSAGE,
@@ -116,7 +117,7 @@ public class KClientDialog implements ActionListener {
      */
     @SuppressWarnings("deprecation")
     public KClientConfig getConfig() {
-	if (!sfield.getText().isEmpty()) {
+	if ((dialogStatus==JOptionPane.OK_OPTION) && !sfield.getText().isEmpty()) {
 	    kcc.setServerURL("http://"+sfield.getText()+":"+portfield.getText());
 	}
 	kcc.setProtocol(protobox.getSelectedIndex());

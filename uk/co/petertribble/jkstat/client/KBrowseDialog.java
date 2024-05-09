@@ -53,6 +53,7 @@ public class KBrowseDialog implements ActionListener {
     private JPasswordField pfield;
     private JCheckBox authbox;
     private Map <String, String> serviceMap;
+    private int dialogStatus;
 
     private static class BrowseListener implements ServiceListener {
         @Override
@@ -136,7 +137,7 @@ public class KBrowseDialog implements ActionListener {
 
 	    String[] options =  { KstatResources.getString("CLIENT.CONNECT"),
 			KstatResources.getString("CLIENT.CANCEL") };
-	    JOptionPane.showOptionDialog(null, qpanel,
+	    dialogStatus = JOptionPane.showOptionDialog(null, qpanel,
 				KstatResources.getString("CLIENT.DETAIL"),
 				JOptionPane.OK_CANCEL_OPTION,
 				JOptionPane.QUESTION_MESSAGE,
@@ -156,7 +157,9 @@ public class KBrowseDialog implements ActionListener {
      */
     @SuppressWarnings("deprecation")
     public KClientConfig getConfig() {
-	kcc.setServerURL(serviceMap.get(servicebox.getSelectedItem()));
+	if (dialogStatus==JOptionPane.OK_OPTION) {
+	    kcc.setServerURL(serviceMap.get(servicebox.getSelectedItem()));
+	}
 	kcc.setProtocol(protobox.getSelectedIndex());
 	if (authbox.isSelected()) {
 	    kcc.setUser(ufield.getText());

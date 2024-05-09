@@ -11,6 +11,8 @@ Added mdns remote client, invoked by
 
 PMD is now version 7 (and very noisy)
 
+Enable SpotBugs (also very noisy)
+
 From 1.5.0 to 1.6.0
 
 Rates in browser tables limited to 4 decimal places

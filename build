@@ -20,6 +20,9 @@
 # ./build pmd
 #    Runs the pmd static code analysis tool, if it's installed
 #
+# ./build pmd
+#    Runs the spotbugs static code analysis tool, if it's installed
+#
 # ./build packages [deps]
 #    Creates SVR4 packages
 #
@@ -97,6 +100,14 @@ pmd|-pmd)
 	fi
 	pmd check --cache "${PMDCACHE}" -d uk -R ${PMDRULES} --use-version java-1.8 --aux-classpath $(echo lib/java/* | sed 's= =:=g') 2>/dev/null
 	pmd check --cache "${PMDCACHE}".html -d help/*.html -R category/html/bestpractices.xml 2>/dev/null
+	exit 0
+	;;
+spotbugs)
+	#
+	# spotbugs works on the class files, so those need to be available
+	#
+	./build
+	spotbugs -auxclasspath $(echo lib/java/* | sed 's= =:=g') uk
 	exit 0
 	;;
 packages)

@@ -42,7 +42,6 @@ public class KServerConfig {
 
     private int port = 8080;
     private boolean registermdns;
-    private String listenAddress;
 
     /**
      * Construct a default KServerConfig. The default port is set to 8080

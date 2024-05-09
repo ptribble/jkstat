@@ -73,9 +73,7 @@ public class KBrowseDialog implements ActionListener {
     }
 
     /**
-     * Create a dialog for the user to choose the server settings.
-     *
-     * @param defproto the default server protocol
+     * Create a dialog for the user to choose an available server.
      */
     public KBrowseDialog() {
 	serviceMap = new HashMap <> ();
@@ -83,9 +81,12 @@ public class KBrowseDialog implements ActionListener {
 	    JmDNS jmdns = JmDNS.create(InetAddress.getByAddress(new byte[]{0,0,0,0}));
 	    jmdns.addServiceListener("_jkstat._tcp.local.", new BrowseListener());
 	    ServiceInfo[] serviceInfos = jmdns.list("_jkstat._tcp.local.");
+	    /*
+	     * We'll present the user with a list of names to select from,
+	     * which is the key in this map, and the value is the URL that
+	     * we'll need to connect to for that name.
+	     */
 	    for (ServiceInfo info : serviceInfos) {
-		//System.out.println("## resolve service " + info.getName()  + " : " + info.getURL());
-		//System.out.println("## property names " + info.getPropertyNames());
 		serviceMap.put(info.getName(), info.getURL());
 	    }
 
@@ -97,7 +98,7 @@ public class KBrowseDialog implements ActionListener {
 	     *  - tickbox for authentication
 	     *  - if authenticated prompt for username
 	     *  - if authenticated prompt for password
-	     *  - OK button, active if data filled in
+	     *  - Connect and Cancel buttons
 	     */
 	    servicebox = new JComboBox <String> (new Vector<String>(serviceMap.keySet()));
 	    protobox = new JComboBox <String> (KClientConfig.PROTOCOLS);

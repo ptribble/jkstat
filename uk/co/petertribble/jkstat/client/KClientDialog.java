@@ -59,7 +59,7 @@ public class KClientDialog implements ActionListener {
 	 *  - tickbox for authentication
 	 *  - if authenticated prompt for username
 	 *  - if authenticated prompt for password
-	 *  - OK button, active if data filled in
+	 *  - Connect and Cancel buttons
 	 */
 	sfield = new JTextField();
 	portfield = new JTextField("8080");

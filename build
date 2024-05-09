@@ -4,6 +4,9 @@
 #
 # Usage:
 #
+# ./build
+#    Builds all the java classes, and recompiles the native library.
+#
 # ./build -jni
 #    (Re)Creates the jni header file. Only needed if the native interface
 #    changes, which it shouldn't
@@ -11,20 +14,25 @@
 # ./build -doc
 #    Generates the javadoc
 #
-# ./build
-#    Builds all the java classes, and recompiles the native library.
-#
 # ./build clean
 #    Removes all the class files, ready for distribution
 #
 # ./build pmd
 #    Runs the pmd static code analysis tool, if it's installed
 #
-# ./build pmd
+# ./build spotbugs
 #    Runs the spotbugs static code analysis tool, if it's installed
 #
 # ./build packages [deps]
 #    Creates SVR4 packages
+#
+# ./build jkstat.war
+#    Creates a war file to run an XMLRPC server with tomcat
+#    See README.SERVER for details of how to run it
+#
+# ./build jkrest.war
+#    Creates a war file to run a RESTful server with tomcat
+#    See jersey/README.JERSEY for details of how to run it
 #
 # If you have the ON build tools installed, then jstyle gets run.
 #

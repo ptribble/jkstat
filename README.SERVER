@@ -47,8 +47,31 @@ where server_url is of the form
 http://server_name:8080/jkstat/xmlrpc
 
 
+RESTful servlet
+===============
+
+Run
+
+./build jkrest.war
+
+which will create a file jkrest.war. You need to deploy that (for tomcat 8
+or 9, just copy it into the webapps directory; for tomcat 10 or later, create
+a webapps-javaee directory and put the war file in there and it will be
+automatically converted), and then start your servlet container so that it
+can find libkstat_jni.so (for example, set LD_LIBRARY_PATH so it points to
+the directory containing the library).
+
+Then on the client, either of
+
+./jkstat remotebrowser -s http://server_name:8080/jkrest/xmlrpc
+./jkstat remotebrowser -S http://server_name:8080/jkrest/kstat
+
+
 Tomcat notes
 ============
+
+Note that you can only run one of the web applications in the same tomcat,
+as it can't load the shared library more than once.
 
 The simplest way to configure tomcat is to
 

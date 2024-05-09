@@ -8,7 +8,7 @@ the right place in the war file
 mkdir -p .../WEB-INF/classes/uk/co/petertribble/jkrest
 cp uk/co/petertribble/jkrest/*.class .../WEB-INF/classes/uk/co/petertribble/jkrest
 
-and use the web.xml file form here that has the jersey extensions
+and use the web.xml file from here that has the jersey extensions
 added.
 
 I'm not shipping the jersey libs with jkstat; they just make the

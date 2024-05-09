@@ -95,11 +95,11 @@ public class KServerConfig {
 
     /**
      * Returns the IP address this server should broadcast that it's
-     * listening on. Use the first address we find on a network
-     * interface that is up, not loopback, not virtual, and supports
-     * multicast. If no such address exists, allow a virtual address
-     * such as a shared-ip interface in a zone. If we are unable to
-     * determine an address, fall back to 0.0.0.0 aka all interfaces.
+     * listening on. Use the first non link-local address we find on
+     * a network interface that is up, not loopback, not virtual, and
+     * supports multicast. If no such address exists, allow a virtual
+     * address such as a shared-ip interface in a zone. If we are unable
+     * to determine an address, fall back to 0.0.0.0 aka all interfaces.
      *
      * @return the InetAddress this server should be listening on
      */
@@ -114,7 +114,9 @@ public class KServerConfig {
 		if (netIf.isUp() && netIf.supportsMulticast() && !netIf.isLoopback() && !netIf.isVirtual()) {
 		    Enumeration<InetAddress> inetAddresses = netIf.getInetAddresses();
 		    for (InetAddress inetAddr : Collections.list(inetAddresses)) {
-			return inetAddr;
+			if (!inetAddr.isLinkLocalAddress()) {
+			    return inetAddr;
+			}
 		    }
 		}
 	    }
@@ -129,7 +131,9 @@ public class KServerConfig {
 		if (netIf.isUp() && netIf.supportsMulticast() && !netIf.isLoopback()) {
 		    Enumeration<InetAddress> inetAddresses = netIf.getInetAddresses();
 		    for (InetAddress inetAddr : Collections.list(inetAddresses)) {
-			return inetAddr;
+			if (!inetAddr.isLinkLocalAddress()) {
+			    return inetAddr;
+			}
 		    }
 		}
 	    }

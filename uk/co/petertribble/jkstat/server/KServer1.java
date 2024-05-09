@@ -82,7 +82,7 @@ public class KServer1 {
             jmdns.registerService(serviceInfo);
 	    Thread exitHook = new Thread(() -> this.unRegisterService());
 	    Runtime.getRuntime().addShutdownHook(exitHook);
-	    System.out.println("Service registered");
+	    System.out.println("Service registered on "+ksc.getInetAddress());
 	} catch (IOException e) {
             System.err.println(e.getMessage());
         }

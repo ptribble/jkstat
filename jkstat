@@ -24,7 +24,7 @@ usage() {
     echo "Usage: jkstat subcommand [options]"
     echo "Available subcommands:"
     echo " browser (the interactive kstat browser)"
-    echo " remotebrowser -s|-S [server_url] (browser, network client)"
+    echo " remotebrowser -m|-s|-S [server_url] (browser, network client)"
     echo " browser -z zipfile (browser, reading kar output)"
     echo " server [-m | -p port | -f config_file] (kstat server)"
     echo " cpustate [-s|-S server_url] [ chart | vertical ] (like xcpustate)"

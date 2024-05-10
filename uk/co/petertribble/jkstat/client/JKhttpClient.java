@@ -26,7 +26,7 @@ import java.io.IOException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.BasicResponseHandler;
-import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.HttpClients;
 
 /**
  * A class providing access to a remote JKstat server via REST.
@@ -50,7 +50,7 @@ public class JKhttpClient {
 	if (!baseURL.endsWith("/")) {
 	    baseURL = baseURL + "/";
 	}
-	httpclient = new DefaultHttpClient();
+	httpclient = HttpClients.createDefault();
     }
 
     /**

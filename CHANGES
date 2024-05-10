@@ -1,5 +1,7 @@
 From 1.6.0 to 1.7.0
 
+Update the JSON jar (from https://github.com/stleary/JSON-java)
+
 Added jmdns-3.5.9.jar and slf4j-api-2.0.13.jar to support mdns
 
 Added mdns registration to the server, enabled by the -m argument

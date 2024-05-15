@@ -45,9 +45,8 @@ export PATH
 
 JKDIR=`dirname $0`
 LIBDIR=${JKDIR}/lib
-ARCHLIBDIR=${LIBDIR}/`/usr/bin/uname -p`
 JARLIBDIR=${LIBDIR}/java
-ARCHLIBDIR_64=${LIBDIR}/`/usr/bin/isainfo -k`
+ARCHLIBDIR=${LIBDIR}/`/usr/bin/isainfo -k`
 JAVA=java
 JAVAC=javac
 XFLAGS="-Xlint -Xlint:-serial"
@@ -203,10 +202,10 @@ JINCLUDE=/usr/jdk/instances/jdk1.8.0
 #
 case `isainfo -k` in
 amd64)
-    cc -Kpic -shared -m64 -I${JINCLUDE}/include -I${JINCLUDE}/include/solaris -h libkstat_jni.so -lkstat -o ${ARCHLIBDIR_64}/libkstat_jni.so uk_co_petertribble_jkstat_api_NativeJKstat.c
+    cc -Kpic -shared -m64 -I${JINCLUDE}/include -I${JINCLUDE}/include/solaris -h libkstat_jni.so -lkstat -o ${ARCHLIBDIR}/libkstat_jni.so uk_co_petertribble_jkstat_api_NativeJKstat.c
     ;;
 sparcv9)
-    cc -xcode=pic13 -shared -m64 -I${JINCLUDE}/include -I${JINCLUDE}/include/solaris -h libkstat_jni.so -lkstat -o ${ARCHLIBDIR_64}/libkstat_jni.so uk_co_petertribble_jkstat_api_NativeJKstat.c
+    cc -xcode=pic13 -shared -m64 -I${JINCLUDE}/include -I${JINCLUDE}/include/solaris -h libkstat_jni.so -lkstat -o ${ARCHLIBDIR}/libkstat_jni.so uk_co_petertribble_jkstat_api_NativeJKstat.c
     ;;
 esac
 

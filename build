@@ -198,8 +198,6 @@ javac ${XFLAGS} -classpath .:${BUILDJARS} uk/co/petertribble/jkstat/*/*.java
 
 JINCLUDE=/usr/jdk/instances/jdk1.8.0
 
-cc -G -I${JINCLUDE}/include -I${JINCLUDE}/include/solaris -h libkstat_jni.so -lkstat -o ${ARCHLIBDIR}/libkstat_jni.so uk_co_petertribble_jkstat_api_NativeJKstat.c
-
 #
 # compiling 64-bit objects is more complex
 #

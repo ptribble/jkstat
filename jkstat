@@ -5,8 +5,7 @@
 
 JKDIR=`dirname $0`
 LIBDIR=${JKDIR}/lib
-ARCHLIBDIR=${LIBDIR}/`/usr/bin/uname -p`
-ARCHLIBDIR_64=${LIBDIR}/`/usr/bin/isainfo -k`
+ARCHLIBDIR=${LIBDIR}/`/usr/bin/isainfo -k`
 JARLIBDIR=${LIBDIR}/java
 JAVA=/usr/bin/java
 
@@ -15,8 +14,7 @@ JAVA=/usr/bin/java
 #
 INSTALLED=false
 if [ "$INSTALLED" = "true" ]; then
-    ARCHLIBDIR=/usr/lib
-    ARCHLIBDIR_64=/usr/lib/64
+    ARCHLIBDIR=/usr/lib/64
     JARLIBDIR=/usr/share/jkstat
 fi
 
@@ -44,15 +42,6 @@ usage() {
     echo " netload [-s|-S server_url] (graphical network traffic)"
     echo " kmemalloc [-s|-S server_url] (show kernel memory allocations)"
 }
-
-#
-# attempt to use a 64-bit version if possible
-#
-if [ -f "${ARCHLIBDIR_64}/libkstat_jni.so" ]; then
-    if [ "${ARCHLIBDIR}" != "${ARCHLIBDIR_64}" ]; then
-	ARCHLIBDIR="${ARCHLIBDIR_64}"
-    fi
-fi
 
 case $# in
 0)

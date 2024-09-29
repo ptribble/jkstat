@@ -35,8 +35,8 @@ import uk.co.petertribble.jkstat.api.JKstat;
 public class KstatTable extends JTable {
 
     private KstatTableModel ktm;
-    private JKstat jkstat;
-    private Kstat ks;
+    JKstat jkstat;
+    Kstat ks;
 
     /**
      * Wraps a {@code Kstat} in a {@code JTable}, adding a right-click

@@ -55,7 +55,7 @@ public class KBrowseDialog implements ActionListener {
     private Map <String, String> serviceMap;
     private int dialogStatus;
 
-    private static class BrowseListener implements ServiceListener {
+    static class BrowseListener implements ServiceListener {
         @Override
         public void serviceAdded(ServiceEvent event) {
             System.out.println("Service added: " + event.getInfo());

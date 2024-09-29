@@ -291,7 +291,7 @@ public class JKdemo extends JFrame implements ActionListener {
 	}
     }
 
-    private void kaboom() {
+    void kaboom() {
 	if (standalone) {
 	    System.exit(0);
 	} else {

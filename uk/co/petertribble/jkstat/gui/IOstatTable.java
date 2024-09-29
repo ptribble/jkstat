@@ -37,8 +37,8 @@ import uk.co.petertribble.jingle.TableSorter;
 public class IOstatTable extends JTable {
 
     private IOstatTableModel ktm;
-    private TableSorter sortedModel;
-    private JKstat jkstat;
+    TableSorter sortedModel;
+    JKstat jkstat;
 
     /**
      * Wraps a {@code KstatSet} in a {@code JTable}, adding a right-click

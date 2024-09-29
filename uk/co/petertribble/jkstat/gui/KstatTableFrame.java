@@ -35,7 +35,7 @@ import uk.co.petertribble.jkstat.api.JKstat;
  */
 public class KstatTableFrame extends JFrame implements ActionListener {
 
-    private KstatTable kt;
+    KstatTable kt;
 
     /**
      * Wrap a {@code KstatTable} in a {@code JFrame} so that it can be viewed

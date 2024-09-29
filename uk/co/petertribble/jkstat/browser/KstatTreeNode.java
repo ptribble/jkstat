@@ -34,7 +34,7 @@ import uk.co.petertribble.jkstat.api.Kstat;
  */
 public class KstatTreeNode extends DefaultMutableTreeNode {
 
-    private boolean isleaf;
+    private boolean nodeisleaf;
     private Map <String, KstatTreeNode> nodeMap;
 
     /**
@@ -77,18 +77,18 @@ public class KstatTreeNode extends DefaultMutableTreeNode {
      * @param ks a Kstat object
      */
     public KstatTreeNode(Kstat ks) {
-	isleaf = true;
+	nodeisleaf = true;
 	setUserObject(ks);
     }
 
     @Override
     public boolean getAllowsChildren() {
-	return !isleaf;
+	return !nodeisleaf;
     }
 
     @Override
     public boolean isLeaf() {
-	return isleaf;
+	return nodeisleaf;
     }
 
     /*

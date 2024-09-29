@@ -60,7 +60,7 @@ public class KstatCmd {
 
     // optional interval and count
     private int interval;
-    private int count;
+    int count;
 
     /**
      * Create a new KstatCmd application, and produce output according to the
@@ -199,7 +199,7 @@ public class KstatCmd {
 	}
     }
 
-    private void doDisplay() {
+    void doDisplay() {
 	displayTimeHeader();
 
 	for (Kstat ks : new TreeSet <Kstat> (ksf.getKstats())) {

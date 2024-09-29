@@ -35,8 +35,8 @@ import uk.co.petertribble.jingle.TableSorter;
 public class MPstatTable extends JTable {
 
     private MPstatTableModel ktm;
-    private TableSorter sortedModel;
-    private JKstat jkstat;
+    TableSorter sortedModel;
+    JKstat jkstat;
 
     /**
      * Create a new MPstatTable.

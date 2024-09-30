@@ -325,15 +325,7 @@ public class ProcessorTree {
      * @return a String representing the brand of the given chip
      */
     public String getBrand(long chipid) {
-	ChipMap m = map.get(chipid);
-	if (m != null) {
-	    for (CoreMap mm : m.values()) {
-		for (Kstat oo : mm.values()) {
-		    return (String) oo.getData("brand");
-		}
-	    }
-	}
-	return null;
+	return (String) chipInfoStats(chipid).iterator().next().getData("brand");
     }
 
     /**
@@ -345,18 +337,7 @@ public class ProcessorTree {
      * @return a String representing the brand of the given core
      */
     public String getBrand(long chipid, long coreid) {
-	ChipMap m = map.get(chipid);
-	if (m == null) {
-	    return null;
-	}
-	CoreMap mm = m.get(coreid);
-	if (mm == null) {
-	    return null;
-	}
-	for (Kstat o : mm.values()) {
-	    return (String) o.getData("brand");
-	}
-	return null;
+	return (String) coreInfoStats(chipid, coreid).iterator().next().getData("brand");
     }
 
     /**

@@ -205,8 +205,9 @@ public class ChartBuilderPanel extends JPanel implements TreeSelectionListener,
     private void updateLabel() {
 	if (myKstat != null) {
 	    StringBuilder sb = new StringBuilder();
-	    sb.append(KstatResources.getString("CHART.WORKINGON")).append(" ");
-	    sb.append(allInstanceButton.isSelected() ? getSpecifier()
+	    sb.append(KstatResources.getString("CHART.WORKINGON"))
+		.append(' ')
+		.append(allInstanceButton.isSelected() ? getSpecifier()
 			  : myKstat.getTriplet());
 	    kstatLabel.setText(sb.toString());
 	}

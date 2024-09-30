@@ -369,15 +369,16 @@ public class ProcessorTree {
     public static String details(Kstat ks) {
 	StringBuilder sb = new StringBuilder(160);
 	if (ks != null) {
-	    sb.append("Status of virtual processor ").append(ks.getInstance());
-	    sb.append(" as of: ").append(df.format(new Date()));
-	    sb.append("\n  ").append(ks.getData("state")).append(" since ");
-	    sb.append(df.format(new Date(1000*ks.longData("state_begin"))));
-	    sb.append("\n  The ").append(ks.getData("cpu_type"));
-	    sb.append(" processor operates at ");
-	    sb.append(ks.getData("clock_MHz")).append(" MHz,\n");
-	    sb.append("        and has an ").append(ks.getData("fpu_type"));
-	    sb.append(" floating point processor.");
+	    sb.append("Status of virtual processor ").append(ks.getInstance())
+		.append(" as of: ").append(df.format(new Date()))
+		.append("\n  ").append(ks.getData("state")).append(" since ")
+		.append(df.format(new Date(1000*ks.longData("state_begin"))))
+		.append("\n  The ").append(ks.getData("cpu_type"))
+		.append(" processor operates at ")
+		.append(ks.getData("clock_MHz"))
+		.append(" MHz,\n        and has an ")
+		.append(ks.getData("fpu_type"))
+		.append(" floating point processor.");
 	}
 	return sb.toString();
     }
@@ -400,7 +401,7 @@ public class ProcessorTree {
 	if (isThreaded()) {
 	    sb.append(" and ").append(numThreads(l)).append(" threads");
 	}
-	sb.append("\n");
+	sb.append('\n');
 	if (isThreaded()) {
 	    for (Long ll : getCores(l)) {
 		sb.append("    Core ").append(ll).append(" has ");
@@ -411,16 +412,16 @@ public class ProcessorTree {
 		    sb.append(kst.getInst());
 		    ni++;
 		    if (ni < nt) {
-			sb.append(" ");
+			sb.append(' ');
 		    }
 		}
 		sb.append(")\n");
 	    }
 	}
-	sb.append("        ").append(getBrand(l));
-	sb.append("\n        Clock speed: ");
-	sb.append(chipInfoStats(l).iterator().next().getData("clock_MHz"));
-	sb.append(" MHz\n");
+	sb.append("        ").append(getBrand(l))
+	    .append("\n        Clock speed: ")
+	    .append(chipInfoStats(l).iterator().next().getData("clock_MHz"))
+	    .append(" MHz\n");
 	return sb.toString();
     }
 }

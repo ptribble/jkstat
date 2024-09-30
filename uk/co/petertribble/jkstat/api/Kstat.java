@@ -331,11 +331,11 @@ public class Kstat implements Serializable, Comparable<Kstat> {
      */
     public String getTriplet() {
 	StringBuilder buf = new StringBuilder();
-	buf.append(module);
-	buf.append(':');
-	buf.append(instance);
-	buf.append(':');
-	buf.append(name);
+	buf.append(module)
+	    .append(':')
+	    .append(instance)
+	    .append(':')
+	    .append(name);
 	return buf.toString();
     }
 
@@ -352,15 +352,15 @@ public class Kstat implements Serializable, Comparable<Kstat> {
 	boolean firstdata = true;
 	StringBuilder sb = new StringBuilder(148);
 	// metadata
-	sb.append("{\"class\":\"").append(kstatClass);
-	sb.append("\",\"type\":").append(type);
-	sb.append(",\"module\":\"").append(module);
-	sb.append("\",\"instance\":").append(instance);
-	sb.append(",\"name\":\"").append(name);
-	sb.append("\",\"crtime\":").append(crtime);
-	sb.append(",\"snaptime\":").append(snaptime);
+	sb.append("{\"class\":\"").append(kstatClass)
+	    .append("\",\"type\":").append(type)
+	    .append(",\"module\":\"").append(module)
+	    .append("\",\"instance\":").append(instance)
+	    .append(",\"name\":\"").append(name)
+	    .append("\",\"crtime\":").append(crtime)
+	    .append(",\"snaptime\":").append(snaptime)
+	    .append(",\"data\":{");
 	// data
-	sb.append(",\"data\":{");
 	for (String s : dataMap.keySet()) {
 	    if (firstdata) {
 		firstdata = false;

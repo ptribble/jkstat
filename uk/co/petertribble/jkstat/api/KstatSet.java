@@ -287,12 +287,12 @@ public class KstatSet {
 	    } else {
 		sb.append(",\n");
 	    }
-	    sb.append("{\"class\":\"").append(ks.getKstatClass());
-	    sb.append("\",\"type\":").append(ks.getType());
-	    sb.append(",\"module\":\"").append(ks.getModule());
-	    sb.append("\",\"name\":\"").append(ks.getName());
-	    sb.append("\",\"instance\":").append(ks.getInst());
-	    sb.append("}\n");
+	    sb.append("{\"class\":\"").append(ks.getKstatClass())
+		.append("\",\"type\":").append(ks.getType())
+		.append(",\"module\":\"").append(ks.getModule())
+		.append("\",\"name\":\"").append(ks.getName())
+		.append("\",\"instance\":").append(ks.getInst())
+		.append("}\n");
 	}
 	// end the array
 	sb.append("]\n");

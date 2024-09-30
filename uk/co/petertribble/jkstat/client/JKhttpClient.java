@@ -81,7 +81,7 @@ public class JKhttpClient {
 	StringBuilder sb = new StringBuilder();
 	sb.append(method);
 	for (String s : args) {
-	    sb.append("/").append(s);
+	    sb.append('/').append(s);
 	}
 	return doGet(sb.toString());
     }

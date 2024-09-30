@@ -376,9 +376,9 @@ public class KstatTreePanel extends JPanel implements TreeSelectionListener,
 	    sb.append("Invalid kstat");
 	} else {
 	    ksm.addKstat(ks);
-	    sb.append("<h2>").append(ks.getTriplet()).append("</h2>\n");
-	    sb.append("class: ").append(ks.getKstatClass());
-	    sb.append("; type: ").append(ks.getTypeAsString());
+	    sb.append("<h2>").append(ks.getTriplet())
+		.append("</h2>\nclass: ").append(ks.getKstatClass())
+		.append("; type: ").append(ks.getTypeAsString());
 	}
 	setInfoText(sb.toString());
 	rpanel.add(tp, BorderLayout.NORTH);
@@ -444,36 +444,36 @@ public class KstatTreePanel extends JPanel implements TreeSelectionListener,
      */
     public void showStats() {
 	StringBuilder sb = new StringBuilder(256);
-	sb.append("<h2>").append(
-			KstatResources.getString("BROWSERUI.STATISTICS.TEXT"));
-	sb.append("</h2>");
-	sb.append(KstatResources.getString("BROWSERUI.TOTAL.TEXT")).append(' ');
-	sb.append(countEntries(kstatMap));
-	sb.append("<table border=\"1\">");
-
-	sb.append("<tr><th colspan=\"2\">").append(kstatMap.size());
-	sb.append(" Modules</th></tr>\n");
+	sb.append("<h2>")
+	    .append(KstatResources.getString("BROWSERUI.STATISTICS.TEXT"))
+	    .append("</h2>")
+	    .append(KstatResources.getString("BROWSERUI.TOTAL.TEXT"))
+	    .append(' ')
+	    .append(countEntries(kstatMap))
+	    .append("<table border=\"1\"><tr><th colspan=\"2\">")
+	    .append(kstatMap.size())
+	    .append(" Modules</th></tr>\n");
 	for (String s : kstatMap.keySet()) {
-	    sb.append("<tr><td>").append(s).append("</td><td>");
-	    sb.append(countEntries(kstatMap.get(s)));
-	    sb.append("</td></tr>\n");
+	    sb.append("<tr><td>").append(s).append("</td><td>")
+		.append(countEntries(kstatMap.get(s)))
+		.append("</td></tr>\n");
 	}
 
-	sb.append("<tr><th colspan=\"2\">").append(kstatClassMap.size());
-	sb.append(" Classes</th></tr>\n");
+	sb.append("<tr><th colspan=\"2\">").append(kstatClassMap.size())
+	    .append(" Classes</th></tr>\n");
 	for (String s : kstatClassMap.keySet()) {
-	    sb.append("<tr><td>").append(s).append("</td><td>");
-	    sb.append(countEntries(kstatClassMap.get(s)));
-	    sb.append("</td></tr>\n");
+	    sb.append("<tr><td>").append(s).append("</td><td>")
+		.append(countEntries(kstatClassMap.get(s)))
+		.append("</td></tr>\n");
 	}
 
 	if (kstatTypeMap.size() > 1) {
-	    sb.append("<tr><th colspan=\"2\">").append(kstatTypeMap.size());
-	    sb.append(" Types</th></tr>\n");
+	    sb.append("<tr><th colspan=\"2\">").append(kstatTypeMap.size())
+		.append(" Types</th></tr>\n");
 	    for (String s : kstatTypeMap.keySet()) {
-		sb.append("<tr><td>").append(s).append("</td><td>");
-		sb.append(countEntries(kstatTypeMap.get(s)));
-		sb.append("</td></tr>\n");
+		sb.append("<tr><td>").append(s).append("</td><td>")
+		    .append(countEntries(kstatTypeMap.get(s)))
+		    .append("</td></tr>\n");
 	    }
 	}
 

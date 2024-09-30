@@ -88,7 +88,7 @@ public class ParseableJSONZipJKstat extends SequencedJKstat {
 	for (Enumeration<? extends ZipEntry> e = zf.entries(); e.hasMoreElements(); ) {
 	    al.add(e.nextElement());
 	}
-	inputs = al.toArray(new ZipEntry[al.size()]);
+	inputs = al.toArray(new ZipEntry[0]);
 	Arrays.sort(inputs, new Comparator <ZipEntry> ()
 		    {
 			@Override

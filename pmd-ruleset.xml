@@ -12,6 +12,7 @@
 
     <rule ref="category/java/security.xml" />
     <rule ref="category/java/performance.xml">
+      <exclude name="AvoidArrayLoops"/>
       <exclude name="AvoidInstantiatingObjectsInLoops"/>
       <exclude name="UseArrayListInsteadOfVector"/>
     </rule>

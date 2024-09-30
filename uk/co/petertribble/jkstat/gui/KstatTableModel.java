@@ -70,7 +70,7 @@ public class KstatTableModel extends AbstractTableModel
 	delay = interval*1000;
 	this.jkstat = jkstat;
 	update();
-	rowNames = ks.statistics().toArray(new String[ks.statistics().size()]);
+	rowNames = ks.statistics().toArray(new String[0]);
 	startLoop();
     }
 

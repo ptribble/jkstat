@@ -162,7 +162,7 @@ public class KServerConfig {
      *
      * @return true if the server should register itself in mdns
      */
-    public boolean getRegister() {
+    public boolean shouldRegister() {
 	return registermdns;
     }
 

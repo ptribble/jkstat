@@ -61,7 +61,7 @@ public class KServer1 {
 	    serverConfig.setContentLengthOptional(false);
 
 	    webServer.start();
-	    if (ksc.getRegister()) {
+	    if (ksc.shouldRegister()) {
 		registerService(ksc);
 	    }
 	} catch (Exception e) {

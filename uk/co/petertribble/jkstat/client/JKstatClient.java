@@ -48,7 +48,7 @@ public class JKstatClient {
 	try {
 	    config.setServerURL(kcc.getServerURL());
 	} catch (MalformedURLException mue) {
-	    throw new KstatException("Malformed URL.");
+	    throw new KstatException("Malformed URL.", mue);
 	}
 	initClient(config);
     }

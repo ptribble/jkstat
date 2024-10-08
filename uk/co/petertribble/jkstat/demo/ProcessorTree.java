@@ -63,8 +63,8 @@ public class ProcessorTree {
     private void build_tree(Set <Kstat> kstats) {
 	map = new TreeMap <Long, ChipMap> ();
 
-	for (Kstat ks : kstats) {
-	    ks = jkstat.getKstat(ks);
+	for (Kstat iks : kstats) {
+	    Kstat ks = jkstat.getKstat(iks);
 	    /*
 	     * Build a tree chip_id/core_id/clog_id
 	     * Not all chips give us clog_id

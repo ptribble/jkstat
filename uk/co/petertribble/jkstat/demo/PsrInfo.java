@@ -66,10 +66,10 @@ public class PsrInfo {
 	DateFormat df = DateFormat.getDateTimeInstance(DateFormat.SHORT,
 					    DateFormat.SHORT);
 	for (Kstat ks : kstats) {
-	    ks = jkstat.getKstat(ks);
-	    System.out.println(ks.getInstance() + "\t" + ks.getData("state")
+	    Kstat nks = jkstat.getKstat(ks);
+	    System.out.println(nks.getInstance() + "\t" + nks.getData("state")
 		+ "   since "
-		+ df.format(new Date(1000*ks.longData("state_begin"))));
+		+ df.format(new Date(1000*nks.longData("state_begin"))));
 	}
     }
 

@@ -1,5 +1,7 @@
 #!/bin/sh
 #
+# SPDX-License-Identifier: CDDL-1.0
+#
 # build jkstat
 #
 # Usage:
@@ -43,11 +45,10 @@
 PATH=/usr/jdk/instances/jdk1.8.0/bin:$PATH
 export PATH
 
-JKDIR=`dirname $0`
+JKDIR=$(dirname "$0")
 LIBDIR=${JKDIR}/lib
 JARLIBDIR=${LIBDIR}/java
-ARCHLIBDIR=${LIBDIR}/`/usr/bin/isainfo -k`
-JAVA=java
+ARCHLIBDIR=${LIBDIR}/$(/usr/bin/isainfo -k)
 JAVAC=javac
 XFLAGS="-Xlint -Xlint:-serial"
 
@@ -59,9 +60,6 @@ JSTRIPJAR=${JARLIBDIR}/jstripchart.jar
 JKJAR=${JARLIBDIR}/jkstat.jar
 JKAPIJAR=${JARLIBDIR}/jkstat-api.jar
 HTTPJARS=${JARLIBDIR}/httpclient-4.5.14.jar:${JARLIBDIR}/httpcore-4.4.16.jar
-ALLJARS=${JFJAR}:${JINGLEJAR}:${JUMBLEJAR}:${JSONJAR}:${JSTRIPJAR}:${JKJAR}
-SERVERJARS=${JUMBLEJAR}:${JARLIBDIR}/xmlrpc-common-3.1.3.jar:${JARLIBDIR}/xmlrpc-server-3.1.3.jar:${JARLIBDIR}/jmdns-3.5.9.jar
-CLIENTJARS=${JUMBLEJAR}:${JARLIBDIR}/xmlrpc-common-3.1.3.jar:${JARLIBDIR}/xmlrpc-client-3.1.3.jar
 REMOTEJARS=${JARLIBDIR}/xmlrpc-common-3.1.3.jar:${JARLIBDIR}/xmlrpc-server-3.1.3.jar:${JARLIBDIR}/xmlrpc-client-3.1.3.jar:${JARLIBDIR}/jmdns-3.5.9.jar
 BUILDJARS=${JFJAR}:${JSONJAR}:${JINGLEJAR}:${JUMBLEJAR}:${JSTRIPJAR}:${REMOTEJARS}:${HTTPJARS}
 
@@ -83,27 +81,27 @@ JAXRSJAR="../${JERSEYDIR}/api/jakarta.ws.rs-api-2.1.6.jar"
 
 case $1 in
 jni|-jni)
-	javac uk/co/petertribble/jkstat/api/NativeJKstat.java
+	${JAVAC} uk/co/petertribble/jkstat/api/NativeJKstat.java
 	javah -jni uk.co.petertribble.jkstat.api.NativeJKstat
 	exit 0
 	;;
 doc|-doc)
 	rm -fr javadoc
 	mkdir javadoc
-	javadoc -classpath $BUILDJARS:. -d javadoc -Xdoclint:all uk.co.petertribble.jkstat.api uk.co.petertribble.jkstat.browser uk.co.petertribble.jkstat.gui uk.co.petertribble.jkstat.demo uk.co.petertribble.jkstat.util uk.co.petertribble.jkstat.client uk.co.petertribble.jkstat.server uk.co.petertribble.jkstat.parse
+	javadoc -classpath "${BUILDJARS}":. -d javadoc -Xdoclint:all uk.co.petertribble.jkstat.api uk.co.petertribble.jkstat.browser uk.co.petertribble.jkstat.gui uk.co.petertribble.jkstat.demo uk.co.petertribble.jkstat.util uk.co.petertribble.jkstat.client uk.co.petertribble.jkstat.server uk.co.petertribble.jkstat.parse
 	exit 0
 	;;
 clean|-clean)
-	rm -f `find uk/co -type f -name '*.class'`
-	rm -f `find . -type f -name '*~'`
+	rm -f $(find uk/co -type f -name '*.class')
+	rm -f $(find . -type f -name '*~')
 	rm -fr javadoc
 	rm -f jkstat.war
 	rm -f jkrest.war
 	exit 0
 	;;
 pmd|-pmd)
-	if [ ! -d ${HOME}/.pmd ]; then
-	    mkdir -p ${HOME}/.pmd
+	if [ ! -d "${HOME}/.pmd" ]; then
+	    mkdir -p "${HOME}/.pmd"
 	fi
 	pmd check --cache "${PMDCACHE}" -d uk -R ${PMDRULES} --use-version java-1.8 --aux-classpath $(echo lib/java/* | sed 's= =:=g') 2>/dev/null
 	pmd check --cache "${PMDCACHE}".html -d help/*.html -R category/html/bestpractices.xml 2>/dev/null
@@ -121,10 +119,10 @@ packages)
 	sed s:INSTALLED=false:INSTALLED=true: jkstat > jkstat.installed
 	./mkproto i386 $2 > prototype.i386
 	./mkproto sparc $2 > prototype.sparc
-	pkgmk -d /tmp -f prototype.i386 -r `pwd` TRIBjkstat
+	pkgmk -d /tmp -f prototype.i386 -r $(pwd) TRIBjkstat
 	pkgtrans -s /tmp /tmp/TRIBjkstat-i386.pkg TRIBjkstat
 	rm -fr /tmp/TRIBjkstat
-	pkgmk -d /tmp -f prototype.sparc -r `pwd` TRIBjkstat
+	pkgmk -d /tmp -f prototype.sparc -r $(pwd) TRIBjkstat
 	pkgtrans -s /tmp /tmp/TRIBjkstat-sparc.pkg TRIBjkstat
 	rm -fr /tmp/TRIBjkstat
 	ls -lh /tmp/TRIBjkstat-sparc.pkg /tmp/TRIBjkstat-i386.pkg
@@ -137,7 +135,7 @@ jkstat.war)
 	# this is the vanilla jkstat war, which will enable tomcat
 	# to be a jkstat server
 	mkdir war
-	cd war
+	cd war || exit 1
 	mkdir -p WEB-INF/lib org/apache/xmlrpc/webserver
 	cp -p ../properties/KServer1.properties org/apache/xmlrpc/webserver/XmlRpcServlet.properties
 	jar cf WEB-INF/lib/props.jar org
@@ -157,15 +155,15 @@ jkrest.war)
 	    echo "Unable to find jersey, exiting..."
 	    exit 1
 	fi
-	cd jersey
+	cd jersey || exit 1
 	if [ ! -f "${JAXRSJAR}" ]; then
 	    echo "Unable to find javax.ws.rs jar, exiting..."
 	    exit 1
 	fi
-	javac ${XFLAGS} -classpath ../lib/java/jkstat.jar:${JAXRSJAR} uk/co/petertribble/jkrest/*.java
+	${JAVAC} ${XFLAGS} -classpath ../lib/java/jkstat.jar:${JAXRSJAR} uk/co/petertribble/jkrest/*.java
 	cd ..
 	mkdir war
-	cd war
+	cd war || exit 1
 	mkdir -p WEB-INF/lib org/apache/xmlrpc/webserver
 	cp -p ../properties/KServer1.properties org/apache/xmlrpc/webserver/XmlRpcServlet.properties
 	jar cf WEB-INF/lib/props.jar org
@@ -193,22 +191,22 @@ if [ -x /opt/onbld/bin/jstyle ]; then
 	/opt/onbld/bin/jstyle uk/co/petertribble/jkstat/*/*.java
 fi
 
-javac ${XFLAGS} -classpath .:${BUILDJARS} uk/co/petertribble/jkstat/*/*.java
+${JAVAC} ${XFLAGS} -classpath .:"${BUILDJARS}" uk/co/petertribble/jkstat/*/*.java
 
 JINCLUDE=/usr/jdk/instances/jdk1.8.0
 
 #
 # compiling 64-bit objects is more complex
 #
-case `isainfo -k` in
+case $(isainfo -k) in
 amd64)
-    cc -Kpic -shared -m64 -I${JINCLUDE}/include -I${JINCLUDE}/include/solaris -h libkstat_jni.so -lkstat -o ${ARCHLIBDIR}/libkstat_jni.so uk_co_petertribble_jkstat_api_NativeJKstat.c
+    cc -Kpic -shared -m64 -I${JINCLUDE}/include -I${JINCLUDE}/include/solaris -h libkstat_jni.so -lkstat -o "${ARCHLIBDIR}"/libkstat_jni.so uk_co_petertribble_jkstat_api_NativeJKstat.c
     ;;
 sparcv9)
-    cc -xcode=pic13 -shared -m64 -I${JINCLUDE}/include -I${JINCLUDE}/include/solaris -h libkstat_jni.so -lkstat -o ${ARCHLIBDIR}/libkstat_jni.so uk_co_petertribble_jkstat_api_NativeJKstat.c
+    cc -xcode=pic13 -shared -m64 -I${JINCLUDE}/include -I${JINCLUDE}/include/solaris -h libkstat_jni.so -lkstat -o "${ARCHLIBDIR}"/libkstat_jni.so uk_co_petertribble_jkstat_api_NativeJKstat.c
     ;;
 esac
 
-jar -cmf jkstat.manifest ${JKJAR} help/* pixmaps/* properties/* `find uk/co -name '*.class'`
+jar -cmf jkstat.manifest "${JKJAR}" help/* pixmaps/* properties/* $(find uk/co -name '*.class')
 
-jar -cf ${JKAPIJAR} `find uk/co/petertribble/jkstat/api -name '*.class'` uk/co/petertribble/jkstat/util/NumericStringComparator.class
+jar -cf "${JKAPIJAR}" $(find uk/co/petertribble/jkstat/api -name '*.class') uk/co/petertribble/jkstat/util/NumericStringComparator.class

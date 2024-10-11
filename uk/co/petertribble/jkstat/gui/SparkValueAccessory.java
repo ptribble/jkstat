@@ -32,6 +32,8 @@ import uk.co.petertribble.jstripchart.JSparkChart;
  */
 public class SparkValueAccessory extends KstatAccessoryPanel {
 
+    private static final long serialVersionUID = 1L;
+
     private JSparkChart jsc;
     private String stat;
     private boolean tips;

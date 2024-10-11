@@ -36,6 +36,8 @@ import uk.co.petertribble.jkstat.parse.ParseableJSONZipJKstat;
  */
 public class KstatChartFrame extends KstatBaseChartFrame {
 
+    private static final long serialVersionUID = 1L;
+
     /**
      * Create a JFrame containing a graphical chart of a kstat, showing
      * the rate of change of the given statistic for the given Kstats.

@@ -36,6 +36,8 @@ import java.awt.Color;
  */
 public class AccessoryCpuChart extends KstatAccessoryPanel {
 
+    private static final long serialVersionUID = 1L;
+
     private long luser;
     private long lsys;
     private long lidle;

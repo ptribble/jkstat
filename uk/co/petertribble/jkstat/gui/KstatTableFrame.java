@@ -35,6 +35,8 @@ import uk.co.petertribble.jkstat.api.JKstat;
  */
 public class KstatTableFrame extends JFrame implements ActionListener {
 
+    private static final long serialVersionUID = 1L;
+
     KstatTable kt;
 
     /**

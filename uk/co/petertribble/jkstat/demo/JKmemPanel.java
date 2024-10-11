@@ -36,6 +36,8 @@ import java.util.*;
  */
 public class JKmemPanel extends JingleVPanel {
 
+    private static final long serialVersionUID = 1L;
+
     private KstatAccessorySet kas;
 
     /**

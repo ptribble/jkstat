@@ -33,6 +33,8 @@ import uk.co.petertribble.jkstat.api.Kstat;
  */
 public class KstatTreeModel extends DefaultTreeModel {
 
+    private static final long serialVersionUID = 1L;
+
     private KstatTreeNode rootNode;
 
     /**

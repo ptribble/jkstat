@@ -38,6 +38,8 @@ import uk.co.petertribble.jkstat.client.*;
  */
 public class Jnfsstat extends JKdemo implements ChangeListener {
 
+    private static final long serialVersionUID = 1L;
+
     private static final String VERSION = "Jnfsstat version 1.2";
 
     private JTabbedPane nfsstatPane;

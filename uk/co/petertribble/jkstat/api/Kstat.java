@@ -39,6 +39,8 @@ import uk.co.petertribble.jkstat.util.NumericStringComparator;
  */
 public class Kstat implements Serializable, Comparable<Kstat> {
 
+    private static final long serialVersionUID = 1L;
+
     private final String module;
     private final int instance;
     private final String name;

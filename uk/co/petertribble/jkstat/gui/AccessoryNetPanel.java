@@ -35,6 +35,8 @@ import uk.co.petertribble.jingle.SpringUtilities;
  */
 public class AccessoryNetPanel extends KstatAccessoryPanel {
 
+    private static final long serialVersionUID = 1L;
+
     private JProgressBar jpIn;
     private JProgressBar jpOut;
 

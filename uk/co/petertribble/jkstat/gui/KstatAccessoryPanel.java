@@ -34,6 +34,8 @@ import java.awt.event.*;
  */
 public class KstatAccessoryPanel extends JPanel implements ActionListener {
 
+    private static final long serialVersionUID = 1L;
+
     /**
      * The current snaptime.
      */

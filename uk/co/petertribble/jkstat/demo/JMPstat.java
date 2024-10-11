@@ -36,6 +36,8 @@ import uk.co.petertribble.jkstat.client.*;
  */
 public class JMPstat extends JKdemo {
 
+    private static final long serialVersionUID = 1L;
+
     private MPstatTable mptable;
 
     private static final String VERSION = "JMPstat version 1.2";

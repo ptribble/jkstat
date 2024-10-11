@@ -36,6 +36,8 @@ import uk.co.petertribble.jingle.TableSorter;
  */
 public class IOstatTable extends JTable {
 
+    private static final long serialVersionUID = 1L;
+
     private IOstatTableModel ktm;
     TableSorter sortedModel;
     JKstat jkstat;

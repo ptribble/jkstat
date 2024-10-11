@@ -31,6 +31,8 @@ package uk.co.petertribble.jkstat.client;
  */
 public class KstatException extends RuntimeException {
 
+    private static final long serialVersionUID = 1L;
+
     /**
      * Construct a new KstatException.
      */

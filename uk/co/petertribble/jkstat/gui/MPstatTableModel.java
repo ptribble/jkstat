@@ -43,6 +43,8 @@ import uk.co.petertribble.jkstat.api.KstatSet;
 public final class MPstatTableModel extends AbstractTableModel
 	implements ActionListener {
 
+    private static final long serialVersionUID = 1L;
+
     /*
      * The columns remove wt from the normal list, and add "cpu" on at the
      * beginning.

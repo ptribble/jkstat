@@ -39,6 +39,8 @@ import uk.co.petertribble.jkstat.demo.*;
  */
 public class KstatBrowser extends JFrame implements ActionListener {
 
+    private static final long serialVersionUID = 1L;
+
     private JKstat jkstat;
     private KstatTreePanel ktp;
 

@@ -35,6 +35,8 @@ import uk.co.petertribble.jingle.JingleInfoFrame;
  */
 public class JKdemo extends JFrame implements ActionListener {
 
+    private static final long serialVersionUID = 1L;
+
     /**
      * A menu item to exit the demo.
      */

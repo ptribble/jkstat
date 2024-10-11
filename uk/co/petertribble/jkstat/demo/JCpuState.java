@@ -41,6 +41,8 @@ import uk.co.petertribble.jkstat.client.*;
  */
 public class JCpuState extends JKdemo implements ActionListener {
 
+    private static final long serialVersionUID = 1L;
+
     static private final int STYLE_BASIC = 0;
     static private final int STYLE_CHART = 1;
     // static private final int STYLE_VERTICAL = 2;

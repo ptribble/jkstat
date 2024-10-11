@@ -30,6 +30,8 @@ import uk.co.petertribble.jkstat.util.NumericStringComparator;
  */
 public class KstatInstanceMap extends TreeMap <String, KstatNameMap> {
 
+    private static final long serialVersionUID = 1L;
+
     public KstatInstanceMap() {
 	super(NumericStringComparator.getInstance());
     }

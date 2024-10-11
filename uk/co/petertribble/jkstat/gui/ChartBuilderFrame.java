@@ -36,6 +36,8 @@ import uk.co.petertribble.jkstat.parse.ParseableJSONZipJKstat;
  */
 public class ChartBuilderFrame extends JFrame implements ActionListener {
 
+    private static final long serialVersionUID = 1L;
+
     private JMenuItem exitItem;
 
     /**

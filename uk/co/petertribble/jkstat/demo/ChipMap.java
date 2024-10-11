@@ -29,6 +29,8 @@ import java.util.TreeMap;
  */
 public class ChipMap extends TreeMap <Long, CoreMap> {
 
+    private static final long serialVersionUID = 1L;
+
     private long chip_id;
 
     public ChipMap(long chip_id) {

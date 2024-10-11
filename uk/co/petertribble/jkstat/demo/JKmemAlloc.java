@@ -33,6 +33,8 @@ import uk.co.petertribble.jkstat.client.*;
  */
 public class JKmemAlloc extends JKdemo {
 
+    private static final long serialVersionUID = 1L;
+
     private JKmemPanel kmPanel;
 
     private static final String VERSION = "JKmemAlloc version 1.2";

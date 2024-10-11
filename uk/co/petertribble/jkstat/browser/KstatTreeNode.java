@@ -34,6 +34,8 @@ import uk.co.petertribble.jkstat.api.Kstat;
  */
 public class KstatTreeNode extends DefaultMutableTreeNode {
 
+    private static final long serialVersionUID = 1L;
+
     private boolean nodeisleaf;
     private Map <String, KstatTreeNode> nodeMap;
 

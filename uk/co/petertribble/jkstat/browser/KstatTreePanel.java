@@ -45,6 +45,8 @@ import uk.co.petertribble.jingle.JingleTextPane;
 public class KstatTreePanel extends JPanel implements TreeSelectionListener,
     ActionListener {
 
+    private static final long serialVersionUID = 1L;
+
     private JKstat jkstat;
 
     // switch behaviour if using a SequencedJKstat

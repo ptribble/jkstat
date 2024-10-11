@@ -37,6 +37,8 @@ import java.awt.event.*;
  */
 public class KstatToolsMenu extends JMenu implements ActionListener {
 
+    private static final long serialVersionUID = 1L;
+
     private JMenuItem kstatbrowserItem;
     private JMenuItem jcpustateItem;
     private JMenuItem jiostatItem;

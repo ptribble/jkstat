@@ -39,6 +39,8 @@ import org.jfree.chart.plot.XYPlot;
  */
 public final class JLoadChart extends JFrame implements ActionListener {
 
+    private static final long serialVersionUID = 1L;
+
     private TimeSeries ts1;
     private TimeSeries ts5;
     private TimeSeries ts15;

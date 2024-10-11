@@ -34,6 +34,8 @@ import uk.co.petertribble.jingle.SpringUtilities;
  */
 public class AccessoryIOPanel extends KstatAccessoryPanel {
 
+    private static final long serialVersionUID = 1L;
+
     private int iomax = 1000;
     private int kiomax = 10000;
 

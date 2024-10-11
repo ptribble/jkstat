@@ -38,6 +38,8 @@ import uk.co.petertribble.jkstat.api.JKstat;
 public class KstatTableModel extends AbstractTableModel
 	implements ActionListener {
 
+    private static final long serialVersionUID = 1L;
+
     private static final String[] columnNames = { "Name", "Value", "Rate" };
     private DecimalFormat df = new DecimalFormat("##0.0###");
 

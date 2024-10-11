@@ -37,6 +37,8 @@ import uk.co.petertribble.jkstat.parse.ParseableJSONZipJKstat;
  */
 public class KstatAreaChartFrame extends KstatBaseChartFrame {
 
+    private static final long serialVersionUID = 1L;
+
     /**
      * Create a JFrame containing an area Chart of the rate of change of the
      * given statistic.

@@ -50,7 +50,7 @@ LIBDIR=${JKDIR}/lib
 JARLIBDIR=${LIBDIR}/java
 ARCHLIBDIR=${LIBDIR}/$(/usr/bin/isainfo -k)
 JAVAC=javac
-XFLAGS="-Xlint -Xlint:-serial"
+XFLAGS="-Xlint"
 
 JFJAR=${JARLIBDIR}/jfreechart-1.5.4.jar
 JSONJAR=${JARLIBDIR}/json-20240303.jar

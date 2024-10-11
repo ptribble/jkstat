@@ -34,6 +34,8 @@ import uk.co.petertribble.jingle.SpringUtilities;
  */
 public class AccessoryLoadPanel extends KstatAccessoryPanel {
 
+    private static final long serialVersionUID = 1L;
+
     private double lmax = 1.0;
     private static final double LSCALE = 256.0;
 

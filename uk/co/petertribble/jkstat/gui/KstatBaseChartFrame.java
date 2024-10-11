@@ -41,6 +41,8 @@ import org.jfree.chart.ChartPanel;
  */
 public class KstatBaseChartFrame extends JFrame implements ActionListener {
 
+    private static final long serialVersionUID = 1L;
+
     /**
      * A KstatBaseChart object for subclasses to use.
      */

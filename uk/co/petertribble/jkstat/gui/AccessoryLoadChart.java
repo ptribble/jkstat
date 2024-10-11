@@ -34,6 +34,8 @@ import java.awt.BorderLayout;
  */
 public class AccessoryLoadChart extends KstatAccessoryPanel {
 
+    private static final long serialVersionUID = 1L;
+
     private static final double LSCALE = 256.0;
 
     private JStripChart2 jsc;

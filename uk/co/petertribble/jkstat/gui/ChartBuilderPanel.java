@@ -43,6 +43,8 @@ import uk.co.petertribble.jingle.SpringUtilities;
 public class ChartBuilderPanel extends JPanel implements TreeSelectionListener,
     ActionListener {
 
+    private static final long serialVersionUID = 1L;
+
     private JKstat jkstat;
 
     private JTabbedPane jtp;

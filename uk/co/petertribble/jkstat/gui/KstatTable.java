@@ -34,6 +34,8 @@ import uk.co.petertribble.jkstat.api.JKstat;
  */
 public class KstatTable extends JTable {
 
+    private static final long serialVersionUID = 1L;
+
     private KstatTableModel ktm;
     JKstat jkstat;
     Kstat ks;

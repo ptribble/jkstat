@@ -35,6 +35,8 @@ import uk.co.petertribble.jkstat.client.*;
  */
 public class JIOstat extends JKdemo {
 
+    private static final long serialVersionUID = 1L;
+
     private IOstatTable iotable;
 
     private static final String VERSION = "JIOstat version 1.2";

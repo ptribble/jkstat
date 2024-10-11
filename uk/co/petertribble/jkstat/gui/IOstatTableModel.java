@@ -37,6 +37,8 @@ import uk.co.petertribble.jkstat.api.*;
 public final class IOstatTableModel extends AbstractTableModel
 		implements ActionListener {
 
+    private static final long serialVersionUID = 1L;
+
     private String[] columnNames = { "r/s", "w/s", "kr/s", "kw/s", "wait",
 				"actv", "svc_t", "%w", "%b", "device"};
 

@@ -32,6 +32,8 @@ import java.io.Serializable;
  */
 public class KstatData implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+
     /**
      * Inner class representing the Kstat data type. See
      * /usr/include/sys/kstat.h for details, as the definitions here are

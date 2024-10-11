@@ -37,6 +37,8 @@ import uk.co.petertribble.jkstat.client.*;
  */
 public class JNetLoad extends JKdemo implements ActionListener {
 
+    private static final long serialVersionUID = 1L;
+
     private JKstat jkstat;
     private KstatAccessorySet kas;
 

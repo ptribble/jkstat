@@ -36,6 +36,8 @@ import javax.swing.SwingConstants;
  */
 public class AccessoryCpuPanel extends KstatAccessoryPanel {
 
+    private static final long serialVersionUID = 1L;
+
     private long luser;
     private long lsys;
     private long lwait;

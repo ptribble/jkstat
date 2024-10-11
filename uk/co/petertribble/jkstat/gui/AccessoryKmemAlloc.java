@@ -32,6 +32,8 @@ import java.text.DecimalFormat;
  */
 public class AccessoryKmemAlloc extends KstatAccessoryPanel {
 
+    private static final long serialVersionUID = 1L;
+
     private DecimalFormat df = new DecimalFormat("##0.0#");
 
     private JProgressBar jpAlloc;

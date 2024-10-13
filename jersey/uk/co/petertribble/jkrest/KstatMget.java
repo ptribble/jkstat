@@ -14,7 +14,7 @@ public class KstatMget {
 			   @PathParam("instance") String instance,
 			   @PathParam("namespecifier") String name) {
 	StringBuilder sb = new StringBuilder();
-	sb.append("{");
+	sb.append('{');
 	boolean first = true;
 	for (String iname : name.split(";")) {
 	    KstatFilter ksf = new KstatFilter(jkstat);
@@ -27,22 +27,22 @@ public class KstatMget {
 	    if (first) {
 		first = false;
 	    } else {
-		sb.append(",");
+		sb.append(',');
 	    }
-	    sb.append("\"").append(iname).append("\":[");
+	    sb.append('\"').append(iname).append("\":[");
 	    boolean kfirst = true;
 	    for (Kstat ks : ksf.getKstats()) {
 		if (kfirst) {
 		    kfirst = false;
 		} else {
-		    sb.append(",");
+		    sb.append(',');
 		}
-		ks = jkstat.getKstat(ks);
-		sb.append(ks.toJSON());
+		Kstat ks2 = jkstat.getKstat(ks);
+		sb.append(ks2.toJSON());
 	    }
-	    sb.append("]");
+	    sb.append(']');
 	}
-	sb.append("}");
+	sb.append('}');
 	return sb.toString();
     }
 }

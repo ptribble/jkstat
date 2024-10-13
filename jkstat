@@ -148,11 +148,6 @@ case $SUBCOMMAND in
     JKCLASS=${DEMOPKG}.JLoadChart
     ;;
 
-'stripcpu')
-    JKCLASS=${DEMOPKG}.JCpuState
-    EXTRAFLAGS="chart"
-    ;;
-
 'mpstat')
     JKCLASS=${DEMOPKG}.JMPstat
     ;;
@@ -219,4 +214,4 @@ esac
 #
 # launch the class specified
 #
-LD_LIBRARY_PATH=${ARCHLIBDIR} $JAVA ${JFLAGS} -Dswing.aatext=true -cp "${ALLJARS}" ${JKCLASS} ${EXTRAFLAGS} "$@"
+LD_LIBRARY_PATH=${ARCHLIBDIR} $JAVA ${JFLAGS} -Dswing.aatext=true -cp "${ALLJARS}" ${JKCLASS} "$@"

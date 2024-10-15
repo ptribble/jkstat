@@ -37,7 +37,7 @@ public interface JKstatMXMBean {
      *
      * @return a Set of all the kstats
      */
-    public Set <Kstat> getKstats();
+    Set <Kstat> getKstats();
 
     /**
      * Return a given kstat.
@@ -48,7 +48,7 @@ public interface JKstatMXMBean {
      *
      * @return the desired kstat
      */
-    public Kstat getKstat(String module, int inst, String name);
+    Kstat getKstat(String module, int inst, String name);
 
     /**
      * Return the value of a given statistic.
@@ -60,6 +60,6 @@ public interface JKstatMXMBean {
      *
      * @return the value of the desired statistic for the desired kstat
      */
-    public Object getKstatData(String module, int inst, String name,
+     Object getKstatData(String module, int inst, String name,
 			String statistic);
 }

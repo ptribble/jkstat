@@ -52,7 +52,7 @@ public class KstatData implements Serializable {
         private final int int_type;
         private final boolean numeric;
 
-        private Type(int int_type, boolean numeric) {
+        Type(int int_type, boolean numeric) {
             this.int_type = int_type;
             this.numeric = numeric;
         }

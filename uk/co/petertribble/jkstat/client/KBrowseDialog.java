@@ -25,7 +25,6 @@ package uk.co.petertribble.jkstat.client;
 import java.awt.event.*;
 import java.io.IOException;
 import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Vector;

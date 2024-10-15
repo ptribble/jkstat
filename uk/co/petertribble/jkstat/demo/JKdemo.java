@@ -202,19 +202,19 @@ public class JKdemo extends JFrame implements ActionListener {
 
 	sleepItem1 = new JRadioButtonMenuItem(
 					KstatResources.getString("SLEEP.1"),
-					(interval == 1));
+					interval == 1);
 	sleepItem1.addActionListener(this);
 	sleepItem2 = new JRadioButtonMenuItem(
 					KstatResources.getString("SLEEP.2"),
-					(interval == 2));
+					interval == 2);
 	sleepItem2.addActionListener(this);
 	sleepItem5 = new JRadioButtonMenuItem(
 					KstatResources.getString("SLEEP.5"),
-					(interval == 5));
+					interval == 5);
 	sleepItem5.addActionListener(this);
 	sleepItem10 = new JRadioButtonMenuItem(
 					KstatResources.getString("SLEEP.10"),
-					(interval == 10));
+					interval == 10);
 	sleepItem10.addActionListener(this);
 
 	jms.add(sleepItem1);

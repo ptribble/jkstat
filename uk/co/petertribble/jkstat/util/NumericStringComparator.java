@@ -23,7 +23,7 @@
  * Copyright 2007 Sun Microsystems, Inc. All rights reserved.
  * Use is subject to license terms.
  *
- * ident	"@(#)NumericStringComparator.java	1.1	07/02/27 SMI"
+ * Copyright 2023 Peter Tribble.
  */
 package uk.co.petertribble.jkstat.util;
 
@@ -95,14 +95,14 @@ public class NumericStringComparator implements Comparator <String> {
 		    }
 		    // if different lengths the longer is larger
 		    if (n1 != n2) {
-			return (n1 - n2);
+			return n1 - n2;
 		    }
 		    // same length, compare the digits
 		    while (i < n1) {
 			c1 = s1.charAt(i);
 			c2 = s2.charAt(i);
 			if (c1 != c2) {
-			    return (c1 - c2);
+			    return c1 - c2;
 			}
 			++i;
 		    }
@@ -115,10 +115,10 @@ public class NumericStringComparator implements Comparator <String> {
 		}
 	    }
 	    if (c1 != c2) {
-		return (c1 - c2);
+		return c1 - c2;
 	    }
 	    ++i;
 	}
-	return (len1 - len2);
+	return len1 - len2;
     }
 }

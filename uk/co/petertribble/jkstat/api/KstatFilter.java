@@ -355,7 +355,7 @@ public class KstatFilter {
 		: fq.instance.intValue() == ks.getInst();
 	boolean nmatch = (fq.name == null) ? true
 		: fq.name.equals(ks.getName());
-	return (mmatch && imatch && nmatch);
+	return mmatch && imatch && nmatch;
     }
 
     /**

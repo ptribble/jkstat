@@ -123,7 +123,7 @@ public class AccessoryBgePanel extends KstatAccessoryPanel {
 		double ddscale = w/sumdelta;
 		g2.setPaint(Color.GREEN);
 		for (int i = 0; i < STATNUM; i++) {
-		    g2.fill(new Rectangle2D.Double(0, (2*i)*dh,
+		    g2.fill(new Rectangle2D.Double(0, 2*i*dh,
 			ddscale*((double) deltas[i]), dh));
 		}
 	    }

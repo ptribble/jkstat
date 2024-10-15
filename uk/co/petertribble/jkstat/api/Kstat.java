@@ -274,7 +274,7 @@ public class Kstat implements Serializable, Comparable<Kstat> {
      * @return the age of this {@code Kstat} in nanoseconds
      */
     public long getAge() {
-	return (snaptime - crtime);
+	return snaptime - crtime;
     }
 
     /**
@@ -408,9 +408,9 @@ public class Kstat implements Serializable, Comparable<Kstat> {
     public boolean equals(Object o) {
 	if (o instanceof Kstat) {
 	    Kstat ks = (Kstat) o;
-	    return (module.equals(ks.getModule())
-		    && (instance == ks.getInst())
-		    && name.equals(ks.getName()));
+	    return module.equals(ks.getModule())
+		&& (instance == ks.getInst())
+		&& name.equals(ks.getName());
         }
         return false;
     }
@@ -446,7 +446,7 @@ public class Kstat implements Serializable, Comparable<Kstat> {
 	    return module.compareTo(ks.getModule());
 	}
 	if (instance != ks.getInst()) {
-	    return (instance - ks.getInst());
+	    return instance - ks.getInst();
 	}
 	return NumericStringComparator.getInstance().compare(name,
 							ks.getName());

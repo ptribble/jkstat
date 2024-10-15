@@ -93,7 +93,7 @@ public class KClientConfig {
      * useful
      */
     public boolean isConfigured() {
-	return ((url_string != null) && (!"".equals(url_string)));
+	return (url_string != null) && (!"".equals(url_string));
     }
 
     /**

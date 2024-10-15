@@ -126,8 +126,8 @@ public class KstatCmd {
 		    tflag = true;
 		    i++;
 		    ttype = args[i];
-		    if (!("u".equals(ttype)) && !("d".equals(ttype))) {
-			usage();
+		    if (!"u".equals(ttype) && !"d".equals(ttype)) {
+			usage("invalid argument to -T flag");
 		    }
 		} else {
 		    usage("missing argument to -T flag");

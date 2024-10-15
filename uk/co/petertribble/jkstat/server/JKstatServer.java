@@ -51,7 +51,7 @@ public class JKstatServer {
      * @return a List of available Kstats
      */
     public String listKstats() {
-	return (new KstatSet(jkstat)).toJSON();
+	return new KstatSet(jkstat).toJSON();
     }
 
     /**

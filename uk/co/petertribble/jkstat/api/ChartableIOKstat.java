@@ -81,7 +81,7 @@ public class ChartableIOKstat extends ChartableKstat {
 	rateMap.put("actv", dj);
 
 	// service time
-	double ds = (nr-r)+(nw-w);
+	double ds = nr + nw - r - w;
 	if (((int) ds) == 0) {
 	    rateMap.put("svc_t", 0.0);
 	} else {

@@ -55,7 +55,7 @@ public class KstatData implements Serializable {
         private Type(int int_type, boolean numeric) {
             this.int_type = int_type;
             this.numeric = numeric;
-        };
+        }
 
 	/**
 	 * Return the numeric value of this Type.

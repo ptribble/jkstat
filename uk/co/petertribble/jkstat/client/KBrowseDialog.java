@@ -144,9 +144,7 @@ public class KBrowseDialog implements ActionListener {
 				JOptionPane.OK_CANCEL_OPTION,
 				JOptionPane.QUESTION_MESSAGE,
 				null, options, options[0]);
-	} catch (UnknownHostException e) {
-            System.err.println(e.getMessage());
-        } catch (IOException e) {
+	} catch (IOException e) {
             System.err.println(e.getMessage());
         }
     }

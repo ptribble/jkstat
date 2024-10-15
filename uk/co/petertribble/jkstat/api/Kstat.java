@@ -202,7 +202,7 @@ public class Kstat implements Serializable, Comparable<Kstat> {
      */
     public boolean isNumeric(String s) {
 	KstatData kd = dataMap.get(s);
-	return (kd == null) ? false : kd.isNumeric();
+	return (kd != null) && kd.isNumeric();
     }
 
     /**

@@ -43,23 +43,18 @@ public class KstatCmd {
     // argument handling
     private boolean pflag;
     private boolean lflag;
-    private boolean cflag;
     private String showclass;
     private boolean tflag;
     private String ttype;
 
     // usage 1 is [-m module] [-i instance] [-n name] [-s statistic]
-    private boolean mflag;
     private String showmodule;
-    private boolean iflag;
     private String showinstance;
-    private boolean nflag;
     private String showname;
     private boolean sflag;
     private String showstatistic;
 
-    // optional interval and count
-    private int interval;
+    // optional count
     int count;
 
     /**
@@ -72,6 +67,11 @@ public class KstatCmd {
 	jkstat = new NativeJKstat();
 	Set <String> statspecs = new HashSet <String> ();
 
+	boolean cflag = false;
+	boolean iflag = false;
+	boolean mflag = false;
+	boolean nflag = false;
+	int interval = 0;
 	/*
 	 * A subset of the kstat(1) command line arguments are supported.
 	 */

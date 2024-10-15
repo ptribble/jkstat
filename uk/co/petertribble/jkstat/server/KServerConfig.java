@@ -36,18 +36,14 @@ import java.util.Map;
 /**
  * Hold the configuration of a JKstat server.
  *
+ * The default server port is 8080.
+ *
  * @author Peter Tribble
  */
 public class KServerConfig {
 
     private int port = 8080;
     private boolean registermdns;
-
-    /**
-     * Construct a default KServerConfig. The default port is set to 8080
-     */
-    public KServerConfig() {
-    }
 
     /**
      * Configure a KServerConfig from a configuration file.

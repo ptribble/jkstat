@@ -37,7 +37,6 @@ public class KstatSet {
 
     private Set <Kstat> addedKstats;
     private Set <Kstat> deletedKstats;
-    private Set <Kstat> newKstats;
     private Set <Kstat> currentKstats;
 
     private JKstat jkstat;
@@ -128,11 +127,8 @@ public class KstatSet {
 	 * what kstats have been added and removed.
 	 */
 	Set <Kstat> oldKstats = currentKstats;
-	if (ksf == null) {
-	    newKstats = jkstat.getKstats();
-	} else {
-	    newKstats = ksf.getKstats();
-	}
+	Set <Kstat> newKstats =
+	    (ksf == null) ? jkstat.getKstats() : ksf.getKstats();
 	addedKstats = new HashSet <Kstat> (newKstats);
 	addedKstats.removeAll(oldKstats);
 	deletedKstats = new HashSet <Kstat> (oldKstats);

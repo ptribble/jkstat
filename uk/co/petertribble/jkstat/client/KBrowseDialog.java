@@ -87,7 +87,9 @@ public class KBrowseDialog implements ActionListener {
 	     * we'll need to connect to for that name.
 	     */
 	    for (ServiceInfo info : serviceInfos) {
-		serviceMap.put(info.getName(), info.getURL());
+		for (String srvurl : info.getURLs()) {
+		    serviceMap.put(info.getName(), srvurl);
+		}
 	    }
 
 	    kcc = new KClientConfig();

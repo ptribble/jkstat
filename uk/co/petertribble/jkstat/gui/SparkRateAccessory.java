@@ -96,8 +96,9 @@ public class SparkRateAccessory extends KstatAccessoryPanel {
 	updateKstat();
 	long nr = ks.longData(stat);
 	jsc.add(nr-r);
+	// the delay may be negative if externally driven, hence absolute
 	if (tips) {
-	    setToolTipText(tiptext + " " + scale*1000.0*(nr-r)/delay);
+	    setToolTipText(tiptext + " " + scale*1000.0*(nr-r)/Math.abs(delay));
 	}
 	r = nr;
     }

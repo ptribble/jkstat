@@ -77,6 +77,13 @@ public class KstatAccessoryPanel extends JPanel implements ActionListener {
      * same arguments as the first part of their constructor, then have code
      * to create the panel contents, and then call startLoop().
      *
+     * If the requested interval is less than or equal to zero, then this
+     * panel will not update itself. In that case, it is assumed that updates
+     * are initiated externally, as KstatAccessorySet would.
+     *
+     * Avoid passing in an interval of 0, as it may be used as the divisor
+     * to calculate a rate.
+     *
      * @param ks the Kstat to be represented by this accessory
      * @param interval the desired update interval, in seconds
      * @param jkstat a JKstat object

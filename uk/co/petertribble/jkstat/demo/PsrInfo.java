@@ -50,19 +50,19 @@ public class PsrInfo {
 	ksf.addFilter("cpu_info:::");
 
 	if (flag_t) {
-	    display_t(new TreeSet<>(ksf.getKstats()));
+	    displayT(new TreeSet<>(ksf.getKstats()));
 	} else if (flag_p && flag_v) {
-	    display_vp();
+	    displayVP();
 	} else if (flag_v) {
-	    display_v(new TreeSet<>(ksf.getKstats()));
+	    displayV(new TreeSet<>(ksf.getKstats()));
 	} else if (flag_p) {
-	    display_p();
+	    displayP();
 	} else {
-	    display_plain(new TreeSet<>(ksf.getKstats()));
+	    displayPlain(new TreeSet<>(ksf.getKstats()));
 	}
     }
 
-    private void display_plain(Set <Kstat> kstats) {
+    private void displayPlain(Set <Kstat> kstats) {
 	DateFormat df = DateFormat.getDateTimeInstance(DateFormat.SHORT,
 					    DateFormat.SHORT);
 	for (Kstat ks : kstats) {
@@ -73,11 +73,11 @@ public class PsrInfo {
 	}
     }
 
-    private void display_p() {
+    private void displayP() {
 	System.out.println(new ProcessorTree(jkstat).numChips());
     }
 
-    private void display_t(Set <Kstat> kstats) {
+    private void displayT(Set <Kstat> kstats) {
 	if (flag_p) {
 	    System.out.println(new ProcessorTree(jkstat).numChips());
 	} else if (flag_c) {
@@ -87,7 +87,7 @@ public class PsrInfo {
 	}
     }
 
-    private void display_v(Set <Kstat> kstats) {
+    private void displayV(Set <Kstat> kstats) {
 	for (Kstat ks : kstats) {
 	    System.out.println(ProcessorTree.details(jkstat.getKstat(ks)));
 	}
@@ -96,7 +96,7 @@ public class PsrInfo {
     /*
      * A slightly different version of psrinfo -vp
      */
-    private void display_vp() {
+    private void displayVP() {
 	ProcessorTree proctree = new ProcessorTree(jkstat);
 
 	/*

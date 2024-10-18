@@ -47,7 +47,7 @@ public class ProcessorTree {
 	KstatFilter ksf = new KstatFilter(jkstat);
 	ksf.setFilterClass("misc");
 	ksf.addFilter("cpu_info:::");
-	build_tree(ksf.getKstats());
+	buildTree(ksf.getKstats());
     }
 
     /*
@@ -60,7 +60,7 @@ public class ProcessorTree {
      * We describe non-threaded cores as cores with a single thread.
      */
     @SuppressWarnings("unchecked")
-    private void build_tree(Set <Kstat> kstats) {
+    private void buildTree(Set <Kstat> kstats) {
 	map = new TreeMap<>();
 
 	for (Kstat iks : kstats) {

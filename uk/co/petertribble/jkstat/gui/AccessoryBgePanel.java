@@ -80,7 +80,7 @@ public class AccessoryBgePanel extends KstatAccessoryPanel {
 	startLoop();
     }
 
-    private void getHistoData() {
+    private void loadHistoData() {
 	sumdelta = 0;
 	sumvalues = 0;
 	for (int i = 0; i < STATNUM; i++) {
@@ -94,7 +94,7 @@ public class AccessoryBgePanel extends KstatAccessoryPanel {
     @Override
     public void updateAccessory() {
 	updateKstat();
-	getHistoData();
+	loadHistoData();
 	repaint();
 	for (int i = 0; i < STATNUM; i++) {
 	    oldvalues[i] = newvalues[i];

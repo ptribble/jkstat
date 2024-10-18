@@ -48,8 +48,7 @@ public class JKmemPanel extends JingleVPanel {
      */
     public JKmemPanel(JKstat jkstat, int interval) {
 
-	List <KstatAccessoryPanel> vkstat =
-	    new ArrayList <KstatAccessoryPanel> ();
+	List <KstatAccessoryPanel> vkstat = new ArrayList<>();
 
 	setLayout(new SpringLayout());
 
@@ -60,7 +59,7 @@ public class JKmemPanel extends JingleVPanel {
 	ksf.setFilterClass("kmem_cache");
 	ksf.addFilter("unix:0::");
 
-	Set <Kstat> kms = new TreeSet <Kstat> ();
+	Set <Kstat> kms = new TreeSet<>();
 	for (Kstat ks : ksf.getKstats()) {
 	    if (ks.getName().startsWith("kmem_alloc_")) {
 		kms.add(ks);

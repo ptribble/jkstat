@@ -90,7 +90,7 @@ public class KstatSetAreaChart extends KstatBaseChart {
     }
 
     private void init(String statistic) {
-	List <String> statistics = new ArrayList <String> ();
+	List <String> statistics = new ArrayList<>();
 	statistics.add(statistic);
 	init(statistics);
     }
@@ -98,7 +98,7 @@ public class KstatSetAreaChart extends KstatBaseChart {
     private void init(List <String> statistics) {
 	statlist = statistics;
 	dataset = new TimeTableXYDataset();
-	kMap = new HashMap <Kstat, ChartableKstat> ();
+	kMap = new HashMap<>();
 
 	for (Kstat ks : kss.getKstats()) {
 	    kMap.put(ks, new ChartableKstat(jkstat, ks));

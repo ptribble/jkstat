@@ -63,10 +63,9 @@ public class JNetSpark extends JKdemo implements ActionListener {
 
 	this.jkstat = jkstat;
 
-	itemMap = new HashMap <JMenuItem, Kstat> ();
+	itemMap = new HashMap<>();
 
-	List <KstatAccessoryPanel> kaplist =
-	    new ArrayList <KstatAccessoryPanel> ();
+	List <KstatAccessoryPanel> kaplist = new ArrayList<>();
 
 	// create a main panel
 	JPanel mainPanel = new JPanel();

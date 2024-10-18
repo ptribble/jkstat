@@ -52,7 +52,7 @@ public class JSONParser {
      * contains the objects describing the statistics and their values.
      */
     private void parse(BufferedReader in) {
-	kstats = new HashSet <Kstat> ();
+	kstats = new HashSet<>();
 	try {
 	    JSONArray ja = new JSONArray(new JSONTokener(in));
 	    for (int i = 0; i < ja.length(); i++) {
@@ -106,7 +106,7 @@ public class JSONParser {
     }
 
     private static Set <Kstat> getKstats(JSONArray ja) {
-	Set <Kstat> nkstats = new HashSet <Kstat> ();
+	Set <Kstat> nkstats = new HashSet<>();
 	try {
 	    for (int i = 0; i < ja.length(); i++) {
 		JSONObject jo = ja.getJSONObject(i);

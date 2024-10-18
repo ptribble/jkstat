@@ -49,7 +49,7 @@ public class KstatTreeNode extends DefaultMutableTreeNode {
     @SuppressWarnings("rawtypes")
     public KstatTreeNode(String s, Map m) {
 	setUserObject(s);
-	nodeMap = new HashMap <String, KstatTreeNode> ();
+	nodeMap = new HashMap<>();
 	for (Object o : m.keySet()) {
 	    String ss = (String) o;
 	    Object oo = m.get(o);
@@ -69,7 +69,7 @@ public class KstatTreeNode extends DefaultMutableTreeNode {
      */
     public KstatTreeNode(String s) {
 	setUserObject(s);
-	nodeMap = new HashMap <String, KstatTreeNode> ();
+	nodeMap = new HashMap<>();
     }
 
     /**

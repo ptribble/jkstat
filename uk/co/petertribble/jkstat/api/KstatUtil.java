@@ -56,7 +56,7 @@ public class KstatUtil {
 	    }
 	    ss = ks.statistics();
 	}
-	Set <String> ns = new TreeSet <String> ();
+	Set <String> ns = new TreeSet<>();
 	for (String s : ss) {
 	    if (ks.isNumeric(s)) {
 		ns.add(s);
@@ -78,7 +78,7 @@ public class KstatUtil {
 	if (ksa == null) {
 	    return null;
 	}
-	Set <String> ns = new TreeSet <String> ();
+	Set <String> ns = new TreeSet<>();
 	for (Kstat ks : ksa.getKstats()) {
 	    ns.addAll(numericStatistics(jkstat, ks));
 	}

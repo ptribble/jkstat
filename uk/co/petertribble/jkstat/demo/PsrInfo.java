@@ -50,15 +50,15 @@ public class PsrInfo {
 	ksf.addFilter("cpu_info:::");
 
 	if (flag_t) {
-	    display_t(new TreeSet <Kstat> (ksf.getKstats()));
+	    display_t(new TreeSet<>(ksf.getKstats()));
 	} else if (flag_p && flag_v) {
 	    display_vp();
 	} else if (flag_v) {
-	    display_v(new TreeSet <Kstat> (ksf.getKstats()));
+	    display_v(new TreeSet<>(ksf.getKstats()));
 	} else if (flag_p) {
 	    display_p();
 	} else {
-	    display_plain(new TreeSet <Kstat> (ksf.getKstats()));
+	    display_plain(new TreeSet<>(ksf.getKstats()));
 	}
     }
 

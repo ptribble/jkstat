@@ -52,7 +52,7 @@ public abstract class JKstat {
      * Creates a new {@code JKstat} object.
      */
     public JKstat() {
-	kstats = new HashSet <Kstat> ();
+	kstats = new HashSet<>();
     }
 
     /**
@@ -72,7 +72,7 @@ public abstract class JKstat {
 	    chainid = enumerate();
 	    enumerated = true;
 	}
-	return new HashSet <Kstat> (kstats);
+	return new HashSet<>(kstats);
     }
 
     /**

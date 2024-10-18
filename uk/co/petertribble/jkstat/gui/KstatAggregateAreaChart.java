@@ -89,7 +89,7 @@ public class KstatAggregateAreaChart extends KstatBaseChart {
     }
 
     private void init(String statistic) {
-	List <String> statistics = new ArrayList <String> ();
+	List <String> statistics = new ArrayList<>();
 	statistics.add(statistic);
 	init(statistics);
     }

@@ -66,8 +66,8 @@ public class KstatSet {
 	chainid = jkstat.getKCID();
 	ksf = null;
 	currentKstats = jkstat.getKstats();
-	addedKstats = new HashSet <Kstat> ();
-	deletedKstats = new HashSet <Kstat> ();
+	addedKstats = new HashSet<>();
+	deletedKstats = new HashSet<>();
     }
 
     /**
@@ -96,8 +96,8 @@ public class KstatSet {
 	this.ksf = ksf;
 	this.title = title;
 	currentKstats = ksf.getKstats();
-	addedKstats = new HashSet <Kstat> ();
-	deletedKstats = new HashSet <Kstat> ();
+	addedKstats = new HashSet<>();
+	deletedKstats = new HashSet<>();
     }
 
     /**
@@ -129,9 +129,9 @@ public class KstatSet {
 	Set <Kstat> oldKstats = currentKstats;
 	Set <Kstat> newKstats =
 	    (ksf == null) ? jkstat.getKstats() : ksf.getKstats();
-	addedKstats = new HashSet <Kstat> (newKstats);
+	addedKstats = new HashSet<>(newKstats);
 	addedKstats.removeAll(oldKstats);
-	deletedKstats = new HashSet <Kstat> (oldKstats);
+	deletedKstats = new HashSet<>(oldKstats);
 	deletedKstats.removeAll(newKstats);
 	/*
 	 * Save current state.
@@ -198,7 +198,7 @@ public class KstatSet {
      * in this KstatSet
      */
     public Set <String> getModuleSet() {
-	Set <String> ss = new HashSet <String> ();
+	Set <String> ss = new HashSet<>();
 	for (Kstat ks : currentKstats) {
 	    ss.add(ks.getModule());
 	}
@@ -212,7 +212,7 @@ public class KstatSet {
      * in this KstatSet
      */
     public Set <String> getInstanceSet() {
-	Set <String> ss = new HashSet <String> ();
+	Set <String> ss = new HashSet<>();
 	for (Kstat ks : currentKstats) {
 	    ss.add(ks.getInstance());
 	}
@@ -226,7 +226,7 @@ public class KstatSet {
      * in this KstatSet
      */
     public Set <String> getNameSet() {
-	Set <String> ss = new HashSet <String> ();
+	Set <String> ss = new HashSet<>();
 	for (Kstat ks : currentKstats) {
 	    ss.add(ks.getName());
 	}
@@ -240,7 +240,7 @@ public class KstatSet {
      * in this KstatSet
      */
     public Set <String> getClassSet() {
-	Set <String> ss = new HashSet <String> ();
+	Set <String> ss = new HashSet<>();
 	for (Kstat ks : currentKstats) {
 	    ss.add(ks.getKstatClass());
 	}

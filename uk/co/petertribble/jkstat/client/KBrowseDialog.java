@@ -102,8 +102,8 @@ public class KBrowseDialog implements ActionListener {
 	     *  - if authenticated prompt for password
 	     *  - Connect and Cancel buttons
 	     */
-	    servicebox = new JComboBox <String> (new Vector<String>(serviceMap.keySet()));
-	    protobox = new JComboBox <String> (KClientConfig.PROTOCOLS);
+	    servicebox = new JComboBox<>(new Vector<>(serviceMap.keySet()));
+	    protobox = new JComboBox<>(KClientConfig.PROTOCOLS);
 	    protobox.setSelectedIndex(KClientConfig.CLIENT_XMLRPC);
 	    ufield = new JTextField();
 	    pfield = new JPasswordField();

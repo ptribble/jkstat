@@ -54,7 +54,7 @@ public class ParseableJSONZipJKstat extends SequencedJKstat {
      * @throws IOException if there's a problem opening the zip file
      */
     public ParseableJSONZipJKstat(String name) throws IOException {
-	this(new ZipFile(name), new HashMap <Integer, JSONParser>(), false);
+	this(new ZipFile(name), new HashMap<>(), false);
     }
 
     /**
@@ -67,7 +67,7 @@ public class ParseableJSONZipJKstat extends SequencedJKstat {
      */
     public ParseableJSONZipJKstat(String name, boolean cached)
 		throws IOException {
-	this(new ZipFile(name), new HashMap <Integer, JSONParser>(), cached);
+	this(new ZipFile(name), new HashMap<>(), cached);
     }
 
     /**
@@ -84,7 +84,7 @@ public class ParseableJSONZipJKstat extends SequencedJKstat {
 	this.zf = zf;
 	this.ppmap = ppmap;
 	this.cached = cached;
-	ArrayList <ZipEntry> al = new ArrayList <ZipEntry> ();
+	ArrayList <ZipEntry> al = new ArrayList<>();
 	for (Enumeration<? extends ZipEntry> e = zf.entries(); e.hasMoreElements(); ) {
 	    al.add(e.nextElement());
 	}

@@ -63,7 +63,7 @@ public class KClientDialog implements ActionListener {
 	 */
 	sfield = new JTextField();
 	portfield = new JTextField("8080");
-	protobox = new JComboBox <String> (KClientConfig.PROTOCOLS);
+	protobox = new JComboBox<>(KClientConfig.PROTOCOLS);
 	protobox.setSelectedIndex(defproto);
 	ufield = new JTextField();
 	pfield = new JPasswordField();

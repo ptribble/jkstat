@@ -61,7 +61,7 @@ public class ProcessorTree {
      */
     @SuppressWarnings("unchecked")
     private void build_tree(Set <Kstat> kstats) {
-	map = new TreeMap <Long, ChipMap> ();
+	map = new TreeMap<>();
 
 	for (Kstat iks : kstats) {
 	    Kstat ks = jkstat.getKstat(iks);
@@ -187,7 +187,7 @@ public class ProcessorTree {
      */
     public Set <Long> getCores(long chipid) {
 	ChipMap m = map.get(chipid);
-	Set <Long> set = new TreeSet <Long> ();
+	Set <Long> set = new TreeSet<>();
 	if (m != null) {
 	    set.addAll(m.keySet());
 	}
@@ -251,7 +251,7 @@ public class ProcessorTree {
      * @return all the cpu_info Kstats for the given chip
      */
     public Set <Kstat> chipInfoStats(long chipid) {
-	Set <Kstat> kss = new TreeSet <Kstat> ();
+	Set <Kstat> kss = new TreeSet<>();
 	ChipMap m = map.get(chipid);
 	if (m != null) {
 	    for (CoreMap mm : m.values()) {
@@ -270,7 +270,7 @@ public class ProcessorTree {
      * @return all the cpu_stat Kstats for the given chip
      */
     public Set <Kstat> chipStats(long chipid) {
-	Set <Kstat> kss = new TreeSet <Kstat> ();
+	Set <Kstat> kss = new TreeSet<>();
 	for (Kstat ks : chipInfoStats(chipid)) {
 	    kss.add(makeCpuKstat(ks));
 	}
@@ -287,7 +287,7 @@ public class ProcessorTree {
      * @return all the cpu_info Kstats for the given core
      */
     public Set <Kstat> coreInfoStats(long chipid, long coreid) {
-	Set <Kstat> kss = new TreeSet <Kstat> ();
+	Set <Kstat> kss = new TreeSet<>();
 	ChipMap m = map.get(chipid);
 	if (m == null) {
 	    return kss;
@@ -310,7 +310,7 @@ public class ProcessorTree {
      * @return all the cpu_stat Kstats for the given core
      */
     public Set <Kstat> coreStats(long chipid, long coreid) {
-	Set <Kstat> kss = new TreeSet <Kstat> ();
+	Set <Kstat> kss = new TreeSet<>();
 	for (Kstat ks : coreInfoStats(chipid, coreid)) {
 	    kss.add(makeCpuKstat(ks));
 	}

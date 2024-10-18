@@ -269,7 +269,7 @@ public class KstatChartFrame extends KstatBaseChartFrame {
 	    if (args.length == 1) {
 		usage("Invalid arguments.");
 	    }
-	    List <String> arglist = new ArrayList <String> ();
+	    List <String> arglist = new ArrayList<>();
 	    for (int i = 1; i < args.length; i++) {
 		arglist.add(args[i]);
 	    }

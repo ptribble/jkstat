@@ -59,7 +59,7 @@ public final class IOstatTableModel extends AbstractTableModel
 	this.kss = kss;
 	this.jkstat = jkstat;
 
-	iodata = new ArrayList <ChartableIOKstat> ();
+	iodata = new ArrayList<>();
 	for (Kstat ks : kss.getKstats()) {
 	    iodata.add(new ChartableIOKstat(jkstat, ks));
 	}

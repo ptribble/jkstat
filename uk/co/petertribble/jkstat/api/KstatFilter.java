@@ -54,8 +54,8 @@ public class KstatFilter {
      */
     public KstatFilter(JKstat jkstat) {
 	this.jkstat = jkstat;
-	filterList = new HashSet <FilterQuartet> ();
-	antiFilterList = new HashSet <FilterQuartet> ();
+	filterList = new HashSet<>();
+	antiFilterList = new HashSet<>();
     }
 
     /**
@@ -165,7 +165,7 @@ public class KstatFilter {
      * @return the {@code Kstat}s that match the filter
      */
     public Set <Kstat> getKstats() {
-	Set <Kstat> matchset = new HashSet <Kstat> ();
+	Set <Kstat> matchset = new HashSet<>();
 	for (Kstat ks : jkstat.getKstats()) {
 	    if (matchFilter(ks)) {
 		matchset.add(ks);
@@ -244,7 +244,7 @@ public class KstatFilter {
      * given Kstat.
      */
     private Set <String> matchedStats(Kstat ks) {
-	Set <String> nstats = new TreeSet <String> ();
+	Set <String> nstats = new TreeSet<>();
 	/*
 	 * Because matchMIN is called before this, we know there has to be
 	 * at least one positive filter.

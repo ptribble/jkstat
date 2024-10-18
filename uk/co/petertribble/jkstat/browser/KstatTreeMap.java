@@ -50,10 +50,8 @@ public class KstatTreeMap {
 	 * and populate them with the contents of the list.
 	 */
 	kstatMap = new KstatModuleMap();
-	kstatTypeMap = new TreeMap <String, KstatModuleMap> (
-		NumericStringComparator.getInstance());
-	kstatClassMap = new TreeMap <String, KstatModuleMap> (
-		NumericStringComparator.getInstance());
+	kstatTypeMap = new TreeMap<>(NumericStringComparator.getInstance());
+	kstatClassMap = new TreeMap<>(NumericStringComparator.getInstance());
 	for (Kstat ks : kss.getKstats()) {
 	    addKstat(ks);
 	}

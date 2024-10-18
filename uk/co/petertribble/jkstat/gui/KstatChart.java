@@ -93,13 +93,13 @@ public class KstatChart extends KstatBaseChart {
     }
 
     private void init(String statistic) {
-	List <String> statistics = new ArrayList <String> ();
+	List <String> statistics = new ArrayList<>();
 	statistics.add(statistic);
 	init(statistics);
     }
 
     private void init(List <String> statistics) {
-	tsmap = new HashMap <String, TimeSeries> ();
+	tsmap = new HashMap<>();
 	dataset = new TimeSeriesCollection();
 
 	// this is all the statistics

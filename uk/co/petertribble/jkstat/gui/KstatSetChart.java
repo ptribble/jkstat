@@ -77,15 +77,15 @@ public class KstatSetChart extends KstatBaseChart {
     }
 
     private void init(String statistic) {
-	List <String> statistics = new ArrayList <String> ();
+	List <String> statistics = new ArrayList<>();
 	statistics.add(statistic);
 	init(statistics);
     }
 
     private void init(List <String> statistics) {
 	dataset = new TimeSeriesCollection();
-	tsmap = new HashMap <String, TimeSeries> ();
-	kMap = new HashMap <Kstat, ChartableKstat> ();
+	tsmap = new HashMap<>();
+	kMap = new HashMap<>();
 
 	for (Kstat ks : kss.getKstats()) {
 	    kMap.put(ks, new ChartableKstat(jkstat, ks));

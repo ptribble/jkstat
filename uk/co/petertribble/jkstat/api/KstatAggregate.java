@@ -113,7 +113,7 @@ public class KstatAggregate {
 	    kss.chainupdate();
 	    inkstats = kss.getKstats();
 	}
-	kstats = new HashSet <Kstat> ();
+	kstats = new HashSet<>();
 	for (Kstat ks : inkstats) {
 	    kstats.add(jkstat.getKstat(ks));
 	}

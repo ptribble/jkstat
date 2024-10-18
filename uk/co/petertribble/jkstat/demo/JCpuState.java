@@ -90,14 +90,13 @@ public class JCpuState extends JKdemo implements ActionListener {
 	ksf.setFilterClass("misc");
 	ksf.addFilter("cpu_stat:::");
 
-	Set <Kstat> kstats = new TreeSet <Kstat> (ksf.getKstats());
+	Set <Kstat> kstats = new TreeSet<>(ksf.getKstats());
 
 	ncpus = kstats.size();
 	aboutCpuItem = new JMenuItem[ncpus];
 	extendedCpuItem = new JMenuItem[ncpus];
 	cpuID = new String[ncpus];
-	List <KstatAccessoryPanel> acplist =
-	    new ArrayList <KstatAccessoryPanel> ();
+	List <KstatAccessoryPanel> acplist = new ArrayList<>();
 
 	// create main display panel
 	JPanel mainPanel = new JPanel(new SpringLayout());

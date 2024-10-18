@@ -79,7 +79,7 @@ public class Jnfsstat extends JKdemo implements ChangeListener {
 	 * This Set contains the list of tables we have present.
 	 * We can then iterate over all the tables that exist.
 	 */
-	activeTables = new ArrayList <KstatTable> ();
+	activeTables = new ArrayList<>();
 
 	/*
 	 * We have panels for the following: server and client;

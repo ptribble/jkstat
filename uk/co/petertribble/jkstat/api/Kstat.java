@@ -189,7 +189,7 @@ public class Kstat implements Serializable, Comparable<Kstat> {
 	if (!isNumeric(s)) {
 	    throw new IllegalArgumentException("Statistic not a number");
 	}
-	return ((Long) getData(s)).longValue();
+	return (Long) getData(s);
     }
 
     /**

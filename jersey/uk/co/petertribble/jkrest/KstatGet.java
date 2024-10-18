@@ -13,7 +13,7 @@ public class KstatGet {
     public String getKstat(@PathParam("module") String module,
 			   @PathParam("instance") String instance,
 			   @PathParam("name") String name) {
-	Kstat ks = jkstat.getKstat(module, Integer.valueOf(instance), name);
+	Kstat ks = jkstat.getKstat(module, Integer.parseInt(instance), name);
 	return ks.toJSON();
     }
 }

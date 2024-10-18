@@ -160,10 +160,10 @@ public class KstatTableModel extends AbstractTableModel
 		long ll = ks.longData(rowNames[row]) -
 						oldks.longData(rowNames[row]);
 		if (ll == 0) {
-		    return Long.valueOf(0L);
+		    return 0L;
 		}
 		long snapdelta = ks.getSnaptime() - oldks.getSnaptime();
-		return (snapdelta == 0) ? Double.valueOf(Double.NaN)
+		return (snapdelta == 0) ? Double.NaN
 		    : df.format(ll*(1000000000.0/snapdelta));
 	    } else {
 		return "-";

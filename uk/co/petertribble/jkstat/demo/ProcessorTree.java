@@ -97,7 +97,7 @@ public class ProcessorTree {
 	     * than a textual identifier.
 	     */
 	    if (lclog == null) {
-		lclog = Long.valueOf(0L);
+		lclog = 0L;
 	    }
 	    if (chipmap.containsKey(lcore)) {
 		// this must be an additional thread in the same core

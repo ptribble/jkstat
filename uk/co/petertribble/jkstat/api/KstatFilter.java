@@ -229,7 +229,7 @@ public class KstatFilter {
 		return true;
 	    }
 	    if ((fq.instance != null) &&
-				(fq.instance.intValue() == ks.getInst())) {
+				(fq.instance == ks.getInst())) {
 		return true;
 	    }
 	    if ((fq.name != null) && fq.name.equals(ks.getName())) {
@@ -352,7 +352,7 @@ public class KstatFilter {
 	boolean mmatch =
 	    (fq.module == null) || fq.module.equals(ks.getModule());
 	boolean imatch =
-	    (fq.instance == null) || fq.instance.intValue() == ks.getInst();
+	    (fq.instance == null) || fq.instance == ks.getInst();
 	boolean nmatch =
 	    (fq.name == null) || fq.name.equals(ks.getName());
 	return mmatch && imatch && nmatch;

@@ -24,7 +24,6 @@ package uk.co.petertribble.jkstat.demo;
 
 import uk.co.petertribble.jkstat.api.*;
 import java.util.*;
-import java.text.DateFormat;
 
 /**
  * Maintains a description of processor topology.
@@ -35,7 +34,6 @@ public class ProcessorTree {
     private Map <Long, ChipMap> map;
     private boolean is_threaded;
     private boolean is_multicore;
-    private static final DateFormat df = DateFormat.getInstance();
 
     /**
      * Create a processor tree.
@@ -389,30 +387,6 @@ public class ProcessorTree {
      */
     public String getBrand(long chipid, long coreid) {
 	return (String) coreInfoStats(chipid, coreid).iterator().next().getData("brand");
-    }
-
-    /**
-     * Print the details of a given processor. This is psrinfo -v
-     *
-     * @param ks a cpu_info Kstat
-     *
-     * @return a String similar to psrinfo -v output for the given Kstat
-     */
-    public static String details(Kstat ks) {
-	StringBuilder sb = new StringBuilder(160);
-	if (ks != null) {
-	    sb.append("Status of virtual processor ").append(ks.getInstance())
-		.append(" as of: ").append(df.format(new Date()))
-		.append("\n  ").append(ks.getData("state")).append(" since ")
-		.append(df.format(new Date(1000*ks.longData("state_begin"))))
-		.append("\n  The ").append(ks.getData("cpu_type"))
-		.append(" processor operates at ")
-		.append(ks.getData("clock_MHz"))
-		.append(" MHz,\n        and has an ")
-		.append(ks.getData("fpu_type"))
-		.append(" floating point processor.");
-	}
-	return sb.toString();
     }
 
     /**

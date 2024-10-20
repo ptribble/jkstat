@@ -41,6 +41,8 @@ public class PsrInfo {
     private static boolean flag_t;
     private static boolean flag_v;
 
+    private static final DateFormat df = DateFormat.getInstance();
+
     /**
      * Emulate psrinfo(8) output.
      */
@@ -89,8 +91,32 @@ public class PsrInfo {
 
     private void displayV(Set <Kstat> kstats) {
 	for (Kstat ks : kstats) {
-	    System.out.println(ProcessorTree.details(jkstat.getKstat(ks)));
+	    System.out.println(details(jkstat.getKstat(ks)));
 	}
+    }
+
+    /*
+     * Print the details of a given processor. This is psrinfo -v
+     *
+     * @param ks a cpu_info Kstat
+     *
+     * @return a String similar to psrinfo -v output for the given Kstat
+     */
+    private static String details(Kstat ks) {
+	StringBuilder sb = new StringBuilder(160);
+	if (ks != null) {
+	    sb.append("Status of virtual processor ").append(ks.getInstance())
+		.append(" as of: ").append(df.format(new Date()))
+		.append("\n  ").append(ks.getData("state")).append(" since ")
+		.append(df.format(new Date(1000*ks.longData("state_begin"))))
+		.append("\n  The ").append(ks.getData("cpu_type"))
+		.append(" processor operates at ")
+		.append(ks.getData("clock_MHz"))
+		.append(" MHz,\n        and has an ")
+		.append(ks.getData("fpu_type"))
+		.append(" floating point processor.");
+	}
+	return sb.toString();
     }
 
     /*

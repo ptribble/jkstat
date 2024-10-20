@@ -195,7 +195,21 @@ public class ProcessorTree {
     }
 
     /**
-     * Return the number of threads in a given chip,
+     * Return the total number of threads.
+     * If invalid, return zero.
+     *
+     * @return the total number of threads in the system
+     */
+    public int numThreads() {
+	int nthreads = 0;
+	for (Long chipid : getChips()) {
+	    nthreads += numThreads(chipid);
+	}
+	return nthreads;
+    }
+
+    /**
+     * Return the number of threads in a given chip.
      * If invalid, return zero.
      *
      * @param chipid the chip to query
@@ -240,6 +254,34 @@ public class ProcessorTree {
     public Kstat makeCpuKstat(Kstat ks) {
 	return new Kstat("cpu_stat", ks.getInst(),
 				  "cpu_stat" + ks.getInstance());
+    }
+
+    /**
+     * Return all the informational Kstats.
+     * If invalid, return the empty Set.
+     *
+     * @return all the cpu_info Kstats
+     */
+    public Set <Kstat> allInfoStats() {
+	Set <Kstat> kss = new TreeSet<>();
+	for (Long chipid : getChips()) {
+	    kss.addAll(chipInfoStats(chipid));
+	}
+	return kss;
+    }
+
+    /**
+     * Return all the Kstats.
+     * If invalid, return the empty Set.
+     *
+     * @return all the cpu_stat Kstats
+     */
+    public Set <Kstat> allStats() {
+	Set <Kstat> kss = new TreeSet<>();
+	for (Kstat ks : allInfoStats()) {
+	    kss.add(makeCpuKstat(ks));
+	}
+	return kss;
     }
 
     /**
@@ -318,7 +360,16 @@ public class ProcessorTree {
     }
 
     /**
-     * Return the brand of the given cpu.
+     * Return the system's processor brand.
+     *
+     * @return a String representing the system's processor brand
+     */
+    public String getBrand() {
+	return (String) allInfoStats().iterator().next().getData("brand");
+    }
+
+    /**
+     * Return the brand of the given chip.
      *
      * @param chipid the chip to query
      *
@@ -329,7 +380,7 @@ public class ProcessorTree {
     }
 
     /**
-     * Return the brand of the given cpu.
+     * Return the brand of the given core.
      *
      * @param chipid the chip to query
      * @param coreid the core to query

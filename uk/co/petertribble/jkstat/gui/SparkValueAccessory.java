@@ -22,6 +22,7 @@
 
 package uk.co.petertribble.jkstat.gui;
 
+import java.text.DecimalFormat;
 import uk.co.petertribble.jkstat.api.*;
 import uk.co.petertribble.jstripchart.JSparkChart;
 
@@ -36,9 +37,11 @@ public class SparkValueAccessory extends KstatAccessoryPanel {
 
     private JSparkChart jsc;
     private String stat;
-    private boolean tips;
+    private boolean dotips;
     private String tiptext;
+    private boolean doscale;
     private double scale;
+    private static final DecimalFormat df = new DecimalFormat("##0.00");
 
     /**
      * Create a panel showing a sparkline of the value of the given statistic.
@@ -67,23 +70,27 @@ public class SparkValueAccessory extends KstatAccessoryPanel {
     }
 
     /**
-     * Enable tooltips.
+     * Enable tooltips. The value will be displayed as is, unscaled,
+     * as an integer.
      *
      * @param tiptext the initial text of the tooltip, preceding the value
      */
     public void enableTips(String tiptext) {
-	enableTips(tiptext, 1.0d);
+	dotips = true;
+	this.tiptext = tiptext;
     }
 
     /**
-     * Enable tooltips.
+     * Enable tooltips. The value will be displayed as a scaled float to
+     * 2 decimal places.
      *
      * @param tiptext the initial text of the tooltip, preceding the value
      * @param scale the scale factor to apply to the number displayed in the
      * tooltip
      */
     public void enableTips(String tiptext, double scale) {
-	tips = true;
+	dotips = true;
+	doscale = true;
 	this.tiptext = tiptext;
 	this.scale = scale;
     }
@@ -92,8 +99,13 @@ public class SparkValueAccessory extends KstatAccessoryPanel {
     public void updateAccessory() {
 	updateKstat();
 	jsc.add(ks.longData(stat));
-	if (tips) {
-	    setToolTipText(tiptext + " " + scale*ks.longData(stat));
+	if (dotips) {
+	    if (doscale) {
+		setToolTipText(tiptext + " " +
+			       df.format(scale*ks.longData(stat)));
+	    } else {
+		setToolTipText(tiptext + " " + ks.longData(stat));
+	    }
 	}
     }
 }

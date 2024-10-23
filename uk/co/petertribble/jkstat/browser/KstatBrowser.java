@@ -80,7 +80,7 @@ public class KstatBrowser extends JFrame implements ActionListener {
     public KstatBrowser(JKstat jkstat) {
 	super(KstatResources.getString("BROWSERUI.NAME.TEXT"));
 	this.jkstat = jkstat;
-	addWindowListener(new winExit());
+	addWindowListener(new WindowExit());
 
 	ktp = new KstatTreePanel(jkstat);
 	setContentPane(ktp);
@@ -169,7 +169,7 @@ public class KstatBrowser extends JFrame implements ActionListener {
 	setVisible(true);
     }
 
-    class winExit extends WindowAdapter {
+    class WindowExit extends WindowAdapter {
 	@Override
 	public void windowClosing(WindowEvent we) {
 	    JingleMultiFrame.unregister(KstatBrowser.this);

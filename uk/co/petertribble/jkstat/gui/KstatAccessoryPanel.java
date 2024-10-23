@@ -32,7 +32,7 @@ import java.awt.event.*;
  *
  * @author Peter Tribble
  */
-public class KstatAccessoryPanel extends JPanel implements ActionListener {
+public abstract class KstatAccessoryPanel extends JPanel implements ActionListener {
 
     private static final long serialVersionUID = 1L;
 
@@ -107,8 +107,7 @@ public class KstatAccessoryPanel extends JPanel implements ActionListener {
     /**
      * Subclasses must override this method to update the display.
      */
-    public void updateAccessory() {
-    }
+    public abstract void updateAccessory();
 
     /**
      * Start the timer loop, so that the accessory updates itself.

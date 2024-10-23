@@ -166,6 +166,11 @@ public class JCpuState extends JKdemo implements ActionListener {
     }
 
     @Override
+    public void setDelay(int i) {
+	kas.setDelay(i);
+    }
+
+    @Override
     public void stopLoop() {
 	kas.stopLoop();
     }

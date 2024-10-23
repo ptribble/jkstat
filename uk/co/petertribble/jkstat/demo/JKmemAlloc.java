@@ -85,6 +85,11 @@ public class JKmemAlloc extends JKdemo {
 	setLabelDelay(i);
     }
 
+    @Override
+    public void stopLoop() {
+	kmPanel.stopLoop();
+    }
+
     /**
      * Create a standalone JKmemAlloc application.
      *

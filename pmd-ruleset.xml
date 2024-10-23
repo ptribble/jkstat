@@ -24,7 +24,6 @@
       <exclude name="SingularField"/>
       <exclude name="SwitchStmtsShouldHaveDefault"/>
       <exclude name="UncommentedEmptyConstructor"/>
-      <exclude name="UncommentedEmptyMethodBody"/>
       <exclude name="UnsynchronizedStaticFormatter"/>
       <exclude name="UseUtilityClass"/>
     </rule>

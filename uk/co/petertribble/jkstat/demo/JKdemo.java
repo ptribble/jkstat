@@ -33,7 +33,7 @@ import uk.co.petertribble.jingle.JingleInfoFrame;
  *
  * @author Peter Tribble
  */
-public class JKdemo extends JFrame implements ActionListener {
+public abstract class JKdemo extends JFrame implements ActionListener {
 
     private static final long serialVersionUID = 1L;
 
@@ -303,18 +303,18 @@ public class JKdemo extends JFrame implements ActionListener {
     }
 
     /**
-     * Set the desired update delay.
+     * Set the desired update delay. Subclasses should use implement this
+     * to propagate the delay to any accessories or gadgets they contain.
      *
      * @param i the update delay in seconds
      */
-    public void setDelay(int i) {
-    }
+    public abstract void setDelay(int i);
 
     /**
-     * Stop the application updating itself.
+     * Stop the application updating itself. Implementing classes should
+     * implement this to stop any accessories or gadgets that are updating.
      */
-    public void stopLoop() {
-    }
+    public abstract void stopLoop();
 
     @Override
     public void actionPerformed(ActionEvent e) {

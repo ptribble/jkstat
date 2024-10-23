@@ -164,7 +164,7 @@ public class JKdemo extends JFrame implements ActionListener {
 
 	jm = new JMenuBar();
 	setJMenuBar(jm);
-	addWindowListener(new winExit());
+	addWindowListener(new WindowExit());
 	addFileMenu();
 	if (showdelay) {
 	    addSleepMenu();
@@ -286,7 +286,7 @@ public class JKdemo extends JFrame implements ActionListener {
 	jm.add(menu);
     }
 
-    class winExit extends WindowAdapter {
+    class WindowExit extends WindowAdapter {
 	@Override
 	public void windowClosing(WindowEvent we) {
 	    kaboom();

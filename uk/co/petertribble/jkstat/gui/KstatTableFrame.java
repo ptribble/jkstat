@@ -66,7 +66,7 @@ public class KstatTableFrame extends JFrame implements ActionListener {
     public KstatTableFrame(Kstat ks, int interval, JKstat jkstat) {
 	setTitle(ks.getTriplet());
 	kt = new KstatTable(ks, interval, jkstat);
-	addWindowListener(new winExit());
+	addWindowListener(new WindowExit());
 	setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	JPanel p = new JPanel(new BorderLayout());
 
@@ -91,7 +91,7 @@ public class KstatTableFrame extends JFrame implements ActionListener {
     /**
      * On closure, stop the table updating.
      */
-    class winExit extends WindowAdapter {
+    class WindowExit extends WindowAdapter {
 	@Override
 	public void windowClosing(WindowEvent we) {
 	    kt.stopLoop();

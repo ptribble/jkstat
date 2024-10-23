@@ -63,7 +63,7 @@ public class ChartBuilderFrame extends JFrame implements ActionListener {
      */
     public ChartBuilderFrame(JKstat jkstat) {
 	setTitle(KstatResources.getString("CHART.BUILDER"));
-	addWindowListener(new winExit());
+	addWindowListener(new WindowExit());
 	JMenuBar jm = new JMenuBar();
 	jm.add(fileMenu());
 	setJMenuBar(jm);
@@ -87,7 +87,7 @@ public class ChartBuilderFrame extends JFrame implements ActionListener {
 	return jme;
     }
 
-    class winExit extends WindowAdapter {
+    class WindowExit extends WindowAdapter {
 	@Override
 	public void windowClosing(WindowEvent we) {
 	    dispose();

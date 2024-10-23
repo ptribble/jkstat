@@ -93,7 +93,7 @@ public final class JLoadChart extends JFrame implements ActionListener {
 	daxis.setFixedAutoRange(maxage);
 	xyplot.setDomainAxis(daxis);
 
-	addWindowListener(new winExit());
+	addWindowListener(new WindowExit());
 	setContentPane(new ChartPanel(chart));
 
 	JMenuBar jm = new JMenuBar();
@@ -121,7 +121,7 @@ public final class JLoadChart extends JFrame implements ActionListener {
 	ts15.add(ms, ksl.longData("avenrun_15min")/256.0);
     }
 
-    static class winExit extends WindowAdapter {
+    static class WindowExit extends WindowAdapter {
 	@Override
 	public void windowClosing(WindowEvent we) {
 	    System.exit(0);

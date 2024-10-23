@@ -108,7 +108,7 @@ public class KstatBaseChartFrame extends JFrame implements ActionListener {
 
 	setContentPane(new ChartPanel(kbc.getChart()));
 
-	addWindowListener(new winExit());
+	addWindowListener(new WindowExit());
 
 	JMenuBar jm = new JMenuBar();
 	jm.add(fileMenu());
@@ -222,7 +222,7 @@ public class KstatBaseChartFrame extends JFrame implements ActionListener {
 	return jmstat;
     }
 
-    class winExit extends WindowAdapter {
+    class WindowExit extends WindowAdapter {
 	@Override
 	public void windowClosing(WindowEvent we) {
 	    kbc.stopLoop();

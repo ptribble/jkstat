@@ -12,7 +12,6 @@
 
     <rule ref="category/java/security.xml" />
     <rule ref="rulesets/java/quickstart.xml">
-      <exclude name="ClassNamingConventions"/>
       <exclude name="ClassWithOnlyPrivateConstructorsShouldBeFinal"/>
       <exclude name="CompareObjectsWithEquals"/>
       <exclude name="EmptyCatchBlock"/>
@@ -21,7 +20,6 @@
       <exclude name="LambdaCanBeMethodReference"/>
       <exclude name="LocalVariableNamingConventions"/>
       <exclude name="LooseCoupling"/>
-      <exclude name="MethodNamingConventions"/>
       <exclude name="ReturnEmptyCollectionRatherThanNull"/>
       <exclude name="SingularField"/>
       <exclude name="SwitchStmtsShouldHaveDefault"/>

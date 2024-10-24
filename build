@@ -36,8 +36,6 @@
 #    Creates a war file to run a RESTful server with tomcat
 #    See jersey/README.JERSEY for details of how to run it
 #
-# If you have the ON build tools installed, then jstyle gets run.
-#
 
 #
 # explicitly build with jdk8
@@ -187,10 +185,6 @@ jkrest.war)
 	exit 0
 	;;
 esac
-
-if [ -x /opt/onbld/bin/jstyle ]; then
-	/opt/onbld/bin/jstyle uk/co/petertribble/jkstat/*/*.java
-fi
 
 ${JAVAC} ${XFLAGS} -classpath .:"${BUILDJARS}" uk/co/petertribble/jkstat/*/*.java
 

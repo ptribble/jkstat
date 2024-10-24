@@ -1,3 +1,5 @@
+Drop jstyle
+
 Fix SparkRateAccessory to not give negative rates in tooltips
 
 Remove 'stripcpu' subcommand, it's a duplicate of 'jkstat cpustate chart'

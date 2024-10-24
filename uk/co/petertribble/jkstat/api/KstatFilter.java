@@ -367,7 +367,7 @@ public class KstatFilter {
 	protected String name;
 	protected String statistic;
 
-	public FilterQuartet(String module, Integer instance, String name,
+	FilterQuartet(String module, Integer instance, String name,
 			String statistic) {
 	    this.module = module;
 	    this.instance = instance;

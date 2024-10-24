@@ -48,7 +48,7 @@ public class NativeJKstat extends JKstat {
      * Caches all the methodids once, for efficiency and guaranteed code
      * coverage.
      */
-    private native static void cacheids();
+    private static native void cacheids();
 
     @Override
     public native Kstat getKstatObject(String module, int inst,

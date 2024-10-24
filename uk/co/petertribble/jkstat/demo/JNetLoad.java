@@ -145,7 +145,7 @@ public class JNetLoad extends JKdemo implements ActionListener {
     static class PopupListener extends MouseAdapter {
 	private JPopupMenu popup;
 
-	public PopupListener(JPopupMenu popup) {
+	PopupListener(JPopupMenu popup) {
 	    this.popup = popup;
 	}
 

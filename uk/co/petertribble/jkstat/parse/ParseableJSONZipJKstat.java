@@ -89,8 +89,7 @@ public class ParseableJSONZipJKstat extends SequencedJKstat {
 	    al.add(e.nextElement());
 	}
 	inputs = al.toArray(new ZipEntry[0]);
-	Arrays.sort(inputs, new Comparator <ZipEntry> ()
-		    {
+	Arrays.sort(inputs, new Comparator <ZipEntry> () {
 			@Override
 			public int compare(ZipEntry f1, ZipEntry f2) {
 			    if (f1.getTime() > f2.getTime()) {

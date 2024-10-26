@@ -85,7 +85,7 @@ public class ParseableJSONZipJKstat extends SequencedJKstat {
 	this.ppmap = ppmap;
 	this.cached = cached;
 	ArrayList <ZipEntry> al = new ArrayList<>();
-	for (Enumeration<? extends ZipEntry> e = zf.entries(); e.hasMoreElements(); ) {
+	for (Enumeration<? extends ZipEntry> e = zf.entries(); e.hasMoreElements();) {
 	    al.add(e.nextElement());
 	}
 	inputs = al.toArray(new ZipEntry[0]);

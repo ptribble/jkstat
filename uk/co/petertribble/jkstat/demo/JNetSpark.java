@@ -83,13 +83,13 @@ public class JNetSpark extends JKdemo implements ActionListener {
 	ksf.addNegativeFilter("::mac");
 
 	// add the kstats to the panel
-	for (Kstat ks : new TreeSet <Kstat> (ksf.getKstats())) {
+	for (Kstat ks : new TreeSet <Kstat>(ksf.getKstats())) {
 	    KstatAccessoryPanel kap =
 		new SparkRateAccessory(ks, -1, jkstat, "rbytes64");
 	    kap.setMinimumSize(new Dimension(300, 50));
 	    kap.setPreferredSize(new Dimension(300, 80));
-	    kap.setBorder(BorderFactory.createTitledBorder
-				  (iflabel + ks.getName()));
+	    kap.setBorder(BorderFactory.createTitledBorder(
+				   iflabel + ks.getName()));
 	    mainPanel.add(kap);
 	    kaplist.add(kap);
 

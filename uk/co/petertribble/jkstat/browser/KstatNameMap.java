@@ -27,7 +27,7 @@ import uk.co.petertribble.jkstat.api.Kstat;
 import uk.co.petertribble.jkstat.util.NumericStringComparator;
 
 /**
- * Describes a map of kstats keyed by name
+ * Describes a map of kstats keyed by name.
  */
 public class KstatNameMap extends TreeMap <String, Kstat> {
 

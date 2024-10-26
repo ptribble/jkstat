@@ -26,7 +26,7 @@ import java.util.TreeMap;
 import uk.co.petertribble.jkstat.util.NumericStringComparator;
 
 /**
- * Describes a map of kstats keyed by instance
+ * Describes a map of kstats keyed by instance.
  */
 public class KstatInstanceMap extends TreeMap <String, KstatNameMap> {
 

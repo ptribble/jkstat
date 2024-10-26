@@ -359,7 +359,7 @@ public class KstatFilter {
     }
 
     /**
-     * Inner class to describe a filter
+     * Inner class to describe a filter.
      */
     class FilterQuartet {
 	protected String module;

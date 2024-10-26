@@ -202,7 +202,7 @@ public class KstatCmd {
     void doDisplay() {
 	displayTimeHeader();
 
-	for (Kstat ks : new TreeSet <Kstat> (ksf.getKstats())) {
+	for (Kstat ks : new TreeSet <Kstat>(ksf.getKstats())) {
 	    Kstat ks2 = jkstat.getKstat(ks);
 	    if (ks2 != null) {
 		if (lflag) {
@@ -315,12 +315,12 @@ public class KstatCmd {
     private void usage() {
 	System.err.println("Usage:");
 	System.err.println("kstat [-l] [-p] [ -T d|u ] [-c class]");
-	System.err.println
-	    ("      [-m module] [-i instance] [-n name] [-s statistic]");
+	System.err.println(
+	    "      [-m module] [-i instance] [-n name] [-s statistic]");
 	System.err.println("kstat [-l] [-p] [ -T d|u ] [-c class]");
 	System.err.println("      [ interval [ count ] ]");
-	System.err.println
-	    ("      [ module:instance:name:statistic ... ]");
+	System.err.println(
+	    "      [ module:instance:name:statistic ... ]");
 	System.err.println("      [ interval [ count ] ]");
 	System.exit(1);
     }

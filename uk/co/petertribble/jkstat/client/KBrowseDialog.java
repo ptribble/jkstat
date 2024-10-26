@@ -75,7 +75,7 @@ public class KBrowseDialog implements ActionListener {
      * Create a dialog for the user to choose an available server.
      */
     public KBrowseDialog() {
-	serviceMap = new HashMap <> ();
+	serviceMap = new HashMap<>();
 	try (JmDNS jmdns =
 	     JmDNS.create(InetAddress.getByAddress(new byte[]{0,0,0,0}))) {
 

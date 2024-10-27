@@ -178,9 +178,9 @@ public final class MPstatTableModel extends AbstractTableModel
      */
     @Override
     public Object getValueAt(int row, int col) {
-	return (col == 0) ?
-	    mpdata.get(row).toString() :
-	    (long) mpdata.get(row).getRate(columnNames[col]);
+	return (col == 0)
+	    ? mpdata.get(row).toString()
+	    : (long) mpdata.get(row).getRate(columnNames[col]);
 	/*
 	 * The cast above is necessary to force it to be displayed by the
 	 * table as a long. getRate() returns a double, and the table uses

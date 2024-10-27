@@ -32,7 +32,7 @@ import java.util.Set;
  */
 public class JKstatMX implements JKstatMXMBean {
 
-    private static final JKstat jkstat = new NativeJKstat();
+    private static final JKstat JKSTAT = new NativeJKstat();
 
     /**
      * Return the full Set of Kstats.
@@ -41,17 +41,17 @@ public class JKstatMX implements JKstatMXMBean {
      */
     @Override
     public Set <Kstat> getKstats() {
-	return jkstat.getKstats();
+	return JKSTAT.getKstats();
     }
 
     @Override
     public Kstat getKstat(String module, int inst, String name) {
-	return jkstat.getKstat(module, inst, name);
+	return JKSTAT.getKstat(module, inst, name);
     }
 
     @Override
     public Object getKstatData(String module, int inst, String name,
 				String statistic) {
-	return jkstat.getKstat(module, inst, name).getData(statistic);
+	return JKSTAT.getKstat(module, inst, name).getData(statistic);
     }
 }

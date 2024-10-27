@@ -34,7 +34,7 @@ import uk.co.petertribble.jkstat.api.*;
  */
 public class JKstatServer {
 
-    private static final JKstat jkstat = new NativeJKstat();
+    private static final JKstat JKSTAT = new NativeJKstat();
 
     /**
      * Return the current Kstat chain ID.
@@ -42,16 +42,16 @@ public class JKstatServer {
      * @return an int representing the Kstat chain ID
      */
     public int getKCID() {
-	return jkstat.getKCID();
+	return JKSTAT.getKCID();
     }
 
     /**
      * Return a list of available kstats, as a serialized JSON String.
      *
-     * @return a List of available Kstats
+     * @return the List of available Kstats
      */
     public String listKstats() {
-	return new KstatSet(jkstat).toJSON();
+	return new KstatSet(JKSTAT).toJSON();
     }
 
     /**
@@ -65,7 +65,7 @@ public class JKstatServer {
      * doesn't exist
      */
     public String kstat(String module, int instance, String name) {
-	Kstat ks = jkstat.getKstat(module, instance, name);
+	Kstat ks = JKSTAT.getKstat(module, instance, name);
 	return (ks == null) ? "" : ks.toJSON();
     }
 }

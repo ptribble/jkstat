@@ -118,9 +118,9 @@ public class ChartBuilderFrame extends JFrame implements ActionListener {
 	    new ChartBuilderFrame();
 	} else if (args.length == 1) {
 	    if ("-s".equals(args[0]) || "-S".equals(args[0])) {
-		KClientDialog kcd = new KClientDialog("-s".equals(args[0]) ?
-					KClientConfig.CLIENT_XMLRPC :
-					KClientConfig.CLIENT_REST);
+		KClientDialog kcd = new KClientDialog("-s".equals(args[0])
+					? KClientConfig.CLIENT_XMLRPC
+					: KClientConfig.CLIENT_REST);
 		KClientConfig kcc = kcd.getConfig();
 		if (kcc.isConfigured()) {
 		    new ChartBuilderFrame(kcc);

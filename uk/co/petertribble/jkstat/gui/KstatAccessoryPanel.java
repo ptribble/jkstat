@@ -32,7 +32,8 @@ import java.awt.event.*;
  *
  * @author Peter Tribble
  */
-public abstract class KstatAccessoryPanel extends JPanel implements ActionListener {
+public abstract class KstatAccessoryPanel extends JPanel
+        implements ActionListener {
 
     private static final long serialVersionUID = 1L;
 

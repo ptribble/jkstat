@@ -33,6 +33,9 @@ import uk.co.petertribble.jkstat.api.Kstat;
  */
 public final class JSONdump {
 
+    private JSONdump() {
+    }
+
     /**
      * Create the application.
      *

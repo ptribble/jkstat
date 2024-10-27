@@ -35,6 +35,9 @@ import uk.co.petertribble.jkstat.api.Kstat;
  */
 public final class Uptime {
 
+    private Uptime() {
+    }
+
     /**
      * Create the application.
      *

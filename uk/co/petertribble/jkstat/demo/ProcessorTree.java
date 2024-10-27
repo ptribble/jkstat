@@ -374,7 +374,8 @@ public class ProcessorTree {
      * @return a String representing the brand of the given chip
      */
     public String getBrand(long chipid) {
-	return (String) chipInfoStats(chipid).iterator().next().getData("brand");
+	return (String) chipInfoStats(chipid).iterator().next()
+	    .getData("brand");
     }
 
     /**
@@ -386,7 +387,8 @@ public class ProcessorTree {
      * @return a String representing the brand of the given core
      */
     public String getBrand(long chipid, long coreid) {
-	return (String) coreInfoStats(chipid, coreid).iterator().next().getData("brand");
+	return (String) coreInfoStats(chipid, coreid).iterator().next()
+	    .getData("brand");
     }
 
     /**

@@ -40,8 +40,8 @@ public class AccessoryBgePanel extends KstatAccessoryPanel {
      * The bge statistics kstat has a number of etherStats
      * statistics. 11 in all
      */
-    private static int STATNUM = 11;
-    private static String[] statNames = { "etherStatsUndersizePkts",
+    private static final int STATNUM = 11;
+    private static final String[] STATNAMES = { "etherStatsUndersizePkts",
 				"etherStatsPkts64Octets",
 				"etherStatsPkts65to127Octets",
 				"etherStatsPkts128to255Octets",
@@ -84,7 +84,7 @@ public class AccessoryBgePanel extends KstatAccessoryPanel {
 	sumdelta = 0;
 	sumvalues = 0;
 	for (int i = 0; i < STATNUM; i++) {
-	    newvalues[i] = ks.longData(statNames[i]);
+	    newvalues[i] = ks.longData(STATNAMES[i]);
 	    sumvalues += newvalues[i];
 	    deltas[i] = newvalues[i] - oldvalues[i];
 	    sumdelta += deltas[i];

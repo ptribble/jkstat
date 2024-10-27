@@ -30,7 +30,7 @@ import java.util.TreeSet;
  *
  * @author Peter Tribble
  */
-public class KstatUtil {
+public final class KstatUtil {
 
     private KstatUtil() {
     }

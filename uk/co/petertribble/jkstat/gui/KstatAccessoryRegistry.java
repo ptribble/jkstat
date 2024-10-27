@@ -52,8 +52,8 @@ public class KstatAccessoryRegistry {
 	if (ks == null) {
 	    return null;
 	}
-	if (ks.hasStatistic("rbytes64") &&
-	    ("mac".equals(ks.getKstatClass())
+	if (ks.hasStatistic("rbytes64")
+	    && ("mac".equals(ks.getKstatClass())
 		|| "net".equals(ks.getKstatClass()))) {
 			return new AccessoryNetPanel(ks, interval, jkstat);
 	}
@@ -70,9 +70,9 @@ public class KstatAccessoryRegistry {
 	if ("bge".equals(ks.getModule()) && "statistics".equals(ks.getName())) {
 	    return new AccessoryBgePanel(ks, interval, jkstat);
 	}
-	if ("kmem_cache".equals(ks.getKstatClass()) &&
-		ks.getName().startsWith("kmem_alloc_") &&
-		ks.hasStatistic("alloc")) {
+	if ("kmem_cache".equals(ks.getKstatClass())
+		&& ks.getName().startsWith("kmem_alloc_")
+		&& ks.hasStatistic("alloc")) {
 	    return new AccessoryKmemAlloc(ks, interval, jkstat);
 	}
 	return null;

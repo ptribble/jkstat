@@ -29,10 +29,11 @@ import java.util.ResourceBundle;
  *
  * @author Peter Tribble
  */
-public class KstatResources {
+public final class KstatResources {
 
-    private static final ResourceBundle kstatres =
+    private static final ResourceBundle KSTATRES =
 				ResourceBundle.getBundle("properties/jkstat");
+
     private KstatResources() {
     }
 
@@ -40,11 +41,11 @@ public class KstatResources {
      * Returns the string from the resource bundle that corresponds to the
      * given key. If there is no matching key, returns null.
      *
-     * @param key he key to be looked up
+     * @param key the key to be looked up
      *
      * @return the matching String from the resource bundle
      */
     public static String getString(String key) {
-	return kstatres.getString(key);
+	return KSTATRES.getString(key);
     }
 }

@@ -79,7 +79,8 @@ public class KBrowseDialog implements ActionListener {
 	try (JmDNS jmdns =
 	     JmDNS.create(InetAddress.getByAddress(new byte[]{0,0,0,0}))) {
 
-	    jmdns.addServiceListener("_jkstat._tcp.local.", new BrowseListener());
+	    jmdns.addServiceListener("_jkstat._tcp.local.",
+				     new BrowseListener());
 	    ServiceInfo[] serviceInfos = jmdns.list("_jkstat._tcp.local.");
 	    /*
 	     * We'll present the user with a list of names to select from,
@@ -113,34 +114,34 @@ public class KBrowseDialog implements ActionListener {
 	    ufield.setEditable(false);
 	    pfield.setEditable(false);
 	    
-	    JPanel qpanel = new JPanel();
-	    qpanel.setLayout(new BoxLayout(qpanel, BoxLayout.PAGE_AXIS));
+	    JPanel qpan = new JPanel();
+	    qpan.setLayout(new BoxLayout(qpan, BoxLayout.PAGE_AXIS));
 
-	    JPanel qpanel0 = new JPanel(new SpringLayout());
-	    qpanel0.add(new JLabel(KstatResources.getString("CLIENT.SERVICE")));
-	    qpanel0.add(servicebox);
-	    SpringUtilities.makeCompactGrid(qpanel0, 1, 2, 6, 3, 3, 3);
-	    qpanel.add(qpanel0);
+	    JPanel qpan0 = new JPanel(new SpringLayout());
+	    qpan0.add(new JLabel(KstatResources.getString("CLIENT.SERVICE")));
+	    qpan0.add(servicebox);
+	    SpringUtilities.makeCompactGrid(qpan0, 1, 2, 6, 3, 3, 3);
+	    qpan.add(qpan0);
 
-	    JPanel qpanel2 = new JPanel(new SpringLayout());
-	    qpanel2.add(new JLabel(KstatResources.getString("CLIENT.PROTOCOL")));
-	    qpanel2.add(protobox);
-	    SpringUtilities.makeCompactGrid(qpanel2, 1, 2, 6, 3, 3, 3);
-	    qpanel.add(qpanel2);
+	    JPanel qpan2 = new JPanel(new SpringLayout());
+	    qpan2.add(new JLabel(KstatResources.getString("CLIENT.PROTOCOL")));
+	    qpan2.add(protobox);
+	    SpringUtilities.makeCompactGrid(qpan2, 1, 2, 6, 3, 3, 3);
+	    qpan.add(qpan2);
 
-	    qpanel.add(authbox);
+	    qpan.add(authbox);
 
-	    JPanel qpanel3 = new JPanel(new SpringLayout());
-	    qpanel3.add(new JLabel(KstatResources.getString("CLIENT.USERNAME")));
-	    qpanel3.add(ufield);
-	    qpanel3.add(new JLabel(KstatResources.getString("CLIENT.PASSWORD")));
-	    qpanel3.add(pfield);
-	    SpringUtilities.makeCompactGrid(qpanel3, 2, 2, 6, 3, 3, 3);
-	    qpanel.add(qpanel3);
+	    JPanel qpan3 = new JPanel(new SpringLayout());
+	    qpan3.add(new JLabel(KstatResources.getString("CLIENT.USERNAME")));
+	    qpan3.add(ufield);
+	    qpan3.add(new JLabel(KstatResources.getString("CLIENT.PASSWORD")));
+	    qpan3.add(pfield);
+	    SpringUtilities.makeCompactGrid(qpan3, 2, 2, 6, 3, 3, 3);
+	    qpan.add(qpan3);
 
 	    String[] options =  { KstatResources.getString("CLIENT.CONNECT"),
 			KstatResources.getString("CLIENT.CANCEL") };
-	    dialogStatus = JOptionPane.showOptionDialog(null, qpanel,
+	    dialogStatus = JOptionPane.showOptionDialog(null, qpan,
 				KstatResources.getString("CLIENT.DETAIL"),
 				JOptionPane.OK_CANCEL_OPTION,
 				JOptionPane.QUESTION_MESSAGE,

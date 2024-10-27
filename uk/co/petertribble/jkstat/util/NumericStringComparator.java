@@ -37,12 +37,12 @@ import java.util.Comparator;
  *
  * @author Tom Erickson
  */
-public class NumericStringComparator implements Comparator <String> {
+public final class NumericStringComparator implements Comparator <String> {
+
     private static final NumericStringComparator INSTANCE =
 	    new NumericStringComparator();
 
-    private
-    NumericStringComparator() {
+    private NumericStringComparator() {
     }
 
     /**
@@ -50,8 +50,7 @@ public class NumericStringComparator implements Comparator <String> {
      *
      * @return the singleton NumericStringComparator instance
      */
-    public static NumericStringComparator
-    getInstance() {
+    public static NumericStringComparator getInstance() {
 	return INSTANCE;
     }
 

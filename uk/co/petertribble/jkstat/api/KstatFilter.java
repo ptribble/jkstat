@@ -228,8 +228,7 @@ public class KstatFilter {
 	    if ((fq.module != null) && fq.module.equals(ks.getModule())) {
 		return true;
 	    }
-	    if ((fq.instance != null) &&
-				(fq.instance == ks.getInst())) {
+	    if ((fq.instance != null) && (fq.instance == ks.getInst())) {
 		return true;
 	    }
 	    if ((fq.name != null) && fq.name.equals(ks.getName())) {

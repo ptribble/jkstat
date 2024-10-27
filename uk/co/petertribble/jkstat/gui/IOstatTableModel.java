@@ -167,9 +167,9 @@ public final class IOstatTableModel extends AbstractTableModel
      */
     @Override
     public Object getValueAt(int row, int col) {
-	return (col == columnNames.length-1) ?
-	    iodata.get(row).toString() :
-	    iodata.get(row).getRate(columnNames[col]);
+	return (col == columnNames.length-1)
+	    ? iodata.get(row).toString()
+	    : iodata.get(row).getRate(columnNames[col]);
     }
 
     @Override

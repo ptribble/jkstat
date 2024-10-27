@@ -101,8 +101,12 @@ public class JCpuState extends JKdemo implements ActionListener {
 	JPanel mainPanel = new JPanel(new SpringLayout());
 	setContentPane(mainPanel);
 
-	Dimension dcpu = (orientation == SwingConstants.VERTICAL) ?
-	    new Dimension(16, 50) : new Dimension(200, 20);
+	/*
+	 * If vertical, the bars are short and squat; if horizontal they
+	 * are wide and thin.
+	 */
+	Dimension dcpu = (orientation == SwingConstants.VERTICAL)
+	    ? new Dimension(16, 50) : new Dimension(200, 20);
 	/*
 	 * Add the kstats to the panel. SpringUtilities assumes we populate
 	 * the grid left to right, row by row. So in the vertical layout we
@@ -117,19 +121,12 @@ public class JCpuState extends JKdemo implements ActionListener {
 	    if (orientation != SwingConstants.VERTICAL) {
 		mainPanel.add(new JLabel("Cpu "+scpu));
 	    }
-	    KstatAccessoryPanel acp =
-		(style == STYLE_CHART) ?
-		new AccessoryCpuChart(ks, -1, jkstat) :
-		new AccessoryCpuPanel(ks, -1, jkstat, orientation);
+	    KstatAccessoryPanel acp = (style == STYLE_CHART)
+		? new AccessoryCpuChart(ks, -1, jkstat)
+		: new AccessoryCpuPanel(ks, -1, jkstat, orientation);
 	    acplist.add(acp);
-	    if (orientation == SwingConstants.VERTICAL) {
-		acp.setMinimumSize(dcpu);
-		acp.setPreferredSize(dcpu);
-	    } else {
-		// make wider and thinner than normal
-		acp.setMinimumSize(dcpu);
-		acp.setPreferredSize(dcpu);
-	    }
+	    acp.setMinimumSize(dcpu);
+	    acp.setPreferredSize(dcpu);
 	    mainPanel.add(acp);
 	    // add a popup menu to each one
 	    JPopupMenu jpm = new JPopupMenu();

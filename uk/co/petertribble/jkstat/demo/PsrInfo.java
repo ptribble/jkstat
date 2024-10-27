@@ -36,12 +36,12 @@ public class PsrInfo {
     private JKstat jkstat;
 
     // for arguments
-    private static boolean flag_c;
-    private static boolean flag_p;
-    private static boolean flag_t;
-    private static boolean flag_v;
+    private static boolean flagC;
+    private static boolean flagP;
+    private static boolean flagT;
+    private static boolean flagV;
 
-    private static final DateFormat df = DateFormat.getInstance();
+    private static final DateFormat DF = DateFormat.getInstance();
 
     /**
      * Emulate psrinfo(8) output.
@@ -51,13 +51,13 @@ public class PsrInfo {
 	KstatFilter ksf = new KstatFilter(jkstat);
 	ksf.addFilter("cpu_info:::");
 
-	if (flag_t) {
+	if (flagT) {
 	    displayT(new TreeSet<>(ksf.getKstats()));
-	} else if (flag_p && flag_v) {
+	} else if (flagP && flagV) {
 	    displayVP();
-	} else if (flag_v) {
+	} else if (flagV) {
 	    displayV(new TreeSet<>(ksf.getKstats()));
-	} else if (flag_p) {
+	} else if (flagP) {
 	    displayP();
 	} else {
 	    displayPlain(new TreeSet<>(ksf.getKstats()));
@@ -80,9 +80,9 @@ public class PsrInfo {
     }
 
     private void displayT(Set <Kstat> kstats) {
-	if (flag_p) {
+	if (flagP) {
 	    System.out.println(new ProcessorTree(jkstat).numChips());
-	} else if (flag_c) {
+	} else if (flagC) {
 	    System.out.println(new ProcessorTree(jkstat).numCores());
 	} else {
 	    System.out.println(kstats.size());
@@ -106,9 +106,9 @@ public class PsrInfo {
 	StringBuilder sb = new StringBuilder(160);
 	if (ks != null) {
 	    sb.append("Status of virtual processor ").append(ks.getInstance())
-		.append(" as of: ").append(df.format(new Date()))
+		.append(" as of: ").append(DF.format(new Date()))
 		.append("\n  ").append(ks.getData("state")).append(" since ")
-		.append(df.format(new Date(1000*ks.longData("state_begin"))))
+		.append(DF.format(new Date(1000*ks.longData("state_begin"))))
 		.append("\n  The ").append(ks.getData("cpu_type"))
 		.append(" processor operates at ")
 		.append(ks.getData("clock_MHz"))
@@ -142,20 +142,20 @@ public class PsrInfo {
     public static void main(String[] args) {
 	for (String arg : args) {
 	    if ("-t".equals(arg)) {
-		flag_t = true;
+		flagT = true;
 	    }
 	    if ("-c".equals(arg)) {
-		flag_c = true;
+		flagC = true;
 	    }
 	    if ("-p".equals(arg)) {
-		flag_p = true;
+		flagP = true;
 	    }
 	    if ("-v".equals(arg)) {
-		flag_v = true;
+		flagV = true;
 	    }
 	    if ("-vp".equals(arg) || "-pv".equals(arg)) {
-		flag_p = true;
-		flag_v = true;
+		flagP = true;
+		flagV = true;
 	    }
 	}
 	new PsrInfo();

@@ -32,7 +32,10 @@ import javax.management.JMException;
  *
  * @author Peter Tribble
  */
-public class JKstatMXserver {
+public final class JKstatMXserver {
+
+    private JKstatMXserver() {
+    }
 
     /**
      * Start a standalone JMX server.

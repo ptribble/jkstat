@@ -30,7 +30,10 @@ package uk.co.petertribble.jkstat.api;
  *
  * @author Peter Tribble
  */
-public class KstatType {
+public final class KstatType {
+
+    private KstatType() {
+    }
 
     /**
      * Anything. If known, massaged to name/value form.

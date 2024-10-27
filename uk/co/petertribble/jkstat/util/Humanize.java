@@ -30,10 +30,10 @@ import java.text.DecimalFormat;
  *
  * @author Peter Tribble
  */
-public class Humanize {
+public final class Humanize {
 
     private static final double KSCALE = 1024.0;
-    private static final char[] names = { 'k', 'm', 'g', 't', 'p', 'e'};
+    private static final char[] NAMES = { 'k', 'm', 'g', 't', 'p', 'e'};
     private static final DecimalFormat DF = new DecimalFormat("##0.0#");
 
     /**
@@ -112,6 +112,6 @@ public class Humanize {
 	    dvalue /= KSCALE;
 	    i++;
 	}
-	return DF.format(dvalue) + " " + names[i] + suffix;
+	return DF.format(dvalue) + " " + NAMES[i] + suffix;
     }
 }

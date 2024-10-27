@@ -40,8 +40,8 @@ public class KstatTableModel extends AbstractTableModel
 
     private static final long serialVersionUID = 1L;
 
-    private static final String[] columnNames = { "Name", "Value", "Rate" };
-    private DecimalFormat df = new DecimalFormat("##0.0###");
+    private static final String[] COLUMNS = { "Name", "Value", "Rate" };
+    private static final DecimalFormat DF = new DecimalFormat("##0.0###");
 
     /**
      * A Timer, to update the model in a loop.
@@ -136,7 +136,7 @@ public class KstatTableModel extends AbstractTableModel
 
     @Override
     public int getColumnCount() {
-	return (delay < 0) ? columnNames.length - 1 : columnNames.length;
+	return (delay < 0) ? COLUMNS.length - 1 : COLUMNS.length;
     }
 
     @Override
@@ -146,7 +146,7 @@ public class KstatTableModel extends AbstractTableModel
 
     @Override
     public String getColumnName(int col) {
-	return columnNames[col];
+	return COLUMNS[col];
     }
 
     @Override
@@ -157,14 +157,14 @@ public class KstatTableModel extends AbstractTableModel
 	    return ks.getData(rowNames[row]);
 	} else {
 	    if (ks.isNumeric(rowNames[row])) {
-		long ll = ks.longData(rowNames[row]) -
-						oldks.longData(rowNames[row]);
+		long ll = ks.longData(rowNames[row])
+						- oldks.longData(rowNames[row]);
 		if (ll == 0) {
 		    return 0L;
 		}
 		long snapdelta = ks.getSnaptime() - oldks.getSnaptime();
 		return (snapdelta == 0) ? Double.NaN
-		    : df.format(ll*(1000000000.0/snapdelta));
+		    : DF.format(ll*(1000000000.0/snapdelta));
 	    } else {
 		return "-";
 	    }

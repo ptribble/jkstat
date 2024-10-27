@@ -248,8 +248,8 @@ public class KstatAreaPngImage {
 	    if (args.length != 1) {
 		usage("Invalid arguments.");
 	    }
-	    if ((ss[0].length() == 0) || (ss[1].length() == 0) ||
-						(ss[2].length() == 0)) {
+	    if ((ss[0].length() == 0) || (ss[1].length() == 0)
+						|| (ss[2].length() == 0)) {
 		// wildcard, construct a Set
 		KstatAggregate ksa = KstatUtil.makeAggr(jkstat, ss[0], ss[1],
 							ss[2]);
@@ -271,8 +271,8 @@ public class KstatAreaPngImage {
 	    for (int i = 1; i < args.length; i++) {
 		arglist.add(args[i]);
 	    }
-	    if ((ss[0].length() == 0) || (ss[1].length() == 0) ||
-						(ss[2].length() == 0)) {
+	    if ((ss[0].length() == 0) || (ss[1].length() == 0)
+						|| (ss[2].length() == 0)) {
 		// wildcard, construct a Set
 		KstatAggregate ksa = KstatUtil.makeAggr(jkstat, ss[0], ss[1],
 							ss[2]);

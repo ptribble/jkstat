@@ -41,7 +41,7 @@ public class SparkValueAccessory extends KstatAccessoryPanel {
     private String tiptext;
     private boolean doscale;
     private double scale;
-    private static final DecimalFormat df = new DecimalFormat("##0.00");
+    private static final DecimalFormat DF = new DecimalFormat("##0.00");
 
     /**
      * Create a panel showing a sparkline of the value of the given statistic.
@@ -101,8 +101,8 @@ public class SparkValueAccessory extends KstatAccessoryPanel {
 	jsc.add(ks.longData(stat));
 	if (dotips) {
 	    if (doscale) {
-		setToolTipText(tiptext + " " +
-			       df.format(scale*ks.longData(stat)));
+		setToolTipText(tiptext + " "
+			       + DF.format(scale*ks.longData(stat)));
 	    } else {
 		setToolTipText(tiptext + " " + ks.longData(stat));
 	    }

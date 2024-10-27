@@ -89,8 +89,8 @@ public class KstatData implements Serializable {
                 }
             }
 
-            throw new IllegalArgumentException("Illegal Type Numeric Value (" +
-                    int_type + ")");
+            throw new IllegalArgumentException("Illegal Type Numeric Value ("
+                    + int_type + ")");
         }
     }
     private final Type type;

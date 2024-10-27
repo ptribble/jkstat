@@ -270,8 +270,8 @@ public class KstatCmd {
 	    String triplet = ks.getTriplet();
 	    if (showstatistic == null) {
 		for (String s : ksf.filteredStatistics(ks)) {
-		    System.out.println(triplet + ":" + s + "\t" +
-				ks.getData(s));
+		    System.out.println(triplet + ":" + s + "\t"
+				+ ks.getData(s));
 		}
 	    } else {
 		System.out.println(triplet + ":" + showstatistic + "\t"
@@ -284,8 +284,8 @@ public class KstatCmd {
 		    System.out.println("\t" + s + "\t" + ks.getData(s));
 		}
 	    } else {
-		System.out.println("\t" + showstatistic + "\t" +
-				ks.getData(showstatistic));
+		System.out.println("\t" + showstatistic + "\t"
+				+ ks.getData(showstatistic));
 	    }
 	    System.out.println();
 	}

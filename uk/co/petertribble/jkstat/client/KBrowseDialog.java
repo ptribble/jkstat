@@ -113,7 +113,7 @@ public class KBrowseDialog implements ActionListener {
 	    authbox.addActionListener(this);
 	    ufield.setEditable(false);
 	    pfield.setEditable(false);
-	    
+
 	    JPanel qpan = new JPanel();
 	    qpan.setLayout(new BoxLayout(qpan, BoxLayout.PAGE_AXIS));
 

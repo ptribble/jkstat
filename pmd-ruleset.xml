@@ -62,5 +62,4 @@
       <exclude name="UnusedPrivateMethod"/>
       <exclude name="AvoidReassigningParameters"/>
     </rule>
-    <exclude-pattern>.*/org/tribblix/illuminate/pkgview/TableSorter.*</exclude-pattern>
 </ruleset>

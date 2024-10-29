@@ -71,7 +71,7 @@ public final class MPstatTableModel extends AbstractTableModel
 	this.jkstat = jkstat;
 
 	mpdata = new ArrayList<>();
-	for (Kstat ks : kss.getKstats()) {
+	for (Kstat ks : kss.getKstats(true)) {
 	    mpdata.add(new ChartableMPstat(jkstat, ks));
 	}
 

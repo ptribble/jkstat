@@ -202,7 +202,7 @@ public class KstatTreeNode extends DefaultMutableTreeNode {
 	return knm;
     }
 
-    /**
+    /*
      * Remove a Kstat from the model. This assumes that any top-level layer of
      * the hierarchy has been stripped off. This only gets called from the
      * public removeKstat() method, so no need to check if we're passed null.

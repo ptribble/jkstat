@@ -161,11 +161,25 @@ public class KstatFilter {
 
     /**
      * Returns a {@code Set} of {@code Kstat}s that match the current filter.
+     * The returned {@code Kstat}s will not be sorted.
      *
      * @return the {@code Kstat}s that match the filter
      */
     public Set <Kstat> getKstats() {
-	Set <Kstat> matchset = new HashSet<>();
+	return getKstats(false);
+    }
+
+    /**
+     * Returns a {@code Set} of {@code Kstat}s that match the current filter.
+     * If requested, the {@code Kstat}s will be sorted, backed by a
+     * {@code TreeSet}.
+     *
+     * @param sorted whether the returned {@code Kstat}s should be sorted
+     *
+     * @return the {@code Kstat}s that match the filter
+     */
+    public Set <Kstat> getKstats(boolean sorted) {
+	Set <Kstat> matchset = sorted ? new TreeSet<>() : new HashSet<>();
 	for (Kstat ks : jkstat.getKstats()) {
 	    if (matchFilter(ks)) {
 		matchset.add(ks);

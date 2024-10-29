@@ -25,7 +25,6 @@ package uk.co.petertribble.jkstat.demo;
 import uk.co.petertribble.jkstat.api.*;
 import java.util.Date;
 import java.util.Set;
-import java.util.TreeSet;
 import java.text.DateFormat;
 
 /**
@@ -52,15 +51,15 @@ public class PsrInfo {
 	ksf.addFilter("cpu_info:::");
 
 	if (flagT) {
-	    displayT(new TreeSet<>(ksf.getKstats()));
+	    displayT(ksf.getKstats(true));
 	} else if (flagP && flagV) {
 	    displayVP();
 	} else if (flagV) {
-	    displayV(new TreeSet<>(ksf.getKstats()));
+	    displayV(ksf.getKstats(true));
 	} else if (flagP) {
 	    displayP();
 	} else {
-	    displayPlain(new TreeSet<>(ksf.getKstats()));
+	    displayPlain(ksf.getKstats(true));
 	}
     }
 

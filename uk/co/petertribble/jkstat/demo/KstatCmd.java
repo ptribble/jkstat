@@ -25,7 +25,6 @@ package uk.co.petertribble.jkstat.demo;
 import uk.co.petertribble.jkstat.api.*;
 import java.util.Set;
 import java.util.HashSet;
-import java.util.TreeSet;
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -202,7 +201,7 @@ public class KstatCmd {
     void doDisplay() {
 	displayTimeHeader();
 
-	for (Kstat ks : new TreeSet <Kstat>(ksf.getKstats())) {
+	for (Kstat ks : ksf.getKstats(true)) {
 	    Kstat ks2 = jkstat.getKstat(ks);
 	    if (ks2 != null) {
 		if (lflag) {

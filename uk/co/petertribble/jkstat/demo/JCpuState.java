@@ -28,7 +28,6 @@ import java.awt.event.*;
 import uk.co.petertribble.jkstat.api.*;
 import uk.co.petertribble.jkstat.gui.*;
 import java.util.Set;
-import java.util.TreeSet;
 import java.util.List;
 import java.util.ArrayList;
 import uk.co.petertribble.jingle.SpringUtilities;
@@ -89,7 +88,7 @@ public class JCpuState extends JKdemo implements ActionListener {
 	ksf.setFilterClass("misc");
 	ksf.addFilter("cpu_stat:::");
 
-	Set <Kstat> kstats = new TreeSet<>(ksf.getKstats());
+	Set <Kstat> kstats = ksf.getKstats(true);
 
 	ncpus = kstats.size();
 	aboutCpuItem = new JMenuItem[ncpus];

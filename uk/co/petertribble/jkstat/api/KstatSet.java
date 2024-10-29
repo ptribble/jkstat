@@ -24,6 +24,7 @@ package uk.co.petertribble.jkstat.api;
 
 import java.util.Set;
 import java.util.HashSet;
+import java.util.TreeSet;
 
 /**
  * Represents a Set of Kstats, capable of being updated as the kernel's
@@ -183,12 +184,25 @@ public class KstatSet {
     }
 
     /**
-     * Returns the current kstats.
+     * Returns the current kstats held in this {@code KstatSet}.
+     * The returned {@code Kstat}s will not be sorted.
      *
      * @return the {@code Set} of {@code Kstat}s managed by this KstatSet
      */
     public Set <Kstat> getKstats() {
-	return currentKstats;
+	return getKstats(false);
+    }
+
+    /**
+     * Returns the current kstats. If requested, the {@code Kstat}s will
+     * be sorted, backed by a {@code TreeSet}.
+     *
+     * @param sorted whether the returned {@code Kstat}s should be sorted
+     *
+     * @return the {@code Set} of {@code Kstat}s managed by this KstatSet
+     */
+    public Set <Kstat> getKstats(boolean sorted) {
+	return sorted ? new TreeSet<>(currentKstats) : currentKstats;
     }
 
     /**

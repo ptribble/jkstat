@@ -53,7 +53,7 @@ public final class MPstatTableModel extends AbstractTableModel
 		"ithr", "csw", "icsw", "migr", "smtx", "srw", "syscl", "usr",
 		"sys", "idl"};
 
-    private List <ChartableMPstat> mpdata;
+    private List<ChartableMPstat> mpdata;
     private Timer timer;
     private int delay;
     private JKstat jkstat;
@@ -137,7 +137,7 @@ public final class MPstatTableModel extends AbstractTableModel
 		mpdata.add(new ChartableMPstat(jkstat, ks));
 	    }
 	}
-	Iterator <ChartableMPstat> vki = mpdata.iterator();
+	Iterator<ChartableMPstat> vki = mpdata.iterator();
 	while (vki.hasNext()) {
 	    ChartableMPstat cks = vki.next();
 	    if (!cks.update()) {

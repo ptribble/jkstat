@@ -40,7 +40,7 @@ public class JKstatMX implements JKstatMXMBean {
      * @return The full set of kstats
      */
     @Override
-    public Set <Kstat> getKstats() {
+    public Set<Kstat> getKstats() {
 	return JKSTAT.getKstats();
     }
 

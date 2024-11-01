@@ -42,7 +42,7 @@ public final class IOstatTableModel extends AbstractTableModel
     private String[] columnNames = { "r/s", "w/s", "kr/s", "kw/s", "wait",
 				"actv", "svc_t", "%w", "%b", "device"};
 
-    private List <ChartableIOKstat> iodata;
+    private List<ChartableIOKstat> iodata;
     private Timer timer;
     private int delay;
     private JKstat jkstat;
@@ -126,7 +126,7 @@ public final class IOstatTableModel extends AbstractTableModel
 		iodata.add(new ChartableIOKstat(jkstat, ks));
 	    }
 	}
-	Iterator <ChartableIOKstat> vki = iodata.iterator();
+	Iterator<ChartableIOKstat> vki = iodata.iterator();
 	while (vki.hasNext()) {
 	    ChartableIOKstat cks = vki.next();
 	    if (!cks.update()) {

@@ -52,13 +52,13 @@ public class ChartableKstat {
     /**
      * A Map storing the last recorded values.
      */
-    protected Map <String, Long> valueMap = new HashMap<>();
+    protected Map<String, Long> valueMap = new HashMap<>();
 
     /**
      * A Map storing the most recently calculated rates. This is calculated
      * upon update, rather than calculating rates on demand.
      */
-    protected Map <String, Double> rateMap = new HashMap<>();
+    protected Map<String, Double> rateMap = new HashMap<>();
 
     /**
      * Create a new ChartableKstat. Required for inheritance.
@@ -133,7 +133,7 @@ public class ChartableKstat {
      *
      * @return the list of available statistics
      */
-    public Set <String> getStatistics() {
+    public Set<String> getStatistics() {
 	return new TreeSet<>(rateMap.keySet());
     }
 

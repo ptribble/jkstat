@@ -134,7 +134,7 @@ public class KstatPngImage {
      * @param f the {@code File} to be written to
      */
     public KstatPngImage(JKstat jkstat, KstatAggregate ksa,
-				List <String> statistics, File f) {
+				List<String> statistics, File f) {
 	this(jkstat, ksa, statistics, f, true);
     }
 
@@ -149,7 +149,7 @@ public class KstatPngImage {
      * @param rates if true, show rates rather than absolute values
      */
     public KstatPngImage(JKstat jkstat, KstatAggregate ksa,
-		List <String> statistics, File f, boolean rates) {
+		List<String> statistics, File f, boolean rates) {
 	saveImage(f, new KstatAggregateChart(jkstat, ksa, statistics, rates));
     }
 
@@ -162,7 +162,7 @@ public class KstatPngImage {
      * @param statistics the {@code List} of statistics to be charted
      * @param f the {@code File} to be written to
      */
-    public KstatPngImage(JKstat jkstat, Kstat ks, List <String> statistics,
+    public KstatPngImage(JKstat jkstat, Kstat ks, List<String> statistics,
 		File f) {
 	this(jkstat, ks, statistics, f, true);
     }
@@ -177,7 +177,7 @@ public class KstatPngImage {
      * @param rates if true, show rates rather than absolute values
      */
     public KstatPngImage(JKstat jkstat, Kstat ks,
-		List <String> statistics, File f, boolean rates) {
+		List<String> statistics, File f, boolean rates) {
 	saveImage(f, new KstatChart(jkstat, ks, statistics, rates));
     }
 
@@ -268,7 +268,7 @@ public class KstatPngImage {
 	    if (args.length == 1) {
 		usage("Invalid arguments.");
 	    }
-	    List <String> arglist = new ArrayList<>();
+	    List<String> arglist = new ArrayList<>();
 	    for (int i = 1; i < args.length; i++) {
 		arglist.add(args[i]);
 	    }

@@ -35,7 +35,7 @@ import org.json.*;
  */
 public class JSONParser {
 
-    private Set <Kstat> kstats;
+    private Set<Kstat> kstats;
 
     /**
      * Parse kstat JSON transfer format.
@@ -97,7 +97,7 @@ public class JSONParser {
      *
      * @return the Set of Kstats encoded by the supplied String
      */
-    public static Set <Kstat> getKstats(String s) {
+    public static Set<Kstat> getKstats(String s) {
 	try {
 	    return getKstats(new JSONArray(s));
 	} catch (JSONException jse) {
@@ -105,8 +105,8 @@ public class JSONParser {
 	}
     }
 
-    private static Set <Kstat> getKstats(JSONArray ja) {
-	Set <Kstat> nkstats = new HashSet<>();
+    private static Set<Kstat> getKstats(JSONArray ja) {
+	Set<Kstat> nkstats = new HashSet<>();
 	try {
 	    for (int i = 0; i < ja.length(); i++) {
 		JSONObject jo = ja.getJSONObject(i);
@@ -153,7 +153,7 @@ public class JSONParser {
      *
      * @return the Set of parsed Kstats
      */
-    public Set <Kstat> getKstats() {
+    public Set<Kstat> getKstats() {
 	return kstats;
     }
 }

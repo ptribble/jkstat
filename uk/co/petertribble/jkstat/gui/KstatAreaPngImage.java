@@ -133,7 +133,7 @@ public class KstatAreaPngImage {
      * @param f the File to be written to
      */
     public KstatAreaPngImage(JKstat jkstat, KstatAggregate ksa,
-		List <String> statistics, File f) {
+		List<String> statistics, File f) {
 	this(jkstat, ksa, statistics, f, true);
     }
 
@@ -147,7 +147,7 @@ public class KstatAreaPngImage {
      * @param rates if true, show rates, else show absolute values
      */
     public KstatAreaPngImage(JKstat jkstat, KstatAggregate ksa,
-		List <String> statistics, File f, boolean rates) {
+		List<String> statistics, File f, boolean rates) {
 	saveImage(f, new KstatAggregateAreaChart(jkstat, ksa, statistics,
 						rates));
     }
@@ -161,7 +161,7 @@ public class KstatAreaPngImage {
      * @param f the File to be written to
      */
     public KstatAreaPngImage(JKstat jkstat, Kstat ks,
-		List <String> statistics, File f) {
+		List<String> statistics, File f) {
 	this(jkstat, ks, statistics, f, true);
     }
 
@@ -175,7 +175,7 @@ public class KstatAreaPngImage {
      * @param rates if true, show rates, else show absolute values
      */
     public KstatAreaPngImage(JKstat jkstat, Kstat ks,
-		List <String> statistics, File f, boolean rates) {
+		List<String> statistics, File f, boolean rates) {
 	saveImage(f, new KstatAreaChart(jkstat, ks, statistics, rates));
     }
 
@@ -267,7 +267,7 @@ public class KstatAreaPngImage {
 	    if (args.length == 1) {
 		usage("Invalid arguments.");
 	    }
-	    List <String> arglist = new ArrayList<>();
+	    List<String> arglist = new ArrayList<>();
 	    for (int i = 1; i < args.length; i++) {
 		arglist.add(args[i]);
 	    }

@@ -167,7 +167,7 @@ public class KstatAreaChartFrame extends KstatBaseChartFrame {
      * @param statistics the statistics to be charted
      */
     public KstatAreaChartFrame(JKstat jkstat, KstatAggregate ksa,
-		List <String> statistics) {
+		List<String> statistics) {
 	this(jkstat, ksa, statistics, true);
     }
 
@@ -181,7 +181,7 @@ public class KstatAreaChartFrame extends KstatBaseChartFrame {
      * @param showdelta if true, show rates, else show absolute values
      */
     public KstatAreaChartFrame(JKstat jkstat, KstatAggregate ksa,
-		List <String> statistics, boolean showdelta) {
+		List<String> statistics, boolean showdelta) {
 	super();
 	this.jkstat = jkstat;
 	this.showdelta = showdelta;
@@ -198,7 +198,7 @@ public class KstatAreaChartFrame extends KstatBaseChartFrame {
      * @param statistics the statistics to be charted
      */
     public KstatAreaChartFrame(JKstat jkstat, Kstat ks,
-		List <String> statistics) {
+		List<String> statistics) {
 	this(jkstat, ks, statistics, true);
     }
 
@@ -211,7 +211,7 @@ public class KstatAreaChartFrame extends KstatBaseChartFrame {
      * @param showdelta if true, show rates, else show absolute values
      */
     public KstatAreaChartFrame(JKstat jkstat, Kstat ks,
-		List <String> statistics, boolean showdelta) {
+		List<String> statistics, boolean showdelta) {
 	super();
 	this.jkstat = jkstat;
 	this.showdelta = showdelta;
@@ -263,7 +263,7 @@ public class KstatAreaChartFrame extends KstatBaseChartFrame {
 	    if (args.length == 1) {
 		usage("Invalid arguments.");
 	    }
-	    List <String> arglist = new ArrayList<>();
+	    List<String> arglist = new ArrayList<>();
 	    for (int i = 1; i < args.length; i++) {
 		arglist.add(args[i]);
 	    }

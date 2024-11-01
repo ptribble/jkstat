@@ -73,8 +73,8 @@ public class KstatTreePanel extends JPanel implements TreeSelectionListener,
     private KstatSet kss;
     private KstatTreeMap ksm;
     private KstatModuleMap kstatMap;
-    private SortedMap <String, KstatModuleMap> kstatClassMap;
-    private SortedMap <String, KstatModuleMap> kstatTypeMap;
+    private SortedMap<String, KstatModuleMap> kstatClassMap;
+    private SortedMap<String, KstatModuleMap> kstatTypeMap;
 
     private final KstatTreeModel moduleModel;
     private final KstatTreeModel classModel;

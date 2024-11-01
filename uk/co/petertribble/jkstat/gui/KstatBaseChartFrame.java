@@ -210,7 +210,7 @@ public class KstatBaseChartFrame extends JFrame implements ActionListener {
      * @return the Statistics Menu
      */
     protected JMenu statisticsMenu(ChartableKstat cks,
-				List <String> statistics) {
+				List<String> statistics) {
 	JMenu jmstat = new JMenu(KstatResources.getString("CHART.SHOW"));
 	jmstat.setMnemonic(KeyEvent.VK_S);
 	for (String stat : cks.getStatistics()) {

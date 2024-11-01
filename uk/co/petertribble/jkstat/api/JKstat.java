@@ -36,7 +36,7 @@ public abstract class JKstat {
     /**
      * The {@code Set} of all available kstats.
      */
-    protected Set <Kstat> kstats;
+    protected Set<Kstat> kstats;
 
     /**
      * A flag to mark whether the kstats have been enumerated.
@@ -62,7 +62,7 @@ public abstract class JKstat {
      *
      * @return a {@code Set} of the currently available {@code Kstat}s
      */
-    public synchronized Set <Kstat> getKstats() {
+    public synchronized Set<Kstat> getKstats() {
 	if (enumerated) {
 	    if (getKCID() != chainid) {
 		kstats.clear();

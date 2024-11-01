@@ -223,8 +223,8 @@ public class ChartBuilderPanel extends JPanel implements TreeSelectionListener,
      * Walk through the list of JCheckBoxes on the statsPanel, and produce
      * a List of Strings representing the selected statistics.
      */
-    private List <String> selectedStats() {
-	List <String> stats = new ArrayList<>();
+    private List<String> selectedStats() {
+	List<String> stats = new ArrayList<>();
 	for (Component c : statsPanel.getComponents()) {
 	    if (c instanceof JCheckBox) {
 		JCheckBox jcb = (JCheckBox) c;
@@ -248,7 +248,7 @@ public class ChartBuilderPanel extends JPanel implements TreeSelectionListener,
      * to an aggregate
      */
     private void createChart() {
-	List <String> stats = selectedStats();
+	List<String> stats = selectedStats();
 	if (stats.isEmpty()) {
 	    JOptionPane.showMessageDialog(this,
 		    KstatResources.getString("CHART.SELECT.MSG"),

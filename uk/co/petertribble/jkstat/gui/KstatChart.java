@@ -42,7 +42,7 @@ public class KstatChart extends KstatBaseChart {
     private ChartableKstat cks;
     private Kstat ks;
     private TimeSeriesCollection dataset;
-    private Map <String, TimeSeries> tsmap;
+    private Map<String, TimeSeries> tsmap;
 
     /**
      * Create a Chart of the given statistic.
@@ -83,7 +83,7 @@ public class KstatChart extends KstatBaseChart {
      * @param statistics the statistics to be charted
      * @param showdelta if true, show rates, else show absolute values
      */
-    public KstatChart(JKstat jkstat, Kstat ks, List <String> statistics,
+    public KstatChart(JKstat jkstat, Kstat ks, List<String> statistics,
 		boolean showdelta) {
 	this.jkstat = jkstat;
 	this.ks = ks;
@@ -93,12 +93,12 @@ public class KstatChart extends KstatBaseChart {
     }
 
     private void init(String statistic) {
-	List <String> statistics = new ArrayList<>();
+	List<String> statistics = new ArrayList<>();
 	statistics.add(statistic);
 	init(statistics);
     }
 
-    private void init(List <String> statistics) {
+    private void init(List<String> statistics) {
 	tsmap = new HashMap<>();
 	dataset = new TimeSeriesCollection();
 

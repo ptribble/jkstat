@@ -64,7 +64,7 @@ public class KstatCmd {
      */
     public KstatCmd(String[] args) {
 	jkstat = new NativeJKstat();
-	Set <String> statspecs = new HashSet<>();
+	Set<String> statspecs = new HashSet<>();
 
 	boolean cflag = false;
 	boolean iflag = false;

@@ -42,7 +42,7 @@ public class JNetSpark extends JKdemo implements ActionListener {
     private KstatAccessorySet kas;
 
     // to identify menu popups
-    private Map <JMenuItem, Kstat> itemMap;
+    private Map<JMenuItem, Kstat> itemMap;
 
     /**
      * Construct a new JNetSpark application.
@@ -65,7 +65,7 @@ public class JNetSpark extends JKdemo implements ActionListener {
 
 	itemMap = new HashMap<>();
 
-	List <KstatAccessoryPanel> kaplist = new ArrayList<>();
+	List<KstatAccessoryPanel> kaplist = new ArrayList<>();
 
 	// create a main panel
 	JPanel mainPanel = new JPanel();

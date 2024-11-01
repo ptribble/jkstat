@@ -36,8 +36,8 @@ import uk.co.petertribble.jkstat.util.NumericStringComparator;
 public class KstatTreeMap {
 
     private KstatModuleMap kstatMap;
-    private SortedMap <String, KstatModuleMap> kstatClassMap;
-    private SortedMap <String, KstatModuleMap> kstatTypeMap;
+    private SortedMap<String, KstatModuleMap> kstatClassMap;
+    private SortedMap<String, KstatModuleMap> kstatTypeMap;
 
     /**
      * Constructs a KstatTreeMap.
@@ -71,7 +71,7 @@ public class KstatTreeMap {
      *
      * @return The kstat Map, including the class hierarchy
      */
-    public SortedMap <String, KstatModuleMap> getKstatClassMap() {
+    public SortedMap<String, KstatModuleMap> getKstatClassMap() {
 	return kstatClassMap;
     }
 
@@ -80,7 +80,7 @@ public class KstatTreeMap {
      *
      * @return The kstat Map, including the type hierarchy
      */
-    public SortedMap <String, KstatModuleMap> getKstatTypeMap() {
+    public SortedMap<String, KstatModuleMap> getKstatTypeMap() {
 	return kstatTypeMap;
     }
 
@@ -109,7 +109,7 @@ public class KstatTreeMap {
     /*
      * Add a Kstat to the right place in the Map.
      */
-    private void addToTypeMap(SortedMap <String, KstatModuleMap> hc, Kstat ks) {
+    private void addToTypeMap(SortedMap<String, KstatModuleMap> hc, Kstat ks) {
 	String ktype = ks.getTypeAsString();
 	if (!hc.containsKey(ktype)) {
 	    hc.put(ktype, new KstatModuleMap());
@@ -121,7 +121,7 @@ public class KstatTreeMap {
     /*
      * Add a Kstat to the right place in the Map.
      */
-    private void addToClassMap(SortedMap <String, KstatModuleMap> hc,
+    private void addToClassMap(SortedMap<String, KstatModuleMap> hc,
 		Kstat ks) {
 	String kc = ks.getKstatClass();
 	if (!hc.containsKey(kc)) {
@@ -163,13 +163,13 @@ public class KstatTreeMap {
 	hn.put(ks.getName(), ks);
     }
 
-    private void removeFromTypeMap(SortedMap <String, KstatModuleMap> ht,
+    private void removeFromTypeMap(SortedMap<String, KstatModuleMap> ht,
 		Kstat ks) {
 	KstatModuleMap hm = ht.get(ks.getTypeAsString());
 	removeFromModuleMap(hm, ks);
     }
 
-    private void removeFromClassMap(SortedMap <String, KstatModuleMap> hc,
+    private void removeFromClassMap(SortedMap<String, KstatModuleMap> hc,
 		Kstat ks) {
 	KstatModuleMap hm = hc.get(ks.getKstatClass());
 	removeFromModuleMap(hm, ks);

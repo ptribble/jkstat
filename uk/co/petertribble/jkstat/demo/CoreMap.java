@@ -28,7 +28,7 @@ import uk.co.petertribble.jkstat.api.Kstat;
 /**
  * Describes a cpu core and its constituent threads.
  */
-public class CoreMap extends TreeMap <Long, Kstat> {
+public class CoreMap extends TreeMap<Long, Kstat> {
 
     private static final long serialVersionUID = 1L;
 

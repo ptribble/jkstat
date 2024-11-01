@@ -43,7 +43,7 @@ public class ParseableJSONZipJKstat extends SequencedJKstat {
     /*
      * We need a separate cached map for each zipfile.
      */
-    private Map <Integer, JSONParser> ppmap;
+    private Map<Integer, JSONParser> ppmap;
 
     /**
      * Constructs a ParseableJSONZipJKstat object, with JSON cacheing disabled
@@ -78,19 +78,19 @@ public class ParseableJSONZipJKstat extends SequencedJKstat {
      * @param cached whether caching should be enabled
      */
     public ParseableJSONZipJKstat(ZipFile zf,
-				Map <Integer, JSONParser> ppmap,
+				Map<Integer, JSONParser> ppmap,
 				boolean cached) {
 	super();
 	this.zf = zf;
 	this.ppmap = ppmap;
 	this.cached = cached;
-	ArrayList <ZipEntry> al = new ArrayList<>();
+	ArrayList<ZipEntry> al = new ArrayList<>();
 	for (Enumeration<? extends ZipEntry> e
 		 = zf.entries(); e.hasMoreElements();) {
 	    al.add(e.nextElement());
 	}
 	inputs = al.toArray(new ZipEntry[0]);
-	Arrays.sort(inputs, new Comparator <ZipEntry>() {
+	Arrays.sort(inputs, new Comparator<ZipEntry>() {
 			@Override
 			public int compare(ZipEntry f1, ZipEntry f2) {
 			    if (f1.getTime() > f2.getTime()) {

@@ -42,7 +42,7 @@ public class KstatAggregateChart extends KstatBaseChart {
     private ChartableKstat cks;
     private KstatAggregate ksa;
     private TimeSeriesCollection dataset;
-    private Map <String, TimeSeries> tsmap;
+    private Map<String, TimeSeries> tsmap;
 
     /**
      * Create a Chart of the rate of change of the given statistic.
@@ -81,7 +81,7 @@ public class KstatAggregateChart extends KstatBaseChart {
      * @param showdelta if true, show rates, else show absolute values
      */
     public KstatAggregateChart(JKstat jkstat, KstatAggregate ksa,
-				List <String> statistics, boolean showdelta) {
+				List<String> statistics, boolean showdelta) {
 	this.jkstat = jkstat;
 	this.ksa = ksa;
 	this.showdelta = showdelta;
@@ -89,12 +89,12 @@ public class KstatAggregateChart extends KstatBaseChart {
     }
 
     private void init(String statistic) {
-	List <String> statistics = new ArrayList<>();
+	List<String> statistics = new ArrayList<>();
 	statistics.add(statistic);
 	init(statistics);
     }
 
-    private void init(List <String> statistics) {
+    private void init(List<String> statistics) {
 	tsmap = new HashMap<>();
 	dataset = new TimeSeriesCollection();
 

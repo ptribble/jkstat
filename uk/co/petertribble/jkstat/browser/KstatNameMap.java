@@ -29,7 +29,7 @@ import uk.co.petertribble.jkstat.util.NumericStringComparator;
 /**
  * Describes a map of kstats keyed by name.
  */
-public class KstatNameMap extends TreeMap <String, Kstat> {
+public class KstatNameMap extends TreeMap<String, Kstat> {
 
     private static final long serialVersionUID = 1L;
 

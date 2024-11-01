@@ -44,11 +44,11 @@ public final class KstatUtil {
      *
      * @return a Set of those statistics that are of a numeric type
      */
-    public static Set <String> numericStatistics(JKstat jkstat, Kstat ks) {
+    public static Set<String> numericStatistics(JKstat jkstat, Kstat ks) {
 	if (ks == null) {
 	    return null;
 	}
-	Set <String> ss = ks.statistics();
+	Set<String> ss = ks.statistics();
 	if (ss.isEmpty()) {
 	    ks = jkstat.getKstat(ks);
 	    if (ks == null) {
@@ -56,7 +56,7 @@ public final class KstatUtil {
 	    }
 	    ss = ks.statistics();
 	}
-	Set <String> ns = new TreeSet<>();
+	Set<String> ns = new TreeSet<>();
 	for (String s : ss) {
 	    if (ks.isNumeric(s)) {
 		ns.add(s);
@@ -73,12 +73,12 @@ public final class KstatUtil {
      *
      * @return a Set of those statistics that are of a numeric type
      */
-    public static Set <String> numericStatistics(JKstat jkstat,
+    public static Set<String> numericStatistics(JKstat jkstat,
 						KstatAggregate ksa) {
 	if (ksa == null) {
 	    return null;
 	}
-	Set <String> ns = new TreeSet<>();
+	Set<String> ns = new TreeSet<>();
 	for (Kstat ks : ksa.getKstats()) {
 	    ns.addAll(numericStatistics(jkstat, ks));
 	}

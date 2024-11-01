@@ -101,7 +101,7 @@ public abstract class KstatBaseChart implements ActionListener {
      * @param colors a List of Colors to be used to render the series of
      * data charts.
      */
-    public void setColors(List <Color> colors) {
+    public void setColors(List<Color> colors) {
 	XYPlot plot = chart.getXYPlot();
 	XYItemRenderer renderer = plot.getRenderer();
 	int n = 0;

@@ -52,7 +52,7 @@ public class KServerConfig {
      */
     public void parseConfig(File f) {
 	if (f.exists()) {
-	    Map <String, String> m = JumbleUtils.stringToPropMap(
+	    Map<String, String> m = JumbleUtils.stringToPropMap(
 					JumbleFile.getStringContents(f), "\n");
 	    try {
 		port = Integer.parseInt(m.get("Port"));
@@ -151,7 +151,7 @@ public class KServerConfig {
 	     * we can't use getLocalHost() because it might (and often does)
 	     * really resolve to localhost.
 	     */
-	    ia = InetAddress.getByAddress(new byte[]{0,0,0,0});
+	    ia = InetAddress.getByAddress(new byte[]{0, 0, 0, 0});
 	} catch (UnknownHostException uhe) {}
 	return ia;
     }

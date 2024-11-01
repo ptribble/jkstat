@@ -63,7 +63,7 @@ public class PsrInfo {
 	}
     }
 
-    private void displayPlain(Set <Kstat> kstats) {
+    private void displayPlain(Set<Kstat> kstats) {
 	DateFormat df = DateFormat.getDateTimeInstance(DateFormat.SHORT,
 					    DateFormat.SHORT);
 	for (Kstat ks : kstats) {
@@ -78,7 +78,7 @@ public class PsrInfo {
 	System.out.println(new ProcessorTree(jkstat).numChips());
     }
 
-    private void displayT(Set <Kstat> kstats) {
+    private void displayT(Set<Kstat> kstats) {
 	if (flagP) {
 	    System.out.println(new ProcessorTree(jkstat).numChips());
 	} else if (flagC) {
@@ -88,7 +88,7 @@ public class PsrInfo {
 	}
     }
 
-    private void displayV(Set <Kstat> kstats) {
+    private void displayV(Set<Kstat> kstats) {
 	for (Kstat ks : kstats) {
 	    System.out.println(details(jkstat.getKstat(ks)));
 	}

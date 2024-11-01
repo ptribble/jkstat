@@ -39,7 +39,7 @@ public class KClientDialog implements ActionListener {
 
     private JTextField sfield;
     private JTextField portfield;
-    private JComboBox <String> protobox;
+    private JComboBox<String> protobox;
     private JTextField ufield;
     private JPasswordField pfield;
     private JCheckBox authbox;

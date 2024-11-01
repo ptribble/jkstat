@@ -37,7 +37,7 @@ public interface JKstatMXMBean {
      *
      * @return a Set of all the kstats
      */
-    Set <Kstat> getKstats();
+    Set<Kstat> getKstats();
 
     /**
      * Return a given kstat.

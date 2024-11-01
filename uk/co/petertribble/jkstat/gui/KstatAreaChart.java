@@ -43,8 +43,8 @@ public class KstatAreaChart extends KstatBaseChart {
     private ChartableKstat cks;
     private Kstat ks;
     private TimeTableXYDataset dataset;
-    private List <String> statlist;
-    private Set <String> allstats;
+    private List<String> statlist;
+    private Set<String> allstats;
 
     /**
      * Create an area Chart of the given statistic.
@@ -88,7 +88,7 @@ public class KstatAreaChart extends KstatBaseChart {
      * @param statistics the statistics to be charted
      * @param showdelta if true, show rates, else show absolute values
      */
-    public KstatAreaChart(JKstat jkstat, Kstat ks, List <String> statistics,
+    public KstatAreaChart(JKstat jkstat, Kstat ks, List<String> statistics,
 		boolean showdelta) {
 	this.jkstat = jkstat;
 	this.ks = ks;
@@ -98,12 +98,12 @@ public class KstatAreaChart extends KstatBaseChart {
     }
 
     private void init(String statistic) {
-	List <String> statistics = new ArrayList<>();
+	List<String> statistics = new ArrayList<>();
 	statistics.add(statistic);
 	init(statistics);
     }
 
-    private void init(List <String> statistics) {
+    private void init(List<String> statistics) {
 	statlist = statistics;
 	dataset = new TimeTableXYDataset();
 

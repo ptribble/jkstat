@@ -46,12 +46,12 @@ public class KBrowseDialog implements ActionListener {
 
     private KClientConfig kcc;
 
-    private JComboBox <String> protobox;
-    private JComboBox <String> servicebox;
+    private JComboBox<String> protobox;
+    private JComboBox<String> servicebox;
     private JTextField ufield;
     private JPasswordField pfield;
     private JCheckBox authbox;
-    private Map <String, String> serviceMap;
+    private Map<String, String> serviceMap;
     private int dialogStatus;
 
     static class BrowseListener implements ServiceListener {
@@ -77,7 +77,7 @@ public class KBrowseDialog implements ActionListener {
     public KBrowseDialog() {
 	serviceMap = new HashMap<>();
 	try (JmDNS jmdns =
-	     JmDNS.create(InetAddress.getByAddress(new byte[]{0,0,0,0}))) {
+	     JmDNS.create(InetAddress.getByAddress(new byte[]{0, 0, 0, 0}))) {
 
 	    jmdns.addServiceListener("_jkstat._tcp.local.",
 				     new BrowseListener());

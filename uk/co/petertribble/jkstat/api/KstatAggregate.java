@@ -34,8 +34,8 @@ import java.util.HashSet;
 public class KstatAggregate {
 
     private KstatSet kss;
-    private Set <Kstat> inkstats;
-    private Set <Kstat> kstats;
+    private Set<Kstat> inkstats;
+    private Set<Kstat> kstats;
     private JKstat jkstat;
     private boolean isdynamic;
     private String title;
@@ -72,7 +72,7 @@ public class KstatAggregate {
      * @param jkstat a {@code JKstat}
      * @param inkstats a Set of Kstats to be aggregated
      */
-    public KstatAggregate(JKstat jkstat, Set <Kstat> inkstats) {
+    public KstatAggregate(JKstat jkstat, Set<Kstat> inkstats) {
 	this(jkstat, inkstats, "Aggregate");
     }
 
@@ -83,7 +83,7 @@ public class KstatAggregate {
      * @param inkstats a Set of Kstats to be aggregated
      * @param title a String that can be used for presentation
      */
-    public KstatAggregate(JKstat jkstat, Set <Kstat> inkstats, String title) {
+    public KstatAggregate(JKstat jkstat, Set<Kstat> inkstats, String title) {
 	this.jkstat = jkstat;
 	this.inkstats = inkstats;
 	this.title = title;
@@ -200,7 +200,7 @@ public class KstatAggregate {
      *
      * @return the Set of Kstats contained in this aggregate
      */
-    public Set <Kstat> getKstats() {
+    public Set<Kstat> getKstats() {
 	return kstats;
     }
 

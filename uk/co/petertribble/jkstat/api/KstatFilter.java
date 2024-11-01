@@ -40,8 +40,8 @@ import java.util.HashSet;
 public class KstatFilter {
 
     private String filterClass;
-    private Set <FilterQuartet> filterList;
-    private Set <FilterQuartet> antiFilterList;
+    private Set<FilterQuartet> filterList;
+    private Set<FilterQuartet> antiFilterList;
     private JKstat jkstat;
     // an invalid type, as an int cannot be null
     private int filterType = -1;
@@ -114,7 +114,7 @@ public class KstatFilter {
      * Common filter code.
      */
     @SuppressWarnings("fallthrough")
-    private void doFilter(String filter, Set <FilterQuartet> fset) {
+    private void doFilter(String filter, Set<FilterQuartet> fset) {
 	if (filter == null) {
 	    return;
 	}
@@ -165,7 +165,7 @@ public class KstatFilter {
      *
      * @return the {@code Kstat}s that match the filter
      */
-    public Set <Kstat> getKstats() {
+    public Set<Kstat> getKstats() {
 	return getKstats(false);
     }
 
@@ -178,8 +178,8 @@ public class KstatFilter {
      *
      * @return the {@code Kstat}s that match the filter
      */
-    public Set <Kstat> getKstats(boolean sorted) {
-	Set <Kstat> matchset = sorted ? new TreeSet<>() : new HashSet<>();
+    public Set<Kstat> getKstats(boolean sorted) {
+	Set<Kstat> matchset = sorted ? new TreeSet<>() : new HashSet<>();
 	for (Kstat ks : jkstat.getKstats()) {
 	    if (matchFilter(ks)) {
 		matchset.add(ks);
@@ -198,7 +198,7 @@ public class KstatFilter {
      *
      * @return a filtered Set of statistics
      */
-    public Set <String> filteredStatistics(Kstat ks) {
+    public Set<String> filteredStatistics(Kstat ks) {
 	if (ks == null) {
 	    return null;
 	}
@@ -256,8 +256,8 @@ public class KstatFilter {
      * Return the Set of statistics that this filter matches against the
      * given Kstat.
      */
-    private Set <String> matchedStats(Kstat ks) {
-	Set <String> nstats = new TreeSet<>();
+    private Set<String> matchedStats(Kstat ks) {
+	Set<String> nstats = new TreeSet<>();
 	/*
 	 * Because matchMIN is called before this, we know there has to be
 	 * at least one positive filter.

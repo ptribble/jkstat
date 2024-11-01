@@ -33,7 +33,7 @@ import java.awt.event.*;
  */
 public class KstatAccessorySet implements ActionListener {
 
-    private Collection <KstatAccessoryPanel> accessories;
+    private Collection<KstatAccessoryPanel> accessories;
     private Timer timer;
     private int delay;
 

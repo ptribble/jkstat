@@ -60,7 +60,7 @@ public class Kstat implements Serializable, Comparable<Kstat> {
      * Raw kstats are massaged to the same format. Interrupt and I/O kstats
      * have a standard mapping.
      */
-    private final Map <String, KstatData> dataMap = new HashMap<>();
+    private final Map<String, KstatData> dataMap = new HashMap<>();
 
     /**
      * Creates a new {@code Kstat} of the given {@code module},
@@ -283,7 +283,7 @@ public class Kstat implements Serializable, Comparable<Kstat> {
      * @return a {@code Set} of {@code String}s comprising the names of the
      * statistics in this {@code Kstat}
      */
-    public Set <String> statistics() {
+    public Set<String> statistics() {
 	return new TreeSet<>(dataMap.keySet());
     }
 

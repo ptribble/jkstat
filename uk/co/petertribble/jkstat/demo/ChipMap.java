@@ -27,7 +27,7 @@ import java.util.TreeMap;
 /**
  * Describes a cpu chip and its constituent cores.
  */
-public class ChipMap extends TreeMap <Long, CoreMap> {
+public class ChipMap extends TreeMap<Long, CoreMap> {
 
     private static final long serialVersionUID = 1L;
 

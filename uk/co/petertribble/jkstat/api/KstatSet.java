@@ -36,9 +36,9 @@ import java.util.TreeSet;
  */
 public class KstatSet {
 
-    private Set <Kstat> addedKstats;
-    private Set <Kstat> deletedKstats;
-    private Set <Kstat> currentKstats;
+    private Set<Kstat> addedKstats;
+    private Set<Kstat> deletedKstats;
+    private Set<Kstat> currentKstats;
 
     private JKstat jkstat;
     private KstatFilter ksf;
@@ -127,8 +127,8 @@ public class KstatSet {
 	 * to get ourselves a new Set of kstats and then use that to find out
 	 * what kstats have been added and removed.
 	 */
-	Set <Kstat> oldKstats = currentKstats;
-	Set <Kstat> newKstats =
+	Set<Kstat> oldKstats = currentKstats;
+	Set<Kstat> newKstats =
 	    (ksf == null) ? jkstat.getKstats() : ksf.getKstats();
 	addedKstats = new HashSet<>(newKstats);
 	addedKstats.removeAll(oldKstats);
@@ -170,7 +170,7 @@ public class KstatSet {
      *
      * @return the {@code Set} of {@code Kstat}s added in the last update
      */
-    public Set <Kstat> getAddedKstats() {
+    public Set<Kstat> getAddedKstats() {
 	return addedKstats;
     }
 
@@ -179,7 +179,7 @@ public class KstatSet {
      *
      * @return the {@code Set} of {@code Kstat}s deleted in the last update
      */
-    public Set <Kstat> getDeletedKstats() {
+    public Set<Kstat> getDeletedKstats() {
 	return deletedKstats;
     }
 
@@ -189,7 +189,7 @@ public class KstatSet {
      *
      * @return the {@code Set} of {@code Kstat}s managed by this KstatSet
      */
-    public Set <Kstat> getKstats() {
+    public Set<Kstat> getKstats() {
 	return getKstats(false);
     }
 
@@ -201,7 +201,7 @@ public class KstatSet {
      *
      * @return the {@code Set} of {@code Kstat}s managed by this KstatSet
      */
-    public Set <Kstat> getKstats(boolean sorted) {
+    public Set<Kstat> getKstats(boolean sorted) {
 	return sorted ? new TreeSet<>(currentKstats) : currentKstats;
     }
 
@@ -211,8 +211,8 @@ public class KstatSet {
      * @return a Set (of Strings) containing all the modules in the Kstats
      * in this KstatSet
      */
-    public Set <String> getModuleSet() {
-	Set <String> ss = new HashSet<>();
+    public Set<String> getModuleSet() {
+	Set<String> ss = new HashSet<>();
 	for (Kstat ks : currentKstats) {
 	    ss.add(ks.getModule());
 	}
@@ -225,8 +225,8 @@ public class KstatSet {
      * @return a Set (of Strings) containing all the instances in the Kstats
      * in this KstatSet
      */
-    public Set <String> getInstanceSet() {
-	Set <String> ss = new HashSet<>();
+    public Set<String> getInstanceSet() {
+	Set<String> ss = new HashSet<>();
 	for (Kstat ks : currentKstats) {
 	    ss.add(ks.getInstance());
 	}
@@ -239,8 +239,8 @@ public class KstatSet {
      * @return a Set (of Strings) containing all the names in the Kstats
      * in this KstatSet
      */
-    public Set <String> getNameSet() {
-	Set <String> ss = new HashSet<>();
+    public Set<String> getNameSet() {
+	Set<String> ss = new HashSet<>();
 	for (Kstat ks : currentKstats) {
 	    ss.add(ks.getName());
 	}
@@ -253,8 +253,8 @@ public class KstatSet {
      * @return a Set (of Strings) containing all the classes in the Kstats
      * in this KstatSet
      */
-    public Set <String> getClassSet() {
-	Set <String> ss = new HashSet<>();
+    public Set<String> getClassSet() {
+	Set<String> ss = new HashSet<>();
 	for (Kstat ks : currentKstats) {
 	    ss.add(ks.getKstatClass());
 	}

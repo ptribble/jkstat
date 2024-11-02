@@ -23,7 +23,6 @@
 package uk.co.petertribble.jkstat.server;
 
 import uk.co.petertribble.jumble.JumbleUtils;
-import uk.co.petertribble.jumble.JumbleFile;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
@@ -52,8 +51,7 @@ public class KServerConfig {
      */
     public void parseConfig(File f) {
 	if (f.exists()) {
-	    Map<String, String> m = JumbleUtils.stringToPropMap(
-					JumbleFile.getStringContents(f), "\n");
+	    Map<String, String> m = JumbleUtils.fileToPropMap(f);
 	    try {
 		port = Integer.parseInt(m.get("Port"));
 	    } catch (NumberFormatException nfe) {

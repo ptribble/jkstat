@@ -6,12 +6,12 @@ import uk.co.petertribble.jkstat.api.*;
 
 public class KstatList {
 
-    static final JKstat jkstat = new NativeJKstat();
+    static final JKstat JKSTAT = new NativeJKstat();
 
     @GET
     @Produces("application/json")
     public String getKstat() {
-	KstatSet kss = new KstatSet(jkstat);
+	KstatSet kss = new KstatSet(JKSTAT);
 	return kss.toJSON();
     }
 }

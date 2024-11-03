@@ -6,7 +6,7 @@ import uk.co.petertribble.jkstat.api.*;
 
 public class KstatMget {
 
-    static final JKstat jkstat = new NativeJKstat();
+    static final JKstat JKSTAT = new NativeJKstat();
 
     @GET
     @Produces("application/json")
@@ -17,7 +17,7 @@ public class KstatMget {
 	sb.append('{');
 	boolean first = true;
 	for (String iname : name.split(";")) {
-	    KstatFilter ksf = new KstatFilter(jkstat);
+	    KstatFilter ksf = new KstatFilter(JKSTAT);
 	    if ("*".equals(instance)) {
 		ksf.addFilter(module + "::" + iname);
 	    } else {
@@ -37,7 +37,7 @@ public class KstatMget {
 		} else {
 		    sb.append(',');
 		}
-		Kstat ks2 = jkstat.getKstat(ks);
+		Kstat ks2 = JKSTAT.getKstat(ks);
 		sb.append(ks2.toJSON());
 	    }
 	    sb.append(']');

@@ -6,11 +6,11 @@ import uk.co.petertribble.jkstat.api.*;
 
 public class KstatGetkcid {
 
-    static final JKstat jkstat = new NativeJKstat();
+    static final JKstat JKSTAT = new NativeJKstat();
 
     @GET
     @Produces("application/json")
     public String getKstat() {
-	return Integer.toString(jkstat.getKCID());
+	return Integer.toString(JKSTAT.getKCID());
     }
 }

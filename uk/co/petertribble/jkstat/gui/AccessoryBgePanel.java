@@ -41,7 +41,7 @@ public class AccessoryBgePanel extends KstatAccessoryPanel {
      * statistics. 11 in all
      */
     private static final int STATNUM = 11;
-    private static final String[] STATNAMES = { "etherStatsUndersizePkts",
+    private static final String[] STATNAMES = {"etherStatsUndersizePkts",
 				"etherStatsPkts64Octets",
 				"etherStatsPkts65to127Octets",
 				"etherStatsPkts128to255Octets",
@@ -51,7 +51,7 @@ public class AccessoryBgePanel extends KstatAccessoryPanel {
 				"etherStatsPkts1519to2047Octets",
 				"etherStatsPkts2048to4095Octets",
 				"etherStatsPkts4096to8191Octets",
-				"etherStatsPkts8192to9022Octets" };
+				"etherStatsPkts8192to9022Octets"};
     private long[] oldvalues = new long[STATNUM];
     private long[] newvalues = new long[STATNUM];
     private long[] deltas = new long[STATNUM];

@@ -139,8 +139,8 @@ public class KBrowseDialog implements ActionListener {
 	    SpringUtilities.makeCompactGrid(qpan3, 2, 2, 6, 3, 3, 3);
 	    qpan.add(qpan3);
 
-	    String[] options =  { KstatResources.getString("CLIENT.CONNECT"),
-			KstatResources.getString("CLIENT.CANCEL") };
+	    String[] options =  {KstatResources.getString("CLIENT.CONNECT"),
+			KstatResources.getString("CLIENT.CANCEL")};
 	    dialogStatus = JOptionPane.showOptionDialog(null, qpan,
 				KstatResources.getString("CLIENT.DETAIL"),
 				JOptionPane.OK_CANCEL_OPTION,

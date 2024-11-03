@@ -33,7 +33,7 @@ import java.text.DecimalFormat;
 public final class Humanize {
 
     private static final double KSCALE = 1024.0;
-    private static final char[] NAMES = { 'k', 'm', 'g', 't', 'p', 'e'};
+    private static final char[] NAMES = {'k', 'm', 'g', 't', 'p', 'e'};
     private static final DecimalFormat DF = new DecimalFormat("##0.0#");
 
     /**

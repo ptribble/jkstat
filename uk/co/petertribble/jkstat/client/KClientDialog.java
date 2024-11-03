@@ -100,8 +100,8 @@ public class KClientDialog implements ActionListener {
 	SpringUtilities.makeCompactGrid(qpanel3, 2, 2, 6, 3, 3, 3);
 	qpanel.add(qpanel3);
 
-	String[] options =  { KstatResources.getString("CLIENT.CONNECT"),
-			KstatResources.getString("CLIENT.CANCEL") };
+	String[] options =  {KstatResources.getString("CLIENT.CONNECT"),
+			KstatResources.getString("CLIENT.CANCEL")};
 	dialogStatus = JOptionPane.showOptionDialog(null, qpanel,
 				KstatResources.getString("CLIENT.DETAIL"),
 				JOptionPane.OK_CANCEL_OPTION,

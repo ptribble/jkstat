@@ -46,10 +46,10 @@ public final class MPstatTableModel extends AbstractTableModel
     private static final long serialVersionUID = 1L;
 
     /*
-     * The columns remove wt from the normal list, and add "cpu" on at the
+     * The columns remove wt from the normal list, and add "CPU" on at the
      * beginning.
      */
-    private String[] columnNames = { "CPU", "minf", "mjf", "xcal", "intr",
+    private String[] columnNames = {"CPU", "minf", "mjf", "xcal", "intr",
 		"ithr", "csw", "icsw", "migr", "smtx", "srw", "syscl", "usr",
 		"sys", "idl"};
 

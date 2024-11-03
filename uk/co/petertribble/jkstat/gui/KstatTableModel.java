@@ -40,7 +40,7 @@ public class KstatTableModel extends AbstractTableModel
 
     private static final long serialVersionUID = 1L;
 
-    private static final String[] COLUMNS = { "Name", "Value", "Rate" };
+    private static final String[] COLUMNS = {"Name", "Value", "Rate"};
     private static final DecimalFormat DF = new DecimalFormat("##0.0###");
 
     /**

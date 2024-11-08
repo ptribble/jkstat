@@ -77,7 +77,7 @@ The simplest way to configure tomcat is to
 
 cd $CATALINA_HOME
 
-whee CATALINA_HOME is the main directory where tomcat lives. Then
+where CATALINA_HOME is the main directory where tomcat lives. Then
 create a lib directory
 
 mkdir lib

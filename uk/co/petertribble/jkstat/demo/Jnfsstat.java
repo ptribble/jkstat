@@ -93,8 +93,8 @@ public class Jnfsstat extends JKdemo implements ChangeListener {
 	JTabbedPane nfsAclPane = new JTabbedPane();
 
 	/*
-	 * Add a listener to the tabbed panes. The aim is to work out which tab
-	 * is currently selected.
+	 * Add a listener to each of the tabbed panes. The aim is to work
+	 * out which tab is currently selected.
 	 */
 	nfsstatPane.addChangeListener(this);
 	rpcPane.addChangeListener(this);
@@ -106,123 +106,49 @@ public class Jnfsstat extends JKdemo implements ChangeListener {
 	 * We first check to see if the kstats exist and then
 	 * create the corresponding tables.
 	 */
-	Kstat kstat;
+
 	// rpc, connection oriented and connectionless
-	kstat = jkstat.getKstat("unix", 0, "rpc_cots_client");
-	if (kstat != null) {
-	    KstatTable rpccotsClientTable = new KstatTable(kstat, 0, jkstat);
-	    activeTables.add(rpccotsClientTable);
-	    rpcPane.add("Client, connection oriented",
-			new JScrollPane(rpccotsClientTable));
-	}
-	kstat = jkstat.getKstat("unix", 0, "rpc_cots_server");
-	if (kstat != null) {
-	    KstatTable rpccotsServerTable = new KstatTable(kstat, 0, jkstat);
-	    activeTables.add(rpccotsServerTable);
-	    rpcPane.add("Server, connection oriented",
-			new JScrollPane(rpccotsServerTable));
-	}
-	kstat = jkstat.getKstat("unix", 0, "rpc_clts_client");
-	if (kstat != null) {
-	    KstatTable rpccltsClientTable = new KstatTable(kstat, 0, jkstat);
-	    activeTables.add(rpccltsClientTable);
-	    rpcPane.add("Client, connectionless",
-			new JScrollPane(rpccltsClientTable));
-	}
-	kstat = jkstat.getKstat("unix", 0, "rpc_clts_server");
-	if (kstat != null) {
-	    KstatTable rpccltsServerTable = new KstatTable(kstat, 0, jkstat);
-	    activeTables.add(rpccltsServerTable);
-	    rpcPane.add("Server, connectionless",
-			new JScrollPane(rpccltsServerTable));
-	}
+	addTable(jkstat, jkstat.getKstat("unix", 0, "rpc_cots_client"),
+		 "Client, connection oriented", rpcPane);
+	addTable(jkstat, jkstat.getKstat("unix", 0, "rpc_cots_server"),
+		 "Server, connection oriented", rpcPane);
+	addTable(jkstat, jkstat.getKstat("unix", 0, "rpc_clts_client"),
+		 "Client, connectionless", rpcPane);
+	addTable(jkstat, jkstat.getKstat("unix", 0, "rpc_clts_server"),
+		 "Server, connectionless", rpcPane);
 	nfsstatPane.add("rpc", rpcPane);
 
 	// nfs client, version 2 3 4
-	kstat = jkstat.getKstat("nfs", 0, "rfsreqcnt_v2");
-	if (kstat != null) {
-	    KstatTable nfsClientTable2 = new KstatTable(kstat, 0, jkstat);
-	    activeTables.add(nfsClientTable2);
-	    nfsClientPane.add("Version 2", new JScrollPane(nfsClientTable2));
-	}
-	kstat = jkstat.getKstat("nfs", 0, "rfsreqcnt_v3");
-	if (kstat != null) {
-	    KstatTable nfsClientTable3 = new KstatTable(kstat, 0, jkstat);
-	    activeTables.add(nfsClientTable3);
-	    nfsClientPane.add("Version 3", new JScrollPane(nfsClientTable3));
-	}
-	kstat = jkstat.getKstat("nfs", 0, "rfsreqcnt_v4");
-	if (kstat != null) {
-	    KstatTable nfsClientTable4 = new KstatTable(kstat, 0, jkstat);
-	    activeTables.add(nfsClientTable4);
-	    nfsClientPane.add("Version 4", new JScrollPane(nfsClientTable4));
-	}
+	addTable(jkstat, jkstat.getKstat("nfs", 0, "rfsreqcnt_v2"),
+		 "Version 2", nfsClientPane);
+	addTable(jkstat, jkstat.getKstat("nfs", 0, "rfsreqcnt_v3"),
+		 "Version 3", nfsClientPane);
+	addTable(jkstat, jkstat.getKstat("nfs", 0, "rfsreqcnt_v4"),
+		 "Version 4", nfsClientPane);
 	nfsstatPane.add("NFS client", nfsClientPane);
 
 	// nfs server, version 2 3 4
-	kstat = jkstat.getKstat("nfs", 0, "rfsproccnt_v2");
-	if (kstat != null) {
-	    KstatTable nfsServerTable2 = new KstatTable(kstat, 0, jkstat);
-	    activeTables.add(nfsServerTable2);
-	    nfsServerPane.add("Version 2", new JScrollPane(nfsServerTable2));
-	}
-	kstat = jkstat.getKstat("nfs", 0, "rfsproccnt_v3");
-	if (kstat != null) {
-	    KstatTable nfsServerTable3 = new KstatTable(kstat, 0, jkstat);
-	    activeTables.add(nfsServerTable3);
-	    nfsServerPane.add("Version 3", new JScrollPane(nfsServerTable3));
-	}
-	kstat = jkstat.getKstat("nfs", 0, "rfsproccnt_v4");
-	if (kstat != null) {
-	    KstatTable nfsServerTable4 = new KstatTable(kstat, 0, jkstat);
-	    activeTables.add(nfsServerTable4);
-	    nfsServerPane.add("Version 4", new JScrollPane(nfsServerTable4));
-	}
+	addTable(jkstat, jkstat.getKstat("nfs", 0, "rfsproccnt_v2"),
+		 "Version 2", nfsServerPane);
+	addTable(jkstat, jkstat.getKstat("nfs", 0, "rfsproccnt_v3"),
+		 "Version 3", nfsServerPane);
+	addTable(jkstat, jkstat.getKstat("nfs", 0, "rfsproccnt_v4"),
+		 "Version 4", nfsServerPane);
 	nfsstatPane.add("NFS server", nfsServerPane);
 
 	// nfs_acl
-	kstat = jkstat.getKstat("nfs_acl", 0, "aclreqcnt_v2");
-	if (kstat != null) {
-	    KstatTable nfsClientAclTable2 = new KstatTable(kstat, 0, jkstat);
-	    activeTables.add(nfsClientAclTable2);
-	    nfsAclPane.add("Client, v2",
-			new JScrollPane(nfsClientAclTable2));
-	}
-	kstat = jkstat.getKstat("nfs_acl", 0, "aclreqcnt_v3");
-	if (kstat != null) {
-	    KstatTable nfsClientAclTable3 = new KstatTable(kstat, 0, jkstat);
-	    activeTables.add(nfsClientAclTable3);
-	    nfsAclPane.add("Client, v3",
-			new JScrollPane(nfsClientAclTable3));
-	}
-	kstat = jkstat.getKstat("nfs_acl", 0, "aclreqcnt_v4");
-	if (kstat != null) {
-	    KstatTable nfsClientAclTable4 = new KstatTable(kstat, 0, jkstat);
-	    activeTables.add(nfsClientAclTable4);
-	    nfsAclPane.add("Client, v4",
-			new JScrollPane(nfsClientAclTable4));
-	}
-	kstat = jkstat.getKstat("nfs_acl", 0, "aclproccnt_v2");
-	if (kstat != null) {
-	    KstatTable nfsServerAclTable2 = new KstatTable(kstat, 0, jkstat);
-	    activeTables.add(nfsServerAclTable2);
-	    nfsAclPane.add("Server, v2",
-			new JScrollPane(nfsServerAclTable2));
-	}
-	kstat = jkstat.getKstat("nfs_acl", 0, "aclproccnt_v3");
-	if (kstat != null) {
-	    KstatTable nfsServerAclTable3 = new KstatTable(kstat, 0, jkstat);
-	    activeTables.add(nfsServerAclTable3);
-	    nfsAclPane.add("Server, v3",
-			new JScrollPane(nfsServerAclTable3));
-	}
-	kstat = jkstat.getKstat("nfs_acl", 0, "aclproccnt_v4");
-	if (kstat != null) {
-	    KstatTable nfsServerAclTable4 = new KstatTable(kstat, 0, jkstat);
-	    activeTables.add(nfsServerAclTable4);
-	    nfsAclPane.add("Server, v4",
-			new JScrollPane(nfsServerAclTable4));
-	}
+	addTable(jkstat, jkstat.getKstat("nfs_acl", 0, "aclreqcnt_v2"),
+		 "Client, v2", nfsAclPane);
+	addTable(jkstat, jkstat.getKstat("nfs_acl", 0, "aclreqcnt_v3"),
+		 "Client, v3", nfsAclPane);
+	addTable(jkstat, jkstat.getKstat("nfs_acl", 0, "aclreqcnt_v4"),
+		 "Client, v4", nfsAclPane);
+	addTable(jkstat, jkstat.getKstat("nfs_acl", 0, "aclproccnt_v2"),
+		 "Server, v2", nfsAclPane);
+	addTable(jkstat, jkstat.getKstat("nfs_acl", 0, "aclproccnt_v3"),
+		 "Server, v3", nfsAclPane);
+	addTable(jkstat, jkstat.getKstat("nfs_acl", 0, "aclproccnt_v4"),
+		 "Server, v4", nfsAclPane);
 	nfsstatPane.add("nfs_acl", nfsAclPane);
 
 	mainPanel.add(nfsstatPane);
@@ -242,6 +168,18 @@ public class Jnfsstat extends JKdemo implements ChangeListener {
 	setSize(620, 360);
 	validate();
 	setVisible(true);
+    }
+
+    /*
+     * Convenience method to add a table
+     */
+    private void addTable(JKstat jkstat, Kstat kstat, String title,
+			  JTabbedPane parentPane) {
+	if (kstat != null) {
+	    KstatTable newTable = new KstatTable(kstat, 0, jkstat);
+	    activeTables.add(newTable);
+	    parentPane.add(title, new JScrollPane(newTable));
+	}
     }
 
     @Override

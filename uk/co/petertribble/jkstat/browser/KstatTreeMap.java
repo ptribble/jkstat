@@ -180,13 +180,13 @@ public class KstatTreeMap {
      */
     private void removeFromModuleMap(KstatModuleMap hm,
 		Kstat ks) {
-	KstatInstanceMap h_1 = hm.get(ks.getModule());
-	if (h_1 == null) {
+	KstatInstanceMap hmap1 = hm.get(ks.getModule());
+	if (hmap1 == null) {
 	    return;
 	}
-	KstatNameMap h_2 = h_1.get(ks.getInstance());
-	if (h_2 != null) {
-	    h_2.remove(ks.getName());
+	KstatNameMap hmap2 = hmap1.get(ks.getInstance());
+	if (hmap2 != null) {
+	    hmap2.remove(ks.getName());
 	}
     }
 }

@@ -22,7 +22,7 @@
       <exclude name="LooseCoupling"/>
       <exclude name="ReturnEmptyCollectionRatherThanNull"/>
       <exclude name="SingularField"/>
-      <exclude name="SwitchStmtsShouldHaveDefault"/>
+      <exclude name="NonExhaustiveSwitch"/>
       <exclude name="UncommentedEmptyConstructor"/>
       <exclude name="UnsynchronizedStaticFormatter"/>
       <exclude name="UseUtilityClass"/>
@@ -53,7 +53,7 @@
     </rule>
     <rule ref="category/java/bestpractices.xml">
       <exclude name="ReplaceVectorWithList"/>
-      <exclude name="SwitchStmtsShouldHaveDefault"/>
+      <exclude name="NonExhaustiveSwitch"/>
       <exclude name="SystemPrintln"/>
       <exclude name="UseVarargs"/>
       <exclude name="LooseCoupling"/>

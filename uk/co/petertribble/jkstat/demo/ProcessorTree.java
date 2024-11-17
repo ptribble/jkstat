@@ -31,9 +31,9 @@ import java.util.*;
 public class ProcessorTree {
 
     private JKstat jkstat;
-    private Map<Long, ChipMap> map;
-    private boolean is_threaded;
-    private boolean is_multicore;
+    private Map<Long, ProcessorChip> procmap;
+    private boolean threaded;
+    private boolean multicore;
 
     /**
      * Create a processor tree.
@@ -51,15 +51,15 @@ public class ProcessorTree {
     /*
      * Walk through the kstats, building up the hierarchy.
      *
-     * The top-level Map is a map of <chip-id, Map of cores>
-     * The next level map is a map is of <core-id, Map of threads>.
-     * And finally, the lowest map is of <thread-id, Kstat>
+     * The top-level Map is a map of <chip-id, ProcessorChip>
+     * A ProcessorChip is a map of <core-id, ProcessorCore>.
+     * A ProcessorCore is a map of <thread-id, Kstat>
      *
      * We describe non-threaded cores as cores with a single thread.
      */
     @SuppressWarnings("unchecked")
     private void buildTree(Set<Kstat> kstats) {
-	map = new TreeMap<>();
+	procmap = new TreeMap<>();
 
 	for (Kstat iks : kstats) {
 	    Kstat ks = jkstat.getKstat(iks);
@@ -77,10 +77,13 @@ public class ProcessorTree {
 		lclog = (Long) ks.getData("device_ID");
 	    }
 
-	    if (!map.containsKey(lchip)) {
-		map.put(lchip, new ChipMap(lchip));
+	    // if we haven't seen this chip before, create a new ProcessorChip
+	    // and add it to the top map
+	    if (!procmap.containsKey(lchip)) {
+		procmap.put(lchip, new ProcessorChip(lchip));
 	    }
-	    ChipMap chipmap = map.get(lchip);
+	    // chip is the chip this kstat belongs to
+	    ProcessorChip chip = procmap.get(lchip);
 
 	    /*
 	     * If we don't have threads, make up a thread id.
@@ -97,17 +100,26 @@ public class ProcessorTree {
 	    if (lclog == null) {
 		lclog = 0L;
 	    }
-	    if (chipmap.containsKey(lcore)) {
-		// this must be an additional thread in the same core
-		is_threaded = true;
-	    } else {
-		chipmap.put(lcore, new CoreMap(lchip, lcore));
-	    }
-	    CoreMap coremap = chipmap.get(lcore);
-	    coremap.put(lclog, ks);
 
-	    // now test for multicore
-	    is_multicore = (chipmap.size() > 1);
+	    // if we haven't seen this core before, create a new ProcessorCore
+	    // and add it to the chip
+	    if (!chip.containsCore(lcore)) {
+		chip.addCore(lcore, new ProcessorCore(lchip, lcore));
+	    }
+	    // core is the core this thread belongs to
+	    ProcessorCore core = chip.getCore(lcore);
+	    // add the thread to the current core
+	    core.addThread(lclog, ks);
+	}
+
+	// now we've constructed the whole tree, establish global properties
+	for (ProcessorChip chip : procmap.values()) {
+	    if (chip.isMulticore()) {
+		multicore = true;
+	    }
+	    if (chip.isMultithreaded()) {
+		threaded = true;
+	    }
 	}
     }
 
@@ -117,7 +129,7 @@ public class ProcessorTree {
      * @return true if the processor has multiple threads per core
      */
     public boolean isThreaded() {
-	return is_threaded;
+	return threaded;
     }
 
     /**
@@ -126,7 +138,7 @@ public class ProcessorTree {
      * @return true if the processor has multiple cores
      */
     public boolean isMulticore() {
-	return is_multicore;
+	return multicore;
     }
 
     /**
@@ -139,7 +151,7 @@ public class ProcessorTree {
 	 * There's one entry for each chip in the top map, so the number
 	 * of chips is the size of that map.
 	 */
-	return map.size();
+	return procmap.size();
     }
 
     /**
@@ -148,7 +160,7 @@ public class ProcessorTree {
      * @return the Set of chip ids
      */
     public Set<Long> getChips() {
-	return map.keySet();
+	return procmap.keySet();
     }
 
     /**
@@ -158,8 +170,8 @@ public class ProcessorTree {
      */
     public int numCores() {
 	int nc = 0;
-	for (Long lc : getChips()) {
-	    nc += numCores(lc);
+	for (ProcessorChip chip : procmap.values()) {
+	    nc += chip.numCores();
 	}
 	return nc;
     }
@@ -172,8 +184,8 @@ public class ProcessorTree {
      * @return the number of cores in a given chip
      */
     public int numCores(long chipid) {
-	ChipMap m = map.get(chipid);
-	return (m == null) ? 0 : m.size();
+	ProcessorChip chip = procmap.get(chipid);
+	return (chip == null) ? 0 : chip.numCores();
     }
 
     /**
@@ -184,12 +196,12 @@ public class ProcessorTree {
      * @return the Set of core ids for a given chip
      */
     public Set<Long> getCores(long chipid) {
-	ChipMap m = map.get(chipid);
-	Set<Long> set = new TreeSet<>();
-	if (m != null) {
-	    set.addAll(m.keySet());
+	ProcessorChip chip = procmap.get(chipid);
+	if (chip != null) {
+	    return chip.getCoreIDs();
+	} else {
+	    return new TreeSet<>();
 	}
-	return set;
     }
 
     /**
@@ -200,8 +212,8 @@ public class ProcessorTree {
      */
     public int numThreads() {
 	int nthreads = 0;
-	for (Long chipid : getChips()) {
-	    nthreads += numThreads(chipid);
+	for (ProcessorChip chip : procmap.values()) {
+	    nthreads += chip.numThreads();
 	}
 	return nthreads;
     }
@@ -215,11 +227,8 @@ public class ProcessorTree {
      * @return the number of threads in the given chip
      */
     public int numThreads(long chipid) {
-	int nthreads = 0;
-	for (Long coreid : getCores(chipid)) {
-	    nthreads += numThreads(chipid, coreid);
-	}
-	return nthreads;
+	ProcessorChip chip = procmap.get(chipid);
+	return (chip == null) ? 0 : chip.numCores();
     }
 
     /**
@@ -232,12 +241,12 @@ public class ProcessorTree {
      * @return the number of threads in the given core
      */
     public int numThreads(long chipid, long coreid) {
-	ChipMap m = map.get(chipid);
-	if (m == null) {
+	ProcessorChip chip = procmap.get(chipid);
+	if (chip == null) {
 	    return 0;
 	}
-	CoreMap mm = m.get(coreid);
-	return (mm == null) ? 0 : mm.size();
+	ProcessorCore core = chip.getCore(coreid);
+	return (core == null) ? 0 : core.numThreads();
     }
 
     /**
@@ -254,6 +263,24 @@ public class ProcessorTree {
 				  "cpu_stat" + ks.getInstance());
     }
 
+    /*
+     * The ProcessorTree stores the cpu_info kstats. Performance statistics
+     * use the corresponding cpu_stat kstats. This is a convenience to convert
+     * to the other form.
+     *
+     * @param kss the Set of Kstats to convert
+     *
+     * @return the Set of cpu_stat Kstats corresponding to the given
+     * cpu_info Kstats
+     */
+    private Set<Kstat> makeCpuKstats(Set<Kstat> kss) {
+	Set<Kstat> kout = new TreeSet<>();
+	for (Kstat ks : kss) {
+	    kout.add(makeCpuKstat(ks));
+	}
+	return kout;
+    }
+
     /**
      * Return all the informational Kstats.
      * If invalid, return the empty Set.
@@ -262,8 +289,8 @@ public class ProcessorTree {
      */
     public Set<Kstat> allInfoStats() {
 	Set<Kstat> kss = new TreeSet<>();
-	for (Long chipid : getChips()) {
-	    kss.addAll(chipInfoStats(chipid));
+	for (ProcessorChip chip : procmap.values()) {
+	    kss.addAll(chip.infoStats());
 	}
 	return kss;
     }
@@ -275,11 +302,7 @@ public class ProcessorTree {
      * @return all the cpu_stat Kstats
      */
     public Set<Kstat> allStats() {
-	Set<Kstat> kss = new TreeSet<>();
-	for (Kstat ks : allInfoStats()) {
-	    kss.add(makeCpuKstat(ks));
-	}
-	return kss;
+	return makeCpuKstats(allInfoStats());
     }
 
     /**
@@ -291,14 +314,12 @@ public class ProcessorTree {
      * @return all the cpu_info Kstats for the given chip
      */
     public Set<Kstat> chipInfoStats(long chipid) {
-	Set<Kstat> kss = new TreeSet<>();
-	ChipMap m = map.get(chipid);
-	if (m != null) {
-	    for (CoreMap mm : m.values()) {
-		kss.addAll(mm.values());
-	    }
+	ProcessorChip chip = procmap.get(chipid);
+	if (chip != null) {
+	    return chip.infoStats();
+	} else {
+	    return new TreeSet<>();
 	}
-	return kss;
     }
 
     /**
@@ -310,11 +331,7 @@ public class ProcessorTree {
      * @return all the cpu_stat Kstats for the given chip
      */
     public Set<Kstat> chipStats(long chipid) {
-	Set<Kstat> kss = new TreeSet<>();
-	for (Kstat ks : chipInfoStats(chipid)) {
-	    kss.add(makeCpuKstat(ks));
-	}
-	return kss;
+	return makeCpuKstats(chipInfoStats(chipid));
     }
 
     /**
@@ -327,17 +344,15 @@ public class ProcessorTree {
      * @return all the cpu_info Kstats for the given core
      */
     public Set<Kstat> coreInfoStats(long chipid, long coreid) {
-	Set<Kstat> kss = new TreeSet<>();
-	ChipMap m = map.get(chipid);
-	if (m == null) {
-	    return kss;
+	ProcessorChip chip = procmap.get(chipid);
+	if (chip == null) {
+	    return new TreeSet<>();
 	}
-	CoreMap mm = m.get(coreid);
-	if (mm == null) {
-	    return kss;
+	ProcessorCore core = chip.getCore(coreid);
+	if (core == null) {
+	    return new TreeSet<>();
 	}
-	kss.addAll(mm.values());
-	return kss;
+	return core.infoStats();
     }
 
     /**
@@ -350,11 +365,7 @@ public class ProcessorTree {
      * @return all the cpu_stat Kstats for the given core
      */
     public Set<Kstat> coreStats(long chipid, long coreid) {
-	Set<Kstat> kss = new TreeSet<>();
-	for (Kstat ks : coreInfoStats(chipid, coreid)) {
-	    kss.add(makeCpuKstat(ks));
-	}
-	return kss;
+	return makeCpuKstats(coreInfoStats(chipid, coreid));
     }
 
     /**

@@ -8,6 +8,11 @@ public class KstatGetkcid {
 
     static final JKstat JKSTAT = new NativeJKstat();
 
+    /**
+     * Get the current kstat chain id.
+     *
+     * @return the current chain id, as a String
+     */
     @GET
     @Produces("application/json")
     public String getKstat() {

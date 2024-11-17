@@ -8,6 +8,15 @@ public class KstatGet {
 
     static final JKstat JKSTAT = new NativeJKstat();
 
+    /**
+     * Get a kstat.
+     *
+     * @param module the desired module
+     * @param instance the desired instance, as a String
+     * @param name the desired name
+     *
+     * @return a JSON formatted kstat
+     */
     @GET
     @Produces("application/json")
     public String getKstat(@PathParam("module") String module,

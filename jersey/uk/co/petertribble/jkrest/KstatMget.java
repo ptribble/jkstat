@@ -8,6 +8,16 @@ public class KstatMget {
 
     static final JKstat JKSTAT = new NativeJKstat();
 
+    /**
+     * Get all the kstats matching the supplied pattern. You can use "*"
+     * to match all, or a semicolon-separated list for multiple values.
+     *
+     * @param module the desired module
+     * @param instance the desired instance, as a String
+     * @param name the desired name
+     *
+     * @return a list of JSON formatted kstats
+     */
     @GET
     @Produces("application/json")
     public String getKstats(@PathParam("module") String module,

@@ -8,6 +8,11 @@ public class KstatList {
 
     static final JKstat JKSTAT = new NativeJKstat();
 
+    /**
+     * Get the list of current kstats. Just retunrs metadat, without any data.
+     *
+     * @return a JSON formatted list of kstats
+     */
     @GET
     @Produces("application/json")
     public String getKstat() {

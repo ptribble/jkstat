@@ -128,8 +128,8 @@ public class PsrInfo {
 	 * Now walk the tree printing out the data. The chipDetails method
 	 * already includes the trailing newline.
 	 */
-	for (Long l : proctree.getChips()) {
-	    System.out.print(proctree.chipDetails(l));
+	for (ProcessorChip chip : proctree.getProcessorChips()) {
+	    System.out.print(proctree.chipDetails(chip));
 	}
     }
 

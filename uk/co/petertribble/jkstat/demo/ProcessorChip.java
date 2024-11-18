@@ -31,7 +31,7 @@ import uk.co.petertribble.jkstat.api.Kstat;
 /**
  * Describes a cpu chip and its constituent cores.
  */
-public class ProcessorChip {
+public class ProcessorChip implements Comparable<ProcessorChip> {
 
     private static final long serialVersionUID = 1L;
 
@@ -47,6 +47,15 @@ public class ProcessorChip {
      */
     public ProcessorChip(long chipid) {
 	this.chipid = chipid;
+    }
+
+    /**
+     * Get the id of this ProcessorChip.
+     *
+     * @return this ProcessorChip's numerical id
+     */
+    public long getChipid() {
+	return chipid;
     }
 
     /**
@@ -77,6 +86,15 @@ public class ProcessorChip {
      */
     public Set<Long> getCoreIDs() {
 	return coremap.keySet();
+    }
+
+    /**
+     * Get the Set of ProcessorCores contained in this ProcessorChip.
+     *
+     * @return the Set of ProcessorCores in this chip
+     */
+    public Set<ProcessorCore> getCores() {
+	return new TreeSet<>(coremap.values());
     }
 
     /**
@@ -152,5 +170,30 @@ public class ProcessorChip {
 	    kss.addAll(icore.infoStats());
 	}
 	return kss;
+    }
+
+    /**
+     * Return the brand of this chip.
+     *
+     * @return a String representing the brand of this chip
+     */
+    public String getBrand() {
+	return (String) infoStats().iterator().next().getData("brand");
+    }
+
+    /**
+     * Compare with another ProcessorChip.
+     *
+     * @param chip the ProcessorChip to be compared
+     *
+     * @return the signed comparison of the id of the given ProcessorChip
+     * with the id of this ProcessorChip
+     */
+    @Override
+    public int compareTo(ProcessorChip chip) {
+	if (this == chip) {
+	    return 0;
+	}
+	return (int) (chipid - chip.getChipid());
     }
 }

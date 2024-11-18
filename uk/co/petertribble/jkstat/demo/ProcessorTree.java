@@ -164,6 +164,15 @@ public class ProcessorTree {
     }
 
     /**
+     * Return the Set of ProcessorChips.
+     *
+     * @return the Set of ProcessChips
+     */
+    public Set<ProcessorChip> getProcessorChips() {
+	return new TreeSet<>(procmap.values());
+    }
+
+    /**
      * Return the number of cores.
      *
      * @return the total number of distinct cores
@@ -427,7 +436,7 @@ public class ProcessorTree {
 		int nt = numThreads(l, ll);
 		sb.append(nt).append(" threads (");
 		int ni = 0;
-		for (Kstat kst : coreStats(l, ll)) {
+		for (Kstat kst : coreInfoStats(l, ll)) {
 		    sb.append(kst.getInst());
 		    ni++;
 		    if (ni < nt) {
@@ -440,6 +449,49 @@ public class ProcessorTree {
 	sb.append("        ").append(getBrand(l))
 	    .append("\n        Clock speed: ")
 	    .append(chipInfoStats(l).iterator().next().getData("clock_MHz"))
+	    .append(" MHz\n");
+	return sb.toString();
+    }
+
+    /**
+     * Print the details of a chip, like psrinfo -vp.
+     *
+     * @param chip the ProcessorChip whose details are to be shown
+     *
+     * @return a String similar to psrinfo -vp output for the given chip
+     */
+    public String chipDetails(ProcessorChip chip) {
+	StringBuilder sb = new StringBuilder(256);
+	sb.append("Physical processor ").append(chip.getChipid())
+	    .append(" has ");
+	if (chip.numCores() == 1) {
+	    sb.append("1 core");
+	} else {
+	    sb.append(chip.numCores()).append(" cores");
+	}
+	if (chip.isMultithreaded()) {
+	    sb.append(" and ").append(chip.numThreads()).append(" threads");
+	}
+	sb.append('\n');
+	if (chip.isMultithreaded()) {
+	    for (ProcessorCore core : chip.getCores()) {
+		sb.append("    Core ").append(core.getCoreid()).append(" has ");
+		int nt = core.numThreads();
+		sb.append(nt).append(" threads (");
+		int ni = 0;
+		for (Kstat kst : core.getThreads()) {
+		    sb.append(kst.getInst());
+		    ni++;
+		    if (ni < nt) {
+			sb.append(' ');
+		    }
+		}
+		sb.append(")\n");
+	    }
+	}
+	sb.append("        ").append(chip.getBrand())
+	    .append("\n        Clock speed: ")
+	    .append(chip.infoStats().iterator().next().getData("clock_MHz"))
 	    .append(" MHz\n");
 	return sb.toString();
     }

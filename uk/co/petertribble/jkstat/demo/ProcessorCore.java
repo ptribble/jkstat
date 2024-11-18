@@ -31,7 +31,7 @@ import uk.co.petertribble.jkstat.api.Kstat;
 /**
  * Describes a cpu core and its constituent threads.
  */
-public class ProcessorCore {
+public class ProcessorCore implements Comparable<ProcessorCore> {
 
     private static final long serialVersionUID = 1L;
 
@@ -53,6 +53,15 @@ public class ProcessorCore {
     }
 
     /**
+     * Get the id of this ProcessorCore.
+     *
+     * @return this ProcessorCore's numerical id
+     */
+    public long getCoreid() {
+	return coreid;
+    }
+
+    /**
      * Add a new thread to this ProcessorCore.
      *
      * @param threadid the id of the thread to add
@@ -71,6 +80,15 @@ public class ProcessorCore {
      */
     public Kstat getThread(Long threadid) {
 	return threadmap.get(threadid);
+    }
+
+    /**
+     * Get the Set of threads in this ProcessorCore.
+     *
+     * @return the Set of Kstats covering all threads
+     */
+    public Set<Kstat> getThreads() {
+	return new TreeSet<>(threadmap.values());
     }
 
     /**
@@ -100,5 +118,25 @@ public class ProcessorCore {
      */
     public Set<Kstat> infoStats() {
 	return new TreeSet<>(threadmap.values());
+    }
+
+    /**
+     * Compare with another ProcessorCore.
+     *
+     * Note: this class has a natural ordering that is inconsistent with
+     * equals. The comparison is only valid for Cores within a given
+     * ProcessorChip, as cores in different chips may have the same core id.
+     *
+     * @param core the ProcessorCore to be compared
+     *
+     * @return the signed comparison of the id of the given ProcessorCore
+     * with the id of this ProcessorCore
+     */
+    @Override
+    public int compareTo(ProcessorCore core) {
+	if (this == core) {
+	    return 0;
+	}
+	return (int) (coreid - core.getCoreid());
     }
 }

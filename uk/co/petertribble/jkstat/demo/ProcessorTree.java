@@ -267,22 +267,22 @@ public class ProcessorTree {
      *
      * @return the cpu_stat Kstat corresponding to the given cpu_info Kstat
      */
-    public Kstat makeCpuKstat(Kstat ks) {
+    public static Kstat makeCpuKstat(Kstat ks) {
 	return new Kstat("cpu_stat", ks.getInst(),
 				  "cpu_stat" + ks.getInstance());
     }
 
-    /*
+    /**
      * The ProcessorTree stores the cpu_info kstats. Performance statistics
      * use the corresponding cpu_stat kstats. This is a convenience to convert
      * to the other form.
      *
      * @param kss the Set of Kstats to convert
      *
-     * @return the Set of cpu_stat Kstats corresponding to the given
+     * @return the Set of cpu_stat Kstats corresponding to the given Set of
      * cpu_info Kstats
      */
-    private Set<Kstat> makeCpuKstats(Set<Kstat> kss) {
+    public static Set<Kstat> makeCpuKstats(Set<Kstat> kss) {
 	Set<Kstat> kout = new TreeSet<>();
 	for (Kstat ks : kss) {
 	    kout.add(makeCpuKstat(ks));
@@ -296,22 +296,12 @@ public class ProcessorTree {
      *
      * @return all the cpu_info Kstats
      */
-    public Set<Kstat> allInfoStats() {
+    private Set<Kstat> allInfoStats() {
 	Set<Kstat> kss = new TreeSet<>();
 	for (ProcessorChip chip : procmap.values()) {
 	    kss.addAll(chip.infoStats());
 	}
 	return kss;
-    }
-
-    /**
-     * Return all the Kstats.
-     * If invalid, return the empty Set.
-     *
-     * @return all the cpu_stat Kstats
-     */
-    public Set<Kstat> allStats() {
-	return makeCpuKstats(allInfoStats());
     }
 
     /**

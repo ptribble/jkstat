@@ -33,6 +33,9 @@ public class KstatNameMap extends TreeMap<String, Kstat> {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * Create a new KstatNameMap, to store a map of Kstats by name.
+     */
     public KstatNameMap() {
 	super(NumericStringComparator.getInstance());
     }

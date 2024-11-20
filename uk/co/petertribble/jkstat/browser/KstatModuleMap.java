@@ -32,6 +32,9 @@ public class KstatModuleMap extends TreeMap<String, KstatInstanceMap> {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * Craete a new KstatModuleMap, to store a Map of kstat instances.
+     */
     public KstatModuleMap() {
 	super(NumericStringComparator.getInstance());
     }

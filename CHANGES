@@ -1,3 +1,5 @@
+Migrate to Apache HttpClient 5 (classic mode)
+
 Drop jstyle
 
 Fix SparkRateAccessory to not give negative rates in tooltips

@@ -23,10 +23,10 @@
 package uk.co.petertribble.jkstat.client;
 
 import java.io.IOException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.BasicResponseHandler;
-import org.apache.http.impl.client.HttpClients;
+import org.apache.hc.client5.http.classic.HttpClient;
+import org.apache.hc.client5.http.classic.methods.HttpGet;
+import org.apache.hc.client5.http.impl.classic.BasicHttpClientResponseHandler;
+import org.apache.hc.client5.http.impl.classic.HttpClients;
 
 /**
  * A class providing access to a remote JKstat server via REST.
@@ -88,6 +88,6 @@ public class JKhttpClient {
 
     private String doGet(String request) throws IOException {
 	return httpclient.execute(new HttpGet(baseURL + request),
-						new BasicResponseHandler());
+					new BasicHttpClientResponseHandler());
     }
 }

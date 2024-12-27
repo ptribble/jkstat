@@ -310,8 +310,8 @@ public class KstatPngImage {
 	if (args.length < 5) {
 	    usage("Missing arguments.");
 	}
-	String[] nargs = new String[args.length-4];
-	System.arraycopy(args, 4, nargs, 0, args.length-4);
+	String[] nargs = new String[args.length - 4];
+	System.arraycopy(args, 4, nargs, 0, args.length - 4);
 	if ("-z".equals(args[0])) {
 	    try {
 		doMain(args[2], args[3], nargs,

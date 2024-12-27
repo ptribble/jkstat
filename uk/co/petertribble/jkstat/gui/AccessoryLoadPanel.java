@@ -92,14 +92,16 @@ public class AccessoryLoadPanel extends KstatAccessoryPanel {
 	long l1 = ks.longData("avenrun_1min");
 	long l5 = ks.longData("avenrun_5min");
 	long l15 = ks.longData("avenrun_15min");
-	while (l1 > lmax*LSCALE || l5 > lmax*LSCALE || l15 > lmax*LSCALE) {
-	    lmax = lmax*2.0;
+	double lsmax = lmax * LSCALE;
+	while (l1 > lsmax || l5 > lsmax || l15 > lsmax) {
+	    lmax = lmax * 2.0;
+	    lsmax = lsmax * 2.0;
 	}
-	jp1.setValue((int) (l1/lmax));
-	jp5.setValue((int) (l5/lmax));
-	jp15.setValue((int) (l15/lmax));
-	jp1.setString(df.format(l1/LSCALE));
-	jp5.setString(df.format(l5/LSCALE));
-	jp15.setString(df.format(l15/LSCALE));
+	jp1.setValue((int) (l1 / lmax));
+	jp5.setValue((int) (l5 / lmax));
+	jp15.setValue((int) (l15 / lmax));
+	jp1.setString(df.format(l1 / LSCALE));
+	jp5.setString(df.format(l5 / LSCALE));
+	jp15.setString(df.format(l15 / LSCALE));
     }
 }

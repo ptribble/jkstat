@@ -159,7 +159,7 @@ public class KstatAggregate {
 	if (n == 0) {
 	    return (float) 0;
 	}
-	return l/(float) n;
+	return l / (float) n;
     }
 
     /**

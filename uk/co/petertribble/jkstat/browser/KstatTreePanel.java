@@ -240,7 +240,7 @@ public class KstatTreePanel extends JPanel implements TreeSelectionListener,
      */
     public void startLoop() {
 	if (timer == null) {
-	    timer = new Timer(interval*1000, this);
+	    timer = new Timer(interval * 1000, this);
 	}
 	timer.start();
     }
@@ -262,7 +262,7 @@ public class KstatTreePanel extends JPanel implements TreeSelectionListener,
     public void setDelay(int i) {
 	interval = i;
 	if (timer != null) {
-	    timer.setDelay(interval*1000);
+	    timer.setDelay(interval * 1000);
 	}
     }
 

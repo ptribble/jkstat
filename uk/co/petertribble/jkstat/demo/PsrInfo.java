@@ -70,7 +70,7 @@ public class PsrInfo {
 	    Kstat nks = jkstat.getKstat(ks);
 	    System.out.println(nks.getInstance() + "\t" + nks.getData("state")
 		+ "   since "
-		+ df.format(new Date(1000*nks.longData("state_begin"))));
+		+ df.format(new Date(1000 * nks.longData("state_begin"))));
 	}
     }
 
@@ -107,7 +107,7 @@ public class PsrInfo {
 	    sb.append("Status of virtual processor ").append(ks.getInstance())
 		.append(" as of: ").append(DF.format(new Date()))
 		.append("\n  ").append(ks.getData("state")).append(" since ")
-		.append(DF.format(new Date(1000*ks.longData("state_begin"))))
+		.append(DF.format(new Date(1000 * ks.longData("state_begin"))))
 		.append("\n  The ").append(ks.getData("cpu_type"))
 		.append(" processor operates at ")
 		.append(ks.getData("clock_MHz"))

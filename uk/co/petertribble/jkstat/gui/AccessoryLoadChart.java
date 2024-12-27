@@ -63,7 +63,7 @@ public class AccessoryLoadChart extends KstatAccessoryPanel {
     @Override
     public void updateAccessory() {
 	updateKstat();
-	jsc.add(ks.longData("avenrun_1min")/LSCALE,
-		ks.longData("avenrun_15min")/LSCALE);
+	jsc.add(ks.longData("avenrun_1min") / LSCALE,
+		ks.longData("avenrun_15min") / LSCALE);
     }
 }

@@ -91,7 +91,7 @@ public abstract class KstatAccessoryPanel extends JPanel
      */
     public KstatAccessoryPanel(Kstat ks, int interval, JKstat jkstat) {
 	this.ks = ks;
-	delay = interval*1000;
+	delay = interval * 1000;
 	this.jkstat = jkstat;
     }
 
@@ -137,7 +137,7 @@ public abstract class KstatAccessoryPanel extends JPanel
      * @param interval the desired delay, in seconds
      */
     public void setDelay(int interval) {
-	delay = interval*1000;
+	delay = interval * 1000;
 	if (timer != null) {
 	    timer.setDelay(delay);
 	}

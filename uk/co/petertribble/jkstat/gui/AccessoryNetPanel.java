@@ -68,8 +68,8 @@ public class AccessoryNetPanel extends KstatAccessoryPanel {
 	}
 
 	// the progress meters are measured in kbytes/s
-	jpIn = new JProgressBar(0, (int) (netmax/8192));
-	jpOut = new JProgressBar(0, (int) (netmax/8192));
+	jpIn = new JProgressBar(0, (int) (netmax / 8192));
+	jpOut = new JProgressBar(0, (int) (netmax / 8192));
 
 	jpIn.setMinimumSize(new Dimension(150, 20));
 	jpOut.setMinimumSize(new Dimension(150, 20));
@@ -99,10 +99,12 @@ public class AccessoryNetPanel extends KstatAccessoryPanel {
 	updateKstat();
 	long nr = ks.longData("rbytes64");
 	long nw = ks.longData("obytes64");
-	jpIn.setValue((int) ((nr-r)*1000000000/(1024*snapdelta)));
-	jpOut.setValue((int) ((nw-w)*1000000000/(1024*snapdelta)));
-	jpIn.setString(Humanize.scale((nr-r)*1000000000/snapdelta, "bytes/s"));
-	jpOut.setString(Humanize.scale((nw-w)*1000000000/snapdelta, "bytes/s"));
+	jpIn.setValue((int) ((nr - r) * 1000000000 / (1024 * snapdelta)));
+	jpOut.setValue((int) ((nw - w) * 1000000000 / (1024 * snapdelta)));
+	jpIn.setString(Humanize.scale((nr - r) * 1000000000 / snapdelta,
+				"bytes/s"));
+	jpOut.setString(Humanize.scale((nw - w) * 1000000000 / snapdelta,
+				"bytes/s"));
 	r = nr;
 	w = nw;
     }

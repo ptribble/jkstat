@@ -116,9 +116,9 @@ public final class JLoadChart extends JFrame implements ActionListener {
     private void updateAccessory() {
 	Kstat ksl = jkstat.getKstat("unix", 0, "system_misc");
 	Millisecond ms = new Millisecond();
-	ts1.add(ms, ksl.longData("avenrun_1min")/256.0);
-	ts5.add(ms, ksl.longData("avenrun_5min")/256.0);
-	ts15.add(ms, ksl.longData("avenrun_15min")/256.0);
+	ts1.add(ms, ksl.longData("avenrun_1min") / 256.0);
+	ts5.add(ms, ksl.longData("avenrun_5min") / 256.0);
+	ts15.add(ms, ksl.longData("avenrun_15min") / 256.0);
     }
 
     static class WindowExit extends WindowAdapter {

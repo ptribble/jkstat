@@ -102,10 +102,11 @@ public class SparkValueAccessory extends KstatAccessoryPanel {
 	if (dotips) {
 	    if (doscale) {
 		setToolTipText(tiptext + " "
-			       + DF.format(scale*ks.longData(stat)));
+			       + DF.format(scale * ks.longData(stat)));
 	    } else {
 		setToolTipText(tiptext + " " + ks.longData(stat));
 	    }
 	}
     }
 }
+

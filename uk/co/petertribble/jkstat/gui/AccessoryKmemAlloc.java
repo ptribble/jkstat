@@ -77,8 +77,8 @@ public class AccessoryKmemAlloc extends KstatAccessoryPanel {
 	updateKstat();
 	long nnumalloc = ks.longData("alloc");
 	long nnumfree = ks.longData("free");
-	int i = (int) ((nnumalloc-numalloc)*1000000000/snapdelta);
-	int j = (int) ((nnumfree-numfree)*1000000000/snapdelta);
+	int i = (int) ((nnumalloc - numalloc) * 1000000000 / snapdelta);
+	int j = (int) ((nnumfree - numfree) * 1000000000 / snapdelta);
 	while ((i > iomax) || (j > iomax)) {
 	    iomax <<= 1;
 	    jpAlloc.setMaximum((int) iomax);

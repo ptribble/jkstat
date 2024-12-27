@@ -69,7 +69,7 @@ public class KstatTableModel extends AbstractTableModel
      */
     public KstatTableModel(Kstat ks, int interval, JKstat jkstat) {
 	this.ks = ks;
-	delay = interval*1000;
+	delay = interval * 1000;
 	this.jkstat = jkstat;
 	update();
 	rowNames = ks.statistics().toArray(new String[0]);
@@ -108,7 +108,7 @@ public class KstatTableModel extends AbstractTableModel
 	if (interval <= 0) {
 	    stopLoop();
 	} else {
-	    delay = interval*1000;
+	    delay = interval * 1000;
 	    if (timer != null) {
 		timer.setDelay(delay);
 	    }
@@ -164,7 +164,7 @@ public class KstatTableModel extends AbstractTableModel
 		}
 		long snapdelta = ks.getSnaptime() - oldks.getSnaptime();
 		return (snapdelta == 0) ? Double.NaN
-		    : DF.format(ll*(1000000000.0/snapdelta));
+		    : DF.format(ll * (1000000000.0 / snapdelta));
 	    } else {
 		return "-";
 	    }

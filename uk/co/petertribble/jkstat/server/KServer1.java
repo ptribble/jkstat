@@ -75,13 +75,13 @@ public class KServer1 {
 	try {
 	    jmdns = JmDNS.create(ksc.getInetAddress());
 	    ServiceInfo serviceInfo = ServiceInfo.create("_jkstat._tcp.local.",
-		    "JKstat/"+ksc.getHostname(),
+		    "JKstat/" + ksc.getHostname(),
 		    ksc.getPort(),
 		    "path=/");
             jmdns.registerService(serviceInfo);
 	    Thread exitHook = new Thread(() -> this.unRegisterService());
 	    Runtime.getRuntime().addShutdownHook(exitHook);
-	    System.out.println("Service registered on "+ksc.getInetAddress());
+	    System.out.println("Service registered on " + ksc.getInetAddress());
 	} catch (IOException e) {
             System.err.println(e.getMessage());
         }
@@ -113,7 +113,7 @@ public class KServer1 {
 	    if ("-m".equals(args[i])) {
 		ksc.setRegister(true);
 	    } else if ("-p".equals(args[i])) {
-		if (i+1 < args.length) {
+		if (i + 1 < args.length) {
 		    i++;
 		    try {
 			ksc.setPort(Integer.parseInt(args[i]));
@@ -124,7 +124,7 @@ public class KServer1 {
 		    usage();
 		}
 	    } else if ("-f".equals(args[i])) {
-		if (i+1 < args.length) {
+		if (i + 1 < args.length) {
 		    i++;
 		    File f = new File(args[i]);
 		    if (f.exists()) {

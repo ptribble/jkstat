@@ -159,7 +159,7 @@ public class KBrowseDialog implements ActionListener {
      */
     @SuppressWarnings("deprecation")
     public KClientConfig getConfig() {
-	if (dialogStatus==JOptionPane.OK_OPTION) {
+	if (dialogStatus == JOptionPane.OK_OPTION) {
 	    kcc.setServerURL(serviceMap.get(servicebox.getSelectedItem()));
 	}
 	kcc.setProtocol(protobox.getSelectedIndex());

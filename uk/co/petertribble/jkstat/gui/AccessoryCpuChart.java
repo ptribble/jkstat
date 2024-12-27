@@ -80,7 +80,7 @@ public class AccessoryCpuChart extends KstatAccessoryPanel {
 
 	double dscale = duser + dsys + didle;
 
-	jsc.add(dsys/dscale, duser/dscale);
+	jsc.add(dsys / dscale, duser / dscale);
 
 	luser = nuser;
 	lsys = nsys;

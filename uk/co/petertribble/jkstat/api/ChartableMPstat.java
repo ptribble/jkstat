@@ -72,23 +72,23 @@ public class ChartableMPstat extends ChartableKstat {
 	long nidl = ks.longData("cpu_nsec_idle");
 
 	// major and minor faults
-	rateMap.put("minf", (nminf-getValue("minf"))*1000000000.0/fdt);
-	rateMap.put("mjf", (nmjf-getValue("mjf"))*1000000000.0/fdt);
+	rateMap.put("minf", (nminf - getValue("minf")) * 1000000000.0 / fdt);
+	rateMap.put("mjf", (nmjf - getValue("mjf")) * 1000000000.0 / fdt);
 
-	rateMap.put("xcal", (nxcal-getValue("xcal"))*1000000000.0/dt);
-	rateMap.put("intr", (nintr-getValue("intr"))*1000000000.0/dt);
-	rateMap.put("ithr", (nithr-getValue("ithr"))*1000000000.0/dt);
-	rateMap.put("csw", (ncsw-getValue("csw"))*1000000000.0/dt);
-	rateMap.put("icsw", (nicsw-getValue("icsw"))*1000000000.0/dt);
-	rateMap.put("migr", (nmigr-getValue("migr"))*1000000000.0/dt);
-	rateMap.put("smtx", (nsmtx-getValue("smtx"))*1000000000.0/dt);
-	rateMap.put("srw", (nsrw-getValue("srw"))*1000000000.0/dt);
-	rateMap.put("syscl", (nsyscl-getValue("syscl"))*1000000000.0/dt);
+	rateMap.put("xcal", (nxcal - getValue("xcal")) * 1000000000.0 / dt);
+	rateMap.put("intr", (nintr - getValue("intr")) * 1000000000.0 / dt);
+	rateMap.put("ithr", (nithr - getValue("ithr")) * 1000000000.0 / dt);
+	rateMap.put("csw", (ncsw - getValue("csw")) * 1000000000.0 / dt);
+	rateMap.put("icsw", (nicsw - getValue("icsw")) * 1000000000.0 / dt);
+	rateMap.put("migr", (nmigr - getValue("migr")) * 1000000000.0 / dt);
+	rateMap.put("smtx", (nsmtx - getValue("smtx")) * 1000000000.0 / dt);
+	rateMap.put("srw", (nsrw - getValue("srw")) * 1000000000.0 / dt);
+	rateMap.put("syscl", (nsyscl - getValue("syscl")) * 1000000000.0 / dt);
 
 	// cpu percentages
-	rateMap.put("usr", (nusr-getValue("usr"))*100.0/dt);
-	rateMap.put("sys", (nsys-getValue("sys"))*100.0/dt);
-	rateMap.put("idl", (nidl-getValue("idl"))*100.0/dt);
+	rateMap.put("usr", (nusr - getValue("usr")) * 100.0 / dt);
+	rateMap.put("sys", (nsys - getValue("sys")) * 100.0 / dt);
+	rateMap.put("idl", (nidl - getValue("idl")) * 100.0 / dt);
 
 	// save the new values
 	valueMap.put("minf", nminf);

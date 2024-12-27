@@ -67,7 +67,7 @@ public class ChartableKstatAggregate extends ChartableKstat {
 	for (String statistic : valueMap.keySet()) {
 	    long newvalue = ksa.aggregate(statistic);
 	    double d = (double) (newvalue - valueMap.get(statistic));
-	    rateMap.put(statistic, 1000000000.0*d/dt);
+	    rateMap.put(statistic, 1000000000.0 * d / dt);
 	    valueMap.put(statistic, newvalue);
 	}
 	return true;

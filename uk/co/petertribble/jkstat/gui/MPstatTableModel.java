@@ -75,7 +75,7 @@ public final class MPstatTableModel extends AbstractTableModel
 	    mpdata.add(new ChartableMPstat(jkstat, ks));
 	}
 
-	delay = interval*1000;
+	delay = interval * 1000;
 	fireTableDataChanged();
 	startLoop();
     }
@@ -112,7 +112,7 @@ public final class MPstatTableModel extends AbstractTableModel
 	if (interval <= 0) {
 	    stopLoop();
 	} else {
-	    delay = interval*1000;
+	    delay = interval * 1000;
 	    if (timer != null) {
 		timer.setDelay(delay);
 	    }

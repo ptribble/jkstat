@@ -302,8 +302,8 @@ public class KstatChartFrame extends KstatBaseChartFrame {
 	    usage("Missing arguments.");
 	}
 	if ("-z".equals(args[0])) {
-	    String[] nargs = new String[args.length-2];
-	    System.arraycopy(args, 2, nargs, 0, args.length-2);
+	    String[] nargs = new String[args.length - 2];
+	    System.arraycopy(args, 2, nargs, 0, args.length - 2);
 	    try {
 		doMain(nargs, new ParseableJSONZipJKstat(args[1]));
 	    } catch (IOException ioe) {

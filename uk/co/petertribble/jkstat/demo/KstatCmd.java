@@ -81,7 +81,7 @@ public class KstatCmd {
 	    } else if ("-l".equals(args[i])) {
 		lflag = true;
 	    } else if ("-c".equals(args[i])) {
-		if (i+1 < args.length) {
+		if (i + 1 < args.length) {
 		    cflag = true;
 		    i++;
 		    showclass = args[i];
@@ -89,7 +89,7 @@ public class KstatCmd {
 		    usage("missing argument to -c flag");
 		}
 	    } else if ("-m".equals(args[i])) {
-		if (i+1 < args.length) {
+		if (i + 1 < args.length) {
 		    mflag = true;
 		    i++;
 		    showmodule = args[i];
@@ -97,7 +97,7 @@ public class KstatCmd {
 		    usage("missing argument to -m flag");
 		}
 	    } else if ("-i".equals(args[i])) {
-		if (i+1 < args.length) {
+		if (i + 1 < args.length) {
 		    iflag = true;
 		    i++;
 		    showinstance = args[i];
@@ -105,7 +105,7 @@ public class KstatCmd {
 		    usage("missing argument to -i flag");
 		}
 	    } else if ("-n".equals(args[i])) {
-		if (i+1 < args.length) {
+		if (i + 1 < args.length) {
 		    nflag = true;
 		    i++;
 		    showname = args[i];
@@ -113,7 +113,7 @@ public class KstatCmd {
 		    usage("missing argument to -n flag");
 		}
 	    } else if ("-s".equals(args[i])) {
-		if (i+1 < args.length) {
+		if (i + 1 < args.length) {
 		    sflag = true;
 		    i++;
 		    showstatistic = args[i];
@@ -121,7 +121,7 @@ public class KstatCmd {
 		    usage("missing argument to -s flag");
 		}
 	    } else if ("-T".equals(args[i])) {
-		if (i+1 < args.length) {
+		if (i + 1 < args.length) {
 		    tflag = true;
 		    i++;
 		    ttype = args[i];
@@ -194,7 +194,7 @@ public class KstatCmd {
 	    // already displayed once
 	    count--;
 	    Timer timer = new Timer();
-	    timer.schedule(new DisplayTask(), interval*1000, interval*1000);
+	    timer.schedule(new DisplayTask(), interval * 1000, interval * 1000);
 	}
     }
 
@@ -220,7 +220,7 @@ public class KstatCmd {
 	if (tflag) {
 	    Date d = new Date();
 	    if ("u".equals(ttype)) {
-		System.out.println(d.getTime()/1000);
+		System.out.println(d.getTime() / 1000);
 	    } else if ("d".equals(ttype)) {
 		System.out.println(d);
 	    }
@@ -300,9 +300,9 @@ public class KstatCmd {
 		+ ks.getKstatClass());
 	if (!sflag) {
 	    System.out.println("\tcrtime\t"
-			+ (ks.getCrtime()/1000000000.0));
+			+ (ks.getCrtime() / 1000000000.0));
 	    System.out.println("\tsnaptime\t"
-			+ (ks.getSnaptime()/1000000000.0));
+			+ (ks.getSnaptime() / 1000000000.0));
 	}
     }
 

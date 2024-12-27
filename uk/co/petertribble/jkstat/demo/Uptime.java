@@ -51,13 +51,13 @@ public final class Uptime {
 	System.out.print(DateFormat.getTimeInstance(DateFormat.SHORT)
 			.format(new Date()) + " up ");
 
-	long l = System.currentTimeMillis()/1000 - ks.longData("boot_time");
+	long l = System.currentTimeMillis() / 1000 - ks.longData("boot_time");
 
-	long days = l/(60*60*24);
-	l %= (60*60*24);
-	long hrs = l/(60*60);
-	l %= (60*60);
-	long mins = l/60;
+	long days = l / (60 * 60 * 24);
+	l %= (60 * 60 * 24);
+	long hrs = l / (60 * 60);
+	l %= (60 * 60);
+	long mins = l / 60;
 
 	if (days > 1) {
 	    System.out.print(days + " days ");
@@ -78,8 +78,8 @@ public final class Uptime {
 	}
 
 	System.out.print("load average: ");
-	System.out.print(df.format(ks.longData("avenrun_1min")/256.0) + ", ");
-	System.out.print(df.format(ks.longData("avenrun_5min")/256.0) + ", ");
-	System.out.println(df.format(ks.longData("avenrun_15min")/256.0));
+	System.out.print(df.format(ks.longData("avenrun_1min") / 256.0) + ", ");
+	System.out.print(df.format(ks.longData("avenrun_5min") / 256.0) + ", ");
+	System.out.println(df.format(ks.longData("avenrun_15min") / 256.0));
     }
 }

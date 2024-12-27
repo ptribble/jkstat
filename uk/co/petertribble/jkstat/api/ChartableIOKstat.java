@@ -65,19 +65,19 @@ public class ChartableIOKstat extends ChartableKstat {
 	long kw = getValue("nwritten");
 
 	// operations per second
-	rateMap.put("r/s", (double) (nr-r)*1000000000.0/dt);
-	rateMap.put("w/s", (double) (nw-w)*1000000000.0/dt);
+	rateMap.put("r/s", (double) (nr - r) * 1000000000.0 / dt);
+	rateMap.put("w/s", (double) (nw - w) * 1000000000.0 / dt);
 
 	// data transferred per second
-	rateMap.put("kr/s", (double) (nkr-kr)*1000000000.0/(dt*1024.0));
-	rateMap.put("kw/s", (double) (nkw-kw)*1000000000.0/(dt*1024.0));
+	rateMap.put("kr/s", (double) (nkr - kr) * 1000000000.0 / (dt * 1024.0));
+	rateMap.put("kw/s", (double) (nkw - kw) * 1000000000.0 / (dt * 1024.0));
 
 	// wait (wait queue length)
-	double di = (nwlentime-getValue("wlentime"))/dt;
+	double di = (nwlentime - getValue("wlentime")) / dt;
 	rateMap.put("wait", di);
 
 	// actv (run queue length)
-	double dj = (nrlentime-getValue("rlentime"))/dt;
+	double dj = (nrlentime - getValue("rlentime")) / dt;
 	rateMap.put("actv", dj);
 
 	// service time
@@ -85,26 +85,26 @@ public class ChartableIOKstat extends ChartableKstat {
 	if (((int) ds) == 0) {
 	    rateMap.put("svc_t", 0.0);
 	} else {
-	    rateMap.put("svc_t", (di+dj)*1000.0/ds);
+	    rateMap.put("svc_t", (di + dj) * 1000.0 / ds);
 	}
-	ds = nw-w;
+	ds = nw - w;
 	if (((int) ds) == 0) {
 	    rateMap.put("wsvc_t", 0.0);
 	} else {
-	    rateMap.put("wsvc_t", di*1000.0/ds);
+	    rateMap.put("wsvc_t", di * 1000.0 / ds);
 	}
-	ds = nr-r;
+	ds = nr - r;
 	if (((int) ds) == 0) {
 	    rateMap.put("asvc_t", 0.0);
 	} else {
-	    rateMap.put("asvc_t", dj*1000.0/ds);
+	    rateMap.put("asvc_t", dj * 1000.0 / ds);
 	}
 
 	// wait percentage
-	rateMap.put("%w", 100.0*(nwtime-getValue("wtime"))/dt);
+	rateMap.put("%w", 100.0 * (nwtime - getValue("wtime")) / dt);
 
 	// busy percentage
-	rateMap.put("%b", 100.0*(nrtime-getValue("rtime"))/dt);
+	rateMap.put("%b", 100.0 * (nrtime - getValue("rtime")) / dt);
 
 	// save the new values
 	valueMap.put("reads", nr);

@@ -118,7 +118,7 @@ public class JCpuState extends JKdemo implements ActionListener {
 	for (Kstat ks : kstats) {
 	    String scpu = ks.getInstance();
 	    if (orientation != SwingConstants.VERTICAL) {
-		mainPanel.add(new JLabel("Cpu "+scpu));
+		mainPanel.add(new JLabel("Cpu " + scpu));
 	    }
 	    KstatAccessoryPanel acp = (style == STYLE_CHART)
 		? new AccessoryCpuChart(ks, -1, jkstat)
@@ -175,11 +175,11 @@ public class JCpuState extends JKdemo implements ActionListener {
 	super.actionPerformed(e);
 	for (int i = 0; i < ncpus; i++) {
 	    if (e.getSource() == aboutCpuItem[i]) {
-		new KstatTableFrame("cpu_info", cpuID[i], "cpu_info"+cpuID[i],
+		new KstatTableFrame("cpu_info", cpuID[i], "cpu_info" + cpuID[i],
 				    -1, jkstat);
 	    }
 	    if (e.getSource() == extendedCpuItem[i]) {
-		new KstatTableFrame("cpu_stat", cpuID[i], "cpu_stat"+cpuID[i],
+		new KstatTableFrame("cpu_stat", cpuID[i], "cpu_stat" + cpuID[i],
 				    1, jkstat);
 	    }
 	}

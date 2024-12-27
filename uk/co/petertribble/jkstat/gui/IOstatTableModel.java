@@ -64,7 +64,7 @@ public final class IOstatTableModel extends AbstractTableModel
 	    iodata.add(new ChartableIOKstat(jkstat, ks));
 	}
 
-	delay = interval*1000;
+	delay = interval * 1000;
 	fireTableDataChanged();
 	startLoop();
     }
@@ -101,7 +101,7 @@ public final class IOstatTableModel extends AbstractTableModel
 	if (interval <= 0) {
 	    stopLoop();
 	} else {
-	    delay = interval*1000;
+	    delay = interval * 1000;
 	    if (timer != null) {
 		timer.setDelay(delay);
 	    }
@@ -167,13 +167,13 @@ public final class IOstatTableModel extends AbstractTableModel
      */
     @Override
     public Object getValueAt(int row, int col) {
-	return (col == columnNames.length-1)
+	return (col == columnNames.length - 1)
 	    ? iodata.get(row).toString()
 	    : iodata.get(row).getRate(columnNames[col]);
     }
 
     @Override
     public Class<?> getColumnClass(int c) {
-	return (c == columnNames.length-1) ? String.class : Double.class;
+	return (c == columnNames.length - 1) ? String.class : Double.class;
     }
 }

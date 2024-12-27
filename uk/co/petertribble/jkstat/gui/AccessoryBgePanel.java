@@ -69,8 +69,8 @@ public class AccessoryBgePanel extends KstatAccessoryPanel {
     public AccessoryBgePanel(Kstat ks, int interval, JKstat jkstat) {
 	super(ks, interval, jkstat);
 
-	setMinimumSize(new Dimension(64, 4*STATNUM));
-	setPreferredSize(new Dimension(64, 4*STATNUM));
+	setMinimumSize(new Dimension(64, 4 * STATNUM));
+	setPreferredSize(new Dimension(64, 4 * STATNUM));
 
 	for (int i = 0; i < STATNUM; i++) {
 	    oldvalues[i] = 0;
@@ -112,19 +112,19 @@ public class AccessoryBgePanel extends KstatAccessoryPanel {
 	g2.fill(new Rectangle2D.Double(0, 0, w, h));
 	// green is the deltas, blue the cumulative
 	if (sumvalues > 0) {
-	    double dh = h/((double) 2*STATNUM);
-	    double dsscale = w/sumvalues;
+	    double dh = h / ((double) 2 * STATNUM);
+	    double dsscale = w / sumvalues;
 	    g2.setPaint(Color.BLUE);
 	    for (int i = 0; i < STATNUM; i++) {
-		g2.fill(new Rectangle2D.Double(0, (2*i+1)*dh,
-			dsscale*((double) newvalues[i]), dh));
+		g2.fill(new Rectangle2D.Double(0, (2 * i + 1) * dh,
+			dsscale * ((double) newvalues[i]), dh));
 	    }
 	    if (sumdelta > 0) {
-		double ddscale = w/sumdelta;
+		double ddscale = w / sumdelta;
 		g2.setPaint(Color.GREEN);
 		for (int i = 0; i < STATNUM; i++) {
-		    g2.fill(new Rectangle2D.Double(0, 2*i*dh,
-			ddscale*((double) deltas[i]), dh));
+		    g2.fill(new Rectangle2D.Double(0, 2 * i * dh,
+			ddscale * ((double) deltas[i]), dh));
 		}
 	    }
 	}

@@ -9,7 +9,7 @@ public class KstatList {
     static final JKstat JKSTAT = new NativeJKstat();
 
     /**
-     * Get the list of current kstats. Just retunrs metadat, without any data.
+     * Get the list of current kstats. Just returns metadata, without any data.
      *
      * @return a JSON formatted list of kstats
      */

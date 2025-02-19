@@ -9,11 +9,11 @@
 # ./build
 #    Builds all the java classes, and recompiles the native library.
 #
-# ./build -jni
+# ./build jni
 #    (Re)Creates the jni header file. Only needed if the native interface
 #    changes, which it shouldn't
 #
-# ./build -doc
+# ./build javadoc
 #    Generates the javadoc
 #
 # ./build clean
@@ -78,18 +78,18 @@ JERSEYDIR="../jaxrs-ri"
 JAXRSJAR="../${JERSEYDIR}/api/jakarta.ws.rs-api-2.1.6.jar"
 
 case $1 in
-jni|-jni)
+jni)
 	${JAVAC} uk/co/petertribble/jkstat/api/NativeJKstat.java
 	javah -jni uk.co.petertribble.jkstat.api.NativeJKstat
 	exit 0
 	;;
-doc|-doc)
+javadoc)
 	rm -fr javadoc
 	mkdir javadoc
 	javadoc -classpath "${BUILDJARS}":. -d javadoc -Xdoclint:all uk.co.petertribble.jkstat.api uk.co.petertribble.jkstat.browser uk.co.petertribble.jkstat.gui uk.co.petertribble.jkstat.demo uk.co.petertribble.jkstat.util uk.co.petertribble.jkstat.client uk.co.petertribble.jkstat.server uk.co.petertribble.jkstat.parse
 	exit 0
 	;;
-clean|-clean)
+clean)
 	rm -f $(find uk/co -type f -name '*.class')
 	rm -f $(find . -type f -name '*~')
 	rm -fr javadoc
@@ -97,7 +97,7 @@ clean|-clean)
 	rm -f jkrest.war
 	exit 0
 	;;
-pmd|-pmd)
+pmd)
 	if [ ! -d "${HOME}/.pmd" ]; then
 	    mkdir -p "${HOME}/.pmd"
 	fi

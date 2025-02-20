@@ -29,7 +29,7 @@ import uk.co.petertribble.jkstat.client.*;
 /**
  * Display kernel memory allocation statistics.
  */
-public class JKmemAlloc extends JKdemo {
+public final class JKmemAlloc extends JKdemo {
 
     private static final long serialVersionUID = 1L;
 

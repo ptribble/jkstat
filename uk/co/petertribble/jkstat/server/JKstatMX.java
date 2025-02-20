@@ -28,7 +28,7 @@ import java.util.Set;
  *
  * @author Peter Tribble
  */
-public class JKstatMX implements JKstatMXMBean {
+public final class JKstatMX implements JKstatMXMBean {
 
     private static final JKstat JKSTAT = new NativeJKstat();
 

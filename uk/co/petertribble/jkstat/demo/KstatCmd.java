@@ -32,7 +32,7 @@ import java.util.TimerTask;
  *
  * @author Peter Tribble
  */
-public class KstatCmd {
+public final class KstatCmd {
 
     private JKstat jkstat;
     private KstatFilter ksf;

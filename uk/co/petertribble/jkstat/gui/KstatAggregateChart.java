@@ -35,7 +35,7 @@ import org.jfree.data.time.*;
  *
  * @author Peter Tribble
  */
-public class KstatAggregateChart extends KstatBaseChart {
+public final class KstatAggregateChart extends KstatBaseChart {
 
     private ChartableKstat cks;
     private KstatAggregate ksa;

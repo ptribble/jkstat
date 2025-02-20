@@ -31,7 +31,7 @@ import org.apache.xmlrpc.XmlRpcException;
  *
  * @author Peter Tribble
  */
-public class XmlRpcJKstat extends JKstat {
+public final class XmlRpcJKstat extends JKstat {
 
     private JKstatClient client;
 

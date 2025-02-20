@@ -30,7 +30,7 @@ import uk.co.petertribble.jkstat.parse.JSONParser;
  *
  * @author Peter Tribble
  */
-public class JsonJKstat extends JKstat {
+public final class JsonJKstat extends JKstat {
 
     private JKhttpClient client;
 

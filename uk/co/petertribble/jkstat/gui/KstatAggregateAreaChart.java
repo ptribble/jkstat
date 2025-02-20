@@ -35,7 +35,7 @@ import org.jfree.chart.plot.PlotOrientation;
  *
  * @author Peter Tribble
  */
-public class KstatAggregateAreaChart extends KstatBaseChart {
+public final class KstatAggregateAreaChart extends KstatBaseChart {
 
     private ChartableKstat cks;
     private KstatAggregate ksa;

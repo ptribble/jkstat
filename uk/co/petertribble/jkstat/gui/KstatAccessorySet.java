@@ -29,7 +29,7 @@ import java.awt.event.*;
  *
  * @author Peter Tribble
  */
-public class KstatAccessorySet implements ActionListener {
+public final class KstatAccessorySet implements ActionListener {
 
     private Collection<KstatAccessoryPanel> accessories;
     private Timer timer;

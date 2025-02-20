@@ -31,7 +31,7 @@ import uk.co.petertribble.jkstat.gui.KstatResources;
  *
  * @author Peter Tribble
  */
-public class KClientDialog implements ActionListener {
+public final class KClientDialog implements ActionListener {
 
     private KClientConfig kcc;
 

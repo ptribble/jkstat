@@ -32,7 +32,7 @@ import uk.co.petertribble.jkstat.api.*;
  *
  * @author Peter Tribble
  */
-public class ParseableJSONZipJKstat extends SequencedJKstat {
+public final class ParseableJSONZipJKstat extends SequencedJKstat {
 
     private ZipFile zf;
     private ZipEntry[] inputs;

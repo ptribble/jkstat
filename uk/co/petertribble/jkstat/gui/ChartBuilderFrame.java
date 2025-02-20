@@ -32,7 +32,7 @@ import uk.co.petertribble.jkstat.parse.ParseableJSONZipJKstat;
  *
  * @author Peter Tribble
  */
-public class ChartBuilderFrame extends JFrame implements ActionListener {
+public final class ChartBuilderFrame extends JFrame implements ActionListener {
 
     private static final long serialVersionUID = 1L;
 

@@ -38,8 +38,8 @@ import uk.co.petertribble.jingle.SpringUtilities;
  *
  * @author Peter Tribble
  */
-public class ChartBuilderPanel extends JPanel implements TreeSelectionListener,
-    ActionListener {
+public final class ChartBuilderPanel extends JPanel
+    implements TreeSelectionListener, ActionListener {
 
     private static final long serialVersionUID = 1L;
 

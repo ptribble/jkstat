@@ -32,7 +32,7 @@ import java.awt.Color;
  * @author Peter Tribble
  * @version 1.0
  */
-public class AccessoryCpuChart extends KstatAccessoryPanel {
+public final class AccessoryCpuChart extends KstatAccessoryPanel {
 
     private static final long serialVersionUID = 1L;
 

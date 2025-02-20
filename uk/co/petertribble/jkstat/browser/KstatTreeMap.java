@@ -31,7 +31,7 @@ import uk.co.petertribble.jkstat.util.NumericStringComparator;
  *
  * @author Peter Tribble
  */
-public class KstatTreeMap {
+public final class KstatTreeMap {
 
     private KstatModuleMap kstatMap;
     private SortedMap<String, KstatModuleMap> kstatClassMap;

@@ -83,16 +83,38 @@ public abstract class SequencedJKstat extends JKstat {
      * just involves searching the list.
      */
 
+    /**
+     * Get the Kstat chain ID. Normally for a SequencedJKstat this will be the
+     * number of the JKstat in the sequence.
+     *
+     * @return the current chain id
+     */
     @Override
     public int getKCID() {
 	return chainid;
     }
 
+    /**
+     * Enumerate the Kstats. This should do nothing for a SequencedJKstat as
+     * the Kstats will already have been enumerated in the underlying JKstat,
+     * but we return the chainid to indicate things have potentially changed.
+     *
+     * @return the current chain id
+     */
     @Override
     public int enumerate() {
 	return chainid;
     }
 
+    /**
+     * Get the requested Kstat from the current JKstat in the sequence.
+     *
+     * @param module the kstat module
+     * @param inst the kstat instance
+     * @param name the name of the kstat
+     *
+     * @return a new {@code Kstat} populated with current data
+     */
     @Override
     public Kstat getKstatObject(String module, int inst, String name) {
 	for (Kstat ks : kstats) {
@@ -104,6 +126,11 @@ public abstract class SequencedJKstat extends JKstat {
 	return null;
     }
 
+    /**
+     * Get the time of the current JKstat in the sequence.
+     *
+     * @return the time of the current JKstat
+     */
     @Override
     public long getTime() {
 	return timestamp;

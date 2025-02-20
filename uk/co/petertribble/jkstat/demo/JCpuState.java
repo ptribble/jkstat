@@ -36,7 +36,7 @@ import uk.co.petertribble.jkstat.client.*;
  *
  * @author Peter Tribble
  */
-public class JCpuState extends JKdemo implements ActionListener {
+public final class JCpuState extends JKdemo implements ActionListener {
 
     private static final long serialVersionUID = 1L;
 

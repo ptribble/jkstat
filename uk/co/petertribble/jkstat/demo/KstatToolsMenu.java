@@ -33,7 +33,7 @@ import java.awt.event.*;
  *
  * @author Peter Tribble
  */
-public class KstatToolsMenu extends JMenu implements ActionListener {
+public final class KstatToolsMenu extends JMenu implements ActionListener {
 
     private static final long serialVersionUID = 1L;
 

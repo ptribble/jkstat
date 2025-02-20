@@ -183,6 +183,13 @@ public abstract class KstatBaseChart implements ActionListener {
 	}
     }
 
+    /**
+     * This is the action performed when the timer triggers. Normally,
+     * the implementation here, of calling updateAccessory(), will
+     * suffice.
+     *
+     * @param e the ActionEvent which will trigger this action
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
 	updateAccessory();

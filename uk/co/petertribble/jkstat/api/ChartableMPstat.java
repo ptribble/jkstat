@@ -25,7 +25,7 @@ package uk.co.petertribble.jkstat.api;
  *
  * @author Peter Tribble
  */
-public class ChartableMPstat extends ChartableKstat {
+public final class ChartableMPstat extends ChartableKstat {
 
     private long flastsnap;
 

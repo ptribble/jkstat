@@ -34,7 +34,7 @@ import uk.co.petertribble.jkstat.client.*;
  *
  * @author Peter Tribble
  */
-public class Jnfsstat extends JKdemo implements ChangeListener {
+public final class Jnfsstat extends JKdemo implements ChangeListener {
 
     private static final long serialVersionUID = 1L;
 

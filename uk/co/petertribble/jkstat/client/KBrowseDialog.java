@@ -40,7 +40,7 @@ import uk.co.petertribble.jkstat.gui.KstatResources;
  *
  * @author Peter Tribble
  */
-public class KBrowseDialog implements ActionListener {
+public final class KBrowseDialog implements ActionListener {
 
     private KClientConfig kcc;
 

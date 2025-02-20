@@ -30,7 +30,7 @@ import uk.co.petertribble.jingle.SpringUtilities;
  *
  * @author Peter Tribble
  */
-public class AccessoryLoadPanel extends KstatAccessoryPanel {
+public final class AccessoryLoadPanel extends KstatAccessoryPanel {
 
     private static final long serialVersionUID = 1L;
 

@@ -25,7 +25,7 @@ package uk.co.petertribble.jkstat.api;
  *
  * @author Peter Tribble
  */
-public class ChartableIOKstat extends ChartableKstat {
+public final class ChartableIOKstat extends ChartableKstat {
 
     /**
      * Create a ChartableIOKstat using the given Kstat as the data source.

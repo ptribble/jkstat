@@ -35,7 +35,7 @@ import org.jfree.data.time.*;
  *
  * @author Peter Tribble
  */
-public class KstatSetChart extends KstatBaseChart {
+public final class KstatSetChart extends KstatBaseChart {
 
     private KstatSet kss;
     private TimeSeriesCollection dataset;

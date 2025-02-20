@@ -30,7 +30,7 @@ import java.awt.BorderLayout;
  *
  * @author Peter Tribble
  */
-public class AccessoryLoadChart extends KstatAccessoryPanel {
+public final class AccessoryLoadChart extends KstatAccessoryPanel {
 
     private static final long serialVersionUID = 1L;
 

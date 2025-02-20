@@ -26,7 +26,7 @@ package uk.co.petertribble.jkstat.api;
  *
  * @author Peter Tribble
  */
-public class ChartableKstatAggregate extends ChartableKstat {
+public final class ChartableKstatAggregate extends ChartableKstat {
 
     private KstatAggregate ksa;
 

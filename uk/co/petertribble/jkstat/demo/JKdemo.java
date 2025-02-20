@@ -291,6 +291,10 @@ public abstract class JKdemo extends JFrame implements ActionListener {
 	}
     }
 
+    /**
+     * Exit the demo apropriately for the context. If standalone, exit the
+     * entire VM, otherwise just shut down the individual demo.
+     */
     void kaboom() {
 	if (standalone) {
 	    System.exit(0);
@@ -314,6 +318,19 @@ public abstract class JKdemo extends JFrame implements ActionListener {
      */
     public abstract void stopLoop();
 
+    /**
+     * The main action handler. This handles both menu items (exit,
+     * license, help) and updating the delay.
+     *
+     * The help handler uses the demoname passed in the constructor
+     * to find the right help file.
+     *
+     * Subclasses wishing to override this method should call
+     * super.actionPerformed() to get the delay update handling,
+     * and then use their own logic to handle any other changes.
+     *
+     * @param e the ActionEvent which will trigger this action
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
 	if (e.getSource() == exitItem) {

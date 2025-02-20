@@ -30,7 +30,7 @@ import java.awt.geom.Rectangle2D;
  *
  * @author Peter Tribble
  */
-public class AccessoryBgePanel extends KstatAccessoryPanel {
+public final class AccessoryBgePanel extends KstatAccessoryPanel {
 
     private static final long serialVersionUID = 1L;
 

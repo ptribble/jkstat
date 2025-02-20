@@ -32,7 +32,7 @@ import javax.swing.SwingConstants;
  * @author Peter Tribble
  * @version 1.0
  */
-public class AccessoryCpuPanel extends KstatAccessoryPanel {
+public final class AccessoryCpuPanel extends KstatAccessoryPanel {
 
     private static final long serialVersionUID = 1L;
 

@@ -26,7 +26,7 @@ import uk.co.petertribble.jkstat.util.NumericStringComparator;
 /**
  * Describes a map of kstats keyed by instance.
  */
-public class KstatInstanceMap extends TreeMap<String, KstatNameMap> {
+public final class KstatInstanceMap extends TreeMap<String, KstatNameMap> {
 
     private static final long serialVersionUID = 1L;
 

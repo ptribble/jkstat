@@ -35,7 +35,7 @@ import uk.co.petertribble.jkstat.demo.*;
  *
  * @author Peter Tribble
  */
-public class KstatBrowser extends JFrame implements ActionListener {
+public final class KstatBrowser extends JFrame implements ActionListener {
 
     private static final long serialVersionUID = 1L;
 

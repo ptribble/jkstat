@@ -28,7 +28,7 @@ import java.util.Date;
  *
  * @author Peter Tribble
  */
-public class NativeJKstat extends JKstat {
+public final class NativeJKstat extends JKstat {
 
     static {
 	System.loadLibrary("kstat_jni");

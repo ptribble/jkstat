@@ -29,7 +29,7 @@ import uk.co.petertribble.jstripchart.JSparkChart;
  *
  * @author Peter Tribble
  */
-public class SparkValueAccessory extends KstatAccessoryPanel {
+public final class SparkValueAccessory extends KstatAccessoryPanel {
 
     private static final long serialVersionUID = 1L;
 

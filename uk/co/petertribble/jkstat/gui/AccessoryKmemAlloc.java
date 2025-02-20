@@ -28,7 +28,7 @@ import java.text.DecimalFormat;
 /**
  * An accessory to display kernel memory allocation statistics.
  */
-public class AccessoryKmemAlloc extends KstatAccessoryPanel {
+public final class AccessoryKmemAlloc extends KstatAccessoryPanel {
 
     private static final long serialVersionUID = 1L;
 

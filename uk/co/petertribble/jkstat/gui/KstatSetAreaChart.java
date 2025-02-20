@@ -37,7 +37,7 @@ import org.jfree.chart.plot.PlotOrientation;
  *
  * @author Peter Tribble
  */
-public class KstatSetAreaChart extends KstatBaseChart {
+public final class KstatSetAreaChart extends KstatBaseChart {
 
     private KstatSet kss;
     private TimeTableXYDataset dataset;

@@ -32,7 +32,7 @@ import uk.co.petertribble.jkstat.client.*;
  *
  * @author Peter Tribble
  */
-public class JMPstat extends JKdemo {
+public final class JMPstat extends JKdemo {
 
     private static final long serialVersionUID = 1L;
 

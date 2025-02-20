@@ -40,8 +40,8 @@ import uk.co.petertribble.jingle.JingleTextPane;
  *
  * @author Peter Tribble
  */
-public class KstatTreePanel extends JPanel implements TreeSelectionListener,
-    ActionListener {
+public final class KstatTreePanel extends JPanel
+    implements TreeSelectionListener, ActionListener {
 
     private static final long serialVersionUID = 1L;
 

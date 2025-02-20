@@ -29,7 +29,7 @@ import uk.co.petertribble.jkstat.api.*;
  *
  * @author Peter Tribble
  */
-public class RemoteJKstat extends JKstat {
+public final class RemoteJKstat extends JKstat {
 
     private JKstat childJKstat;
 

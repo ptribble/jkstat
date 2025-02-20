@@ -30,7 +30,7 @@ import uk.co.petertribble.jkstat.api.Kstat;
  *
  * @author Peter Tribble
  */
-public class KstatTreeNode extends DefaultMutableTreeNode {
+public final class KstatTreeNode extends DefaultMutableTreeNode {
 
     private static final long serialVersionUID = 1L;
 

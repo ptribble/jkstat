@@ -33,7 +33,7 @@ import uk.co.petertribble.jkstat.api.JKstat;
  *
  * @author Peter Tribble
  */
-public class KstatTableModel extends AbstractTableModel
+public final class KstatTableModel extends AbstractTableModel
 	implements ActionListener {
 
     private static final long serialVersionUID = 1L;
@@ -44,12 +44,12 @@ public class KstatTableModel extends AbstractTableModel
     /**
      * A Timer, to update the model in a loop.
      */
-    protected Timer timer;
+    private Timer timer;
 
     /**
      * The initial update delay, in milliseconds.
      */
-    protected int delay;
+    private int delay;
 
     private JKstat jkstat;
     private Kstat ks;

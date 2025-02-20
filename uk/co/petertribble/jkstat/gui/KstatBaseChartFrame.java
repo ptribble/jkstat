@@ -274,6 +274,14 @@ public class KstatBaseChartFrame extends JFrame implements ActionListener {
 	kbc.setDelay(delay);
     }
 
+    /**
+     * This is the action performed when the timer triggers. Normally,
+     * the implementation here, which handles the Exit button, changing
+     * the refresh delay time, and adding/removing individual statistics
+     * from the chart, will suffice.
+     *
+     * @param e the ActionEvent which will trigger this action
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
 	if (e.getSource() == exitItem) {

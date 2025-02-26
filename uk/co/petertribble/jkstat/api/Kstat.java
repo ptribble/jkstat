@@ -78,33 +78,33 @@ public class Kstat implements Serializable, Comparable<Kstat> {
      * Inserts an item into the data Map.
      *
      * @param s the name of the data item
-     * @param data_type the data type
+     * @param dataType the data type
      * @param data the actual data
      */
-    private void addDataObject(String s, int data_type, Object data) {
-	addDataObject(s, KstatData.Type.toType(data_type), data);
+    private void addDataObject(String s, int dataType, Object data) {
+	addDataObject(s, KstatData.Type.toType(dataType), data);
     }
 
     /**
      * Inserts an item into the data Map.
      *
      * @param s the name of the data item
-     * @param data_type the data type
+     * @param dataType the data type
      * @param data the actual data
      */
-    public void addDataObject(String s, KstatData.Type data_type, Object data) {
-	dataMap.put(s, new KstatData(data_type, data));
+    public void addDataObject(String s, KstatData.Type dataType, Object data) {
+	dataMap.put(s, new KstatData(dataType, data));
     }
 
     /**
      * Convenience method to add a long to the data Map.
      *
      * @param s the name of the data item
-     * @param data_type the data type
+     * @param dataType the data type
      * @param data the actual data
      */
-    public void addLongData(String s, int data_type, long data) {
-        addDataObject(s, KstatData.Type.toType(data_type), data);
+    public void addLongData(String s, int dataType, long data) {
+        addDataObject(s, KstatData.Type.toType(dataType), data);
     }
 
     /**

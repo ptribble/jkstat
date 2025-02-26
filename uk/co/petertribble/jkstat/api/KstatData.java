@@ -47,11 +47,11 @@ public class KstatData implements Serializable {
         KSTAT_DATA_FLOAT(5, true),
         KSTAT_DATA_DOUBLE(6, true),
         KSTAT_DATA_STRING(9, false);
-        private final int int_type;
+        private final int intType;
         private final boolean numeric;
 
-        Type(int int_type, boolean numeric) {
-            this.int_type = int_type;
+        Type(int intType, boolean numeric) {
+            this.intType = intType;
             this.numeric = numeric;
         }
 
@@ -61,7 +61,7 @@ public class KstatData implements Serializable {
 	 * @return an int representing the numeric value of this Type
 	 */
         public int toInt() {
-            return int_type;
+            return intType;
         }
 
 	/**
@@ -76,19 +76,19 @@ public class KstatData implements Serializable {
 	/**
 	 * Return a Type by numeric value.
 	 *
-	 * @param int_type an integer to return the Type of
+	 * @param intType an integer to return the Type of
 	 *
 	 * @return the Type corresponding to the argument
 	 */
-        public static Type toType(int int_type) {
+        public static Type toType(int intType) {
             for (Type type : values()) {
-                if (int_type == type.toInt()) {
+                if (intType == type.toInt()) {
                     return type;
                 }
             }
 
             throw new IllegalArgumentException("Illegal Type Numeric Value ("
-                    + int_type + ")");
+                    + intType + ")");
         }
     }
     private final Type type;
@@ -137,7 +137,7 @@ public class KstatData implements Serializable {
     /**
      * Returns whether this {@code KstatData} is of a Numeric type.
      *
-     * @return true if this data is of one of the 4 int_type types
+     * @return true if this data is of one of the 4 intType types
      */
     public boolean isNumeric() {
         return type.isNumeric();

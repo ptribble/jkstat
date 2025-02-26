@@ -52,7 +52,7 @@ public class KClientConfig {
      */
     public static final String[] PROTOCOLS = {"XML-RPC", "REST"};
 
-    private String url_string;
+    private String urlString;
     private String username;
     private String userpass;
     private int protocol;
@@ -79,7 +79,7 @@ public class KClientConfig {
      * @param protocol specifies the communication protocol
      */
     public KClientConfig(String s, int protocol) {
-	url_string = s;
+	urlString = s;
 	this.protocol = protocol;
     }
 
@@ -91,7 +91,7 @@ public class KClientConfig {
      * useful
      */
     public boolean isConfigured() {
-	return (url_string != null) && (!"".equals(url_string));
+	return (urlString != null) && (!"".equals(urlString));
     }
 
     /**
@@ -101,7 +101,7 @@ public class KClientConfig {
      * @return the url to connect to, as a String
      */
     public String remoteURL() {
-	return url_string;
+	return urlString;
     }
 
     /**
@@ -156,7 +156,7 @@ public class KClientConfig {
      * @param s the server to connect to
      */
     public void setServerURL(String s) {
-	url_string = s;
+	urlString = s;
     }
 
     /**

@@ -161,14 +161,14 @@ public abstract class JKstat {
      * @param module a String specifying the kstat module
      * @param inst an int specifying the kstat instance
      * @param name a String specifying the kstat name
-     * @param kstat_class a String specifying the kstat class
+     * @param kstatClass a String specifying the kstat class
      * @param type an int specifying the kstat type
      * @param crtime a long specifying the kstat creation time
      */
     protected void addKstat(String module, int inst, String name,
-			 String kstat_class, int type, long crtime) {
+			 String kstatClass, int type, long crtime) {
 	Kstat ks = new Kstat(module, inst, name);
-	ks.setStandardInfo(kstat_class, type, crtime, 0L);
+	ks.setStandardInfo(kstatClass, type, crtime, 0L);
 	kstats.add(ks);
     }
 }

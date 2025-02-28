@@ -21,7 +21,7 @@ echo "i pkginfo=./pkginfo.${MYARCH}"
 
 if [ "X$2" = "Xdeps" ]; then
   HCVERS="5"
-  JFCVERS="1.5.4"
+  JFCVERS="1.5.5"
   JFCPKGVER="150"
   XMLVERS="3.1.3"
   XMLPKGVER="313"
@@ -89,7 +89,7 @@ else
 	pname=${path##*/}
 	echo "f none /${JARDIR}/${pname}=${path} 0644 ${OWNER}"
   done
-  for path in lib/java/ws-commons* lib/java/xmlrpc*
+  for path in lib/java/*commons* lib/java/xmlrpc*
   do
 	pname=${path##*/}
 	echo "s none /${JARDIR}/${pname}=../apache-xmlrpc-${XMLVERS}/${pname}"

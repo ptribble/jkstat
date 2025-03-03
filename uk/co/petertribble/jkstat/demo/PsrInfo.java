@@ -49,40 +49,30 @@ public class PsrInfo {
 	ksf.addFilter("cpu_info:::");
 
 	if (flagT) {
-	    displayT(ksf.getKstats(true));
+	    if (flagP) {
+		System.out.println(new ProcessorTree(jkstat).numChips());
+	    } else if (flagC) {
+		System.out.println(new ProcessorTree(jkstat).numCores());
+	    } else {
+		System.out.println(ksf.getKstats(true).size());
+	    }
 	} else if (flagP && flagV) {
 	    displayVP();
 	} else if (flagV) {
 	    displayV(ksf.getKstats(true));
 	} else if (flagP) {
-	    displayP();
+	    System.out.println(new ProcessorTree(jkstat).numChips());
 	} else {
 	    displayPlain(ksf.getKstats(true));
 	}
     }
 
     private void displayPlain(Set<Kstat> kstats) {
-	DateFormat df = DateFormat.getDateTimeInstance(DateFormat.SHORT,
-					    DateFormat.SHORT);
 	for (Kstat ks : kstats) {
 	    Kstat nks = jkstat.getKstat(ks);
 	    System.out.println(nks.getInstance() + "\t" + nks.getData("state")
 		+ "   since "
-		+ df.format(new Date(1000 * nks.longData("state_begin"))));
-	}
-    }
-
-    private void displayP() {
-	System.out.println(new ProcessorTree(jkstat).numChips());
-    }
-
-    private void displayT(Set<Kstat> kstats) {
-	if (flagP) {
-	    System.out.println(new ProcessorTree(jkstat).numChips());
-	} else if (flagC) {
-	    System.out.println(new ProcessorTree(jkstat).numCores());
-	} else {
-	    System.out.println(kstats.size());
+		+ DF.format(new Date(1000 * nks.longData("state_begin"))));
 	}
     }
 

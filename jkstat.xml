@@ -20,6 +20,14 @@
                 <service_fmri value='svc:/system/filesystem/local' />
         </dependency>
 
+        <dependency
+                name='mdns'
+                type='service'
+                grouping='optional_all'
+                restart_on='none'>
+                <service_fmri value='svc:/network/dns/multicast:default' />
+        </dependency>
+
         <exec_method
                 type='method'
                 name='start'

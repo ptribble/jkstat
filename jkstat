@@ -2,6 +2,8 @@
 #
 # SPDX-License-Identifier: CDDL-1.0
 #
+# Copyright 2025 Peter Tribble
+#
 # run the jkstat utilities
 #
 
@@ -24,8 +26,9 @@ usage() {
     echo "Usage: jkstat subcommand [options]"
     echo "Available subcommands:"
     echo " browser (the interactive kstat browser)"
-    echo " remotebrowser -m|-s|-S [server_url] (browser, network client)"
+    echo " browser -m|-s|-S [server_url] (browser, network client)"
     echo " browser -z zipfile (browser, reading kar output)"
+    echo " remotebrowser -m|-s|-S [server_url] (browser, network client)"
     echo " server [-m | -p port | -f config_file] (kstat server)"
     echo " cpustate [-s|-S server_url] [ chart | vertical ] (like xcpustate)"
     echo " kstat (emulates the kstat CLI)"
@@ -78,12 +81,15 @@ if [ -d /usr/jdk/latest/bin ]; then
 fi
 
 #
-# Normally, -s or -S means we're a client and need the client-side jars
+# The -m, -s, -S flag means we're a client and need the client-side jars
 # for remote access
 #
 case $1 in
 -s|-S|-m)
     ALLJARS="${ALLJARS}:${CLIENTJARS}:${HTTPJARS}"
+    if [ "${SUBCOMMAND}" = "browser" ]; then
+	SUBCOMMAND="remotebrowser"
+    fi
     ;;
 esac
 

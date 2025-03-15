@@ -292,7 +292,7 @@ public abstract class JKdemo extends JFrame implements ActionListener {
     }
 
     /**
-     * Exit the demo apropriately for the context. If standalone, exit the
+     * Exit the demo appropriately for the context. If standalone, exit the
      * entire VM, otherwise just shut down the individual demo.
      */
     void kaboom() {

@@ -153,15 +153,6 @@ public class ProcessorTree {
     }
 
     /**
-     * Return the Set of chip ids.
-     *
-     * @return the Set of chip ids
-     */
-    public Set<Long> getChips() {
-	return procmap.keySet();
-    }
-
-    /**
      * Return the Set of ProcessorChips.
      *
      * @return the Set of ProcessChips

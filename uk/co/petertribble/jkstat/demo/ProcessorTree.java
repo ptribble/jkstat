@@ -393,48 +393,6 @@ public class ProcessorTree {
     /**
      * Print the details of a chip, like psrinfo -vp.
      *
-     * @param l the id of the desired chip
-     *
-     * @return a String similar to psrinfo -vp output for the given chip
-     */
-    public String chipDetails(Long l) {
-	StringBuilder sb = new StringBuilder(256);
-	sb.append("Physical processor ").append(l).append(" has ");
-	if (numCores(l) == 1) {
-	    sb.append("1 core");
-	} else {
-	    sb.append(numCores(l)).append(" cores");
-	}
-	if (isThreaded()) {
-	    sb.append(" and ").append(numThreads(l)).append(" threads");
-	}
-	sb.append('\n');
-	if (isThreaded()) {
-	    for (Long ll : getCores(l)) {
-		sb.append("    Core ").append(ll).append(" has ");
-		int nt = numThreads(l, ll);
-		sb.append(nt).append(" threads (");
-		int ni = 0;
-		for (Kstat kst : coreInfoStats(l, ll)) {
-		    sb.append(kst.getInst());
-		    ni++;
-		    if (ni < nt) {
-			sb.append(' ');
-		    }
-		}
-		sb.append(")\n");
-	    }
-	}
-	sb.append("        ").append(getBrand(l))
-	    .append("\n        Clock speed: ")
-	    .append(chipInfoStats(l).iterator().next().getData("clock_MHz"))
-	    .append(" MHz\n");
-	return sb.toString();
-    }
-
-    /**
-     * Print the details of a chip, like psrinfo -vp.
-     *
      * @param chip the ProcessorChip whose details are to be shown
      *
      * @return a String similar to psrinfo -vp output for the given chip

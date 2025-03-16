@@ -155,7 +155,7 @@ public class ProcessorTree {
     /**
      * Return the Set of ProcessorChips.
      *
-     * @return the Set of ProcessChips
+     * @return the Set of ProcessorChips
      */
     public Set<ProcessorChip> getProcessorChips() {
 	return new TreeSet<>(procmap.values());
@@ -175,34 +175,6 @@ public class ProcessorTree {
     }
 
     /**
-     * Return the number of cores in a given chip. If invalid, return zero.
-     *
-     * @param chipid the chip to query
-     *
-     * @return the number of cores in a given chip
-     */
-    public int numCores(long chipid) {
-	ProcessorChip chip = procmap.get(chipid);
-	return (chip == null) ? 0 : chip.numCores();
-    }
-
-    /**
-     * Return the Set of core ids for a given chip.
-     *
-     * @param chipid the chip to query
-     *
-     * @return the Set of core ids for a given chip
-     */
-    public Set<Long> getCores(long chipid) {
-	ProcessorChip chip = procmap.get(chipid);
-	if (chip != null) {
-	    return chip.getCoreIDs();
-	} else {
-	    return new TreeSet<>();
-	}
-    }
-
-    /**
      * Return the total number of threads.
      * If invalid, return zero.
      *
@@ -214,37 +186,6 @@ public class ProcessorTree {
 	    nthreads += chip.numThreads();
 	}
 	return nthreads;
-    }
-
-    /**
-     * Return the number of threads in a given chip.
-     * If invalid, return zero.
-     *
-     * @param chipid the chip to query
-     *
-     * @return the number of threads in the given chip
-     */
-    public int numThreads(long chipid) {
-	ProcessorChip chip = procmap.get(chipid);
-	return (chip == null) ? 0 : chip.numCores();
-    }
-
-    /**
-     * Return the number of threads in a given core, identified by both chipid
-     * and coreid. If invalid, return zero.
-     *
-     * @param chipid the chip to query
-     * @param coreid the core to query
-     *
-     * @return the number of threads in the given core
-     */
-    public int numThreads(long chipid, long coreid) {
-	ProcessorChip chip = procmap.get(chipid);
-	if (chip == null) {
-	    return 0;
-	}
-	ProcessorCore core = chip.getCore(coreid);
-	return (core == null) ? 0 : core.numThreads();
     }
 
     /**
@@ -294,100 +235,12 @@ public class ProcessorTree {
     }
 
     /**
-     * Return all the Kstats corresponding to a given chip.
-     * If invalid, return the empty Set.
-     *
-     * @param chipid the chip to query
-     *
-     * @return all the cpu_info Kstats for the given chip
-     */
-    public Set<Kstat> chipInfoStats(long chipid) {
-	ProcessorChip chip = procmap.get(chipid);
-	if (chip != null) {
-	    return chip.infoStats();
-	} else {
-	    return new TreeSet<>();
-	}
-    }
-
-    /**
-     * Return all the Kstats corresponding to a given chip.
-     * If invalid, return the empty Set.
-     *
-     * @param chipid the chip to query
-     *
-     * @return all the cpu_stat Kstats for the given chip
-     */
-    public Set<Kstat> chipStats(long chipid) {
-	return makeCpuKstats(chipInfoStats(chipid));
-    }
-
-    /**
-     * Return the Kstats for a given core, identified by both chipid and coreid.
-     * If invalid, return the empty Set.
-     *
-     * @param chipid the chip to query
-     * @param coreid the core to query
-     *
-     * @return all the cpu_info Kstats for the given core
-     */
-    public Set<Kstat> coreInfoStats(long chipid, long coreid) {
-	ProcessorChip chip = procmap.get(chipid);
-	if (chip == null) {
-	    return new TreeSet<>();
-	}
-	ProcessorCore core = chip.getCore(coreid);
-	if (core == null) {
-	    return new TreeSet<>();
-	}
-	return core.infoStats();
-    }
-
-    /**
-     * Return the Kstats for a given core, identified by both chipid and coreid.
-     * If invalid, return the empty Set.
-     *
-     * @param chipid the chip to query
-     * @param coreid the core to query
-     *
-     * @return all the cpu_stat Kstats for the given core
-     */
-    public Set<Kstat> coreStats(long chipid, long coreid) {
-	return makeCpuKstats(coreInfoStats(chipid, coreid));
-    }
-
-    /**
      * Return the system's processor brand.
      *
      * @return a String representing the system's processor brand
      */
     public String getBrand() {
 	return (String) allInfoStats().iterator().next().getData("brand");
-    }
-
-    /**
-     * Return the brand of the given chip.
-     *
-     * @param chipid the chip to query
-     *
-     * @return a String representing the brand of the given chip
-     */
-    public String getBrand(long chipid) {
-	return (String) chipInfoStats(chipid).iterator().next()
-	    .getData("brand");
-    }
-
-    /**
-     * Return the brand of the given core.
-     *
-     * @param chipid the chip to query
-     * @param coreid the core to query
-     *
-     * @return a String representing the brand of the given core
-     */
-    public String getBrand(long chipid, long coreid) {
-	return (String) coreInfoStats(chipid, coreid).iterator().next()
-	    .getData("brand");
     }
 
     /**

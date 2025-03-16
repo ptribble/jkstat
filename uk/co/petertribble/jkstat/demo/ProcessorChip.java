@@ -159,7 +159,7 @@ public class ProcessorChip implements Comparable<ProcessorChip> {
     /**
      * Get the cpu_info kstats for all threads in all cores of this chip.
      *
-     * @return a KstatSet containing all the cpu_info Kstats associated
+     * @return a Set containing all the cpu_info Kstats associated
      * with this chip
      */
     public Set<Kstat> infoStats() {

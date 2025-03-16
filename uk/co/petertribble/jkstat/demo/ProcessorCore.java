@@ -111,7 +111,7 @@ public class ProcessorCore implements Comparable<ProcessorCore> {
     /**
      * Get the cpu_info kstats for all threads in this core.
      *
-     * @return a KstatSet containing all the cpu_info Kstats associated
+     * @return a Set containing all the cpu_info Kstats associated
      * with this core
      */
     public Set<Kstat> infoStats() {

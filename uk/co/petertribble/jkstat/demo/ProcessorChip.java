@@ -78,15 +78,6 @@ public class ProcessorChip implements Comparable<ProcessorChip> {
     }
 
     /**
-     * Get a Set of core ids from this ProcessorChip.
-     *
-     * @return a Set of Long values describing the IDs of the cores in this chip
-     */
-    public Set<Long> getCoreIDs() {
-	return coremap.keySet();
-    }
-
-    /**
      * Get the Set of ProcessorCores contained in this ProcessorChip.
      *
      * @return the Set of ProcessorCores in this chip

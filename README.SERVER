@@ -31,8 +31,8 @@ Run
 
 ./build jkstat.war
 
-which will create a file jkstat.war. You need to deploy that (for tomcat 8
-or 9, just copy it into the webapps directory; for tomcat 10 or later, create
+which will create a file jkstat.war. You need to deploy that (for tomcat 9,
+just copy it into the webapps directory; for tomcat 10 or later, create
 a webapps-javaee directory and put the war file in there and it will be
 automatically converted), and then start your servlet container so that it
 can find libkstat_jni.so (for example, set LD_LIBRARY_PATH so it points to
@@ -54,8 +54,8 @@ Run
 
 ./build jkrest.war
 
-which will create a file jkrest.war. You need to deploy that (for tomcat 8
-or 9, just copy it into the webapps directory; for tomcat 10 or later, create
+which will create a file jkrest.war. You need to deploy that (for tomcat 9,
+just copy it into the webapps directory; for tomcat 10 or later, create
 a webapps-javaee directory and put the war file in there and it will be
 automatically converted), and then start your servlet container so that it
 can find libkstat_jni.so (for example, set LD_LIBRARY_PATH so it points to

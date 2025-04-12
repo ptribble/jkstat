@@ -22,8 +22,8 @@ Deployment:
 
 The tomcat route is very simple. You must use java 11.
 
-unzip /path/to/apache-tomcat-9.0.36.zip
-cd apache-tomcat-9.0.36
+unzip /path/to/apache-tomcat-9.0.104.zip
+cd apache-tomcat-9.0.104
 mkdir -p lib
 cp .../jkstat/lib/amd64/libkstat_jni.so lib
 cd bin

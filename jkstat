@@ -69,7 +69,7 @@ JKAPIJAR=${JARLIBDIR}/jkstat-api.jar
 ALLJARS=${JFJAR}:${JSONJAR}:${JINGLEJAR}:${JUMBLEJAR}:${JSTRIPJAR}:${JKJAR}
 DEMOPKG="uk.co.petertribble.jkstat.demo"
 SERVERJARS=${JARLIBDIR}/xmlrpc-common-3.1.3.jar:${JARLIBDIR}/xmlrpc-server-3.1.3.jar:${JARLIBDIR}/commons-logging-1.1.1.jar:${JARLIBDIR}/ws-commons-util-1.0.2.jar:${JARLIBDIR}/jmdns-3.5.9.jar:${JARLIBDIR}/slf4j-api-2.0.13.jar
-HTTPJARS=${JARLIBDIR}/httpclient5-5.4.2.jar:${JARLIBDIR}/httpcore5-5.3.3.jar:${JARLIBDIR}/httpcore5-h2-5.3.3.jar
+HTTPJARS=${JARLIBDIR}/httpclient5-5.4.4.jar:${JARLIBDIR}/httpcore5-5.3.4.jar:${JARLIBDIR}/httpcore5-h2-5.3.4.jar
 CLIENTJARS=${JARLIBDIR}/xmlrpc-common-3.1.3.jar:${JARLIBDIR}/xmlrpc-client-3.1.3.jar:${JARLIBDIR}/commons-logging-1.1.1.jar:${JARLIBDIR}/ws-commons-util-1.0.2.jar:${JARLIBDIR}/jmdns-3.5.9.jar:${JARLIBDIR}/slf4j-api-2.0.13.jar
 
 #

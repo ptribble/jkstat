@@ -43,7 +43,7 @@ public final class JLoadChart extends JFrame implements ActionListener {
     private TimeSeries ts5;
     private TimeSeries ts15;
 
-    private JKstat jkstat;
+    private transient JKstat jkstat;
     private JMenuItem exitItem;
 
     /**

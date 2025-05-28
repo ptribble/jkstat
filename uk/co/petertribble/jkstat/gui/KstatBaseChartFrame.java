@@ -44,7 +44,7 @@ public class KstatBaseChartFrame extends JFrame implements ActionListener {
     /**
      * A KstatBaseChart object for subclasses to use.
      */
-    protected KstatBaseChart kbc;
+    protected transient KstatBaseChart kbc;
 
     /**
      * A Menu item to exit.
@@ -79,7 +79,7 @@ public class KstatBaseChartFrame extends JFrame implements ActionListener {
     /**
      * A reference to a Jkstat object.
      */
-    protected JKstat jkstat;
+    protected transient JKstat jkstat;
 
     /**
      * A flag to determine whether we show rates (if true) or raw values.

@@ -45,7 +45,7 @@ public final class KstatTreePanel extends JPanel
 
     private static final long serialVersionUID = 1L;
 
-    private JKstat jkstat;
+    private transient JKstat jkstat;
 
     // switch behaviour if using a SequencedJKstat
     private boolean stepping;
@@ -68,11 +68,11 @@ public final class KstatTreePanel extends JPanel
     private Timer timer;
     private int interval = 5;
 
-    private KstatSet kss;
-    private KstatTreeMap ksm;
-    private KstatModuleMap kstatMap;
-    private SortedMap<String, KstatModuleMap> kstatClassMap;
-    private SortedMap<String, KstatModuleMap> kstatTypeMap;
+    private transient KstatSet kss;
+    private transient KstatTreeMap ksm;
+    private transient KstatModuleMap kstatMap;
+    private transient SortedMap<String, KstatModuleMap> kstatClassMap;
+    private transient SortedMap<String, KstatModuleMap> kstatTypeMap;
 
     private final KstatTreeModel moduleModel;
     private final KstatTreeModel classModel;

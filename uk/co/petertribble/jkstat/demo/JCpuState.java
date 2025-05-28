@@ -45,8 +45,8 @@ public final class JCpuState extends JKdemo implements ActionListener {
     private static int style = STYLE_BASIC;
     private static int orientation = SwingConstants.HORIZONTAL;
 
-    private JKstat jkstat;
-    private KstatAccessorySet kas;
+    private transient JKstat jkstat;
+    private transient KstatAccessorySet kas;
 
     private int ncpus;
 

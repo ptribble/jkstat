@@ -32,13 +32,13 @@ import uk.co.petertribble.jingle.TableSorter;
  *
  * @author Peter Tribble
  */
-public class IOstatTable extends JTable {
+public final class IOstatTable extends JTable {
 
     private static final long serialVersionUID = 1L;
 
     private IOstatTableModel ktm;
     TableSorter sortedModel;
-    JKstat jkstat;
+    transient JKstat jkstat;
 
     /**
      * Wraps a {@code KstatSet} in a {@code JTable}, adding a right-click

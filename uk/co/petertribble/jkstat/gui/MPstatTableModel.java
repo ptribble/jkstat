@@ -51,11 +51,11 @@ public final class MPstatTableModel extends AbstractTableModel
 		"ithr", "csw", "icsw", "migr", "smtx", "srw", "syscl", "usr",
 		"sys", "idl"};
 
-    private List<ChartableMPstat> mpdata;
+    private transient List<ChartableMPstat> mpdata;
     private Timer timer;
     private int delay;
-    private JKstat jkstat;
-    private KstatSet kss;
+    private transient JKstat jkstat;
+    private transient KstatSet kss;
 
     /**
      * Create a Table Model from the given Kstats.

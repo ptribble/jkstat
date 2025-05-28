@@ -43,7 +43,7 @@ public final class KstatToolsMenu extends JMenu implements ActionListener {
     private JMenuItem jmpstatItem;
     private JMenuItem jnetloadItem;
     private JMenuItem jnfsstatItem;
-    private JKstat jkstat;
+    private transient JKstat jkstat;
 
     /**
      * Constructs a KstatToolsMenu object.

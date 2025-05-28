@@ -43,7 +43,7 @@ public final class ChartBuilderPanel extends JPanel
 
     private static final long serialVersionUID = 1L;
 
-    private JKstat jkstat;
+    private transient JKstat jkstat;
 
     private JTabbedPane jtp;
     private static final int KTAB_ID = 0;

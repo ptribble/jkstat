@@ -33,7 +33,7 @@ import uk.co.petertribble.jkstat.parse.ParseableJSONZipJKstat;
  *
  * @author Peter Tribble
  */
-public class KstatAreaChartFrame extends KstatBaseChartFrame {
+public final class KstatAreaChartFrame extends KstatBaseChartFrame {
 
     private static final long serialVersionUID = 1L;
 

@@ -30,13 +30,13 @@ import uk.co.petertribble.jingle.TableSorter;
  *
  * @author Peter Tribble
  */
-public class MPstatTable extends JTable {
+public final class MPstatTable extends JTable {
 
     private static final long serialVersionUID = 1L;
 
     private MPstatTableModel ktm;
     TableSorter sortedModel;
-    JKstat jkstat;
+    transient JKstat jkstat;
 
     /**
      * Create a new MPstatTable.

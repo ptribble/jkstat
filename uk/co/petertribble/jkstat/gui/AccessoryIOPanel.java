@@ -44,7 +44,7 @@ public final class AccessoryIOPanel extends KstatAccessoryPanel {
     private JProgressBar jpkIn;
     private JProgressBar jpkOut;
 
-    private ChartableKstat cks;
+    private transient ChartableKstat cks;
 
     /**
      * Create a panel showing the input and output traffic on the given kstat

@@ -40,11 +40,11 @@ public final class IOstatTableModel extends AbstractTableModel
     private String[] columnNames = {"r/s", "w/s", "kr/s", "kw/s", "wait",
 				"actv", "svc_t", "%w", "%b", "device"};
 
-    private List<ChartableIOKstat> iodata;
+    private transient List<ChartableIOKstat> iodata;
     private Timer timer;
     private int delay;
-    private JKstat jkstat;
-    private KstatSet kss;
+    private transient JKstat jkstat;
+    private transient KstatSet kss;
 
     /**
      * Create a Table Model from the given Kstats.

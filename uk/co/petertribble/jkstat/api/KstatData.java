@@ -92,7 +92,7 @@ public class KstatData implements Serializable {
         }
     }
     private final Type type;
-    private final Object data;
+    private final transient Object data;
 
     /**
      * Allocates a {@code KstatData} of the given type and data value.

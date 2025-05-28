@@ -41,7 +41,7 @@ public final class Jnfsstat extends JKdemo implements ChangeListener {
     private static final String VERSION = "Jnfsstat version 1.2";
 
     private JTabbedPane nfsstatPane;
-    private List<KstatTable> activeTables;
+    private transient List<KstatTable> activeTables;
 
     /**
      * Construct a new Jnfsstat application.

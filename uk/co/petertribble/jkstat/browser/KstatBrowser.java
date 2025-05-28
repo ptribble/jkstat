@@ -39,7 +39,7 @@ public final class KstatBrowser extends JFrame implements ActionListener {
 
     private static final long serialVersionUID = 1L;
 
-    private JKstat jkstat;
+    private transient JKstat jkstat;
     private KstatTreePanel ktp;
 
     private JMenuItem exitItem;

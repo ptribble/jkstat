@@ -64,7 +64,7 @@ public abstract class KstatAccessoryPanel extends JPanel
     /**
      * A reference to a JKstat object.
      */
-    protected JKstat jkstat;
+    protected transient JKstat jkstat;
 
     /**
      * The Kstat of interest.

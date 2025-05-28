@@ -37,11 +37,11 @@ public final class JNetLoad extends JKdemo implements ActionListener {
 
     private static final long serialVersionUID = 1L;
 
-    private JKstat jkstat;
-    private KstatAccessorySet kas;
+    private transient JKstat jkstat;
+    private transient KstatAccessorySet kas;
 
     // to identify menu popups
-    private Map<JMenuItem, Kstat> itemMap;
+    private transient Map<JMenuItem, Kstat> itemMap;
 
     /**
      * Construct a new JNetLoad application.

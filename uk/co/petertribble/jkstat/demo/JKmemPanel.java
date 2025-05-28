@@ -32,11 +32,11 @@ import java.util.*;
 /**
  * A panel to display kernel memory allocation statistics.
  */
-public class JKmemPanel extends JingleVPanel {
+public final class JKmemPanel extends JingleVPanel {
 
     private static final long serialVersionUID = 1L;
 
-    private KstatAccessorySet kas;
+    private transient KstatAccessorySet kas;
 
     /**
      * Create a panel to display kernel memory allocation statistics.

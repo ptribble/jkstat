@@ -58,7 +58,7 @@ public class Kstat implements Serializable, Comparable<Kstat> {
      * Raw kstats are massaged to the same format. Interrupt and I/O kstats
      * have a standard mapping.
      */
-    private final Map<String, KstatData> dataMap = new HashMap<>();
+    private final transient Map<String, KstatData> dataMap = new HashMap<>();
 
     /**
      * Creates a new {@code Kstat} of the given {@code module},

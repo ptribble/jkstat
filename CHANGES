@@ -1,3 +1,5 @@
+Update HttpClient to 5.5
+
 Update jfreechart 1.5.5
 
 Migrate to Apache HttpClient 5 (classic mode)

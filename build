@@ -58,7 +58,7 @@ JUMBLEJAR=${JARLIBDIR}/jumble.jar
 JSTRIPJAR=${JARLIBDIR}/jstripchart.jar
 JKJAR=${JARLIBDIR}/jkstat.jar
 JKAPIJAR=${JARLIBDIR}/jkstat-api.jar
-HTTPJARS=${JARLIBDIR}/httpclient5-5.4.4.jar:${JARLIBDIR}/httpcore5-5.3.4.jar
+HTTPJARS=${JARLIBDIR}/httpclient5-5.5.jar:${JARLIBDIR}/httpcore5-5.3.4.jar
 REMOTEJARS=${JARLIBDIR}/xmlrpc-common-3.1.3.jar:${JARLIBDIR}/xmlrpc-server-3.1.3.jar:${JARLIBDIR}/xmlrpc-client-3.1.3.jar:${JARLIBDIR}/jmdns-3.5.9.jar
 BUILDJARS=${JFJAR}:${JSONJAR}:${JINGLEJAR}:${JUMBLEJAR}:${JSTRIPJAR}:${REMOTEJARS}:${HTTPJARS}
 

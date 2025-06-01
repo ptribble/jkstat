@@ -34,6 +34,9 @@ public final class KstatTreeNode extends DefaultMutableTreeNode {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * Whether this is a leaf node.
+     */
     private boolean nodeisleaf;
     private transient Map<String, KstatTreeNode> nodeMap;
 

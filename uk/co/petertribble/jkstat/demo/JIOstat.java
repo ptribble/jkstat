@@ -35,6 +35,9 @@ public final class JIOstat extends JKdemo {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * The underlying data table.
+     */
     private IOstatTable iotable;
 
     private static final String VERSION = "JIOstat version 1.2";

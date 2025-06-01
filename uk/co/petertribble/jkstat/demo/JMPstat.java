@@ -36,6 +36,9 @@ public final class JMPstat extends JKdemo {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * The underlying data table.
+     */
     private MPstatTable mptable;
 
     private static final String VERSION = "JMPstat version 1.2";

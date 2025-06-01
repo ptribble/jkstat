@@ -47,12 +47,18 @@ public final class MPstatTableModel extends AbstractTableModel
      * The columns remove wt from the normal list, and add "CPU" on at the
      * beginning.
      */
-    private String[] columnNames = {"CPU", "minf", "mjf", "xcal", "intr",
-		"ithr", "csw", "icsw", "migr", "smtx", "srw", "syscl", "usr",
-		"sys", "idl"};
+    private static final String[] COLUMNNAMES = {"CPU", "minf", "mjf", "xcal",
+		"intr", "ithr", "csw", "icsw", "migr", "smtx", "srw", "syscl",
+		"usr", "sys", "idl"};
 
     private transient List<ChartableMPstat> mpdata;
+    /**
+     * A Timer, to update the model in a loop.
+     */
     private Timer timer;
+    /**
+     * The update delay, in milliseconds.
+     */
     private int delay;
     private transient JKstat jkstat;
     private transient KstatSet kss;
@@ -147,7 +153,7 @@ public final class MPstatTableModel extends AbstractTableModel
 
     @Override
     public int getColumnCount() {
-	return columnNames.length;
+	return COLUMNNAMES.length;
     }
 
     @Override
@@ -157,7 +163,7 @@ public final class MPstatTableModel extends AbstractTableModel
 
     @Override
     public String getColumnName(int col) {
-	return columnNames[col];
+	return COLUMNNAMES[col];
     }
 
     /**
@@ -178,7 +184,7 @@ public final class MPstatTableModel extends AbstractTableModel
     public Object getValueAt(int row, int col) {
 	return (col == 0)
 	    ? mpdata.get(row).toString()
-	    : (long) mpdata.get(row).getRate(columnNames[col]);
+	    : (long) mpdata.get(row).getRate(COLUMNNAMES[col]);
 	/*
 	 * The cast above is necessary to force it to be displayed by the
 	 * table as a long. getRate() returns a double, and the table uses

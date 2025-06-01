@@ -36,10 +36,22 @@ public final class AccessoryCpuChart extends KstatAccessoryPanel {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * User cpu.
+     */
     private long luser;
+    /**
+     * Kernel cpu.
+     */
     private long lsys;
+    /**
+     * Idle cpu.
+     */
     private long lidle;
 
+    /**
+     * The stripchart embedded in this accessory.
+     */
     private JStackedStripChart2 jsc;
 
     /**

@@ -37,11 +37,29 @@ public final class KstatToolsMenu extends JMenu implements ActionListener {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * A menu item to launch a new jkstat browser.
+     */
     private JMenuItem kstatbrowserItem;
+    /**
+     * A menu item to launch jcpustate.
+     */
     private JMenuItem jcpustateItem;
+    /**
+     * A menu item to launch jiostat.
+     */
     private JMenuItem jiostatItem;
+    /**
+     * A menu item to launch jmpstat.
+     */
     private JMenuItem jmpstatItem;
+    /**
+     * A menu item to launch jnetload.
+     */
     private JMenuItem jnetloadItem;
+    /**
+     * A menu item to launch jnfsstat.
+     */
     private JMenuItem jnfsstatItem;
     private transient JKstat jkstat;
 

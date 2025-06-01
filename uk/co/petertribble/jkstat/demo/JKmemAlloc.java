@@ -33,6 +33,9 @@ public final class JKmemAlloc extends JKdemo {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * The panel holiding all the accessories.
+     */
     private JKmemPanel kmPanel;
 
     private static final String VERSION = "JKmemAlloc version 1.2";

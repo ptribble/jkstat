@@ -33,11 +33,29 @@ public final class SparkValueAccessory extends KstatAccessoryPanel {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * The chart displaying the values stored by this accessory.
+     */
     private JSparkChart jsc;
+    /**
+     * The name of the statistic being displayed.
+     */
     private String stat;
+    /**
+     * Whether tooltips should be shown.
+     */
     private boolean dotips;
+    /**
+     * The text of the tooltip.
+     */
     private String tiptext;
+    /**
+     * Whether to scale the data.
+     */
     private boolean doscale;
+    /**
+     * If scaling, the scale factor.
+     */
     private double scale;
     private static final DecimalFormat DF = new DecimalFormat("##0.00");
 

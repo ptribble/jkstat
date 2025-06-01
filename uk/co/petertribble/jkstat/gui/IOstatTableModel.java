@@ -37,11 +37,17 @@ public final class IOstatTableModel extends AbstractTableModel
 
     private static final long serialVersionUID = 1L;
 
-    private String[] columnNames = {"r/s", "w/s", "kr/s", "kw/s", "wait",
-				"actv", "svc_t", "%w", "%b", "device"};
+    private static final String[] COLUMNNAMES = {"r/s", "w/s", "kr/s", "kw/s",
+				 "wait", "actv", "svc_t", "%w", "%b", "device"};
 
     private transient List<ChartableIOKstat> iodata;
+    /**
+     * A Timer, to update the model in a loop.
+     */
     private Timer timer;
+    /**
+     * The update delay, in milliseconds.
+     */
     private int delay;
     private transient JKstat jkstat;
     private transient KstatSet kss;
@@ -136,7 +142,7 @@ public final class IOstatTableModel extends AbstractTableModel
 
     @Override
     public int getColumnCount() {
-	return columnNames.length;
+	return COLUMNNAMES.length;
     }
 
     @Override
@@ -146,7 +152,7 @@ public final class IOstatTableModel extends AbstractTableModel
 
     @Override
     public String getColumnName(int col) {
-	return columnNames[col];
+	return COLUMNNAMES[col];
     }
 
     /**
@@ -165,13 +171,13 @@ public final class IOstatTableModel extends AbstractTableModel
      */
     @Override
     public Object getValueAt(int row, int col) {
-	return (col == columnNames.length - 1)
+	return (col == COLUMNNAMES.length - 1)
 	    ? iodata.get(row).toString()
-	    : iodata.get(row).getRate(columnNames[col]);
+	    : iodata.get(row).getRate(COLUMNNAMES[col]);
     }
 
     @Override
     public Class<?> getColumnClass(int c) {
-	return (c == columnNames.length - 1) ? String.class : Double.class;
+	return (c == COLUMNNAMES.length - 1) ? String.class : Double.class;
     }
 }

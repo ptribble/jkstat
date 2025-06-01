@@ -34,14 +34,35 @@ public final class AccessoryIOPanel extends KstatAccessoryPanel {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * The current max scale of io numbers.
+     */
     private int iomax = 1000;
+    /**
+     * The current max scale of io rates.
+     */
     private int kiomax = 10000;
 
+    /**
+     * A formatter to put numerical labels inside the progress bar.
+     */
     private DecimalFormat df = new DecimalFormat("##0.0");
 
+    /**
+     * A progress bar used to show number of input IOs.
+     */
     private JProgressBar jpIn;
+    /**
+     * A progress bar used to show number of output IOs.
+     */
     private JProgressBar jpOut;
+    /**
+     * A progress bar used to show input IO.
+     */
     private JProgressBar jpkIn;
+    /**
+     * A progress bar used to show output IO.
+     */
     private JProgressBar jpkOut;
 
     private transient ChartableKstat cks;

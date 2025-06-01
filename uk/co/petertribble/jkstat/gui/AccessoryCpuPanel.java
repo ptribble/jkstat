@@ -36,15 +36,43 @@ public final class AccessoryCpuPanel extends KstatAccessoryPanel {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * User cpu.
+     */
     private long luser;
+    /**
+     * Kernel cpu.
+     */
     private long lsys;
+    /**
+     * Wait cpu (can be zero).
+     */
     private long lwait;
+    /**
+     * Idle cpu.
+     */
     private long lidle;
+    /**
+     * User cpu.
+     */
     private double duser;
+    /**
+     * Kernel cpu.
+     */
     private double dsys;
+    /**
+     * Wait cpu (can be zero).
+     */
     private double dwait;
+    /**
+     * Idle cpu.
+     */
     private double didle;
 
+    /**
+     * The orientation of this panel, which can be either a horizontal
+     * or vertical display.
+     */
     private int orientation;
 
     /**

@@ -39,17 +39,38 @@ public class Kstat implements Serializable, Comparable<Kstat> {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * The module of this Kstat.
+     */
     private final String module;
+    /**
+     * The instance of this Kstat.
+     */
     private final int instance;
+    /**
+     * The name of this Kstat.
+     */
     private final String name;
 
     /*
      * The times are in nanoseconds and are of type hrtime_t, which is a
      * signed 64-bit integer, so a long is entirely adequate.
      */
+    /**
+     * The creation time of this Kstat.
+     */
     private long crtime;
+    /**
+     * The snaptime of this Kstat.
+     */
     private long snaptime;
+    /**
+     * The type of this Kstat.
+     */
     private int type;
+    /**
+     * The class of this Kstat.
+     */
     private String kstatClass;
 
     /*

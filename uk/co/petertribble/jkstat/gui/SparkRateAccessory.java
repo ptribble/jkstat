@@ -32,11 +32,29 @@ public final class SparkRateAccessory extends KstatAccessoryPanel {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * The chart displaying the values stored by this accessory.
+     */
     private JSparkChart jsc;
+    /**
+     * The saved rate.
+     */
     private long r;
+    /**
+     * The name of the statistic being displayed.
+     */
     private String stat;
+    /**
+     * Whether tooltips should be shown.
+     */
     private boolean tips;
+    /**
+     * The text of the tooltip.
+     */
     private String tiptext;
+    /**
+     * The scale factor for the tooltip.
+     */
     private double scale;
 
     /**

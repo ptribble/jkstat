@@ -34,8 +34,14 @@ public class KstatTable extends JTable {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * The underlying model.
+     */
     private KstatTableModel ktm;
     transient JKstat jkstat;
+    /**
+     * The kstat being displayed.
+     */
     Kstat ks;
 
     /**

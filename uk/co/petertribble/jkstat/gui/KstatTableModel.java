@@ -52,8 +52,17 @@ public final class KstatTableModel extends AbstractTableModel
     private int delay;
 
     private transient JKstat jkstat;
+    /**
+     * The current Kstat.
+     */
     private Kstat ks;
+    /**
+     * The previous snapshot of the current Kstat.
+     */
     private Kstat oldks;
+    /**
+     * The names of the displayed rows.
+     */
     private String[] rowNames;
 
     /**

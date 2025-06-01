@@ -32,14 +32,26 @@ public final class AccessoryKmemAlloc extends KstatAccessoryPanel {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * A formatter to put numerical labels inside the progress bar.
+     */
     private DecimalFormat df = new DecimalFormat("##0.0#");
 
+    /**
+     * A progress bar used to show allocation rate.
+     */
     private JProgressBar jpAlloc;
+    /**
+     * A progress bar used to show free rate.
+     */
     private JProgressBar jpFree;
 
+    /**
+     * The current maximum value of the bars, will be scaled as appropriate.
+     */
     private long iomax = 100;
-    private long numalloc;
-    private long numfree;
+    private transient long numalloc;
+    private transient long numfree;
 
     /**
      * Create a panel showing memory allocation statistics that updates every

@@ -35,11 +35,23 @@ public final class AccessoryNetPanel extends KstatAccessoryPanel {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * A progress bar used to show input traffic.
+     */
     private JProgressBar jpIn;
+    /**
+     * A progress bar used to show output traffic.
+     */
     private JProgressBar jpOut;
 
+    /**
+     * Save the value of reads.
+     */
     private long r;
-    private long w;
+     /**
+     * Save the value of writes.
+     */
+   private long w;
 
     /**
      * Create a panel showing the input and output traffic on the given network

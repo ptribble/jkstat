@@ -90,6 +90,9 @@ public abstract class JKdemo extends JFrame implements ActionListener {
      */
     protected JMenu jmh;
 
+    /**
+     * A label to show current state.
+     */
     private JLabel infoLabel;
 
     /**
@@ -97,8 +100,17 @@ public abstract class JKdemo extends JFrame implements ActionListener {
      */
     protected static final int DEFAULT_INTERVAL = 5;
 
+    /**
+     * The name of this demo.
+     */
     private String demoname;
+    /**
+     * The current update interval.
+     */
     private int interval;
+    /**
+     * Whether this demo is a child or running standalone.
+     */
     private boolean standalone;
 
     /**

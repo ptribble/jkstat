@@ -39,13 +39,37 @@ public class KstatData implements Serializable {
      */
     public enum Type {
 
+	/**
+	 * Data is a char.
+	 */
         KSTAT_DATA_CHAR(0, false),
+	/**
+	 * Data is signed 32-bit int.
+	 */
         KSTAT_DATA_INT32(1, true),
+	/**
+	 * Data is unsigned 32-bit int.
+	 */
         KSTAT_DATA_UINT32(2, true),
+	/**
+	 * Data is signed 64-bit int.
+	 */
         KSTAT_DATA_INT64(3, true),
+	/**
+	 * Data is unsigned 64-bit int.
+	 */
         KSTAT_DATA_UINT64(4, true),
+	/**
+	 * Data is a float.
+	 */
         KSTAT_DATA_FLOAT(5, true),
+	/**
+	 * Data is a double.
+	 */
         KSTAT_DATA_DOUBLE(6, true),
+	/**
+	 * Data is a string.
+	 */
         KSTAT_DATA_STRING(9, false);
         private final int intType;
         private final boolean numeric;
@@ -91,6 +115,9 @@ public class KstatData implements Serializable {
                     + intType + ")");
         }
     }
+    /**
+     * The Type of this KstatData.
+     */
     private final Type type;
     private final transient Object data;
 

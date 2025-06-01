@@ -48,24 +48,71 @@ public final class KstatTreePanel extends JPanel
     private transient JKstat jkstat;
 
     // switch behaviour if using a SequencedJKstat
+    /**
+     * Step forward once, if using a SequencedJKstat.
+     */
     private boolean stepping;
+    /**
+     * Remember if stopped, if using a SequencedJKstat.
+     */
     private boolean stopped;
-    // controls for SequencedJKstat
+    /**
+     * A button to start, if using a SequencedJKstat.
+     */
     private JButton startB;
+    /**
+     * A button to go to the beginning, if using a SequencedJKstat.
+     */
     private JButton beginB;
+    /**
+     * A button to go back, if using a SequencedJKstat.
+     */
     private JButton backB;
+    /**
+     * A button to go forward, if using a SequencedJKstat.
+     */
     private JButton forwardB;
+    /**
+     * A button to pause, if using a SequencedJKstat.
+     */
     private JButton pauseB;
+    /**
+     * A data formatter for the current time, if using a SequencedJKstat.
+     */
     private DateFormat df;
+    /**
+     * A progress bar, if using a SequencedJKstat.
+     */
     private JProgressBar spb;
 
+    /**
+     * A panel to show the summary.
+     */
     private JingleTextPane tp;
+    /**
+     * A panel to show the trees.
+     */
     private JPanel ktpanel;
+    /**
+     * A panel to show the data.
+     */
     private JPanel rpanel;
 
+    /**
+     * An accessory, if one is availble for the current Kstat.
+     */
     private KstatAccessoryPanel kap;
+    /**
+     * The Kstat table shown.
+     */
     private KstatTable kt;
+    /**
+     * A timer on which the views are updated.
+     */
     private Timer timer;
+    /**
+     * The interval on which the views are updated.
+     */
     private int interval = 5;
 
     private transient KstatSet kss;
@@ -74,8 +121,17 @@ public final class KstatTreePanel extends JPanel
     private transient SortedMap<String, KstatModuleMap> kstatClassMap;
     private transient SortedMap<String, KstatModuleMap> kstatTypeMap;
 
+    /**
+     * The model for modules.
+     */
     private final KstatTreeModel moduleModel;
+    /**
+     * The model for classes.
+     */
     private final KstatTreeModel classModel;
+    /**
+     * The model for types.
+     */
     private final KstatTreeModel typeModel;
 
     /**

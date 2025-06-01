@@ -40,18 +40,51 @@ public final class KstatBrowser extends JFrame implements ActionListener {
     private static final long serialVersionUID = 1L;
 
     private transient JKstat jkstat;
+    /**
+     * The panel with the tree.
+     */
     private KstatTreePanel ktp;
 
+    /**
+     * A menu item to exit the browser.
+     */
     private JMenuItem exitItem;
+    /**
+     * A menu item to clone the browser.
+     */
     private JMenuItem cloneItem;
+    /**
+     * A menu item to close this instance of the browser.
+     */
     private JMenuItem closeItem;
+    /**
+     * A menu item to show the information summary.
+     */
     private JMenuItem infoItem;
+    /**
+     * A menu item to show the help.
+     */
     private JMenuItem helpItem;
+    /**
+     * A menu item to show the license.
+     */
     private JMenuItem licenseItem;
 
+    /**
+     * A radio item to select a 1s update interval.
+     */
     private JRadioButtonMenuItem sleepItem1;
+    /**
+     * A radio item to select a 2s update interval.
+     */
     private JRadioButtonMenuItem sleepItem2;
+    /**
+     * A radio item to select a 5s update interval.
+     */
     private JRadioButtonMenuItem sleepItem5;
+    /**
+     * A radio item to select a 10s update interval.
+     */
     private JRadioButtonMenuItem sleepItem10;
 
     /**

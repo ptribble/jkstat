@@ -45,18 +45,45 @@ public final class ChartBuilderPanel extends JPanel
 
     private transient JKstat jkstat;
 
+    /**
+     * The holding tabbed pane.
+     */
     private JTabbedPane jtp;
     private static final int KTAB_ID = 0;
     private static final int STAB_ID = 1;
+    /**
+     * A panel to hold the stats display.
+     */
     private JPanel statsPanel;
 
+    /**
+     * A check box to select all instances.
+     */
     private JCheckBox allInstanceButton;
+    /**
+     * A check box to select aggregate instances.
+     */
     private JCheckBox aggrInstanceButton;
+    /**
+     * A radio button to toggle values vs rates.
+     */
     private JRadioButton rateButton;
+    /**
+     * A radio button to toggle the line style.
+     */
     private JRadioButton lineStyle;
+    /**
+     * A button to start the chart.
+     */
     private JButton goButton;
 
+    /**
+     * The selected Kstat.
+     */
     private Kstat myKstat;
+    /**
+     * A label to show the selected Kstat.
+     */
     private JLabel kstatLabel;
 
     /**

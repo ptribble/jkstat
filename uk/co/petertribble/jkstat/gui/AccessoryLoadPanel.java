@@ -34,12 +34,27 @@ public final class AccessoryLoadPanel extends KstatAccessoryPanel {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * The maximum load displayed by the progress bars.
+     */
     private double lmax = 1.0;
     private static final double LSCALE = 256.0;
 
+    /**
+     * A formatter to put numerical labels inside the progress bar.
+     */
     private DecimalFormat df = new DecimalFormat("##0.00");
+    /**
+     * A progress bar used to show the 1-minute load average.
+     */
     private JProgressBar jp1;
+    /**
+     * A progress bar used to show the 5-minute load average.
+     */
     private JProgressBar jp5;
+    /**
+     * A progress bar used to show the 15-minute load average.
+     */
     private JProgressBar jp15;
 
     /**

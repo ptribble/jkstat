@@ -28,10 +28,10 @@ import java.util.HashSet;
  * Kstats can be filtered by class, type, module, instance, name, and
  * statistic. There can be at most one instance of class or type specified.
  * If the class or type is unspecified, then kstats of all classes (or types)
- * will be returned.<p>
+ * will be returned.
  *
- * Filtering by type is only likely to be useful for kstats of types
- * KSTAT_TYPE_IO and KSTAT_TYPE_INTR.<p>
+ * <p>Filtering by type is only likely to be useful for kstats of types
+ * KSTAT_TYPE_IO and KSTAT_TYPE_INTR.
  *
  * @author Peter Tribble
  */

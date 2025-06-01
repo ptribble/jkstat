@@ -39,11 +39,23 @@ public final class JLoadChart extends JFrame implements ActionListener {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * Save the 1-minute load averages.
+     */
     private TimeSeries ts1;
+    /**
+     * Save the 5-minute load averages.
+     */
     private TimeSeries ts5;
+    /**
+     * Save the 15-minute load averages.
+     */
     private TimeSeries ts15;
 
     private transient JKstat jkstat;
+    /**
+     * A menu item to exit the demo.
+     */
     private JMenuItem exitItem;
 
     /**

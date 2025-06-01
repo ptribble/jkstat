@@ -36,7 +36,13 @@ public final class IOstatTable extends JTable {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * The underlying data model.
+     */
     private IOstatTableModel ktm;
+    /**
+     * A sorted view of the data.
+     */
     TableSorter sortedModel;
     transient JKstat jkstat;
 

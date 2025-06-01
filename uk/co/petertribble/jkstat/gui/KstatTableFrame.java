@@ -35,6 +35,9 @@ public final class KstatTableFrame extends JFrame implements ActionListener {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * The underlying data table.
+     */
     KstatTable kt;
 
     /**

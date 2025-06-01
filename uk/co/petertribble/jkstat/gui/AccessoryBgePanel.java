@@ -36,7 +36,7 @@ public final class AccessoryBgePanel extends KstatAccessoryPanel {
 
     /*
      * The bge statistics kstat has a number of etherStats
-     * statistics. 11 in all
+     * statistics. 11 in all.
      */
     private static final int STATNUM = 11;
     private static final String[] STATNAMES = {"etherStatsUndersizePkts",
@@ -50,10 +50,25 @@ public final class AccessoryBgePanel extends KstatAccessoryPanel {
 				"etherStatsPkts2048to4095Octets",
 				"etherStatsPkts4096to8191Octets",
 				"etherStatsPkts8192to9022Octets"};
+    /**
+     * An array to hold the old values.
+     */
     private long[] oldvalues = new long[STATNUM];
+    /**
+     * An array to hold the new values.
+     */
     private long[] newvalues = new long[STATNUM];
+    /**
+     * An array to hold the difference between old and new values.
+     */
     private long[] deltas = new long[STATNUM];
+    /**
+     * The total number of new packets, used to scale the display.
+     */
     private double sumdelta;
+    /**
+     * The total number of packets, used to scale the display.
+     */
     private double sumvalues;
 
     /**

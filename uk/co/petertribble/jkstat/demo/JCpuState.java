@@ -48,10 +48,23 @@ public final class JCpuState extends JKdemo implements ActionListener {
     private transient JKstat jkstat;
     private transient KstatAccessorySet kas;
 
+    /**
+     * The number of cpus being displayed.
+     */
     private int ncpus;
 
+    /**
+     * Menu Items that will create a popup window about each cpu.
+     */
     private JMenuItem[] aboutCpuItem;
+    /**
+     * Menu Items that will create a popup window with extended information
+     * for each cpu.
+     */
     private JMenuItem[] extendedCpuItem;
+    /**
+     * Strings for labels on each cpu.
+     */
     private String[] cpuID;
 
     /**

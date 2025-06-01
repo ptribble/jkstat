@@ -36,6 +36,9 @@ public final class ChartBuilderFrame extends JFrame implements ActionListener {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * A menu item to exit the application.
+     */
     private JMenuItem exitItem;
 
     /**

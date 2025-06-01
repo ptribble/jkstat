@@ -29,9 +29,9 @@ import uk.co.petertribble.jkstat.api.KstatType;
  *
  * @author Peter Tribble
  */
-public class KstatAccessoryRegistry {
+public final class KstatAccessoryRegistry {
 
-    protected KstatAccessoryRegistry() {
+    private KstatAccessoryRegistry() {
     }
 
     /**

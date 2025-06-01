@@ -36,6 +36,9 @@ public final class AccessoryLoadChart extends KstatAccessoryPanel {
 
     private static final double LSCALE = 256.0;
 
+    /**
+     * The stripchart embedded in this panel.
+     */
     private JStripChart2 jsc;
 
     /**

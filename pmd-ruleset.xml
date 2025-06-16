@@ -26,6 +26,7 @@
       <exclude name="UncommentedEmptyConstructor"/>
       <exclude name="UnsynchronizedStaticFormatter"/>
       <exclude name="UseUtilityClass"/>
+      <exclude name="PreserveStackTrace"/>
     </rule>
     <rule ref="category/java/performance.xml">
       <exclude name="AvoidArrayLoops"/>
@@ -61,5 +62,6 @@
       <exclude name="UnusedPrivateField"/>
       <exclude name="UnusedPrivateMethod"/>
       <exclude name="AvoidReassigningParameters"/>
+      <exclude name="PreserveStackTrace"/>
     </rule>
 </ruleset>

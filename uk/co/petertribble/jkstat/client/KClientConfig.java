@@ -20,6 +20,8 @@
 
 package uk.co.petertribble.jkstat.client;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.MalformedURLException;
 
@@ -191,6 +193,10 @@ public class KClientConfig {
      * @return the URL of the server to connect to
      */
     public URL getServerURL() throws MalformedURLException {
-	return new URL(remoteURL());
+	try {
+	    return new URI(remoteURL()).toURL();
+	} catch (URISyntaxException baduri) {
+	    throw new MalformedURLException(baduri.getMessage());
+	}
     }
 }

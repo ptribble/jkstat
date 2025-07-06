@@ -25,7 +25,6 @@
       <exclude name="NonExhaustiveSwitch"/>
       <exclude name="UncommentedEmptyConstructor"/>
       <exclude name="UnsynchronizedStaticFormatter"/>
-      <exclude name="UseUtilityClass"/>
       <exclude name="PreserveStackTrace"/>
     </rule>
     <rule ref="category/java/performance.xml">

@@ -1,5 +1,6 @@
+# SPDX-FileCopyrightText: 2025 Peter Tribble
+# SPDX-License-Identifier: CDDL-1.0
 [Desktop Entry]
-Encoding=UTF-8
 Version=1.0
 Name=JCpustate
 Comment=Display processor usage
@@ -7,4 +8,4 @@ Exec=jkstat cpustate
 Icon=jcpustate
 Terminal=false
 Type=Application
-Categories=System;Utility;
+Categories=System;Monitor;

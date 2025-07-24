@@ -34,7 +34,7 @@ public class KstatTreeModel extends DefaultTreeModel {
     private static final long serialVersionUID = 1L;
 
     /**
-     * The root node of theis tree.
+     * The root node of this tree.
      */
     private KstatTreeNode rootNode;
 

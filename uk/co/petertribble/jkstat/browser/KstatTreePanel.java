@@ -99,7 +99,7 @@ public final class KstatTreePanel extends JPanel
     private JPanel rpanel;
 
     /**
-     * An accessory, if one is availble for the current Kstat.
+     * An accessory, if one is available for the current Kstat.
      */
     private KstatAccessoryPanel kap;
     /**

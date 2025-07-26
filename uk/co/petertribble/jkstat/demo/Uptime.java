@@ -20,9 +20,9 @@
 
 package uk.co.petertribble.jkstat.demo;
 
-import java.text.DateFormat;
 import java.text.DecimalFormat;
-import java.util.Date;
+import java.time.format.DateTimeFormatter;
+import java.time.LocalTime;
 import uk.co.petertribble.jkstat.api.NativeJKstat;
 import uk.co.petertribble.jkstat.api.Kstat;
 
@@ -46,8 +46,8 @@ public final class Uptime {
 
 	Kstat ks = new NativeJKstat().getKstat("unix", 0, "system_misc");
 
-	System.out.print(DateFormat.getTimeInstance(DateFormat.SHORT)
-			.format(new Date()) + " up ");
+	System.out.print(LocalTime.now()
+	    .format(DateTimeFormatter.ofPattern("H:mm:ss")) + " up ");
 
 	long l = System.currentTimeMillis() / 1000 - ks.longData("boot_time");
 

@@ -20,7 +20,6 @@
 
 package uk.co.petertribble.jkstat.client;
 
-import java.util.Date;
 import uk.co.petertribble.jkstat.api.*;
 
 /**
@@ -73,6 +72,6 @@ public final class RemoteJKstat extends JKstat {
      */
     @Override
     public long getTime() {
-	return new Date().getTime();
+	return System.currentTimeMillis();
     }
 }

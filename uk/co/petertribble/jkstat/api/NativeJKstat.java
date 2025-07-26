@@ -20,8 +20,6 @@
 
 package uk.co.petertribble.jkstat.api;
 
-import java.util.Date;
-
 /**
  * An access class for Solaris kstats. Allows the available kstats to be
  * enumerated, and kstats and individual statistics to be retrieved.
@@ -65,6 +63,6 @@ public final class NativeJKstat extends JKstat {
      */
     @Override
     public long getTime() {
-	return new Date().getTime();
+	return System.currentTimeMillis();
     }
 }

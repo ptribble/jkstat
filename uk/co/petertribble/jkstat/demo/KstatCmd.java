@@ -21,11 +21,15 @@
 package uk.co.petertribble.jkstat.demo;
 
 import uk.co.petertribble.jkstat.api.*;
+import java.time.format.DateTimeFormatter;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Set;
 import java.util.HashSet;
-import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.TimeZone;
 
 /**
  * An emulation of the kstat cli.
@@ -53,6 +57,10 @@ public final class KstatCmd {
 
     // optional count
     int count;
+
+    private static final DateTimeFormatter DTF =
+	DateTimeFormatter.ofPattern("EEE MMM d H:mm:ss yyyy");
+    private static final ZoneId ZID = TimeZone.getDefault().toZoneId();
 
     /**
      * Create a new KstatCmd application, and produce output according to the
@@ -216,11 +224,12 @@ public final class KstatCmd {
      */
     private void displayTimeHeader() {
 	if (tflag) {
-	    Date d = new Date();
+	    Instant now = Instant.now();
 	    if ("u".equals(ttype)) {
-		System.out.println(d.getTime() / 1000);
+		System.out.println(now.toEpochMilli() / 1000);
 	    } else if ("d".equals(ttype)) {
-		System.out.println(d);
+		System.out.println(
+		    DTF.format(LocalDateTime.ofInstant(now, ZID)));
 	    }
 	}
     }

@@ -21,9 +21,12 @@
 package uk.co.petertribble.jkstat.demo;
 
 import uk.co.petertribble.jkstat.api.*;
-import java.util.Date;
+import java.time.format.DateTimeFormatter;
 import java.util.Set;
-import java.text.DateFormat;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.TimeZone;
 
 /**
  * Emulates psrinfo(8).
@@ -38,7 +41,9 @@ public class PsrInfo {
     private static boolean flagT;
     private static boolean flagV;
 
-    private static final DateFormat DF = DateFormat.getInstance();
+    private static final DateTimeFormatter DT =
+	DateTimeFormatter.ofPattern("LL/dd/yyyy HH:mm:ss");
+    private static final ZoneId ZID = TimeZone.getDefault().toZoneId();
 
     /**
      * Emulate psrinfo(8) output.
@@ -70,9 +75,9 @@ public class PsrInfo {
     private void displayPlain(Set<Kstat> kstats) {
 	for (Kstat ks : kstats) {
 	    Kstat nks = jkstat.getKstat(ks);
+	    Instant ndate = Instant.ofEpochSecond(nks.longData("state_begin"));
 	    System.out.println(nks.getInstance() + "\t" + nks.getData("state")
-		+ "   since "
-		+ DF.format(new Date(1000 * nks.longData("state_begin"))));
+		+ "   since " + DT.format(LocalDateTime.ofInstant(ndate, ZID)));
 	}
     }
 
@@ -92,11 +97,14 @@ public class PsrInfo {
     private static String details(Kstat ks) {
 	StringBuilder sb = new StringBuilder(160);
 	if (ks != null) {
+	    Instant now = Instant.now();
+	    Instant ndate = Instant.ofEpochSecond(ks.longData("state_begin"));
 	    sb.append("Status of virtual processor ").append(ks.getInstance())
-		.append(" as of: ").append(DF.format(new Date()))
+		.append(" as of: ")
+		.append(DT.format(LocalDateTime.ofInstant(now, ZID)))
 		.append("\n  ").append(ks.getData("state")).append(" since ")
-		.append(DF.format(new Date(1000 * ks.longData("state_begin"))))
-		.append("\n  The ").append(ks.getData("cpu_type"))
+		.append(DT.format(LocalDateTime.ofInstant(ndate, ZID)))
+		.append(".\n  The ").append(ks.getData("cpu_type"))
 		.append(" processor operates at ")
 		.append(ks.getData("clock_MHz"))
 		.append(" MHz,\n        and has an ")

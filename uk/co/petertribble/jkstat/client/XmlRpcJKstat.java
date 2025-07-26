@@ -20,7 +20,6 @@
 
 package uk.co.petertribble.jkstat.client;
 
-import java.util.Date;
 import uk.co.petertribble.jkstat.api.*;
 import uk.co.petertribble.jkstat.parse.JSONParser;
 import org.apache.xmlrpc.XmlRpcException;
@@ -83,6 +82,6 @@ public final class XmlRpcJKstat extends JKstat {
      */
     @Override
     public long getTime() {
-	return new Date().getTime();
+	return System.currentTimeMillis();
     }
 }

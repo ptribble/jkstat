@@ -23,7 +23,6 @@ package uk.co.petertribble.jkstat.gui;
 import javax.swing.*;
 import java.awt.event.*;
 import uk.co.petertribble.jkstat.api.*;
-import uk.co.petertribble.jingle.TableSorter;
 
 /**
  * A tabular representation of mpstat data.
@@ -38,10 +37,6 @@ public final class MPstatTable extends JTable {
      * The underlying data model.
      */
     private MPstatTableModel ktm;
-    /**
-     * A sorted view of the data.
-     */
-    TableSorter sortedModel;
     transient JKstat jkstat;
 
     /**
@@ -59,9 +54,8 @@ public final class MPstatTable extends JTable {
 	ksf.addFilter("cpu::sys:");
 
 	ktm = new MPstatTableModel(new KstatSet(jkstat, ksf), interval, jkstat);
-	sortedModel = new TableSorter(ktm);
-	setModel(sortedModel);
-	sortedModel.setTableHeader(getTableHeader());
+	setModel(ktm);
+	setAutoCreateRowSorter(true);
 	addMouseListener((MouseListener) new PopupListener());
     }
 
@@ -83,7 +77,7 @@ public final class MPstatTable extends JTable {
 	private void showPopup(MouseEvent e) {
 	    if (e.isPopupTrigger()) {
 		// need to get which row of the model we're on
-		int irow = sortedModel.modelIndex(rowAtPoint(e.getPoint()));
+		int irow = convertRowIndexToModel(rowAtPoint(e.getPoint()));
 		// and the statistic name from the column
 		String s = getColumnName(columnAtPoint(e.getPoint()));
 		// can't chart the CPU column

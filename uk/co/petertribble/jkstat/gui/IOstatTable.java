@@ -25,7 +25,6 @@ import java.awt.event.*;
 import uk.co.petertribble.jkstat.api.KstatSet;
 import uk.co.petertribble.jkstat.api.JKstat;
 import uk.co.petertribble.jkstat.api.ChartableKstat;
-import uk.co.petertribble.jingle.TableSorter;
 
 /**
  * A tabular representation of iostat.
@@ -40,10 +39,6 @@ public final class IOstatTable extends JTable {
      * The underlying data model.
      */
     private IOstatTableModel ktm;
-    /**
-     * A sorted view of the data.
-     */
-    TableSorter sortedModel;
     transient JKstat jkstat;
 
     /**
@@ -58,9 +53,8 @@ public final class IOstatTable extends JTable {
     public IOstatTable(KstatSet kss, int interval, JKstat jkstat) {
 	this.jkstat = jkstat;
 	ktm = new IOstatTableModel(kss, interval, jkstat);
-	sortedModel = new TableSorter(ktm);
-	setModel(sortedModel);
-	sortedModel.setTableHeader(getTableHeader());
+	setModel(ktm);
+	setAutoCreateRowSorter(true);
 	addMouseListener((MouseListener) new PopupListener());
     }
 
@@ -82,7 +76,7 @@ public final class IOstatTable extends JTable {
 	private void showPopup(MouseEvent e) {
 	    if (e.isPopupTrigger()) {
 		// need to get which row of the model we're on
-		int irow = sortedModel.modelIndex(rowAtPoint(e.getPoint()));
+		int irow = convertRowIndexToModel(rowAtPoint(e.getPoint()));
 		// and the statistic name from the column
 		String s = getColumnName(columnAtPoint(e.getPoint()));
 		// can't chart the device

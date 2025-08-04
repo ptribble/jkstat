@@ -25,11 +25,12 @@ Licensing
 =========
 
 JKstat is licensed under the CDDL, just like the bulk of OpenSolaris - see
-the file LICENSE-CDDL.txt (also as help/CDDL.txt) for details
+the file LICENSES/CDDL-1.0.txt (also as help/CDDL.txt) for details
 
 JKstat incorporates JFreeChart, Copyright 2000-present by David Gilbert and
-Contributors. JFreeChart is covered by the LGPL - see the file LICENSE-LGPL.txt,
-and can be obtained from https://www.jfree.org/jfreechart/.
+Contributors. JFreeChart is covered by the LGPL - see the file
+LICENSES/LGPL-2.1+.txt - and can be obtained from
+https://www.jfree.org/jfreechart/.
 
 JKstat incorporates a couple of sets of utility classes. See
 http://www.petertribble.co.uk/Solaris/jingle.html
@@ -40,7 +41,7 @@ The Apache Software Foundation (https://www.apache.org/).
 
 Specifically, Apache XML-RPC, Copyright 1999-2009 The Apache Software
 Foundation, and Apache HttpComponents Client, Copyright 1999-2012 The
-Apache Software Foundation. See the file LICENSE-APACHE.txt for the
+Apache Software Foundation. See the file LICENSES/Apache-2.0.txt for the
 details of the license for these products.
 
 The javascript client uses Flot https://www.flotcharts.org/

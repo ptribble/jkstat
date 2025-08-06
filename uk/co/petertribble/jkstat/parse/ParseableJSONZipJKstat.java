@@ -44,7 +44,7 @@ public final class ParseableJSONZipJKstat extends SequencedJKstat {
     private Map<Integer, JSONParser> ppmap;
 
     /**
-     * Constructs a ParseableJSONZipJKstat object, with JSON cacheing disabled
+     * Constructs a ParseableJSONZipJKstat object, with JSON caching disabled
      * by default.
      *
      * @param name the name of the zip file to open

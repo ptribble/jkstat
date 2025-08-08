@@ -1,3 +1,6 @@
+Switch to openjson https://github.com/openjson/openjson which has a much
+clearer license
+
 Update jfreechart 1.5.6
 
 Update HttpClient to 5.5

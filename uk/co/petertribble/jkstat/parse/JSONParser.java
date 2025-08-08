@@ -24,7 +24,7 @@ import uk.co.petertribble.jkstat.api.Kstat;
 import uk.co.petertribble.jkstat.api.KstatData;
 import java.io.*;
 import java.util.*;
-import org.json.*;
+import com.github.openjson.*;
 
 /**
  * Read in JSON serialized kstat output and parse it.
@@ -57,8 +57,11 @@ public class JSONParser {
 		kstats.add(getKstat(ja.getJSONObject(i)));
 	    }
 	} catch (JSONException jse) {
-	    System.err.println("ERROR");
+	    System.err.println("JSON ERROR");
 	    System.err.println(jse);
+	} catch (IOException ioe) {
+	    System.err.println("IO ERROR");
+	    System.err.println(ioe);
 	}
     }
 

@@ -110,8 +110,9 @@ spotbugs)
 	#
 	# spotbugs works on the class files, so those need to be available
 	#
-	./build
+	javac -Xlint -classpath .:"${BUILDJARS}" uk/co/petertribble/jkstat/*/*.java
 	spotbugs -auxclasspath $(echo lib/java/* | sed 's= =:=g') uk
+	rm -f $(find uk/co -type f -name '*.class')
 	exit 0
 	;;
 packages)
@@ -205,3 +206,5 @@ esac
 jar -cmf jkstat.manifest "${JKJAR}" help/* pixmaps/* properties/* $(find uk/co -name '*.class')
 
 jar -cf "${JKAPIJAR}" $(find uk/co/petertribble/jkstat/api -name '*.class') uk/co/petertribble/jkstat/util/NumericStringComparator.class
+
+rm -f $(find uk/co -type f -name '*.class')

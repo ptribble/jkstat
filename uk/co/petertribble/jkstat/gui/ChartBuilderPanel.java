@@ -29,8 +29,9 @@ import javax.swing.tree.*;
 import javax.swing.event.*;
 import java.awt.event.*;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.BorderLayout;
-import uk.co.petertribble.jingle.SpringUtilities;
+import java.awt.GridLayout;
 
 /**
  * A graphical chart builder. Allows the user to build a chart by selecting
@@ -120,7 +121,7 @@ public final class ChartBuilderPanel extends JPanel
     }
 
     /*
-     * It makes no sense to graph these.
+     * It makes no sense to graph the kstats listed below.
      */
     private JTree buildLeftTree() {
 	KstatFilter ksf = new KstatFilter(jkstat);
@@ -141,9 +142,12 @@ public final class ChartBuilderPanel extends JPanel
     }
 
     private JPanel buildRightPanel() {
-	JPanel fullpanel = new JPanel(new BorderLayout());
-	JPanel rpanel = new JPanel(new SpringLayout());
-	JPanel vpanel = new JPanel(new SpringLayout());
+	// this holds all the panels
+	JPanel rpanel = new JPanel();
+	rpanel.setLayout(new GridLayout(0, 1));
+	// vpanel holds the rate/value toggles
+	JPanel vpanel = new JPanel();
+	vpanel.setLayout(new BoxLayout(vpanel, BoxLayout.PAGE_AXIS));
 
 	ButtonGroup bgval = new ButtonGroup();
 	rateButton = new JRadioButton(
@@ -155,12 +159,13 @@ public final class ChartBuilderPanel extends JPanel
 	    new JRadioButton(KstatResources.getString("CHART.SHOWVAL"));
 	bgval.add(valueButton);
 	vpanel.add(valueButton);
-	SpringUtilities.makeCompactGrid(vpanel, 2, 1, 6, 6, 4, 2);
 	vpanel.setBorder(BorderFactory.createTitledBorder(
 				KstatResources.getString("CHART.RATEVAL")));
 	rpanel.add(vpanel);
 
-	JPanel spanel = new JPanel(new SpringLayout());
+	// spanel holds the style toggles
+	JPanel spanel = new JPanel();
+	spanel.setLayout(new BoxLayout(spanel, BoxLayout.PAGE_AXIS));
 
 	ButtonGroup bgstyle = new ButtonGroup();
 	lineStyle = new JRadioButton(KstatResources.getString("CHART.LINE"));
@@ -172,12 +177,13 @@ public final class ChartBuilderPanel extends JPanel
 	bgstyle.add(stackedStyle);
 	spanel.add(stackedStyle);
 
-	SpringUtilities.makeCompactGrid(spanel, 2, 1, 6, 6, 4, 2);
 	spanel.setBorder(BorderFactory.createTitledBorder(
 				KstatResources.getString("CHART.GSTYLE")));
 	rpanel.add(spanel);
 
+	// ipanel holds the instance toggles
 	JPanel ipanel = new JPanel();
+	ipanel.setLayout(new BoxLayout(ipanel, BoxLayout.PAGE_AXIS));
 	allInstanceButton = new JCheckBox(
 				KstatResources.getString("CHART.ALLINST"));
 	allInstanceButton.addActionListener(this);
@@ -192,20 +198,19 @@ public final class ChartBuilderPanel extends JPanel
 	rpanel.add(ipanel);
 
 	JPanel gpanel = new JPanel();
+	gpanel.setLayout(new BoxLayout(gpanel, BoxLayout.LINE_AXIS));
 	goButton = new JButton(KstatResources.getString("CHART.START"));
 	goButton.setEnabled(false);
 	goButton.addActionListener(this);
+	gpanel.add(Box.createHorizontalGlue());
 	gpanel.add(goButton);
+	gpanel.add(Box.createRigidArea(new Dimension(6, 0)));
 	rpanel.add(gpanel);
 
-	SpringUtilities.makeCompactGrid(rpanel, 4, 1, 6, 6, 4, 2);
+	kstatLabel = new JLabel(" ");
+	rpanel.add(kstatLabel);
 
-	fullpanel.add(rpanel);
-
-	kstatLabel = new JLabel("");
-	fullpanel.add(kstatLabel, BorderLayout.SOUTH);
-
-	return fullpanel;
+	return rpanel;
     }
 
     /*

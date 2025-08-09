@@ -21,6 +21,7 @@
 package uk.co.petertribble.jkstat.client;
 
 import java.awt.event.*;
+import java.awt.GridLayout;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.util.Map;
@@ -31,7 +32,6 @@ import javax.jmdns.JmDNS;
 import javax.jmdns.ServiceEvent;
 import javax.jmdns.ServiceInfo;
 import javax.jmdns.ServiceListener;
-import uk.co.petertribble.jingle.SpringUtilities;
 import uk.co.petertribble.jkstat.gui.KstatResources;
 
 /**
@@ -115,26 +115,23 @@ public final class KBrowseDialog implements ActionListener {
 	    JPanel qpan = new JPanel();
 	    qpan.setLayout(new BoxLayout(qpan, BoxLayout.PAGE_AXIS));
 
-	    JPanel qpan0 = new JPanel(new SpringLayout());
+	    JPanel qpan0 = new JPanel(new GridLayout(0, 2));
 	    qpan0.add(new JLabel(KstatResources.getString("CLIENT.SERVICE")));
 	    qpan0.add(servicebox);
-	    SpringUtilities.makeCompactGrid(qpan0, 1, 2, 6, 3, 3, 3);
 	    qpan.add(qpan0);
 
-	    JPanel qpan2 = new JPanel(new SpringLayout());
+	    JPanel qpan2 = new JPanel(new GridLayout(0, 2));
 	    qpan2.add(new JLabel(KstatResources.getString("CLIENT.PROTOCOL")));
 	    qpan2.add(protobox);
-	    SpringUtilities.makeCompactGrid(qpan2, 1, 2, 6, 3, 3, 3);
 	    qpan.add(qpan2);
 
 	    qpan.add(authbox);
 
-	    JPanel qpan3 = new JPanel(new SpringLayout());
+	    JPanel qpan3 = new JPanel(new GridLayout(0, 2));
 	    qpan3.add(new JLabel(KstatResources.getString("CLIENT.USERNAME")));
 	    qpan3.add(ufield);
 	    qpan3.add(new JLabel(KstatResources.getString("CLIENT.PASSWORD")));
 	    qpan3.add(pfield);
-	    SpringUtilities.makeCompactGrid(qpan3, 2, 2, 6, 3, 3, 3);
 	    qpan.add(qpan3);
 
 	    String[] options =  {KstatResources.getString("CLIENT.CONNECT"),

@@ -26,7 +26,6 @@ import uk.co.petertribble.jkstat.gui.KstatAccessoryPanel;
 import uk.co.petertribble.jkstat.gui.KstatAccessorySet;
 import uk.co.petertribble.jkstat.gui.AccessoryKmemAlloc;
 import uk.co.petertribble.jingle.JingleVPanel;
-import uk.co.petertribble.jingle.SpringUtilities;
 import java.util.*;
 
 /**
@@ -48,8 +47,6 @@ public final class JKmemPanel extends JingleVPanel {
 
 	List<KstatAccessoryPanel> vkstat = new ArrayList<>();
 
-	setLayout(new SpringLayout());
-
 	/*
 	 * Filter on all kmem cache kstats
 	 */
@@ -63,13 +60,46 @@ public final class JKmemPanel extends JingleVPanel {
 		kms.add(ks);
 	    }
 	}
+
+	GroupLayout layout = new GroupLayout(this);
+	setLayout(layout);
+	// the label text is vertically centered
+	GroupLayout.Alignment gac = GroupLayout.Alignment.CENTER;
+	// because we have to add components in a loop, create the groups
+	// so we can refer to them
+	GroupLayout.SequentialGroup vgroup = layout.createSequentialGroup();
+	GroupLayout.ParallelGroup leftGroup = layout.createParallelGroup();
+	GroupLayout.ParallelGroup rightGroup = layout.createParallelGroup();
+	// horizontally, we have a sequential group containing a parallel
+	// group of all the labels and a parallel group of the accessories
+	// vertically, we have a sequential group containing parallel
+	// groups each with a label and its accessory
+	// there's a 6 pixel gap on the left, 2 pixels other sides and between
+	// elements
+
 	for (Kstat ks : kms) {
 	    AccessoryKmemAlloc aka = new AccessoryKmemAlloc(ks, -1, jkstat);
 	    vkstat.add(aka);
-	    add(new JLabel(ks.getName()));
-	    add(aka);
+	    JLabel jl = new JLabel(ks.getName());
+	    leftGroup.addComponent(jl);
+	    rightGroup.addComponent(aka);
+	    vgroup.addGap(2).addGroup(layout.createParallelGroup(gac)
+			  .addComponent(jl)
+			  .addComponent(aka)
+				      );
 	}
-	SpringUtilities.makeCompactGrid(this, kms.size(), 2, 6, 3, 2, 2);
+	vgroup.addGap(2);
+	// now add the groups to the main layout
+	layout.setHorizontalGroup(
+		layout.createSequentialGroup()
+		.addGap(6)
+		.addGroup(leftGroup)
+		.addGap(2)
+		.addGroup(rightGroup)
+		.addGap(2)
+	);
+	layout.setVerticalGroup(vgroup);
+
 	kas = new KstatAccessorySet(vkstat, interval);
     }
 

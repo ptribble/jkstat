@@ -24,7 +24,6 @@ import uk.co.petertribble.jkstat.api.*;
 import uk.co.petertribble.jkstat.util.Humanize;
 import javax.swing.*;
 import java.awt.Dimension;
-import uk.co.petertribble.jingle.SpringUtilities;
 
 /**
  * An accessory panel that graphically represents network activity.
@@ -89,14 +88,47 @@ public final class AccessoryNetPanel extends KstatAccessoryPanel {
 	jpIn.setStringPainted(true);
 	jpOut.setStringPainted(true);
 
-	setLayout(new SpringLayout());
+	JLabel jlIn = new JLabel("Input");
+	JLabel jlOut = new JLabel("Output");
 
-	add(new JLabel("Input"));
-	add(jpIn);
-
-	add(new JLabel("Output"));
-	add(jpOut);
-	SpringUtilities.makeCompactGrid(this, 2, 2, 6, 3, 2, 2);
+	GroupLayout layout = new GroupLayout(this);
+	setLayout(layout);
+	// the label text is vertically centered
+	GroupLayout.Alignment gac = GroupLayout.Alignment.CENTER;
+	// horizontally, we have a sequential group containing a parallel
+	// group of all the labels and a parallel group of the bars
+	// vertically, we have a sequential group containing 2 parallel
+	// groups each with a label and its bar
+	// there's a 6 pixel gap on the left, 2 pixels other sides and between
+	// elements
+	layout.setHorizontalGroup(
+		layout.createSequentialGroup()
+		.addGap(6)
+		.addGroup(layout.createParallelGroup()
+			  .addComponent(jlIn)
+			  .addComponent(jlOut)
+			  )
+		.addGap(2)
+		.addGroup(layout.createParallelGroup()
+			  .addComponent(jpIn)
+			  .addComponent(jpOut)
+			  )
+		.addGap(2)
+	);
+	layout.setVerticalGroup(
+		layout.createSequentialGroup()
+		.addGap(2)
+		.addGroup(layout.createParallelGroup(gac)
+			  .addComponent(jlIn)
+			  .addComponent(jpIn)
+			  )
+		.addGap(2)
+		.addGroup(layout.createParallelGroup(gac)
+			  .addComponent(jlOut)
+			  .addComponent(jpOut)
+			  )
+		.addGap(2)
+	);
 
 	snaptime = ks.getCrtime();
 	updateAccessory();

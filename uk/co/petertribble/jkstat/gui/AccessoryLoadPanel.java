@@ -23,7 +23,6 @@ package uk.co.petertribble.jkstat.gui;
 import uk.co.petertribble.jkstat.api.*;
 import javax.swing.*;
 import java.text.DecimalFormat;
-import uk.co.petertribble.jingle.SpringUtilities;
 
 /**
  * An accessory panel that graphically represents the system load average.
@@ -84,15 +83,55 @@ public final class AccessoryLoadPanel extends KstatAccessoryPanel {
 	jp5.setStringPainted(true);
 	jp15.setStringPainted(true);
 
-	setLayout(new SpringLayout());
+	JLabel jl1 = new JLabel("1 minute load");
+	JLabel jl5 = new JLabel("5 minute load");
+	JLabel jl15 = new JLabel("15 minute load");
 
-	add(new JLabel("1 minute load"));
-	add(jp1);
-	add(new JLabel("5 minute load"));
-	add(jp5);
-	add(new JLabel("15 minute load"));
-	add(jp15);
-	SpringUtilities.makeCompactGrid(this, 3, 2, 6, 3, 2, 2);
+	GroupLayout layout = new GroupLayout(this);
+	setLayout(layout);
+	// the label text is vertically centered
+	GroupLayout.Alignment gac = GroupLayout.Alignment.CENTER;
+	// horizontally, we have a sequential group containing a parallel
+	// group of all the labels and a parallel group of the bars
+	// vertically, we have a sequential group containing 3 parallel
+	// groups each with a label and its bar
+	// there's a 6 pixel gap on the left, 2 pixels other sides and between
+	// elements
+	layout.setHorizontalGroup(
+		layout.createSequentialGroup()
+		.addGap(6)
+		.addGroup(layout.createParallelGroup()
+			  .addComponent(jl1)
+			  .addComponent(jl5)
+			  .addComponent(jl15)
+			  )
+		.addGap(2)
+		.addGroup(layout.createParallelGroup()
+			  .addComponent(jp1)
+			  .addComponent(jp5)
+			  .addComponent(jp15)
+			  )
+		.addGap(2)
+	);
+	layout.setVerticalGroup(
+		layout.createSequentialGroup()
+		.addGap(2)
+		.addGroup(layout.createParallelGroup(gac)
+			  .addComponent(jl1)
+			  .addComponent(jp1)
+			  )
+		.addGap(2)
+		.addGroup(layout.createParallelGroup(gac)
+			  .addComponent(jl5)
+			  .addComponent(jp5)
+			  )
+		.addGap(2)
+		.addGroup(layout.createParallelGroup(gac)
+			  .addComponent(jl15)
+			  .addComponent(jp15)
+			  )
+		.addGap(2)
+	);
 
 	updateAccessory();
 

@@ -22,7 +22,7 @@ package uk.co.petertribble.jkstat.client;
 
 import javax.swing.*;
 import java.awt.event.*;
-import uk.co.petertribble.jingle.SpringUtilities;
+import java.awt.GridLayout;
 import uk.co.petertribble.jkstat.gui.KstatResources;
 
 /**
@@ -74,28 +74,25 @@ public final class KClientDialog implements ActionListener {
 	JPanel qpanel = new JPanel();
 	qpanel.setLayout(new BoxLayout(qpanel, BoxLayout.PAGE_AXIS));
 
-	JPanel qpanel1 = new JPanel(new SpringLayout());
+	JPanel qpanel1 = new JPanel(new GridLayout(0, 2));
 	qpanel1.add(new JLabel(KstatResources.getString("CLIENT.SERVER")));
 	qpanel1.add(sfield);
 	qpanel1.add(new JLabel(KstatResources.getString("CLIENT.PORT")));
 	qpanel1.add(portfield);
-	SpringUtilities.makeCompactGrid(qpanel1, 1, 4, 6, 3, 3, 3);
 	qpanel.add(qpanel1);
 
-	JPanel qpanel2 = new JPanel(new SpringLayout());
+	JPanel qpanel2 = new JPanel(new GridLayout(0, 2));
 	qpanel2.add(new JLabel(KstatResources.getString("CLIENT.PROTOCOL")));
 	qpanel2.add(protobox);
-	SpringUtilities.makeCompactGrid(qpanel2, 1, 2, 6, 3, 3, 3);
 	qpanel.add(qpanel2);
 
 	qpanel.add(authbox);
 
-	JPanel qpanel3 = new JPanel(new SpringLayout());
+	JPanel qpanel3 = new JPanel(new GridLayout(0, 2));
 	qpanel3.add(new JLabel(KstatResources.getString("CLIENT.USERNAME")));
 	qpanel3.add(ufield);
 	qpanel3.add(new JLabel(KstatResources.getString("CLIENT.PASSWORD")));
 	qpanel3.add(pfield);
-	SpringUtilities.makeCompactGrid(qpanel3, 2, 2, 6, 3, 3, 3);
 	qpanel.add(qpanel3);
 
 	String[] options =  {KstatResources.getString("CLIENT.CONNECT"),

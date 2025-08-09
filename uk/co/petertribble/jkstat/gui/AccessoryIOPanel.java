@@ -23,7 +23,6 @@ package uk.co.petertribble.jkstat.gui;
 import uk.co.petertribble.jkstat.api.*;
 import javax.swing.*;
 import java.text.DecimalFormat;
-import uk.co.petertribble.jingle.SpringUtilities;
 
 /**
  * An accessory panel that graphically represents I/O activity.
@@ -91,17 +90,63 @@ public final class AccessoryIOPanel extends KstatAccessoryPanel {
 	jpkIn.setStringPainted(true);
 	jpkOut.setStringPainted(true);
 
-	setLayout(new SpringLayout());
+	JLabel jlIn = new JLabel("reads/s");
+	JLabel jlOut = new JLabel("writes/s");
+	JLabel jlkIn = new JLabel("k read/s");
+	JLabel jlkOut = new JLabel("k write/s");
 
-	add(new JLabel("reads/s"));
-	add(jpIn);
-	add(new JLabel("k read/s"));
-	add(jpkIn);
-	add(new JLabel("writes/s"));
-	add(jpOut);
-	add(new JLabel("k write/s"));
-	add(jpkOut);
-	SpringUtilities.makeCompactGrid(this, 4, 2, 6, 3, 2, 2);
+	GroupLayout layout = new GroupLayout(this);
+	setLayout(layout);
+	// the label text is vertically centered
+	GroupLayout.Alignment gac = GroupLayout.Alignment.CENTER;
+	// horizontally, we have a sequential group containing a parallel
+	// group of all the labels and a parallel group of the bars
+	// vertically, we have a sequential group containing 4 parallel
+	// groups each with a label and its bar
+	// there's a 6 pixel gap on the left, 2 pixels other sides and between
+	// elements
+	layout.setHorizontalGroup(
+		layout.createSequentialGroup()
+		.addGap(6)
+		.addGroup(layout.createParallelGroup()
+			  .addComponent(jlIn)
+			  .addComponent(jlkIn)
+			  .addComponent(jlOut)
+			  .addComponent(jlkOut)
+			  )
+		.addGap(2)
+		.addGroup(layout.createParallelGroup()
+			  .addComponent(jpIn)
+			  .addComponent(jpkIn)
+			  .addComponent(jpOut)
+			  .addComponent(jpkOut)
+			  )
+		.addGap(2)
+	);
+	layout.setVerticalGroup(
+		layout.createSequentialGroup()
+		.addGap(2)
+		.addGroup(layout.createParallelGroup(gac)
+			  .addComponent(jlIn)
+			  .addComponent(jpIn)
+			  )
+		.addGap(2)
+		.addGroup(layout.createParallelGroup(gac)
+			  .addComponent(jlkIn)
+			  .addComponent(jpkIn)
+			  )
+		.addGap(2)
+		.addGroup(layout.createParallelGroup(gac)
+			  .addComponent(jlOut)
+			  .addComponent(jpOut)
+			  )
+		.addGap(2)
+		.addGroup(layout.createParallelGroup(gac)
+			  .addComponent(jlkOut)
+			  .addComponent(jpkOut)
+			  )
+		.addGap(2)
+	);
 
 	updateAccessory();
 

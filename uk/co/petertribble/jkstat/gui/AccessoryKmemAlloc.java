@@ -21,7 +21,6 @@
 package uk.co.petertribble.jkstat.gui;
 
 import uk.co.petertribble.jkstat.api.*;
-import uk.co.petertribble.jingle.SpringUtilities;
 import javax.swing.*;
 import java.text.DecimalFormat;
 
@@ -71,13 +70,42 @@ public final class AccessoryKmemAlloc extends KstatAccessoryPanel {
 	jpAlloc.setStringPainted(true);
 	jpFree.setStringPainted(true);
 
-	setLayout(new SpringLayout());
+	JLabel jlAlloc = new JLabel("alloc/s");
+	JLabel jlFree = new JLabel("free/s");
 
-	add(jpAlloc);
-	add(new JLabel("alloc/s "));
-	add(jpFree);
-	add(new JLabel("free/s"));
-	SpringUtilities.makeCompactGrid(this, 1, 4, 6, 3, 2, 2);
+	GroupLayout layout = new GroupLayout(this);
+	setLayout(layout);
+	// the label text is vertically centered
+	GroupLayout.Alignment gac = GroupLayout.Alignment.CENTER;
+	// horizontally, we have a sequential group of bar label bar label
+	// vertically, we have a sequential group containing 1 parallel
+	// group each with a label and its bar
+	// there's a 6 pixel gap on the left, 2 pixels other sides and between
+	// elements
+	layout.setHorizontalGroup(
+		layout.createSequentialGroup()
+		.addGap(6)
+		.addComponent(jpAlloc)
+		.addGap(2)
+		.addComponent(jlAlloc)
+		.addGap(6)
+		.addComponent(jpFree)
+		.addGap(2)
+		.addComponent(jlFree)
+		.addGap(2)
+	);
+	layout.setVerticalGroup(
+		layout.createSequentialGroup()
+		.addGap(2)
+		.addGroup(layout.createParallelGroup(gac)
+			  .addComponent(jpAlloc)
+			  .addComponent(jlAlloc)
+			  .addComponent(jpFree)
+			  .addComponent(jlFree)
+			  )
+		.addGap(2)
+	);
+
 	updateAccessory();
 	startLoop();
     }

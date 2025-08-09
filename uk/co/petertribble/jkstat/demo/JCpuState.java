@@ -22,13 +22,13 @@ package uk.co.petertribble.jkstat.demo;
 
 import javax.swing.*;
 import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.awt.event.*;
 import uk.co.petertribble.jkstat.api.*;
 import uk.co.petertribble.jkstat.gui.*;
 import java.util.Set;
 import java.util.List;
 import java.util.ArrayList;
-import uk.co.petertribble.jingle.SpringUtilities;
 import uk.co.petertribble.jkstat.client.*;
 
 /**
@@ -108,8 +108,10 @@ public final class JCpuState extends JKdemo implements ActionListener {
 	List<KstatAccessoryPanel> acplist = new ArrayList<>();
 
 	// create main display panel
-	JPanel mainPanel = new JPanel(new SpringLayout());
+	JPanel mainPanel = new JPanel();
 	setContentPane(mainPanel);
+	mainPanel.setLayout((orientation == SwingConstants.VERTICAL)
+	    ? new GridLayout(1, 0) : new GridLayout(0, 1));
 
 	/*
 	 * If vertical, the bars are short and squat; if horizontal they
@@ -118,26 +120,23 @@ public final class JCpuState extends JKdemo implements ActionListener {
 	Dimension dcpu = (orientation == SwingConstants.VERTICAL)
 	    ? new Dimension(16, 50) : new Dimension(200, 20);
 	/*
-	 * Add the kstats to the panel. SpringUtilities assumes we populate
-	 * the grid left to right, row by row. So in the vertical layout we
-	 * follow a label with its accessory; in the horizontal layout we
-	 * add all the accessories in order, then all the labels go in the
-	 * row underneath. Note that the orientation refers to the accessory,
-	 * and the layout orientation is the opposite of that.
+	 * Add the kstats to the panel. We use buildCPU() to create the panel
+	 * for each kstat that contains the label and the accessory, then
+	 * use GridLayout to put them all together.
 	 */
 	int ncpu = 0;
 	for (Kstat ks : kstats) {
 	    String scpu = ks.getInstance();
-	    if (orientation != SwingConstants.VERTICAL) {
-		mainPanel.add(new JLabel("Cpu " + scpu));
-	    }
+	    JLabel alabel = (orientation == SwingConstants.VERTICAL)
+		? new JLabel(scpu)
+		: new JLabel("Cpu " + scpu);
 	    KstatAccessoryPanel acp = (style == STYLE_CHART)
 		? new AccessoryCpuChart(ks, -1, jkstat)
 		: new AccessoryCpuPanel(ks, -1, jkstat, orientation);
 	    acplist.add(acp);
 	    acp.setMinimumSize(dcpu);
 	    acp.setPreferredSize(dcpu);
-	    mainPanel.add(acp);
+	    mainPanel.add(buildCPU(alabel, acp));
 	    // add a popup menu to each one
 	    JPopupMenu jpm = new JPopupMenu();
 	    cpuID[ncpu] = scpu;
@@ -154,21 +153,61 @@ public final class JCpuState extends JKdemo implements ActionListener {
 	    ncpu++;
 	}
 
-	if (orientation == SwingConstants.VERTICAL) {
-	    for (Kstat ks : kstats) {
-		mainPanel.add(new JLabel(ks.getInstance(), JLabel.CENTER));
-	    }
-	    SpringUtilities.makeCompactGrid(mainPanel, 2, ncpus, 6, 3, 3, 3);
-	} else {
-	    SpringUtilities.makeCompactGrid(mainPanel, ncpus, 2, 6, 3, 3, 3);
-	}
-
 	setIconImage(new ImageIcon(this.getClass().getClassLoader()
 			.getResource("pixmaps/jcpustate.png")).getImage());
 
 	pack();
 	setVisible(true);
 	kas = new KstatAccessorySet(acplist, 1);
+    }
+
+    /*
+     * Put together a label and an accessory in the correct orientation
+     * and with the correct spacing.
+     */
+    private JPanel buildCPU(JLabel jl, KstatAccessoryPanel kap) {
+	JPanel jp = new JPanel();
+	GroupLayout layout = new GroupLayout(jp);
+	jp.setLayout(layout);
+	GroupLayout.Alignment gac = GroupLayout.Alignment.CENTER;
+	if (orientation == SwingConstants.VERTICAL) {
+	    layout.setVerticalGroup(
+		layout.createSequentialGroup()
+		.addGap(2)
+		.addComponent(kap)
+		.addGap(2)
+		.addComponent(jl)
+		.addGap(4)
+	    );
+	    layout.setHorizontalGroup(
+		layout.createSequentialGroup()
+		.addGap(2)
+		.addGroup(layout.createParallelGroup(gac)
+			  .addComponent(jl)
+			  .addComponent(kap)
+			  )
+		.addGap(2)
+	    );
+	} else {
+	    layout.setHorizontalGroup(
+		layout.createSequentialGroup()
+		.addGap(6)
+		.addComponent(jl)
+		.addGap(2)
+		.addComponent(kap)
+		.addGap(2)
+	    );
+	    layout.setVerticalGroup(
+		layout.createSequentialGroup()
+		.addGap(1)
+		.addGroup(layout.createParallelGroup(gac)
+			  .addComponent(jl)
+			  .addComponent(kap)
+			  )
+		.addGap(1)
+	    );
+	}
+	return jp;
     }
 
     @Override

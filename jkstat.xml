@@ -1,6 +1,12 @@
 <?xml version="1.0"?>
 <!DOCTYPE service_bundle SYSTEM "/usr/share/lib/xml/dtd/service_bundle.dtd.1">
 
+<!--
+SPDX-FileCopyrightText: 2025 Peter Tribble
+
+SPDX-License-Identifier: CDDL-1.0
+-->
+
 <service_bundle type='manifest' name='jkstat'>
 
 <service

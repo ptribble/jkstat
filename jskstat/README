@@ -5,11 +5,10 @@ https://www.flotcharts.org/
 
 jstree:
 
-unzip ../../vakata-jstree-3.0.0-0-gb446e66.zip
-mv vakata-jstree-b446e66/dist/jstree.min.js .
-mv vakata-jstree-b446e66/dist/libs/* .
-mv vakata-jstree-b446e66/dist/themes .
-rm -fr vakata-jstree-b446e66
+unzip ../../vakata-jstree-3.3.17-0-g6256df0.zip
+mv vakata-jstree-6256df0/dist/jstree.min.js .
+mv vakata-jstree-6256df0/dist/themes .
+rm -fr vakata-jstree-6256df0
 
 flot:
 

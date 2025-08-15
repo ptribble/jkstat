@@ -22,11 +22,16 @@
  * Standard graphical user interface components for JKstat.
  * <p>
  * Accessories are little display widgets displaying a specific kstat
- * (or type of kstat). They all extend KstatAccessoryPanel, and
- * KstatAccessoryRegistry can be queried to see if an accessory exists for
- * a given kstat.
+ * (or type of kstat). They all extend KstatAccessoryPanel, and you
+ * should use the KstatAccessoryPanel interface and its methods to
+ * update the data, and to stop and start the updates. Accessories
+ * should normally have no other public methods.
  * <p>
- * There is support for displaying kstat in tables, see
+ * KstatAccessoryRegistry can be queried to see if an accessory exists for
+ * a given kstat, and to obtain an instance of the correct accessory panel.
+ * Again, cast to a KstatAccessoryPanel.
+ * <p>
+ * There is support for displaying a kstat in tables, see
  * KstatTable. There are also some specific TableModels to support iostat
  * and mpstat.
  * <p>

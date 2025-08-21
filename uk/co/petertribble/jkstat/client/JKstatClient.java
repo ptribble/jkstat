@@ -48,21 +48,6 @@ public class JKstatClient {
 	} catch (MalformedURLException mue) {
 	    throw new KstatException("Malformed URL.", mue);
 	}
-	initClient(config);
-    }
-
-    /**
-     * Create a JKstat client that communicates with a server using the XML-RPC
-     * protocol.
-     *
-     * @param config holds the configuration with details of how to contact
-     * the server
-     */
-    public JKstatClient(XmlRpcClientConfigImpl config) {
-	initClient(config);
-    }
-
-    private void initClient(XmlRpcClientConfigImpl config) {
 	config.setEnabledForExtensions(true);
 	client = new XmlRpcClient();
 	client.setConfig(config);

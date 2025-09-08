@@ -20,6 +20,9 @@
 
 package uk.co.petertribble.jkstat.client;
 
+import uk.co.petertribble.jumble.JumbleUtils;
+import java.io.File;
+import java.util.Map;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -31,7 +34,7 @@ import java.net.MalformedURLException;
  *
  * @author Peter Tribble
  */
-public class KClientConfig {
+public final class KClientConfig {
 
     /**
      * Represents an XML-RPC client/server configuration.
@@ -86,6 +89,32 @@ public class KClientConfig {
     }
 
     /**
+     * Create a PClientConfig that reads its configuration from a file.
+     * The configuration file contains key-value pairs, separated by an
+     * = sign, one pair per line.
+     *
+     * Valid configuration keys:
+     * URL the url to connect to
+     * User a username to use for authentication
+     * Pass a password to use for authentication
+     * Protocol an integer representing the communication protocol
+     *
+     * @param f the File to read the configuration from.
+     */
+    public KClientConfig(File f) {
+	if (f.exists()) {
+	    Map<String, String> m = JumbleUtils.fileToPropMap(f);
+	    urlString = m.get("URL");
+	    username = m.get("User");
+	    userpass = m.get("Pass");
+	    String sproto = m.get("Protocol");
+	    if (sproto != null) {
+		protocol = Integer.parseInt(sproto);
+	    }
+	}
+    }
+
+    /**
      * Returns whether this KClientConfig has enough configuration to be
      * useful.
      *
@@ -93,12 +122,13 @@ public class KClientConfig {
      * useful
      */
     public boolean isConfigured() {
-	return (urlString != null) && (!"".equals(urlString));
+	return urlString != null && !"".equals(urlString);
     }
 
     /**
      * Return the url to connect to, as a String. If the url has been
-     * explicitly passed, use that.
+     * explicitly passed, use that, else try and get it from the configuration
+     * file.
      *
      * @return the url to connect to, as a String
      */

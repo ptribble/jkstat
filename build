@@ -132,12 +132,12 @@ packages)
 	exit 0
 	;;
 jkstat.war)
-	# this is the vanilla jkstat war, which will enable tomcat
+	# this is the vanilla war, which will enable tomcat
 	# to be a jkstat server
 	mkdir war
 	cd war || exit 1
 	mkdir -p WEB-INF/lib org/apache/xmlrpc/webserver
-	cp -p ../properties/KServer1.properties org/apache/xmlrpc/webserver/XmlRpcServlet.properties
+	cp -p ../WEB-INF/XmlRpcServlet.properties org/apache/xmlrpc/webserver/XmlRpcServlet.properties
 	jar cf WEB-INF/lib/props.jar org
 	rm -fr org
 	# only copy the jars we need
@@ -165,7 +165,7 @@ jkrest.war)
 	mkdir war
 	cd war || exit 1
 	mkdir -p WEB-INF/lib org/apache/xmlrpc/webserver
-	cp -p ../properties/KServer1.properties org/apache/xmlrpc/webserver/XmlRpcServlet.properties
+	cp -p ../WEB-INF/XmlRpcServlet.properties org/apache/xmlrpc/webserver/XmlRpcServlet.properties
 	jar cf WEB-INF/lib/props.jar org
 	rm -fr org
 	# only copy the jars we need
@@ -203,7 +203,7 @@ sparcv9)
     ;;
 esac
 
-jar -cmf jkstat.manifest "${JKJAR}" help/* pixmaps/* properties/* $(find uk/co -name '*.class')
+jar -cmf jkstat.manifest "${JKJAR}" help/* pixmaps/* properties/jkstat.properties $(find uk/co -name '*.class')
 
 jar -cf "${JKAPIJAR}" $(find uk/co/petertribble/jkstat/api -name '*.class') uk/co/petertribble/jkstat/util/NumericStringComparator.class
 

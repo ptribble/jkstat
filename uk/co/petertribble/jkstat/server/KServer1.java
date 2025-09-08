@@ -35,7 +35,7 @@ import javax.jmdns.ServiceInfo;
  *
  * @author Peter Tribble
  */
-public class KServer1 {
+public final class KServer1 {
 
     // global so can be called at shutdown
     private JmDNS jmdns;
@@ -43,23 +43,22 @@ public class KServer1 {
     /**
      * Constructs a KServer1 object.
      *
-     * @param ksc the configuration to be applied
+     * @param config the configuration to be applied
      */
-    public KServer1(KServerConfig ksc) {
+    public KServer1(KServerConfig config) {
 	try {
-	    WebServer webServer = new WebServer(ksc.getPort());
+	    WebServer webServer = new WebServer(config.getPort());
 	    XmlRpcServer xmlRpcServer = webServer.getXmlRpcServer();
 	    PropertyHandlerMapping phm = new PropertyHandlerMapping();
-	    phm.load(Thread.currentThread().getContextClassLoader(),
-                   "properties/KServer1.properties");
+	    phm.addHandler("JKstatServer", JKstatServer.class);
 	    xmlRpcServer.setHandlerMapping(phm);
 	    XmlRpcServerConfigImpl serverConfig =
 		(XmlRpcServerConfigImpl) xmlRpcServer.getConfig();
 	    serverConfig.setContentLengthOptional(false);
 
 	    webServer.start();
-	    if (ksc.shouldRegister()) {
-		registerService(ksc);
+	    if (config.shouldRegister()) {
+		registerService(config);
 	    }
 	} catch (Exception e) {
 	    System.err.println("Server failed to start!");
@@ -69,17 +68,18 @@ public class KServer1 {
     /*
      * Register this server in mdns, with the type "_jkstat._tcp"
      */
-    private void registerService(KServerConfig ksc) {
+    private void registerService(KServerConfig config) {
 	try {
-	    jmdns = JmDNS.create(ksc.getInetAddress());
+	    jmdns = JmDNS.create(config.getInetAddress());
 	    ServiceInfo serviceInfo = ServiceInfo.create("_jkstat._tcp.local.",
-		    "JKstat/" + ksc.getHostname(),
-		    ksc.getPort(),
+		    "JKstat/" + config.getHostname(),
+		    config.getPort(),
 		    "path=/");
             jmdns.registerService(serviceInfo);
 	    Thread exitHook = new Thread(() -> this.unRegisterService());
 	    Runtime.getRuntime().addShutdownHook(exitHook);
-	    System.out.println("Service registered on " + ksc.getInetAddress());
+	    System.out.println("Service registered on "
+			       + config.getInetAddress());
 	} catch (IOException e) {
             System.err.println(e.getMessage());
         }
@@ -93,7 +93,7 @@ public class KServer1 {
     }
 
     private static void usage() {
-	System.err.println("Usage: server [-m ] [-p port | -f config_file]");
+	System.err.println("Usage: server [-m] [-p port | -f config_file]");
 	System.exit(1);
     }
 
@@ -105,16 +105,16 @@ public class KServer1 {
      * @param args command line arguments
      */
     public static void main(String[] args) {
-	KServerConfig ksc = new KServerConfig();
+	KServerConfig config = new KServerConfig();
 	int i = 0;
 	while (i < args.length) {
 	    if ("-m".equals(args[i])) {
-		ksc.setRegister(true);
+		config.setRegister(true);
 	    } else if ("-p".equals(args[i])) {
 		if (i + 1 < args.length) {
 		    i++;
 		    try {
-			ksc.setPort(Integer.parseInt(args[i]));
+			config.setPort(Integer.parseInt(args[i]));
 		    } catch (NumberFormatException nfe) {
 			usage();
 		    }
@@ -126,7 +126,7 @@ public class KServer1 {
 		    i++;
 		    File f = new File(args[i]);
 		    if (f.exists()) {
-			ksc.parseConfig(f);
+			config.parseConfig(f);
 		    } else {
 			usage();
 		    }
@@ -138,6 +138,6 @@ public class KServer1 {
 	    }
 	    i++;
 	}
-	new KServer1(ksc);
+	new KServer1(config);
     }
 }

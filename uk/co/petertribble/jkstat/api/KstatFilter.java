@@ -95,7 +95,7 @@ public class KstatFilter {
     /**
      * Add a filter of the form "module:instance:name:statistic", where the
      * components of the kstat specification are delimited by a ":". Kstats
-     * that match this filter will not be returned. If any  component is left
+     * that match this filter will not be returned. If any component is left
      * unspecified (blank) or is "*", then match any value.
      *
      * Shortened versions of the filter such as "sd" will result in a match

@@ -1,3 +1,5 @@
+Update jmdns to 3.6.2
+
 Drop apache httpclient, now we're based on minimum java 11 the native one
 http client is perfectly adequate
 
@@ -22,7 +24,7 @@ From 1.6.0 to 1.7.0
 
 Update the JSON jar (from https://github.com/stleary/JSON-java)
 
-Added jmdns-3.5.9.jar and slf4j-api-2.0.13.jar to support mdns
+Added jmdns and slf4j-api to support mdns
 
 Added mdns registration to the server, enabled by the -m argument
 

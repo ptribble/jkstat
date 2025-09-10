@@ -1,3 +1,6 @@
+Drop apache httpclient, now we're based on minimum java 11 the native one
+http client is perfectly adequate
+
 Switch to openjson https://github.com/openjson/openjson which has a much
 clearer license
 

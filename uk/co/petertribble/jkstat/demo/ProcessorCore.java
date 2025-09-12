@@ -35,18 +35,18 @@ public class ProcessorCore implements Comparable<ProcessorCore> {
 
     private final Map<Long, Kstat> threadmap = new TreeMap<>();
 
-    private long chipid;
+    private ProcessorChip chip;
     private long coreid;
 
     /**
      * Create a new ProcessorCore to store details of a processor
      * core and its constituent threads.
      *
-     * @param chipid the chip id of this ProcessorCore
+     * @param chip the ProcessorChip containing this ProcessorCore
      * @param coreid the core id of this ProcessorCore
      */
-    public ProcessorCore(long chipid, long coreid) {
-	this.chipid = chipid;
+    public ProcessorCore(ProcessorChip chip, long coreid) {
+	this.chip = chip;
 	this.coreid = coreid;
     }
 
@@ -57,6 +57,15 @@ public class ProcessorCore implements Comparable<ProcessorCore> {
      */
     public long getCoreid() {
 	return coreid;
+    }
+
+    /**
+     * Get the id of the chip containing this ProcessorCore.
+     *
+     * @return the numerical id of the chip containing this ProcessorCore
+     */
+    public long getChipid() {
+	return chip.getChipid();
     }
 
     /**
@@ -136,5 +145,32 @@ public class ProcessorCore implements Comparable<ProcessorCore> {
 	    return 0;
 	}
 	return (int) (coreid - core.getCoreid());
+    }
+
+    /**
+     * Check equality with another ProcessorCore.
+     *
+     * @param o the object to check for equality with this ProcessorCore
+     *
+     * @return whether the given object is equal to this ProcessorCore
+     */
+    @Override
+    public boolean equals(Object o) {
+	if (o instanceof ProcessorCore) {
+	    ProcessorCore core = (ProcessorCore) o;
+	    return (coreid == core.getCoreid())
+		&& (chip.getChipid() == core.getChipid());
+        }
+        return false;
+    }
+
+    /**
+     * For Comparable.
+     *
+     * @return a unique hashcode for this ProcessorCore
+     */
+    @Override
+    public int hashCode() {
+	return (int) (chip.getChipid() + 17 * coreid);
     }
 }

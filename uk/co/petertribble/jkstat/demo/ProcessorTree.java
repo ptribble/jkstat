@@ -102,7 +102,7 @@ public class ProcessorTree {
 	    // if we haven't seen this core before, create a new ProcessorCore
 	    // and add it to the chip
 	    if (!chip.containsCore(lcore)) {
-		chip.addCore(lcore, new ProcessorCore(lchip, lcore));
+		chip.addCore(lcore, new ProcessorCore(chip, lcore));
 	    }
 	    // core is the core this thread belongs to
 	    ProcessorCore core = chip.getCore(lcore);

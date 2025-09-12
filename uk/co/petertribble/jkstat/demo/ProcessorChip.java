@@ -185,4 +185,30 @@ public class ProcessorChip implements Comparable<ProcessorChip> {
 	}
 	return (int) (chipid - chip.getChipid());
     }
+
+    /**
+     * Check equality with another ProcessorChip.
+     *
+     * @param o the object to check for equality with this ProcessorChip
+     *
+     * @return whether the given object is equal to this ProcessorChip
+     */
+    @Override
+    public boolean equals(Object o) {
+	if (o instanceof ProcessorChip) {
+	    ProcessorChip chip = (ProcessorChip) o;
+	    return chipid == chip.getChipid();
+        }
+        return false;
+    }
+
+    /**
+     * For Comparable.
+     *
+     * @return a unique hashcode for this ProcessorChip
+     */
+    @Override
+    public int hashCode() {
+	return (int) chipid;
+    }
 }

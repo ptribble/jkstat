@@ -23,6 +23,7 @@ package uk.co.petertribble.jkstat.parse;
 import uk.co.petertribble.jkstat.api.Kstat;
 import uk.co.petertribble.jkstat.api.KstatData;
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 import com.github.openjson.*;
 
@@ -41,7 +42,8 @@ public class JSONParser {
      * @param is the {@code InputStream} to parse
      */
     public JSONParser(InputStream is) {
-	parse(new BufferedReader(new InputStreamReader(is)));
+	parse(new BufferedReader(
+			new InputStreamReader(is, StandardCharsets.UTF_8)));
     }
 
     /*

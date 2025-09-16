@@ -45,7 +45,7 @@ public final class KServer1 {
      *
      * @param config the configuration to be applied
      */
-    public KServer1(KServerConfig config) {
+    public KServer1(final KServerConfig config) {
 	try {
 	    WebServer webServer = new WebServer(config.getPort());
 	    XmlRpcServer xmlRpcServer = webServer.getXmlRpcServer();
@@ -68,7 +68,7 @@ public final class KServer1 {
     /*
      * Register this server in mdns, with the type "_jkstat._tcp"
      */
-    private void registerService(KServerConfig config) {
+    private void registerService(final KServerConfig config) {
 	try {
 	    jmdns = JmDNS.create(config.getInetAddress());
 	    ServiceInfo serviceInfo = ServiceInfo.create("_jkstat._tcp.local.",
@@ -104,7 +104,7 @@ public final class KServer1 {
      *
      * @param args command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
 	KServerConfig config = new KServerConfig();
 	int i = 0;
 	while (i < args.length) {

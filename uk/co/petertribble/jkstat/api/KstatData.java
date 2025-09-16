@@ -74,7 +74,7 @@ public class KstatData implements Serializable {
         private final int intType;
         private final boolean numeric;
 
-        Type(int intType, boolean numeric) {
+        Type(final int intType, final boolean numeric) {
             this.intType = intType;
             this.numeric = numeric;
         }
@@ -104,7 +104,7 @@ public class KstatData implements Serializable {
 	 *
 	 * @return the Type corresponding to the argument
 	 */
-        public static Type toType(int intType) {
+        public static Type toType(final int intType) {
             for (Type type : values()) {
                 if (intType == type.toInt()) {
                     return type;
@@ -127,7 +127,7 @@ public class KstatData implements Serializable {
      * @param type the type of the data
      * @param data the data
      */
-    public KstatData(Type type, Object data) {
+    public KstatData(final Type type, final Object data) {
         this.type = type;
         this.data = data;
     }

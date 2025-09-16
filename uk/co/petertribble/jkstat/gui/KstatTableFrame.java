@@ -50,8 +50,8 @@ public final class KstatTableFrame extends JFrame implements ActionListener {
      * @param interval the update interval in seconds
      * @param jkstat a {@code JKstat}
      */
-    public KstatTableFrame(String module, String instance, String name,
-		int interval, JKstat jkstat) {
+    public KstatTableFrame(final String module, final String instance,
+		final String name, final int interval, final JKstat jkstat) {
 	this(jkstat.getKstat(module, Integer.parseInt(instance), name),
 		interval, jkstat);
     }
@@ -64,7 +64,8 @@ public final class KstatTableFrame extends JFrame implements ActionListener {
      * @param interval the update interval in seconds
      * @param jkstat a {@code JKstat}
      */
-    public KstatTableFrame(Kstat ks, int interval, JKstat jkstat) {
+    public KstatTableFrame(final Kstat ks, final int interval,
+			   final JKstat jkstat) {
 	setTitle(ks.getTriplet());
 	kt = new KstatTable(ks, interval, jkstat);
 	addWindowListener(new WindowExit());
@@ -94,13 +95,13 @@ public final class KstatTableFrame extends JFrame implements ActionListener {
      */
     class WindowExit extends WindowAdapter {
 	@Override
-	public void windowClosing(WindowEvent we) {
+	public void windowClosing(final WindowEvent we) {
 	    kt.stopLoop();
 	}
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(final ActionEvent e) {
 	kt.stopLoop();
 	setVisible(false);
 	dispose();

@@ -60,7 +60,8 @@ public final class AccessoryKmemAlloc extends KstatAccessoryPanel {
      * @param interval the update interval in seconds
      * @param jkstat a JKstat
      */
-    public AccessoryKmemAlloc(Kstat ks, int interval, JKstat jkstat) {
+    public AccessoryKmemAlloc(final Kstat ks, final int interval,
+			      final JKstat jkstat) {
 	super(ks, interval, jkstat);
 
 	jpAlloc = new JProgressBar(0, (int) iomax);

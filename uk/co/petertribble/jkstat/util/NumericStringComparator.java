@@ -58,7 +58,7 @@ public final class NumericStringComparator implements Comparator<String> {
      * than) s2, and -1 if s2 sorts after s1
      */
     @Override
-    public int compare(String s1, String s2) {
+    public int compare(final String s1, final String s2) {
 	char c1;
 	char c2;
 	boolean d1;

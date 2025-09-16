@@ -87,7 +87,8 @@ public abstract class KstatAccessoryPanel extends JPanel
      * @param interval the desired update interval, in seconds
      * @param jkstat a JKstat object
      */
-    public KstatAccessoryPanel(Kstat ks, int interval, JKstat jkstat) {
+    public KstatAccessoryPanel(final Kstat ks, final int interval,
+			       final JKstat jkstat) {
 	this.ks = ks;
 	delay = interval * 1000;
 	this.jkstat = jkstat;
@@ -134,7 +135,7 @@ public abstract class KstatAccessoryPanel extends JPanel
      *
      * @param interval the desired delay, in seconds
      */
-    public void setDelay(int interval) {
+    public void setDelay(final int interval) {
 	delay = interval * 1000;
 	if (timer != null) {
 	    timer.setDelay(delay);
@@ -149,7 +150,7 @@ public abstract class KstatAccessoryPanel extends JPanel
      * @param e the ActionEvent which will trigger this action
      */
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(final ActionEvent e) {
 	updateAccessory();
     }
 }

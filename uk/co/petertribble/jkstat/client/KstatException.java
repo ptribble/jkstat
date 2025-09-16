@@ -43,7 +43,7 @@ public class KstatException extends RuntimeException {
      *
      * @param message the detail message
      */
-    public KstatException(String message) {
+    public KstatException(final String message) {
 	super(message);
     }
 
@@ -54,7 +54,7 @@ public class KstatException extends RuntimeException {
      * @param message the detail message
      * @param cause the underlying cause for this KstatException
      */
-    public KstatException(String message, Throwable cause) {
+    public KstatException(final String message, final Throwable cause) {
 	super(message, cause);
     }
 }

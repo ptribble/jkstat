@@ -73,7 +73,7 @@ public final class KClientConfig {
      *
      * @param s the textual url of the server to connect to
      */
-    public KClientConfig(String s) {
+    public KClientConfig(final String s) {
 	this(s, CLIENT_XMLRPC);
     }
 
@@ -83,7 +83,7 @@ public final class KClientConfig {
      * @param s the textual url of the server to connect to
      * @param protocol specifies the communication protocol
      */
-    public KClientConfig(String s, int protocol) {
+    public KClientConfig(final String s, final int protocol) {
 	urlString = s;
 	this.protocol = protocol;
     }
@@ -101,7 +101,7 @@ public final class KClientConfig {
      *
      * @param f the File to read the configuration from.
      */
-    public KClientConfig(File f) {
+    public KClientConfig(final File f) {
 	if (f.exists()) {
 	    Map<String, String> m = JumbleUtils.fileToPropMap(f);
 	    urlString = m.get("URL");
@@ -143,7 +143,7 @@ public final class KClientConfig {
      *
      * @param username the username to connect as
      */
-    public void setUser(String username) {
+    public void setUser(final String username) {
 	this.username = username;
     }
 
@@ -165,7 +165,7 @@ public final class KClientConfig {
      *
      * @param userpass the password to use for authentication
      */
-    public void setPass(String userpass) {
+    public void setPass(final String userpass) {
 	this.userpass = userpass;
     }
 
@@ -187,7 +187,7 @@ public final class KClientConfig {
      *
      * @param s the server to connect to
      */
-    public void setServerURL(String s) {
+    public void setServerURL(final String s) {
 	urlString = s;
     }
 
@@ -198,7 +198,7 @@ public final class KClientConfig {
      *
      * @param protocol an integer representing the communication protocol
      */
-    public void setProtocol(int protocol) {
+    public void setProtocol(final int protocol) {
 	this.protocol = protocol;
     }
 

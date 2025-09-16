@@ -39,7 +39,7 @@ public final class JSONdump {
      *
      * @param args command line arguments, ignored
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
 	boolean firstentry = true;
 	JKstat jkstat = new NativeJKstat();
 	System.out.println("[");

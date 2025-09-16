@@ -82,7 +82,8 @@ public final class AccessoryCpuPanel extends KstatAccessoryPanel {
      * @param interval the update interval in seconds
      * @param jkstat a {@code JKstat}
      */
-    public AccessoryCpuPanel(Kstat ks, int interval, JKstat jkstat) {
+    public AccessoryCpuPanel(final Kstat ks, final int interval,
+			     final JKstat jkstat) {
 	this(ks, interval, jkstat, SwingConstants.HORIZONTAL);
     }
 
@@ -95,8 +96,8 @@ public final class AccessoryCpuPanel extends KstatAccessoryPanel {
      * @param orientation the desired orientation of the accessory, which
      * should be either SwingConstants.VERTICAL or SwingConstants.HORIZONTAL
      */
-    public AccessoryCpuPanel(Kstat ks, int interval, JKstat jkstat,
-			int orientation) {
+    public AccessoryCpuPanel(final Kstat ks, final int interval,
+			     final JKstat jkstat, final int orientation) {
 	super(ks, interval, jkstat);
 	this.orientation = orientation;
 
@@ -135,7 +136,7 @@ public final class AccessoryCpuPanel extends KstatAccessoryPanel {
     }
 
     @Override
-    public void paint(Graphics g) {
+    public void paint(final Graphics g) {
 	Graphics2D g2 = (Graphics2D) g;
 	Dimension d = getSize();
 

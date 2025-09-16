@@ -59,7 +59,8 @@ public final class IOstatTableModel extends AbstractTableModel
      * @param interval the desired update interval, in seconds
      * @param jkstat a {@code JKstat}
      */
-    public IOstatTableModel(KstatSet kss, int interval, JKstat jkstat) {
+    public IOstatTableModel(final KstatSet kss, final int interval,
+			    final JKstat jkstat) {
 	this.kss = kss;
 	this.jkstat = jkstat;
 
@@ -101,7 +102,7 @@ public final class IOstatTableModel extends AbstractTableModel
      *
      * @param interval the desired delay, in seconds
      */
-    public void setDelay(int interval) {
+    public void setDelay(final int interval) {
 	if (interval <= 0) {
 	    stopLoop();
 	} else {
@@ -113,7 +114,7 @@ public final class IOstatTableModel extends AbstractTableModel
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(final ActionEvent e) {
 	updateKstat();
     }
 
@@ -151,7 +152,7 @@ public final class IOstatTableModel extends AbstractTableModel
     }
 
     @Override
-    public String getColumnName(int col) {
+    public String getColumnName(final int col) {
 	return COLUMNNAMES[col];
     }
 
@@ -162,7 +163,7 @@ public final class IOstatTableModel extends AbstractTableModel
      *
      * @return the ChartableKstat at the given row
      */
-    public ChartableKstat getChartableKstat(int row) {
+    public ChartableKstat getChartableKstat(final int row) {
 	return iodata.get(row);
     }
 
@@ -170,14 +171,14 @@ public final class IOstatTableModel extends AbstractTableModel
      * Return the appropriate data.
      */
     @Override
-    public Object getValueAt(int row, int col) {
+    public Object getValueAt(final int row, final int col) {
 	return (col == COLUMNNAMES.length - 1)
 	    ? iodata.get(row).toString()
 	    : iodata.get(row).getRate(COLUMNNAMES[col]);
     }
 
     @Override
-    public Class<?> getColumnClass(int c) {
+    public Class<?> getColumnClass(final int c) {
 	return (c == COLUMNNAMES.length - 1) ? String.class : Double.class;
     }
 }

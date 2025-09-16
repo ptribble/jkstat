@@ -42,7 +42,7 @@ public final class KstatTreeMap {
      *
      * @param kss a KstatSet object
      */
-    public KstatTreeMap(KstatSet kss) {
+    public KstatTreeMap(final KstatSet kss) {
 	/*
 	 * Create SortedMaps to store the Kstats in a hierarchical structure
 	 * and populate them with the contents of the list.
@@ -87,7 +87,7 @@ public final class KstatTreeMap {
      *
      * @param ks the Kstat to add
      */
-    public void addKstat(Kstat ks) {
+    public void addKstat(final Kstat ks) {
 	addToModuleMap(kstatMap, ks);
 	addToTypeMap(kstatTypeMap, ks);
 	addToClassMap(kstatClassMap, ks);
@@ -98,7 +98,7 @@ public final class KstatTreeMap {
      *
      * @param ks the Kstat to remove
      */
-    public void removeKstat(Kstat ks) {
+    public void removeKstat(final Kstat ks) {
 	removeFromModuleMap(kstatMap, ks);
 	removeFromTypeMap(kstatTypeMap, ks);
 	removeFromClassMap(kstatClassMap, ks);
@@ -107,7 +107,8 @@ public final class KstatTreeMap {
     /*
      * Add a Kstat to the right place in the Map.
      */
-    private void addToTypeMap(SortedMap<String, KstatModuleMap> hc, Kstat ks) {
+    private void addToTypeMap(final SortedMap<String, KstatModuleMap> hc,
+			      final Kstat ks) {
 	String ktype = ks.getTypeAsString();
 	if (!hc.containsKey(ktype)) {
 	    hc.put(ktype, new KstatModuleMap());
@@ -119,8 +120,8 @@ public final class KstatTreeMap {
     /*
      * Add a Kstat to the right place in the Map.
      */
-    private void addToClassMap(SortedMap<String, KstatModuleMap> hc,
-		Kstat ks) {
+    private void addToClassMap(final SortedMap<String, KstatModuleMap> hc,
+			       final Kstat ks) {
 	String kc = ks.getKstatClass();
 	if (!hc.containsKey(kc)) {
 	    hc.put(kc, new KstatModuleMap());
@@ -132,7 +133,7 @@ public final class KstatTreeMap {
     /*
      * Add a Kstat to the right place in the Map.
      */
-    private void addToModuleMap(KstatModuleMap hm, Kstat ks) {
+    private void addToModuleMap(final KstatModuleMap hm, final Kstat ks) {
 	String km = ks.getModule();
 	KstatInstanceMap hi;
 	if (hm.containsKey(km)) {
@@ -148,7 +149,7 @@ public final class KstatTreeMap {
     /*
      * Add a Kstat to the right place in the Map.
      */
-    private void addToInstanceMap(KstatInstanceMap hi, Kstat ks) {
+    private void addToInstanceMap(final KstatInstanceMap hi, final Kstat ks) {
 	String ki = ks.getInstance();
 	KstatNameMap hn;
 	if (hi.containsKey(ki)) {
@@ -161,14 +162,14 @@ public final class KstatTreeMap {
 	hn.put(ks.getName(), ks);
     }
 
-    private void removeFromTypeMap(SortedMap<String, KstatModuleMap> ht,
-		Kstat ks) {
+    private void removeFromTypeMap(final SortedMap<String, KstatModuleMap> ht,
+				   final Kstat ks) {
 	KstatModuleMap hm = ht.get(ks.getTypeAsString());
 	removeFromModuleMap(hm, ks);
     }
 
-    private void removeFromClassMap(SortedMap<String, KstatModuleMap> hc,
-		Kstat ks) {
+    private void removeFromClassMap(final SortedMap<String, KstatModuleMap> hc,
+				    final Kstat ks) {
 	KstatModuleMap hm = hc.get(ks.getKstatClass());
 	removeFromModuleMap(hm, ks);
     }
@@ -176,8 +177,8 @@ public final class KstatTreeMap {
     /*
      * Delete the kstat from the Maps.
      */
-    private void removeFromModuleMap(KstatModuleMap hm,
-		Kstat ks) {
+    private void removeFromModuleMap(final KstatModuleMap hm,
+				     final Kstat ks) {
 	KstatInstanceMap hmap1 = hm.get(ks.getModule());
 	if (hmap1 == null) {
 	    return;

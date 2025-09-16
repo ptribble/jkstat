@@ -50,7 +50,7 @@ public class KstatFilter {
      *
      * @param jkstat a JKstat object
      */
-    public KstatFilter(JKstat jkstat) {
+    public KstatFilter(final JKstat jkstat) {
 	this.jkstat = jkstat;
 	filterList = new HashSet<>();
 	antiFilterList = new HashSet<>();
@@ -62,7 +62,7 @@ public class KstatFilter {
      *
      * @param filterClass the name of the class of kstat to be matched
      */
-    public void setFilterClass(String filterClass) {
+    public void setFilterClass(final String filterClass) {
 	this.filterClass = filterClass;
     }
 
@@ -72,7 +72,7 @@ public class KstatFilter {
      *
      * @param filterType the type of kstat to be matched
      */
-    public void setFilterType(int filterType) {
+    public void setFilterType(final int filterType) {
 	this.filterType = filterType;
     }
 
@@ -88,7 +88,7 @@ public class KstatFilter {
      *
      * @param filter the filter expression
      */
-    public void addFilter(String filter) {
+    public void addFilter(final String filter) {
 	doFilter(filter, filterList);
     }
 
@@ -104,7 +104,7 @@ public class KstatFilter {
      *
      * @param filter the filter expression
      */
-    public void addNegativeFilter(String filter) {
+    public void addNegativeFilter(final String filter) {
 	doFilter(filter, antiFilterList);
     }
 
@@ -112,7 +112,7 @@ public class KstatFilter {
      * Common filter code.
      */
     @SuppressWarnings("fallthrough")
-    private void doFilter(String filter, Set<FilterQuartet> fset) {
+    private void doFilter(final String filter, final Set<FilterQuartet> fset) {
 	if (filter == null) {
 	    return;
 	}
@@ -176,7 +176,7 @@ public class KstatFilter {
      *
      * @return the {@code Kstat}s that match the filter
      */
-    public Set<Kstat> getKstats(boolean sorted) {
+    public Set<Kstat> getKstats(final boolean sorted) {
 	Set<Kstat> matchset = sorted ? new TreeSet<>() : new HashSet<>();
 	for (Kstat ks : jkstat.getKstats()) {
 	    if (matchFilter(ks)) {
@@ -196,7 +196,7 @@ public class KstatFilter {
      *
      * @return a filtered Set of statistics
      */
-    public Set<String> filteredStatistics(Kstat ks) {
+    public Set<String> filteredStatistics(final Kstat ks) {
 	if (ks == null) {
 	    return null;
 	}
@@ -223,7 +223,7 @@ public class KstatFilter {
      *
      * As it is only called from filteredStatistics, we know ks is not null
      */
-    private boolean matchMIN(Kstat ks) {
+    private boolean matchMIN(final Kstat ks) {
 	/*
 	 * If there are no filters we definitely match. While counterintuitive
 	 * this behaviour is correct - it means we cannot possibly have been
@@ -254,7 +254,7 @@ public class KstatFilter {
      * Return the Set of statistics that this filter matches against the
      * given Kstat.
      */
-    private Set<String> matchedStats(Kstat ks) {
+    private Set<String> matchedStats(final Kstat ks) {
 	Set<String> nstats = new TreeSet<>();
 	/*
 	 * Because matchMIN is called before this, we know there has to be
@@ -359,7 +359,7 @@ public class KstatFilter {
 	return false;
     }
 
-    private boolean matchTriplet(Kstat ks, FilterQuartet fq) {
+    private boolean matchTriplet(final Kstat ks, final FilterQuartet fq) {
 	boolean mmatch =
 	    (fq.module == null) || fq.module.equals(ks.getModule());
 	boolean imatch =
@@ -378,8 +378,8 @@ public class KstatFilter {
 	protected String name;
 	protected String statistic;
 
-	FilterQuartet(String module, Integer instance, String name,
-			String statistic) {
+	FilterQuartet(final String module, final Integer instance,
+		      final String name, final String statistic) {
 	    this.module = module;
 	    this.instance = instance;
 	    this.name = name;

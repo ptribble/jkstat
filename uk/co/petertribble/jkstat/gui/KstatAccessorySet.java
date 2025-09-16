@@ -42,8 +42,8 @@ public final class KstatAccessorySet implements ActionListener {
      * @param accessories a Collection of accessories
      * @param interval the update interval of the accessories
      */
-    public KstatAccessorySet(Collection<KstatAccessoryPanel> accessories,
-							int interval) {
+    public KstatAccessorySet(final Collection<KstatAccessoryPanel> accessories,
+			     final int interval) {
 	this.accessories = accessories;
 	delay = interval * 1000;
 	startLoop();
@@ -82,7 +82,7 @@ public final class KstatAccessorySet implements ActionListener {
      *
      * @param interval the desired delay, in seconds
      */
-    public void setDelay(int interval) {
+    public void setDelay(final int interval) {
 	delay = interval * 1000;
 	if (timer != null) {
 	    timer.setDelay(delay);
@@ -90,7 +90,7 @@ public final class KstatAccessorySet implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(final ActionEvent e) {
 	updateAccessories();
     }
 }

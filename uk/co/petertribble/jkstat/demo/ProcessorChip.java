@@ -43,7 +43,7 @@ public class ProcessorChip implements Comparable<ProcessorChip> {
      *
      * @param chipid the id of this ProcessorChip
      */
-    public ProcessorChip(long chipid) {
+    public ProcessorChip(final long chipid) {
 	this.chipid = chipid;
     }
 
@@ -62,7 +62,7 @@ public class ProcessorChip implements Comparable<ProcessorChip> {
      * @param coreid the id of the core to add
      * @param pcore the ProcessorCore to add
      */
-    public void addCore(Long coreid, ProcessorCore pcore) {
+    public void addCore(final Long coreid, final ProcessorCore pcore) {
 	coremap.put(coreid, pcore);
     }
 
@@ -73,7 +73,7 @@ public class ProcessorChip implements Comparable<ProcessorChip> {
      *
      * @return the ProcessorCore matching the requested id
      */
-    public ProcessorCore getCore(Long coreid) {
+    public ProcessorCore getCore(final Long coreid) {
 	return coremap.get(coreid);
     }
 
@@ -93,7 +93,7 @@ public class ProcessorChip implements Comparable<ProcessorChip> {
      *
      * @return true if the requested core is present
      */
-    public boolean containsCore(Long coreid) {
+    public boolean containsCore(final Long coreid) {
 	return coremap.containsKey(coreid);
     }
 
@@ -179,7 +179,7 @@ public class ProcessorChip implements Comparable<ProcessorChip> {
      * with the id of this ProcessorChip
      */
     @Override
-    public int compareTo(ProcessorChip chip) {
+    public int compareTo(final ProcessorChip chip) {
 	if (this == chip) {
 	    return 0;
 	}
@@ -194,7 +194,7 @@ public class ProcessorChip implements Comparable<ProcessorChip> {
      * @return whether the given object is equal to this ProcessorChip
      */
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
 	if (o instanceof ProcessorChip) {
 	    ProcessorChip chip = (ProcessorChip) o;
 	    return chipid == chip.getChipid();

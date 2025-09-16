@@ -49,7 +49,8 @@ public final class AccessoryLoadChart extends KstatAccessoryPanel {
      * @param interval the update interval in seconds
      * @param jkstat a {@code JKstat}
      */
-    public AccessoryLoadChart(Kstat ks, int interval, JKstat jkstat) {
+    public AccessoryLoadChart(final Kstat ks, final int interval,
+			      final JKstat jkstat) {
 	super(ks, interval, jkstat);
 	setLayout(new BorderLayout());
 

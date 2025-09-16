@@ -44,8 +44,9 @@ public final class KstatAccessoryRegistry {
      *
      * @return a KstatAccessoryPanel object suitable for the given kstat
      */
-    public static KstatAccessoryPanel getAccessoryPanel(Kstat ks, int interval,
-							JKstat jkstat) {
+    public static KstatAccessoryPanel getAccessoryPanel(Kstat ks,
+							final int interval,
+							final JKstat jkstat) {
 	ks = jkstat.getKstat(ks);
 	if (ks == null) {
 	    return null;

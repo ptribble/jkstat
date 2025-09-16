@@ -49,8 +49,9 @@ public final class KstatAggregateAreaChart extends KstatBaseChart {
      * @param ksa the KstatAggregate supplying the data
      * @param statistic the statistic to be charted
      */
-    public KstatAggregateAreaChart(JKstat jkstat, KstatAggregate ksa,
-				String statistic) {
+    public KstatAggregateAreaChart(final JKstat jkstat,
+				   final KstatAggregate ksa,
+				   final String statistic) {
 	this(jkstat, ksa, statistic, true);
     }
 
@@ -62,8 +63,10 @@ public final class KstatAggregateAreaChart extends KstatBaseChart {
      * @param statistic the statistic to be charted
      * @param showdelta if true, show rates, else show absolute values
      */
-    public KstatAggregateAreaChart(JKstat jkstat, KstatAggregate ksa,
-				String statistic, boolean showdelta) {
+    public KstatAggregateAreaChart(final JKstat jkstat,
+				   final KstatAggregate ksa,
+				   final String statistic,
+				   final boolean showdelta) {
 	this.jkstat = jkstat;
 	this.ksa = ksa;
 	this.showdelta = showdelta;
@@ -78,21 +81,23 @@ public final class KstatAggregateAreaChart extends KstatBaseChart {
      * @param statistics the statistics to be charted
      * @param showdelta if true, show rates, else show absolute values
      */
-    public KstatAggregateAreaChart(JKstat jkstat, KstatAggregate ksa,
-				List<String> statistics, boolean showdelta) {
+    public KstatAggregateAreaChart(final JKstat jkstat,
+				   final KstatAggregate ksa,
+				   final List<String> statistics,
+				   final boolean showdelta) {
 	this.jkstat = jkstat;
 	this.ksa = ksa;
 	this.showdelta = showdelta;
 	init(statistics);
     }
 
-    private void init(String statistic) {
+    private void init(final String statistic) {
 	List<String> statistics = new ArrayList<>();
 	statistics.add(statistic);
 	init(statistics);
     }
 
-    private void init(List<String> statistics) {
+    private void init(final List<String> statistics) {
 	statlist = statistics;
 	dataset = new TimeTableXYDataset();
 
@@ -125,19 +130,19 @@ public final class KstatAggregateAreaChart extends KstatBaseChart {
     }
 
     @Override
-    public void addStatistic(String statistic) {
+    public void addStatistic(final String statistic) {
 	statlist.add(statistic);
     }
 
     @Override
-    public void removeStatistic(String statistic) {
+    public void removeStatistic(final String statistic) {
 	statlist.remove(statistic);
     }
 
     /*
      * read all the data from the kstat sequence
      */
-    private void readAll(SequencedJKstat sjkstat) {
+    private void readAll(final SequencedJKstat sjkstat) {
 	cks.setJKstat(sjkstat);
 	do {
 	    readOne(new Millisecond(new Date(sjkstat.getTime())));
@@ -152,7 +157,7 @@ public final class KstatAggregateAreaChart extends KstatBaseChart {
     /*
      * Get and update the appropriate data.
      */
-    private void readOne(Millisecond ms) {
+    private void readOne(final Millisecond ms) {
 	cks.update();
 	// loop over all statistics
 	for (String statistic : statlist) {

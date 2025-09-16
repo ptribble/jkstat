@@ -51,7 +51,7 @@ public final class ParseableJSONZipJKstat extends SequencedJKstat {
      *
      * @throws IOException if there's a problem opening the zip file
      */
-    public ParseableJSONZipJKstat(String name) throws IOException {
+    public ParseableJSONZipJKstat(final String name) throws IOException {
 	this(new ZipFile(name), new HashMap<>(), false);
     }
 
@@ -63,7 +63,7 @@ public final class ParseableJSONZipJKstat extends SequencedJKstat {
      *
      * @throws IOException if there's a problem opening the zip file
      */
-    public ParseableJSONZipJKstat(String name, boolean cached)
+    public ParseableJSONZipJKstat(final String name, final boolean cached)
 		throws IOException {
 	this(new ZipFile(name), new HashMap<>(), cached);
     }
@@ -75,9 +75,9 @@ public final class ParseableJSONZipJKstat extends SequencedJKstat {
      * @param ppmap a Map containing parsed zip files
      * @param cached whether caching should be enabled
      */
-    public ParseableJSONZipJKstat(ZipFile zf,
-				Map<Integer, JSONParser> ppmap,
-				boolean cached) {
+    public ParseableJSONZipJKstat(final ZipFile zf,
+				final Map<Integer, JSONParser> ppmap,
+				final boolean cached) {
 	super();
 	this.zf = zf;
 	this.ppmap = ppmap;
@@ -90,7 +90,8 @@ public final class ParseableJSONZipJKstat extends SequencedJKstat {
 	inputs = al.toArray(new ZipEntry[0]);
 	Arrays.sort(inputs, new Comparator<ZipEntry>() {
 			@Override
-			public int compare(ZipEntry f1, ZipEntry f2) {
+			public int compare(final ZipEntry f1,
+					   final ZipEntry f2) {
 			    if (f1.getTime() > f2.getTime()) {
 				return +1;
 			    } else if (f1.getTime() < f2.getTime()) {
@@ -143,7 +144,7 @@ public final class ParseableJSONZipJKstat extends SequencedJKstat {
      * Read an entry. The entries we read can be cached in case we need them
      * later.
      */
-    private void readFile(int i) {
+    private void readFile(final int i) {
 	timestamp = inputs[i].getTime();
 	try {
 	    if (cached) {

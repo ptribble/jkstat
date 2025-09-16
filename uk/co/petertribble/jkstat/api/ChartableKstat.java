@@ -70,7 +70,7 @@ public class ChartableKstat {
      * @param jkstat a {@code JKstat}
      * @param ks the {@code Kstat} supplying the data
      */
-    public ChartableKstat(JKstat jkstat, Kstat ks) {
+    public ChartableKstat(final JKstat jkstat, final Kstat ks) {
 	this(jkstat, ks, true);
     }
 
@@ -81,7 +81,8 @@ public class ChartableKstat {
      * @param ks the {@code Kstat} supplying the data
      * @param init true if the list of values should be initialized to zero
      */
-    public ChartableKstat(JKstat jkstat, Kstat ks, boolean init) {
+    public ChartableKstat(final JKstat jkstat, Kstat ks,
+			  final boolean init) {
 	this.jkstat = jkstat;
 	this.ks = ks;
 	ks = jkstat.getKstat(ks);
@@ -100,7 +101,7 @@ public class ChartableKstat {
      *
      * @param jkstat the new jkstat instance to use
      */
-    public void setJKstat(JKstat jkstat) {
+    public void setJKstat(final JKstat jkstat) {
 	this.jkstat = jkstat;
     }
 
@@ -142,7 +143,7 @@ public class ChartableKstat {
      *
      * @return the rate of change of the given statistic
      */
-    public double getRate(String s) {
+    public double getRate(final String s) {
 	return rateMap.get(s);
     }
 
@@ -155,7 +156,7 @@ public class ChartableKstat {
      *
      * @return the value of the given statistic
      */
-    public long getValue(String s) {
+    public long getValue(final String s) {
 	Long l = valueMap.get(s);
 	return (l == null) ? 0L : l;
     }

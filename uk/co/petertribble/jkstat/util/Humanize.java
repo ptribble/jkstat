@@ -49,7 +49,7 @@ public final class Humanize {
      *
      * @return a String representing the given number in human readable form
      */
-    public static String scale(long l) {
+    public static String scale(final long l) {
 	return scale((double) l, "");
     }
 
@@ -63,7 +63,7 @@ public final class Humanize {
      *
      * @return a String representing the given number in human readable form
      */
-    public static String scale(long l, String suffix) {
+    public static String scale(final long l, final String suffix) {
 	return scale((double) l, suffix);
     }
 
@@ -76,7 +76,7 @@ public final class Humanize {
      *
      * @return a String representing the given number in human readable form
      */
-    public static String scale(double d) {
+    public static String scale(final double d) {
 	return scale(d, "");
     }
 
@@ -90,7 +90,7 @@ public final class Humanize {
      *
      * @return a String representing the given number in human readable form
      */
-    public static String scale(double d, String suffix) {
+    public static String scale(final double d, final String suffix) {
 	double dvalue = d;
 	/*
 	 * This would be a lot easier if I could define an empty character

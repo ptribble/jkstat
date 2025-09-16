@@ -38,13 +38,14 @@ public final class JsonJKstat extends JKstat {
      *
      * @param kcc the configuration specifying how to contact the server
      */
-    public JsonJKstat(KClientConfig kcc) {
+    public JsonJKstat(final KClientConfig kcc) {
 	super();
 	client = new JKhttpClient(kcc);
     }
 
     @Override
-    public Kstat getKstatObject(String module, int inst, String name) {
+    public Kstat getKstatObject(final String module, final int inst,
+				final String name) {
 	try {
 	    return JSONParser.getKstat(client.execute("get",
 			new String[] {module, Integer.toString(inst), name}));

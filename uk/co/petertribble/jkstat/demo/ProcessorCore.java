@@ -45,7 +45,7 @@ public class ProcessorCore implements Comparable<ProcessorCore> {
      * @param chip the ProcessorChip containing this ProcessorCore
      * @param coreid the core id of this ProcessorCore
      */
-    public ProcessorCore(ProcessorChip chip, long coreid) {
+    public ProcessorCore(final ProcessorChip chip, final long coreid) {
 	this.chip = chip;
 	this.coreid = coreid;
     }
@@ -74,7 +74,7 @@ public class ProcessorCore implements Comparable<ProcessorCore> {
      * @param threadid the id of the thread to add
      * @param kstat the cpu_info Kstat for this thread
      */
-    public void addThread(Long threadid, Kstat kstat) {
+    public void addThread(final Long threadid, final Kstat kstat) {
 	threadmap.put(threadid, kstat);
     }
 
@@ -85,7 +85,7 @@ public class ProcessorCore implements Comparable<ProcessorCore> {
      *
      * @return the Kstat matching the requested id
      */
-    public Kstat getThread(Long threadid) {
+    public Kstat getThread(final Long threadid) {
 	return threadmap.get(threadid);
     }
 
@@ -140,7 +140,7 @@ public class ProcessorCore implements Comparable<ProcessorCore> {
      * with the id of this ProcessorCore
      */
     @Override
-    public int compareTo(ProcessorCore core) {
+    public int compareTo(final ProcessorCore core) {
 	if (this == core) {
 	    return 0;
 	}
@@ -155,7 +155,7 @@ public class ProcessorCore implements Comparable<ProcessorCore> {
      * @return whether the given object is equal to this ProcessorCore
      */
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
 	if (o instanceof ProcessorCore) {
 	    ProcessorCore core = (ProcessorCore) o;
 	    return (coreid == core.getCoreid())

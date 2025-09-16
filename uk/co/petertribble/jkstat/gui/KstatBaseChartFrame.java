@@ -91,7 +91,7 @@ public class KstatBaseChartFrame extends JFrame implements ActionListener {
      *
      * @param title the window title
      */
-    protected void init(String title) {
+    protected void init(final String title) {
 	init(title, (JMenu) null);
     }
 
@@ -101,7 +101,7 @@ public class KstatBaseChartFrame extends JFrame implements ActionListener {
      * @param title the window title
      * @param statsMenu an optional menu listing available statistics
      */
-    protected void init(String title, JMenu statsMenu) {
+    protected void init(final String title, final JMenu statsMenu) {
 	setTitle(title);
 
 	setContentPane(new ChartPanel(kbc.getChart()));
@@ -186,7 +186,8 @@ public class KstatBaseChartFrame extends JFrame implements ActionListener {
      *
      * @return the Statistics Menu
      */
-    protected JMenu statisticsMenu(ChartableKstat cks, String statistic) {
+    protected JMenu statisticsMenu(final ChartableKstat cks,
+				   final String statistic) {
 	JMenu jmstat = new JMenu(KstatResources.getString("CHART.SHOW"));
 	jmstat.setMnemonic(KeyEvent.VK_S);
 	for (String stat : cks.getStatistics()) {
@@ -207,8 +208,8 @@ public class KstatBaseChartFrame extends JFrame implements ActionListener {
      *
      * @return the Statistics Menu
      */
-    protected JMenu statisticsMenu(ChartableKstat cks,
-				List<String> statistics) {
+    protected JMenu statisticsMenu(final ChartableKstat cks,
+				   final List<String> statistics) {
 	JMenu jmstat = new JMenu(KstatResources.getString("CHART.SHOW"));
 	jmstat.setMnemonic(KeyEvent.VK_S);
 	for (String stat : cks.getStatistics()) {
@@ -222,7 +223,7 @@ public class KstatBaseChartFrame extends JFrame implements ActionListener {
 
     class WindowExit extends WindowAdapter {
 	@Override
-	public void windowClosing(WindowEvent we) {
+	public void windowClosing(final WindowEvent we) {
 	    kbc.stopLoop();
 	    dispose();
 	}
@@ -270,7 +271,7 @@ public class KstatBaseChartFrame extends JFrame implements ActionListener {
      *
      * @param delay the desired update delay, in seconds
      */
-    protected void setDelay(int delay) {
+    protected void setDelay(final int delay) {
 	kbc.setDelay(delay);
     }
 
@@ -283,7 +284,7 @@ public class KstatBaseChartFrame extends JFrame implements ActionListener {
      * @param e the ActionEvent which will trigger this action
      */
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(final ActionEvent e) {
 	if (e.getSource() == exitItem) {
 	    kbc.stopLoop();
 	    setVisible(false);

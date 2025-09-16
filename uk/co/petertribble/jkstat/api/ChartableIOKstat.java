@@ -33,7 +33,7 @@ public final class ChartableIOKstat extends ChartableKstat {
      * @param jkstat a {@code JKstat}
      * @param ks the {@code Kstat} supplying the data
      */
-    public ChartableIOKstat(JKstat jkstat, Kstat ks) {
+    public ChartableIOKstat(final JKstat jkstat, final Kstat ks) {
 	super(jkstat, ks, false);
     }
 

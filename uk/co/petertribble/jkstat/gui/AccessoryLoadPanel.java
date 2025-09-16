@@ -64,7 +64,8 @@ public final class AccessoryLoadPanel extends KstatAccessoryPanel {
      * @param interval the update interval in seconds
      * @param jkstat a JKstat
      */
-    public AccessoryLoadPanel(Kstat ks, int interval, JKstat jkstat) {
+    public AccessoryLoadPanel(final Kstat ks, final int interval,
+			      final JKstat jkstat) {
 	super(ks, interval, jkstat);
 	init();
     }

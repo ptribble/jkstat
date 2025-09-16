@@ -45,7 +45,7 @@ public final class KServerConfig {
      *
      * @param f the file to be read containing the configuration
      */
-    public void parseConfig(File f) {
+    public void parseConfig(final File f) {
 	if (f.exists()) {
 	    Map<String, String> m = JumbleUtils.fileToPropMap(f);
 	    try {
@@ -167,7 +167,7 @@ public final class KServerConfig {
      * @param registermdns a boolean specifying if the server should
      * register itself in mdns
      */
-    void setRegister(boolean registermdns) {
+    void setRegister(final boolean registermdns) {
 	this.registermdns = registermdns;
     }
 
@@ -185,7 +185,7 @@ public final class KServerConfig {
      *
      * @param port the port number
      */
-    void setPort(int port) {
+    void setPort(final int port) {
 	this.port = port;
     }
 }

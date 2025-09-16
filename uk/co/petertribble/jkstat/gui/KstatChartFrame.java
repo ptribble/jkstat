@@ -44,8 +44,8 @@ public final class KstatChartFrame extends KstatBaseChartFrame {
      * @param kss A KstatSet containing the Kstats to be charted
      * @param statistic the statistic to be charted
      */
-    public KstatChartFrame(JKstat jkstat, KstatSet kss,
-				String statistic) {
+    public KstatChartFrame(final JKstat jkstat, final KstatSet kss,
+				final String statistic) {
 	this(jkstat, kss, statistic, true);
     }
 
@@ -58,8 +58,8 @@ public final class KstatChartFrame extends KstatBaseChartFrame {
      * @param statistic the statistic to be charted
      * @param showdelta if true, show rates rather than absolute values
      */
-    public KstatChartFrame(JKstat jkstat, KstatSet kss, String statistic,
-		boolean showdelta) {
+    public KstatChartFrame(final JKstat jkstat, final KstatSet kss,
+			   final String statistic, final boolean showdelta) {
 	super();
 	this.jkstat = jkstat;
 	this.showdelta = showdelta;
@@ -75,8 +75,8 @@ public final class KstatChartFrame extends KstatBaseChartFrame {
      * @param ksa A KstatAggregate to be charted
      * @param statistic the statistic to be charted
      */
-    public KstatChartFrame(JKstat jkstat, KstatAggregate ksa,
-				String statistic) {
+    public KstatChartFrame(final JKstat jkstat, final KstatAggregate ksa,
+				final String statistic) {
 	this(jkstat, ksa, statistic, true);
     }
 
@@ -89,8 +89,8 @@ public final class KstatChartFrame extends KstatBaseChartFrame {
      * @param statistic the statistic to be charted
      * @param showdelta if true, show rates rather than absolute values
      */
-    public KstatChartFrame(JKstat jkstat, KstatAggregate ksa, String statistic,
-		boolean showdelta) {
+    public KstatChartFrame(final JKstat jkstat, final KstatAggregate ksa,
+			   final String statistic, final boolean showdelta) {
 	super();
 	this.jkstat = jkstat;
 	this.showdelta = showdelta;
@@ -106,7 +106,8 @@ public final class KstatChartFrame extends KstatBaseChartFrame {
      * @param ks A Kstat to be charted
      * @param statistic the statistic to be charted
      */
-    public KstatChartFrame(JKstat jkstat, Kstat ks, String statistic) {
+    public KstatChartFrame(final JKstat jkstat, final Kstat ks,
+			   final String statistic) {
 	this(jkstat, ks, statistic, true);
     }
 
@@ -119,8 +120,8 @@ public final class KstatChartFrame extends KstatBaseChartFrame {
      * @param cks the {@code ChartableKstat} generating rates from the data
      * @param statistic the statistic to be charted
      */
-    public KstatChartFrame(JKstat jkstat, Kstat ks, ChartableKstat cks,
-		String statistic) {
+    public KstatChartFrame(final JKstat jkstat, final Kstat ks,
+			   final ChartableKstat cks, final String statistic) {
 	this(jkstat, ks, cks, statistic, true);
     }
 
@@ -133,8 +134,8 @@ public final class KstatChartFrame extends KstatBaseChartFrame {
      * @param statistic the statistic to be charted
      * @param showdelta if true, show rates rather than absolute values
      */
-    public KstatChartFrame(JKstat jkstat, Kstat ks, String statistic,
-		boolean showdelta) {
+    public KstatChartFrame(final JKstat jkstat, final Kstat ks,
+			   final String statistic, final boolean showdelta) {
 	this(jkstat, ks, new ChartableKstat(jkstat, ks), statistic, showdelta);
     }
 
@@ -148,8 +149,9 @@ public final class KstatChartFrame extends KstatBaseChartFrame {
      * @param statistic the statistic to be charted
      * @param showdelta if true, show rates rather than absolute values
      */
-    public KstatChartFrame(JKstat jkstat, Kstat ks, ChartableKstat cks,
-		String statistic, boolean showdelta) {
+    public KstatChartFrame(final JKstat jkstat, final Kstat ks,
+			   final ChartableKstat cks, final String statistic,
+			   final boolean showdelta) {
 	super();
 	this.jkstat = jkstat;
 	this.showdelta = showdelta;
@@ -165,8 +167,8 @@ public final class KstatChartFrame extends KstatBaseChartFrame {
      * @param ksa A KstatAggregate to be charted
      * @param statistics the List of statistics to be charted
      */
-    public KstatChartFrame(JKstat jkstat, KstatAggregate ksa,
-				List<String> statistics) {
+    public KstatChartFrame(final JKstat jkstat, final KstatAggregate ksa,
+				final List<String> statistics) {
 	this(jkstat, ksa, statistics, true);
     }
 
@@ -179,8 +181,8 @@ public final class KstatChartFrame extends KstatBaseChartFrame {
      * @param statistics the List of statistics to be charted
      * @param showdelta if true, show rates rather than absolute values
      */
-    public KstatChartFrame(JKstat jkstat, KstatAggregate ksa,
-		List<String> statistics, boolean showdelta) {
+    public KstatChartFrame(final JKstat jkstat, final KstatAggregate ksa,
+		final List<String> statistics, final boolean showdelta) {
 	super();
 	this.jkstat = jkstat;
 	this.showdelta = showdelta;
@@ -196,7 +198,8 @@ public final class KstatChartFrame extends KstatBaseChartFrame {
      * @param ks A Kstat to be charted
      * @param statistics the List of statistics to be charted
      */
-    public KstatChartFrame(JKstat jkstat, Kstat ks, List<String> statistics) {
+    public KstatChartFrame(final JKstat jkstat, final Kstat ks,
+			   final List<String> statistics) {
 	this(jkstat, ks, statistics, true);
     }
 
@@ -209,8 +212,8 @@ public final class KstatChartFrame extends KstatBaseChartFrame {
      * @param statistics the List of statistics to be charted
      * @param showdelta if true, show rates rather than absolute values
      */
-    public KstatChartFrame(JKstat jkstat, Kstat ks,
-		List<String> statistics, boolean showdelta) {
+    public KstatChartFrame(final JKstat jkstat, final Kstat ks,
+		final List<String> statistics, final boolean showdelta) {
 	super();
 	this.jkstat = jkstat;
 	this.showdelta = showdelta;
@@ -219,7 +222,7 @@ public final class KstatChartFrame extends KstatBaseChartFrame {
 					statistics));
     }
 
-    private static void usage(String message) {
+    private static void usage(final String message) {
 	System.err.println("ERROR: " + message);
 	System.err.println("Usage: chart module:instance:name:statistic");
 	System.err.println("       chart module:instance:name statistic "
@@ -232,7 +235,7 @@ public final class KstatChartFrame extends KstatBaseChartFrame {
      *
      * @param args command line arguments
      */
-    private static void doMain(String[] args, JKstat jkstat) {
+    private static void doMain(final String[] args, final JKstat jkstat) {
 	/*
 	 * We can be called in two ways. The short form is
 	 * module:instance:name:statistic
@@ -295,7 +298,7 @@ public final class KstatChartFrame extends KstatBaseChartFrame {
      *
      * @param args command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
 	if (args.length == 0) {
 	    usage("Missing arguments.");
 	}

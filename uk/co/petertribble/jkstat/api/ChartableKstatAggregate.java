@@ -37,7 +37,8 @@ public final class ChartableKstatAggregate extends ChartableKstat {
      * @param jkstat a {@code JKstat}
      * @param ksa the {@code KstatAggregate} supplying the data
      */
-    public ChartableKstatAggregate(JKstat jkstat, KstatAggregate ksa) {
+    public ChartableKstatAggregate(final JKstat jkstat,
+				   final KstatAggregate ksa) {
 	this.ksa = ksa;
 	ksa.read();
 	lastsnap = ksa.getCrtime();
@@ -48,7 +49,7 @@ public final class ChartableKstatAggregate extends ChartableKstat {
     }
 
     @Override
-    public void setJKstat(JKstat jkstat) {
+    public void setJKstat(final JKstat jkstat) {
 	ksa.setJKstat(jkstat);
     }
 

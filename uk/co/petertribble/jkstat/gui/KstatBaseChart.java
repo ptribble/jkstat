@@ -99,7 +99,7 @@ public abstract class KstatBaseChart implements ActionListener {
      * @param colors a List of Colors to be used to render the series of
      * data charts.
      */
-    public void setColors(List<Color> colors) {
+    public void setColors(final List<Color> colors) {
 	XYPlot plot = chart.getXYPlot();
 	XYItemRenderer renderer = plot.getRenderer();
 	int n = 0;
@@ -124,7 +124,7 @@ public abstract class KstatBaseChart implements ActionListener {
      *
      * @param maxage the required maximum age in milliseconds
      */
-    public void setMaxAge(int maxage) {
+    public void setMaxAge(final int maxage) {
 	this.maxage = maxage;
     }
 
@@ -176,7 +176,7 @@ public abstract class KstatBaseChart implements ActionListener {
      *
      * @param interval the desired delay, in seconds
      */
-    public void setDelay(int interval) {
+    public void setDelay(final int interval) {
 	delay = interval * 1000;
 	if (timer != null) {
 	    timer.setDelay(delay);
@@ -191,7 +191,7 @@ public abstract class KstatBaseChart implements ActionListener {
      * @param e the ActionEvent which will trigger this action
      */
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(final ActionEvent e) {
 	updateAccessory();
     }
 }

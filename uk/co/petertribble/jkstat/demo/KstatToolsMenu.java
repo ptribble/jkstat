@@ -68,7 +68,7 @@ public final class KstatToolsMenu extends JMenu implements ActionListener {
      *
      * @param jkstat a JKstat object
      */
-    public KstatToolsMenu(JKstat jkstat) {
+    public KstatToolsMenu(final JKstat jkstat) {
 	this(jkstat, true);
     }
 
@@ -78,7 +78,7 @@ public final class KstatToolsMenu extends JMenu implements ActionListener {
      * @param jkstat a JKstat object
      * @param showbrowser a boolean -- true if the kstat browser is to be shown
      */
-    public KstatToolsMenu(JKstat jkstat, boolean showbrowser) {
+    public KstatToolsMenu(final JKstat jkstat, final boolean showbrowser) {
 	super(KstatResources.getString("DEMO.TEXT"));
 	setMnemonic(KeyEvent.VK_D);
 
@@ -109,7 +109,7 @@ public final class KstatToolsMenu extends JMenu implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(final ActionEvent e) {
 	if (e.getSource() == kstatbrowserItem) {
 	    new KstatBrowser();
 	}

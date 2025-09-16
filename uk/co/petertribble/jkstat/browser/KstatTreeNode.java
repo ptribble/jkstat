@@ -48,7 +48,7 @@ public final class KstatTreeNode extends DefaultMutableTreeNode {
      * @param m a Map containing a Kstat hierarchy
      */
     @SuppressWarnings("rawtypes")
-    public KstatTreeNode(String s, Map m) {
+    public KstatTreeNode(final String s, final Map m) {
 	setUserObject(s);
 	nodeMap = new HashMap<>();
 	for (Object o : m.keySet()) {
@@ -68,7 +68,7 @@ public final class KstatTreeNode extends DefaultMutableTreeNode {
      *
      * @param s the name of the node
      */
-    public KstatTreeNode(String s) {
+    public KstatTreeNode(final String s) {
 	setUserObject(s);
 	nodeMap = new HashMap<>();
     }
@@ -79,7 +79,7 @@ public final class KstatTreeNode extends DefaultMutableTreeNode {
      *
      * @param ks a Kstat object
      */
-    public KstatTreeNode(Kstat ks) {
+    public KstatTreeNode(final Kstat ks) {
 	nodeisleaf = true;
 	setUserObject(ks);
     }
@@ -116,7 +116,7 @@ public final class KstatTreeNode extends DefaultMutableTreeNode {
      * @return a KstatTreeNode object that refers to the highest node in the
      * tree that changed, or null if the tree didn't change
      */
-    public KstatTreeNode addKstat(String s, Kstat ks) {
+    public KstatTreeNode addKstat(final String s, final Kstat ks) {
 	if (ks == null) {
 	    return null;
 	}
@@ -141,7 +141,7 @@ public final class KstatTreeNode extends DefaultMutableTreeNode {
      * @return a KstatTreeNode object that refers to the highest node in the
      * tree that changed, or null if the tree didn't change
      */
-    public KstatTreeNode removeKstat(String s, Kstat ks) {
+    public KstatTreeNode removeKstat(final String s, final Kstat ks) {
 	if (ks == null) {
 	    return null;
 	}
@@ -166,7 +166,7 @@ public final class KstatTreeNode extends DefaultMutableTreeNode {
      * hierarchy has been stripped off. This only gets called from the public
      * addKstat() method, so no need to check if we're passed null.
      */
-    private KstatTreeNode addKstat(Kstat ks) {
+    private KstatTreeNode addKstat(final Kstat ks) {
 	KstatTreeNode kn = new KstatTreeNode(ks);
 	/*
 	 * Get the child node corresponding to the kstat module. If there isn't
@@ -208,7 +208,7 @@ public final class KstatTreeNode extends DefaultMutableTreeNode {
      * the hierarchy has been stripped off. This only gets called from the
      * public removeKstat() method, so no need to check if we're passed null.
      */
-    private KstatTreeNode removeKstat(Kstat ks) {
+    private KstatTreeNode removeKstat(final Kstat ks) {
 	/*
 	 * Get the child node corresponding to the kstat module. If there isn't
 	 * one, there's nothing to do.
@@ -272,14 +272,14 @@ public final class KstatTreeNode extends DefaultMutableTreeNode {
     /*
      * Get a matching child node.
      */
-    private KstatTreeNode getChild(String s) {
+    private KstatTreeNode getChild(final String s) {
 	return nodeMap.get(s);
     }
 
     /*
      * Remove a node from the tree and the node map.
      */
-    private void removeNode(String s) {
+    private void removeNode(final String s) {
 	remove(getChild(s));
 	nodeMap.remove(s);
     }
@@ -287,7 +287,7 @@ public final class KstatTreeNode extends DefaultMutableTreeNode {
     /*
      * Add a node to the tree and the node map.
      */
-    private void addNode(String s, KstatTreeNode kn) {
+    private void addNode(final String s, final KstatTreeNode kn) {
 	add(kn);
 	nodeMap.put(s, kn);
     }

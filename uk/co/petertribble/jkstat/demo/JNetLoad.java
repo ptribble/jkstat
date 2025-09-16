@@ -48,7 +48,7 @@ public final class JNetLoad extends JKdemo implements ActionListener {
      *
      * @param kcc the client configuration
      */
-    public JNetLoad(KClientConfig kcc) {
+    public JNetLoad(final KClientConfig kcc) {
 	this(new RemoteJKstat(kcc), true);
     }
 
@@ -66,7 +66,7 @@ public final class JNetLoad extends JKdemo implements ActionListener {
      * @param standalone a boolean, true if the demo is a standalone
      * application.
      */
-    public JNetLoad(JKstat jkstat, boolean standalone) {
+    public JNetLoad(final JKstat jkstat, final boolean standalone) {
 	super("JNetLoad", 1, standalone);
 
 	this.jkstat = jkstat;
@@ -123,12 +123,12 @@ public final class JNetLoad extends JKdemo implements ActionListener {
     }
 
     @Override
-    public void setDelay(int i) {
+    public void setDelay(final int i) {
 	kas.setDelay(i);
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(final ActionEvent e) {
 	super.actionPerformed(e);
 	Kstat ks = itemMap.get((JMenuItem) e.getSource());
 	if (ks != null) {
@@ -143,21 +143,21 @@ public final class JNetLoad extends JKdemo implements ActionListener {
     static class PopupListener extends MouseAdapter {
 	private JPopupMenu popup;
 
-	PopupListener(JPopupMenu popup) {
+	PopupListener(final JPopupMenu popup) {
 	    this.popup = popup;
 	}
 
 	@Override
-	public void mousePressed(MouseEvent e) {
+	public void mousePressed(final MouseEvent e) {
 	    showPopup(e);
 	}
 
 	@Override
-	public void mouseReleased(MouseEvent e) {
+	public void mouseReleased(final MouseEvent e) {
 	    showPopup(e);
 	}
 
-	private void showPopup(MouseEvent e) {
+	private void showPopup(final MouseEvent e) {
 	    if (e.isPopupTrigger()) {
 		popup.show(e.getComponent(), e.getX(), e.getY());
 	    }
@@ -169,7 +169,7 @@ public final class JNetLoad extends JKdemo implements ActionListener {
      *
      * @param args Command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
 	if (args.length == 0) {
 	    new JNetLoad();
 	} else if (args.length == 2 && "-s".equals(args[0])) {

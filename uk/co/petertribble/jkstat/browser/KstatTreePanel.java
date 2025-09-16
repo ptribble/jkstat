@@ -146,7 +146,7 @@ public final class KstatTreePanel extends JPanel
      *
      * @param jkstat a JKstat object
      */
-    public KstatTreePanel(JKstat jkstat) {
+    public KstatTreePanel(final JKstat jkstat) {
 	this(jkstat, new KstatSet(jkstat));
     }
 
@@ -156,7 +156,7 @@ public final class KstatTreePanel extends JPanel
      * @param jkstat a JKstat object
      * @param kss a KstatSet object
      */
-    public KstatTreePanel(JKstat jkstat, KstatSet kss) {
+    public KstatTreePanel(final JKstat jkstat, final KstatSet kss) {
 	this.jkstat = jkstat;
 	this.kss = kss;
 
@@ -273,7 +273,7 @@ public final class KstatTreePanel extends JPanel
 	}
     }
 
-    private void setKstatPanel(DefaultMutableTreeNode node) {
+    private void setKstatPanel(final DefaultMutableTreeNode node) {
 	if ((node != null) && (node.getUserObject() instanceof Kstat)) {
 	    showKstat((Kstat) node.getUserObject());
 	}
@@ -313,7 +313,7 @@ public final class KstatTreePanel extends JPanel
      *
      * @param i an int specifying the delay value
      */
-    public void setDelay(int i) {
+    public void setDelay(final int i) {
 	interval = i;
 	if (timer != null) {
 	    timer.setDelay(interval * 1000);
@@ -409,7 +409,7 @@ public final class KstatTreePanel extends JPanel
     /*
      * Add an accessory panel that shows a graphical display of the kstat.
      */
-    private void setKstatAccessory(Kstat ks) {
+    private void setKstatAccessory(final Kstat ks) {
 	kap = KstatAccessoryRegistry.getAccessoryPanel(ks, -1, jkstat);
 	if (kap != null) {
 	    rpanel.add(kap, BorderLayout.SOUTH);
@@ -419,14 +419,14 @@ public final class KstatTreePanel extends JPanel
     /*
      * Add a JTable showing the kstat data in tabular form.
      */
-    private void setKstatTable(Kstat ks) {
+    private void setKstatTable(final Kstat ks) {
 	ktpanel.removeAll();
 	kt = new KstatTable(ks, 0, jkstat);
 	ktpanel.add(new JScrollPane(kt));
 	rpanel.add(ktpanel);
     }
 
-    private void setKstatInfo(Kstat ks) {
+    private void setKstatInfo(final Kstat ks) {
 	StringBuilder sb = new StringBuilder(34);
 	if (ks == null) {
 	    sb.append("Invalid kstat");
@@ -440,7 +440,7 @@ public final class KstatTreePanel extends JPanel
 	rpanel.add(tp, BorderLayout.NORTH);
     }
 
-    private void setInfoText(String s) {
+    private void setInfoText(final String s) {
 	tp.setText(s);
     }
 
@@ -449,7 +449,7 @@ public final class KstatTreePanel extends JPanel
      * into contained Maps. We do not care about types, really.
      */
     @SuppressWarnings("rawtypes")
-    private int countEntries(Map m) {
+    private int countEntries(final Map m) {
 	int i = 0;
 	for (Object o : m.values()) {
 	    if (o instanceof Map) {
@@ -464,7 +464,7 @@ public final class KstatTreePanel extends JPanel
     /*
      * Add a new Kstat to the Maps and to the models used by the trees.
      */
-    private void addKstat(Kstat ks) {
+    private void addKstat(final Kstat ks) {
 	addToModels(ks);
 	ksm.addKstat(ks);
     }
@@ -472,7 +472,7 @@ public final class KstatTreePanel extends JPanel
     /*
      * Removes a Kstat from the Maps and from the models used by the trees.
      */
-    private void removeKstat(Kstat ks) {
+    private void removeKstat(final Kstat ks) {
 	removeFromModels(ks);
 	ksm.removeKstat(ks);
     }
@@ -480,7 +480,7 @@ public final class KstatTreePanel extends JPanel
     /*
      * Add a Kstat to the models.
      */
-    private void addToModels(Kstat ks) {
+    private void addToModels(final Kstat ks) {
 	moduleModel.addKstat((String) null, ks);
 	classModel.addKstat(ks.getKstatClass(), ks);
 	typeModel.addKstat(ks.getTypeAsString(), ks);
@@ -489,7 +489,7 @@ public final class KstatTreePanel extends JPanel
     /*
      * Remove a Kstat from the models.
      */
-    private void removeFromModels(Kstat ks) {
+    private void removeFromModels(final Kstat ks) {
 	moduleModel.removeKstat((String) null, ks);
 	classModel.removeKstat(ks.getKstatClass(), ks);
 	typeModel.removeKstat(ks.getTypeAsString(), ks);
@@ -545,7 +545,7 @@ public final class KstatTreePanel extends JPanel
 
     // handle TreeSelectionListener events
     @Override
-    public void valueChanged(TreeSelectionEvent e) {
+    public void valueChanged(final TreeSelectionEvent e) {
 	TreePath tpth = e.getNewLeadSelectionPath();
 	if (tpth != null) {
 	    setKstatPanel((DefaultMutableTreeNode) tpth.getLastPathComponent());
@@ -554,7 +554,7 @@ public final class KstatTreePanel extends JPanel
 
     // handle timer events
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(final ActionEvent e) {
 	if (e.getSource() == startB) {
 	    startLoop();
 	    backB.setEnabled(false);

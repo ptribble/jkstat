@@ -133,13 +133,13 @@ public final class JLoadChart extends JFrame implements ActionListener {
 
     static class WindowExit extends WindowAdapter {
 	@Override
-	public void windowClosing(WindowEvent we) {
+	public void windowClosing(final WindowEvent we) {
 	    System.exit(0);
 	}
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(final ActionEvent e) {
 	if (e.getSource() == exitItem) {
 	    System.exit(0);
 	} else {
@@ -152,7 +152,7 @@ public final class JLoadChart extends JFrame implements ActionListener {
      *
      * @param args command line arguments, ignored
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
 	new JLoadChart();
     }
 }

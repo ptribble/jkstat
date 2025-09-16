@@ -51,7 +51,7 @@ public final class Jnfsstat extends JKdemo implements ChangeListener {
      *
      * @param kcc the client configuration
      */
-    public Jnfsstat(KClientConfig kcc) {
+    public Jnfsstat(final KClientConfig kcc) {
 	this(new RemoteJKstat(kcc), true);
     }
 
@@ -69,7 +69,7 @@ public final class Jnfsstat extends JKdemo implements ChangeListener {
      * @param standalone a boolean, true if the demo is a standalone
      * application.
      */
-    public Jnfsstat(JKstat jkstat, boolean standalone) {
+    public Jnfsstat(final JKstat jkstat, final boolean standalone) {
 	super("jnfsstat", standalone);
 
 	// create main display panel
@@ -174,8 +174,8 @@ public final class Jnfsstat extends JKdemo implements ChangeListener {
     /*
      * Convenience method to add a table
      */
-    private void addTable(JKstat jkstat, Kstat kstat, String title,
-			  JTabbedPane parentPane) {
+    private void addTable(final JKstat jkstat, final Kstat kstat,
+			  final String title, final JTabbedPane parentPane) {
 	if (kstat != null) {
 	    KstatTable newTable = new KstatTable(kstat, 0, jkstat);
 	    activeTables.add(newTable);
@@ -184,7 +184,7 @@ public final class Jnfsstat extends JKdemo implements ChangeListener {
     }
 
     @Override
-    public void setDelay(int i) {
+    public void setDelay(final int i) {
 	for (KstatTable kst : activeTables) {
 	    kst.setDelay(i);
 	}
@@ -203,7 +203,7 @@ public final class Jnfsstat extends JKdemo implements ChangeListener {
      *
      * @param args Command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
 	if (args.length == 0) {
 	    new Jnfsstat();
 	} else if (args.length == 2 && "-s".equals(args[0])) {
@@ -238,7 +238,7 @@ public final class Jnfsstat extends JKdemo implements ChangeListener {
 
     // for ChangeListener
     @Override
-    public void stateChanged(ChangeEvent ce) {
+    public void stateChanged(final ChangeEvent ce) {
 	stopLoop();
 	activateCurrentTab();
     }

@@ -45,7 +45,7 @@ public final class MPstatTable extends JTable {
      * @param jkstat a JKstat object
      * @param interval the desired update interval
      */
-    public MPstatTable(JKstat jkstat, int interval) {
+    public MPstatTable(final JKstat jkstat, final int interval) {
 	this.jkstat = jkstat;
 	/*
 	 * Filter on all cpu kstats.
@@ -65,16 +65,16 @@ public final class MPstatTable extends JTable {
     class PopupListener extends MouseAdapter {
 
 	@Override
-	public void mousePressed(MouseEvent e) {
+	public void mousePressed(final MouseEvent e) {
 	    showPopup(e);
 	}
 
 	@Override
-	public void mouseReleased(MouseEvent e) {
+	public void mouseReleased(final MouseEvent e) {
 	    showPopup(e);
 	}
 
-	private void showPopup(MouseEvent e) {
+	private void showPopup(final MouseEvent e) {
 	    if (e.isPopupTrigger()) {
 		// need to get which row of the model we're on
 		int irow = convertRowIndexToModel(rowAtPoint(e.getPoint()));
@@ -106,7 +106,7 @@ public final class MPstatTable extends JTable {
 		+ " for cpu " + cks);
 	showChartItem.addActionListener(new ActionListener() {
 	    @Override
-	    public void actionPerformed(ActionEvent e) {
+	    public void actionPerformed(final ActionEvent e) {
 		new KstatChartFrame(jkstat, cks.getKstat(), cks, s);
 	    }
 	});
@@ -126,7 +126,7 @@ public final class MPstatTable extends JTable {
      *
      * @param i the desired update delay, in seconds
      */
-    public void setDelay(int i) {
+    public void setDelay(final int i) {
 	ktm.setDelay(i);
     }
 }

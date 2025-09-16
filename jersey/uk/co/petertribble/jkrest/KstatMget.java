@@ -40,9 +40,9 @@ public class KstatMget {
      */
     @GET
     @Produces("application/json")
-    public String getKstats(@PathParam("module") String module,
-			   @PathParam("instance") String instance,
-			   @PathParam("namespecifier") String name) {
+    public String getKstats(@PathParam("module") final String module,
+			   @PathParam("instance") final String instance,
+			   @PathParam("namespecifier") final String name) {
 	StringBuilder sb = new StringBuilder();
 	sb.append('{');
 	boolean first = true;

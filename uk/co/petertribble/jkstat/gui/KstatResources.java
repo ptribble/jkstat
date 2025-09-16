@@ -43,7 +43,7 @@ public final class KstatResources {
      *
      * @return the matching String from the resource bundle
      */
-    public static String getString(String key) {
+    public static String getString(final String key) {
 	return KSTATRES.getString(key);
     }
 }

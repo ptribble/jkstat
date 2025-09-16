@@ -48,7 +48,7 @@ public final class JMPstat extends JKdemo {
      *
      * @param kcc the client configuration
      */
-    public JMPstat(KClientConfig kcc) {
+    public JMPstat(final KClientConfig kcc) {
 	this(new RemoteJKstat(kcc), true);
     }
 
@@ -66,7 +66,7 @@ public final class JMPstat extends JKdemo {
      * @param standalone a boolean, true if the demo is a standalone
      * application.
      */
-    public JMPstat(JKstat jkstat, boolean standalone) {
+    public JMPstat(final JKstat jkstat, final boolean standalone) {
 	super("jmpstat", standalone);
 
         // create main display panel
@@ -92,7 +92,7 @@ public final class JMPstat extends JKdemo {
     }
 
     @Override
-    public void setDelay(int i) {
+    public void setDelay(final int i) {
 	mptable.setDelay(i);
 	setLabelDelay(i);
     }
@@ -102,7 +102,7 @@ public final class JMPstat extends JKdemo {
      *
      * @param args Command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
 	if (args.length == 0) {
 	    new JMPstat();
 	} else if (args.length == 2 && "-s".equals(args[0])) {

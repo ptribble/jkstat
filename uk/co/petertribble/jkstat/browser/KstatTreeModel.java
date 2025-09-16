@@ -44,14 +44,14 @@ public class KstatTreeModel extends DefaultTreeModel {
      * @param m the Map of Kstats
      */
     @SuppressWarnings("rawtypes")
-    public KstatTreeModel(Map m) {
+    public KstatTreeModel(final Map m) {
 	this(new KstatTreeNode("Kstats", m));
     }
 
     /*
      * Construct a new KstatTreeModel.
      */
-    private KstatTreeModel(KstatTreeNode rootNode) {
+    private KstatTreeModel(final KstatTreeNode rootNode) {
 	super(rootNode);
 	this.rootNode = rootNode;
     }
@@ -62,7 +62,7 @@ public class KstatTreeModel extends DefaultTreeModel {
      * @param s the name of the node
      * @param ks the Kstat to add to the tree
      */
-    public void addKstat(String s, Kstat ks) {
+    public void addKstat(final String s, final Kstat ks) {
 	KstatTreeNode kn = rootNode.addKstat(s, ks);
 	if (kn != null) {
 	    nodeStructureChanged(kn);
@@ -75,7 +75,7 @@ public class KstatTreeModel extends DefaultTreeModel {
      * @param s the name of the node
      * @param ks the Kstat to remove
      */
-    public void removeKstat(String s, Kstat ks) {
+    public void removeKstat(final String s, final Kstat ks) {
 	KstatTreeNode kn = rootNode.removeKstat(s, ks);
 	if (kn != null) {
 	    nodeStructureChanged(kn);

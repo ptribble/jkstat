@@ -72,7 +72,7 @@ public class PsrInfo {
 	}
     }
 
-    private void displayPlain(Set<Kstat> kstats) {
+    private void displayPlain(final Set<Kstat> kstats) {
 	for (Kstat ks : kstats) {
 	    Kstat nks = jkstat.getKstat(ks);
 	    Instant ndate = Instant.ofEpochSecond(nks.longData("state_begin"));
@@ -81,7 +81,7 @@ public class PsrInfo {
 	}
     }
 
-    private void displayV(Set<Kstat> kstats) {
+    private void displayV(final Set<Kstat> kstats) {
 	for (Kstat ks : kstats) {
 	    System.out.println(details(jkstat.getKstat(ks)));
 	}
@@ -94,7 +94,7 @@ public class PsrInfo {
      *
      * @return a String similar to psrinfo -v output for the given Kstat
      */
-    private static String details(Kstat ks) {
+    private static String details(final Kstat ks) {
 	StringBuilder sb = new StringBuilder(160);
 	if (ks != null) {
 	    Instant now = Instant.now();
@@ -134,7 +134,7 @@ public class PsrInfo {
      *
      * @param args Command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
 	for (String arg : args) {
 	    if ("-t".equals(arg)) {
 		flagT = true;

@@ -40,7 +40,7 @@ public final class JKstatMXserver {
      *
      * @param args command line arguments, ignored
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
 	try {
 	    MBeanServer mbs = ManagementFactory.getPlatformMBeanServer();
 	    ObjectName name =

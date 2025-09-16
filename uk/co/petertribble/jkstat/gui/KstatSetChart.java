@@ -50,8 +50,8 @@ public final class KstatSetChart extends KstatBaseChart {
      * @param statistic the statistic to be charted
      * @param showdelta if true, show rates, else show absolute values
      */
-    public KstatSetChart(JKstat jkstat, KstatSet kss, String statistic,
-		boolean showdelta) {
+    public KstatSetChart(final JKstat jkstat, final KstatSet kss,
+			 final String statistic, final boolean showdelta) {
 	this.jkstat = jkstat;
 	this.kss = kss;
 	this.showdelta = showdelta;
@@ -66,21 +66,21 @@ public final class KstatSetChart extends KstatBaseChart {
      * @param statistics the statistics to be charted
      * @param showdelta if true, show rates, else show absolute values
      */
-    public KstatSetChart(JKstat jkstat, KstatSet kss, List<String> statistics,
-		boolean showdelta) {
+    public KstatSetChart(final JKstat jkstat, final KstatSet kss,
+		    final List<String> statistics, final boolean showdelta) {
 	this.jkstat = jkstat;
 	this.kss = kss;
 	this.showdelta = showdelta;
 	init(statistics);
     }
 
-    private void init(String statistic) {
+    private void init(final String statistic) {
 	List<String> statistics = new ArrayList<>();
 	statistics.add(statistic);
 	init(statistics);
     }
 
-    private void init(List<String> statistics) {
+    private void init(final List<String> statistics) {
 	dataset = new TimeSeriesCollection();
 	tsmap = new HashMap<>();
 	kMap = new HashMap<>();
@@ -124,21 +124,21 @@ public final class KstatSetChart extends KstatBaseChart {
     }
 
     @Override
-    public void addStatistic(String statistic) {
+    public void addStatistic(final String statistic) {
 	for (Kstat ks : kss.getKstats()) {
 	    dataset.addSeries(tsmap.get(ks.getTriplet() + ":" + statistic));
 	}
     }
 
     @Override
-    public void removeStatistic(String statistic) {
+    public void removeStatistic(final String statistic) {
 	for (Kstat ks : kss.getKstats()) {
 	    dataset.removeSeries(tsmap.get(ks.getTriplet() + ":" + statistic));
 	}
     }
 
     @Override
-    public void setMaxAge(int maxage) {
+    public void setMaxAge(final int maxage) {
 	this.maxage = maxage;
 	for (String s : tsmap.keySet()) {
 	    tsmap.get(s).setMaximumItemAge(maxage);
@@ -148,7 +148,7 @@ public final class KstatSetChart extends KstatBaseChart {
     /*
      * read all the data from the kstat sequence
      */
-    private void readAll(SequencedJKstat sjkstat) {
+    private void readAll(final SequencedJKstat sjkstat) {
 	for (ChartableKstat ck : kMap.values()) {
 	    ck.setJKstat(sjkstat);
 	}
@@ -172,7 +172,7 @@ public final class KstatSetChart extends KstatBaseChart {
     /*
      * Get and update the appropriate data.
      */
-    private void readOne(Kstat ks, Millisecond ms) {
+    private void readOne(final Kstat ks, final Millisecond ms) {
 	ChartableKstat cks = kMap.get(ks);
 	cks.update();
 	for (String statistic : KstatUtil.numericStatistics(jkstat, ks)) {

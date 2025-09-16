@@ -49,7 +49,7 @@ public class KstatSet {
      *
      * @param jkstat a {@code JKstat}
      */
-    public KstatSet(JKstat jkstat) {
+    public KstatSet(final JKstat jkstat) {
 	this(jkstat, "all kstats");
     }
 
@@ -59,7 +59,7 @@ public class KstatSet {
      * @param jkstat a {@code JKstat}
      * @param title a String that can be used for presentation
      */
-    public KstatSet(JKstat jkstat, String title) {
+    public KstatSet(final JKstat jkstat, final String title) {
 	this.jkstat = jkstat;
 	this.title = title;
 	chainid = jkstat.getKCID();
@@ -76,7 +76,7 @@ public class KstatSet {
      * @param jkstat a {@code JKstat}
      * @param ksf a {@code KstatFilter}
      */
-    public KstatSet(JKstat jkstat, KstatFilter ksf) {
+    public KstatSet(final JKstat jkstat, final KstatFilter ksf) {
 	// if KstatFilter had a toString method we could use that
 	this(jkstat, ksf, (String) null);
     }
@@ -89,7 +89,8 @@ public class KstatSet {
      * @param ksf a {@code KstatFilter}
      * @param title a String that can be used for presentation
      */
-    public KstatSet(JKstat jkstat, KstatFilter ksf, String title) {
+    public KstatSet(final JKstat jkstat, final KstatFilter ksf,
+		    final String title) {
 	this.jkstat = jkstat;
 	chainid = jkstat.getKCID();
 	this.ksf = ksf;
@@ -159,7 +160,7 @@ public class KstatSet {
      *
      * @param jkstat a {@code JKstat}
      */
-    public void setJKstat(JKstat jkstat) {
+    public void setJKstat(final JKstat jkstat) {
 	this.jkstat = jkstat;
     }
 
@@ -199,7 +200,7 @@ public class KstatSet {
      *
      * @return the {@code Set} of {@code Kstat}s managed by this KstatSet
      */
-    public Set<Kstat> getKstats(boolean sorted) {
+    public Set<Kstat> getKstats(final boolean sorted) {
 	return sorted ? new TreeSet<>(currentKstats) : currentKstats;
     }
 

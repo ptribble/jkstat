@@ -43,13 +43,14 @@ public final class JKstatMX implements JKstatMXMBean {
     }
 
     @Override
-    public Kstat getKstat(String module, int inst, String name) {
+    public Kstat getKstat(final String module, final int inst,
+			  final String name) {
 	return JKSTAT.getKstat(module, inst, name);
     }
 
     @Override
-    public Object getKstatData(String module, int inst, String name,
-				String statistic) {
+    public Object getKstatData(final String module, final int inst,
+			       final String name, final String statistic) {
 	return JKSTAT.getKstat(module, inst, name).getData(statistic);
     }
 }

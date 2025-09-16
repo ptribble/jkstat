@@ -41,7 +41,7 @@ public final class Uptime {
      *
      * @param args command line arguments, ignored
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         DecimalFormat df = new DecimalFormat("##0.00");
 
 	Kstat ks = new NativeJKstat().getKstat("unix", 0, "system_misc");

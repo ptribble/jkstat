@@ -42,7 +42,8 @@ public final class KstatUtil {
      *
      * @return a Set of those statistics that are of a numeric type
      */
-    public static Set<String> numericStatistics(JKstat jkstat, Kstat ks) {
+    public static Set<String> numericStatistics(final JKstat jkstat,
+						Kstat ks) {
 	if (ks == null) {
 	    return null;
 	}
@@ -71,8 +72,8 @@ public final class KstatUtil {
      *
      * @return a Set of those statistics that are of a numeric type
      */
-    public static Set<String> numericStatistics(JKstat jkstat,
-						KstatAggregate ksa) {
+    public static Set<String> numericStatistics(final JKstat jkstat,
+						final KstatAggregate ksa) {
 	if (ksa == null) {
 	    return null;
 	}
@@ -94,8 +95,8 @@ public final class KstatUtil {
      *
      * @return a KstatSet matching the supplied parameters
      */
-    public static KstatSet makeSet(JKstat jkstat, String s0,
-				String s1, String s2) {
+    public static KstatSet makeSet(final JKstat jkstat, final String s0,
+				final String s1, final String s2) {
 	KstatFilter ksf = new KstatFilter(jkstat);
 	ksf.addFilter(s0 + ":" + s1 + ":" + s2);
 	return new KstatSet(jkstat, ksf);
@@ -112,8 +113,8 @@ public final class KstatUtil {
      *
      * @return a KstatAggregate matching the supplied parameters
      */
-    public static KstatAggregate makeAggr(JKstat jkstat, String s0,
-				String s1, String s2) {
+    public static KstatAggregate makeAggr(final JKstat jkstat, final String s0,
+				final String s1, final String s2) {
 	return new KstatAggregate(jkstat, makeSet(jkstat, s0, s1, s2),
 				s0 + ":" + s1 + ":" + s2);
     }
@@ -127,7 +128,8 @@ public final class KstatUtil {
      *
      * @return a Kstat of the appropriate module, instance, and name
      */
-    public static Kstat makeKstat(String s0, String s1, String s2) {
+    public static Kstat makeKstat(final String s0, final String s1,
+				  final String s2) {
 	try {
 	    return new Kstat(s0, Integer.parseInt(s1), s2);
 	} catch (NumberFormatException e) {

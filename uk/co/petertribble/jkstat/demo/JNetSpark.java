@@ -56,7 +56,7 @@ public final class JNetSpark extends JKdemo implements ActionListener {
      * @param standalone a boolean, true if the demo is a standalone
      * application.
      */
-    public JNetSpark(JKstat jkstat, boolean standalone) {
+    public JNetSpark(final JKstat jkstat, final boolean standalone) {
 	super("JNetSpark", 1, standalone);
 
 	this.jkstat = jkstat;
@@ -111,12 +111,12 @@ public final class JNetSpark extends JKdemo implements ActionListener {
     }
 
     @Override
-    public void setDelay(int i) {
+    public void setDelay(final int i) {
 	kas.setDelay(i);
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(final ActionEvent e) {
 	super.actionPerformed(e);
 	Kstat ks = itemMap.get((JMenuItem) e.getSource());
 	if (ks != null) {
@@ -131,21 +131,21 @@ public final class JNetSpark extends JKdemo implements ActionListener {
     static class PopupListener extends MouseAdapter {
 	private JPopupMenu popup;
 
-	PopupListener(JPopupMenu popup) {
+	PopupListener(final JPopupMenu popup) {
 	    this.popup = popup;
 	}
 
 	@Override
-	public void mousePressed(MouseEvent e) {
+	public void mousePressed(final MouseEvent e) {
 	    showPopup(e);
 	}
 
 	@Override
-	public void mouseReleased(MouseEvent e) {
+	public void mouseReleased(final MouseEvent e) {
 	    showPopup(e);
 	}
 
-	private void showPopup(MouseEvent e) {
+	private void showPopup(final MouseEvent e) {
 	    if (e.isPopupTrigger()) {
 		popup.show(e.getComponent(), e.getX(), e.getY());
 	    }
@@ -157,7 +157,7 @@ public final class JNetSpark extends JKdemo implements ActionListener {
      *
      * @param args Command line arguments, ignored
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
 	new JNetSpark();
     }
 }

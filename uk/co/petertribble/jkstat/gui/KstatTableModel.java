@@ -74,7 +74,8 @@ public final class KstatTableModel extends AbstractTableModel
      * @param interval the desired update interval, in seconds
      * @param jkstat a {@code JKstat}
      */
-    public KstatTableModel(Kstat ks, int interval, JKstat jkstat) {
+    public KstatTableModel(final Kstat ks, final int interval,
+			   final JKstat jkstat) {
 	this.ks = ks;
 	delay = interval * 1000;
 	this.jkstat = jkstat;
@@ -111,7 +112,7 @@ public final class KstatTableModel extends AbstractTableModel
      *
      * @param interval the desired delay, in seconds
      */
-    public void setDelay(int interval) {
+    public void setDelay(final int interval) {
 	if (interval <= 0) {
 	    stopLoop();
 	} else {
@@ -123,7 +124,7 @@ public final class KstatTableModel extends AbstractTableModel
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(final ActionEvent e) {
 	update();
     }
 
@@ -152,12 +153,12 @@ public final class KstatTableModel extends AbstractTableModel
     }
 
     @Override
-    public String getColumnName(int col) {
+    public String getColumnName(final int col) {
 	return COLUMNS[col];
     }
 
     @Override
-    public Object getValueAt(int row, int col) {
+    public Object getValueAt(final int row, final int col) {
 	if (col == 0) {
 	    return rowNames[row];
 	} else if (col == 1) {
@@ -179,7 +180,7 @@ public final class KstatTableModel extends AbstractTableModel
     }
 
     @Override
-    public Class<?> getColumnClass(int c) {
+    public Class<?> getColumnClass(final int c) {
 	return getValueAt(0, c).getClass();
     }
 }

@@ -118,7 +118,7 @@ public abstract class JKdemo extends JFrame implements ActionListener {
      *
      * @param demoname a String used as the demo title
      */
-    public JKdemo(String demoname) {
+    public JKdemo(final String demoname) {
 	this(demoname, DEFAULT_INTERVAL, true);
     }
 
@@ -129,7 +129,7 @@ public abstract class JKdemo extends JFrame implements ActionListener {
      * @param standalone a boolean, true if the demo is a standalone
      * application
      */
-    public JKdemo(String demoname, boolean standalone) {
+    public JKdemo(final String demoname, final boolean standalone) {
 	this(demoname, DEFAULT_INTERVAL, standalone);
     }
 
@@ -139,7 +139,7 @@ public abstract class JKdemo extends JFrame implements ActionListener {
      * @param demoname a String used as the demo title
      * @param interval the update delay in seconds
      */
-    public JKdemo(String demoname, int interval) {
+    public JKdemo(final String demoname, final int interval) {
 	this(demoname, interval, true);
     }
 
@@ -151,7 +151,8 @@ public abstract class JKdemo extends JFrame implements ActionListener {
      * @param standalone a boolean, true if the demo is a standalone
      * application
      */
-    public JKdemo(String demoname, int interval, boolean standalone) {
+    public JKdemo(final String demoname, final int interval,
+		  final boolean standalone) {
 	this(demoname, interval, standalone, true, true);
     }
 
@@ -165,8 +166,9 @@ public abstract class JKdemo extends JFrame implements ActionListener {
      * @param showdelay a boolean determining whether the sleep menu is shown
      * @param showhelp a boolean determining whether the help menu is shown
      */
-    public JKdemo(String demoname, int interval, boolean standalone,
-		  boolean showdelay, boolean showhelp) {
+    public JKdemo(final String demoname, final int interval,
+		  final boolean standalone, final boolean showdelay,
+		  final boolean showhelp) {
 	super(demoname);
 	this.demoname = demoname;
 	this.interval = interval;
@@ -266,7 +268,7 @@ public abstract class JKdemo extends JFrame implements ActionListener {
      * @param mainPanel a JPanel object to add the informational panel to
      * @param sinfo a String used as text in the informational panel
      */
-    public void addInfoPanel(JPanel mainPanel, String sinfo) {
+    public void addInfoPanel(final JPanel mainPanel, final String sinfo) {
 	JPanel infoPanel = new JPanel(new BorderLayout());
 	infoLabel = new JLabel();
 	setLabelDelay(DEFAULT_INTERVAL);
@@ -280,7 +282,7 @@ public abstract class JKdemo extends JFrame implements ActionListener {
      *
      * @param i the update delay in seconds
      */
-    protected void setLabelDelay(int i) {
+    protected void setLabelDelay(final int i) {
 	if (infoLabel != null) {
 	    infoLabel.setText(KstatResources.getString("SLEEP.TEXT") + " " + i
 		+ KstatResources.getString("SLEEP.SEC"));
@@ -292,13 +294,13 @@ public abstract class JKdemo extends JFrame implements ActionListener {
      *
      * @param menu the menu to add
      */
-    protected void addMenu(JMenu menu) {
+    protected void addMenu(final JMenu menu) {
 	jm.add(menu);
     }
 
     class WindowExit extends WindowAdapter {
 	@Override
-	public void windowClosing(WindowEvent we) {
+	public void windowClosing(final WindowEvent we) {
 	    kaboom();
 	}
     }
@@ -344,7 +346,7 @@ public abstract class JKdemo extends JFrame implements ActionListener {
      * @param e the ActionEvent which will trigger this action
      */
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(final ActionEvent e) {
 	if (e.getSource() == exitItem) {
 	    kaboom();
 	} else if (e.getSource() == helpItem) {

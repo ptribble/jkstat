@@ -92,7 +92,7 @@ public final class ChartBuilderPanel extends JPanel
      *
      * @param jkstat a JKstat object
      */
-    public ChartBuilderPanel(JKstat jkstat) {
+    public ChartBuilderPanel(final JKstat jkstat) {
 	this.jkstat = jkstat;
 	/*
 	 * The panel contains the following:
@@ -217,7 +217,7 @@ public final class ChartBuilderPanel extends JPanel
      * This is called when a Kstat is picked from the tree. It saves the
      * selected Kstat and enables the Statistics tab and the Create button.
      */
-    private void pickKstat(DefaultMutableTreeNode node) {
+    private void pickKstat(final DefaultMutableTreeNode node) {
 	if ((node != null) && (node.getUserObject() instanceof Kstat)) {
 	    myKstat = (Kstat) node.getUserObject();
 	    updateLabel();
@@ -331,7 +331,7 @@ public final class ChartBuilderPanel extends JPanel
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(final ActionEvent e) {
 	if (e.getSource() == allInstanceButton) {
 	    aggrInstanceButton.setEnabled(allInstanceButton.isSelected());
 	    updateLabel();
@@ -342,7 +342,7 @@ public final class ChartBuilderPanel extends JPanel
 
     // handle TreeSelectionListener events
     @Override
-    public void valueChanged(TreeSelectionEvent e) {
+    public void valueChanged(final TreeSelectionEvent e) {
 	TreePath tpth = e.getNewLeadSelectionPath();
 	if (tpth != null) {
 	    pickKstat((DefaultMutableTreeNode) tpth.getLastPathComponent());

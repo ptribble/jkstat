@@ -116,7 +116,8 @@ public abstract class SequencedJKstat extends JKstat {
      * @return a new {@code Kstat} populated with current data
      */
     @Override
-    public Kstat getKstatObject(String module, int inst, String name) {
+    public Kstat getKstatObject(final String module, final int inst,
+				final String name) {
 	for (Kstat ks : kstats) {
 	    if (ks.getModule().equals(module) && (inst == ks.getInst())
 			&& ks.getName().equals(name)) {

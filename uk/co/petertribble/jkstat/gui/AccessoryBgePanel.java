@@ -79,7 +79,8 @@ public final class AccessoryBgePanel extends KstatAccessoryPanel {
      * @param interval an int specifying the update interval in seconds
      * @param jkstat a JKstat object
      */
-    public AccessoryBgePanel(Kstat ks, int interval, JKstat jkstat) {
+    public AccessoryBgePanel(final Kstat ks, final int interval,
+			     final JKstat jkstat) {
 	super(ks, interval, jkstat);
 
 	setMinimumSize(new Dimension(64, 4 * STATNUM));
@@ -115,7 +116,7 @@ public final class AccessoryBgePanel extends KstatAccessoryPanel {
     }
 
     @Override
-    public void paint(Graphics g) {
+    public void paint(final Graphics g) {
 	Graphics2D g2 = (Graphics2D) g;
 	Dimension d = getSize();
 	double w = d.width;

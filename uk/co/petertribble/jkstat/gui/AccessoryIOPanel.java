@@ -74,7 +74,8 @@ public final class AccessoryIOPanel extends KstatAccessoryPanel {
      * @param interval the update interval in seconds
      * @param jkstat a JKstat
      */
-    public AccessoryIOPanel(Kstat ks, int interval, JKstat jkstat) {
+    public AccessoryIOPanel(final Kstat ks, final int interval,
+			    final JKstat jkstat) {
 	super(ks, interval, jkstat);
 
 	cks = new ChartableIOKstat(jkstat, ks);

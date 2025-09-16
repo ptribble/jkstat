@@ -47,7 +47,7 @@ public final class JIOstat extends JKdemo {
      *
      * @param kcc the client configuration
      */
-    public JIOstat(KClientConfig kcc) {
+    public JIOstat(final KClientConfig kcc) {
 	this(new RemoteJKstat(kcc), true);
     }
 
@@ -65,7 +65,7 @@ public final class JIOstat extends JKdemo {
      * @param standalone a boolean, true if the demo is a standalone
      * application.
      */
-    public JIOstat(JKstat jkstat, boolean standalone) {
+    public JIOstat(final JKstat jkstat, final boolean standalone) {
 	super("jiostat", standalone);
 
         // create main display panel
@@ -99,7 +99,7 @@ public final class JIOstat extends JKdemo {
     }
 
     @Override
-    public void setDelay(int i) {
+    public void setDelay(final int i) {
 	iotable.setDelay(i);
 	setLabelDelay(i);
     }
@@ -109,7 +109,7 @@ public final class JIOstat extends JKdemo {
      *
      * @param args Command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
 	if (args.length == 0) {
 	    new JIOstat();
 	} else if (args.length == 2 && "-s".equals(args[0])) {

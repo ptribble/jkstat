@@ -50,7 +50,8 @@ public final class IOstatTable extends JTable {
      * @param interval the update interval in seconds
      * @param jkstat a {@code JKstat}
      */
-    public IOstatTable(KstatSet kss, int interval, JKstat jkstat) {
+    public IOstatTable(final KstatSet kss, final int interval,
+		       final JKstat jkstat) {
 	this.jkstat = jkstat;
 	ktm = new IOstatTableModel(kss, interval, jkstat);
 	setModel(ktm);
@@ -64,16 +65,16 @@ public final class IOstatTable extends JTable {
     class PopupListener extends MouseAdapter {
 
 	@Override
-	public void mousePressed(MouseEvent e) {
+	public void mousePressed(final MouseEvent e) {
 	    showPopup(e);
 	}
 
 	@Override
-	public void mouseReleased(MouseEvent e) {
+	public void mouseReleased(final MouseEvent e) {
 	    showPopup(e);
 	}
 
-	private void showPopup(MouseEvent e) {
+	private void showPopup(final MouseEvent e) {
 	    if (e.isPopupTrigger()) {
 		// need to get which row of the model we're on
 		int irow = convertRowIndexToModel(rowAtPoint(e.getPoint()));
@@ -105,7 +106,7 @@ public final class IOstatTable extends JTable {
 		+ " for device " + cks);
 	showChartItem.addActionListener(new ActionListener() {
 	    @Override
-	    public void actionPerformed(ActionEvent e) {
+	    public void actionPerformed(final ActionEvent e) {
 		new KstatChartFrame(jkstat, cks.getKstat(), cks, s);
 	    }
 	});
@@ -125,7 +126,7 @@ public final class IOstatTable extends JTable {
      *
      * @param i the desired update delay, in seconds
      */
-    public void setDelay(int i) {
+    public void setDelay(final int i) {
 	ktm.setDelay(i);
     }
 }

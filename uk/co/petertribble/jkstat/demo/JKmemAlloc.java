@@ -45,7 +45,7 @@ public final class JKmemAlloc extends JKdemo {
      *
      * @param kcc the client configuration
      */
-    public JKmemAlloc(KClientConfig kcc) {
+    public JKmemAlloc(final KClientConfig kcc) {
 	this(new RemoteJKstat(kcc));
     }
 
@@ -61,7 +61,7 @@ public final class JKmemAlloc extends JKdemo {
      *
      * @param jkstat a JKstat object
      */
-    public JKmemAlloc(JKstat jkstat) {
+    public JKmemAlloc(final JKstat jkstat) {
 	super("jkmemalloc");
 
 	// create main display panel
@@ -81,7 +81,7 @@ public final class JKmemAlloc extends JKdemo {
     }
 
     @Override
-    public void setDelay(int i) {
+    public void setDelay(final int i) {
 	kmPanel.setDelay(i);
 	setLabelDelay(i);
     }
@@ -96,7 +96,7 @@ public final class JKmemAlloc extends JKdemo {
      *
      * @param args Command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
 	if (args.length == 0) {
 	    new JKmemAlloc();
 	} else if (args.length == 2 && "-s".equals(args[0])) {

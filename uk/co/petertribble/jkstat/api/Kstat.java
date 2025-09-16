@@ -89,7 +89,7 @@ public class Kstat implements Serializable, Comparable<Kstat> {
      * @param instance the kstat instance
      * @param name the kstat name
      */
-    public Kstat(String module, int instance, String name) {
+    public Kstat(final String module, final int instance, final String name) {
 	this.module = module;
 	this.instance = instance;
 	this.name = name;
@@ -102,7 +102,8 @@ public class Kstat implements Serializable, Comparable<Kstat> {
      * @param dataType the data type
      * @param data the actual data
      */
-    private void addDataObject(String s, int dataType, Object data) {
+    private void addDataObject(final String s, final int dataType,
+			       final Object data) {
 	addDataObject(s, KstatData.Type.toType(dataType), data);
     }
 
@@ -113,7 +114,8 @@ public class Kstat implements Serializable, Comparable<Kstat> {
      * @param dataType the data type
      * @param data the actual data
      */
-    public void addDataObject(String s, KstatData.Type dataType, Object data) {
+    public void addDataObject(final String s, final KstatData.Type dataType,
+			      final Object data) {
 	dataMap.put(s, new KstatData(dataType, data));
     }
 
@@ -124,7 +126,8 @@ public class Kstat implements Serializable, Comparable<Kstat> {
      * @param dataType the data type
      * @param data the actual data
      */
-    public void addLongData(String s, int dataType, long data) {
+    public void addLongData(final String s, final int dataType,
+			    final long data) {
         addDataObject(s, KstatData.Type.toType(dataType), data);
     }
 
@@ -145,10 +148,12 @@ public class Kstat implements Serializable, Comparable<Kstat> {
      * @param wcnt a long, count of elements in wait state
      * @param rcnt a long, count of elements in run state
      */
-    public void insertIOData(long nread, long nwritten, long reads,
-		long writes, long wtime, long wlentime,
-		long wlastupdate, long rtime, long rlentime,
-		long rlastupdate, long wcnt, long rcnt) {
+    public void insertIOData(final long nread, final long nwritten,
+			     final long reads, final long writes,
+			     final long wtime, final long wlentime,
+			     final long wlastupdate, final long rtime,
+			     final long rlentime, final long rlastupdate,
+			     final long wcnt, final long rcnt) {
 	addDataObject("nread", KstatData.Type.KSTAT_DATA_UINT64, nread);
 	addDataObject("nwritten", KstatData.Type.KSTAT_DATA_UINT64, nwritten);
 	addDataObject("reads", KstatData.Type.KSTAT_DATA_UINT32, reads);
@@ -177,7 +182,7 @@ public class Kstat implements Serializable, Comparable<Kstat> {
      *
      * @return true if the named statistic exists, false otherwise
      */
-    public boolean hasStatistic(String s) {
+    public boolean hasStatistic(final String s) {
 	return dataMap.containsKey(s);
     }
 
@@ -188,7 +193,7 @@ public class Kstat implements Serializable, Comparable<Kstat> {
      *
      * @return the data, or null if the statistic doesn't exist
      */
-    public Object getData(String s) {
+    public Object getData(final String s) {
 	KstatData kd = dataMap.get(s);
 	return (kd == null) ? null : kd.getData();
     }
@@ -203,7 +208,7 @@ public class Kstat implements Serializable, Comparable<Kstat> {
      * @throws IllegalArgumentException if the requested statistic isn't a
      * numeric type
      */
-    public long longData(String s) {
+    public long longData(final String s) {
 	if (!isNumeric(s)) {
 	    throw new IllegalArgumentException("Statistic not a number");
 	}
@@ -218,7 +223,7 @@ public class Kstat implements Serializable, Comparable<Kstat> {
      *
      * @return true if this statistic is known to be a numeric type
      */
-    public boolean isNumeric(String s) {
+    public boolean isNumeric(final String s) {
 	KstatData kd = dataMap.get(s);
 	return (kd != null) && kd.isNumeric();
     }
@@ -231,8 +236,8 @@ public class Kstat implements Serializable, Comparable<Kstat> {
      * @param crtime the creation time of this {@code Kstat}
      * @param snaptime the snap time of this {@code Kstat}
      */
-    public void setStandardInfo(String kstatClass, int type, long crtime,
-		long snaptime) {
+    public void setStandardInfo(final String kstatClass, final int type,
+				final long crtime, final long snaptime) {
 	this.kstatClass = kstatClass;
 	this.type = type;
 	this.crtime = crtime;
@@ -423,7 +428,7 @@ public class Kstat implements Serializable, Comparable<Kstat> {
      * triplet as this {@code Kstat}
      */
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
 	if (o instanceof Kstat) {
 	    Kstat ks = (Kstat) o;
 	    return module.equals(ks.getModule())
@@ -456,7 +461,7 @@ public class Kstat implements Serializable, Comparable<Kstat> {
      * {@code Kstat}
      */
     @Override
-    public int compareTo(Kstat ks) {
+    public int compareTo(final Kstat ks) {
 	if (this == ks) {
 	    return 0;
 	}

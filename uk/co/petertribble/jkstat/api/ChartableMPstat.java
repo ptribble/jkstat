@@ -35,7 +35,7 @@ public final class ChartableMPstat extends ChartableKstat {
      * @param jkstat a {@code JKstat}
      * @param ks the {@code Kstat} holding the data
      */
-    public ChartableMPstat(JKstat jkstat, Kstat ks) {
+    public ChartableMPstat(final JKstat jkstat, final Kstat ks) {
 	super(jkstat, ks, false);
     }
 

@@ -44,7 +44,7 @@ public class KstatAggregate {
      * @param jkstat a {@code JKstat}
      * @param kss a {@code KstatSet} containing the Kstats to be aggregated
      */
-    public KstatAggregate(JKstat jkstat, KstatSet kss) {
+    public KstatAggregate(final JKstat jkstat, final KstatSet kss) {
 	this(jkstat, kss, "Aggregate");
     }
 
@@ -55,7 +55,8 @@ public class KstatAggregate {
      * @param kss a {@code KstatSet} containing the Kstats to be aggregated
      * @param title a String that can be used for presentation
      */
-    public KstatAggregate(JKstat jkstat, KstatSet kss, String title) {
+    public KstatAggregate(final JKstat jkstat, final KstatSet kss,
+			  final String title) {
 	this.jkstat = jkstat;
 	this.kss = kss;
 	this.title = title;
@@ -70,7 +71,7 @@ public class KstatAggregate {
      * @param jkstat a {@code JKstat}
      * @param inkstats a Set of Kstats to be aggregated
      */
-    public KstatAggregate(JKstat jkstat, Set<Kstat> inkstats) {
+    public KstatAggregate(final JKstat jkstat, final Set<Kstat> inkstats) {
 	this(jkstat, inkstats, "Aggregate");
     }
 
@@ -81,7 +82,8 @@ public class KstatAggregate {
      * @param inkstats a Set of Kstats to be aggregated
      * @param title a String that can be used for presentation
      */
-    public KstatAggregate(JKstat jkstat, Set<Kstat> inkstats, String title) {
+    public KstatAggregate(final JKstat jkstat, final Set<Kstat> inkstats,
+			  final String title) {
 	this.jkstat = jkstat;
 	this.inkstats = inkstats;
 	this.title = title;
@@ -96,7 +98,7 @@ public class KstatAggregate {
      *
      * @param jkstat a {@code JKstat}
      */
-    public void setJKstat(JKstat jkstat) {
+    public void setJKstat(final JKstat jkstat) {
 	this.jkstat = jkstat;
 	if (isdynamic) {
 	    kss.setJKstat(jkstat);
@@ -125,7 +127,7 @@ public class KstatAggregate {
      *
      * @return the aggregated value of the statistic
      */
-    public long aggregate(String s) {
+    public long aggregate(final String s) {
 	long l = 0;
 	for (Kstat ks : kstats) {
 	    if (ks.isNumeric(s)) {
@@ -145,7 +147,7 @@ public class KstatAggregate {
      *
      * @return the average value of the statistic
      */
-    public float average(String s) {
+    public float average(final String s) {
 	long l = 0;
 	long n = 0;
 	for (Kstat ks : kstats) {

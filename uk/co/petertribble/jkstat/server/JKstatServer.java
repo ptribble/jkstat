@@ -62,7 +62,8 @@ public class JKstatServer {
      * @return JSON describing the Kstat, or an empty String if the Kstat
      * doesn't exist
      */
-    public String kstat(String module, int instance, String name) {
+    public String kstat(final String module, final int instance,
+			final String name) {
 	Kstat ks = JKSTAT.getKstat(module, instance, name);
 	return (ks == null) ? "" : ks.toJSON();
     }

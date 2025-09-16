@@ -66,8 +66,8 @@ public final class SparkRateAccessory extends KstatAccessoryPanel {
      * @param jkstat {@code JKstat}
      * @param stat the statistic to display
      */
-    public SparkRateAccessory(Kstat ks, int interval, JKstat jkstat,
-			String stat) {
+    public SparkRateAccessory(final Kstat ks, final int interval,
+			      final JKstat jkstat, final String stat) {
 	super(ks, interval, jkstat);
 	this.stat = stat;
 	init();
@@ -90,7 +90,7 @@ public final class SparkRateAccessory extends KstatAccessoryPanel {
      *
      * @param tiptext the initial text of the tooltip, preceding the rate
      */
-    public void enableTips(String tiptext) {
+    public void enableTips(final String tiptext) {
 	enableTips(tiptext, 1.0d);
     }
 
@@ -101,7 +101,7 @@ public final class SparkRateAccessory extends KstatAccessoryPanel {
      * @param scale the scale factor to apply to the number displayed in the
      * tooltip
      */
-    public void enableTips(String tiptext, double scale) {
+    public void enableTips(final String tiptext, final double scale) {
 	tips = true;
 	this.tiptext = tiptext;
 	this.scale = scale;

@@ -72,7 +72,7 @@ public final class JCpuState extends JKdemo implements ActionListener {
      *
      * @param kcc the client configuration
      */
-    public JCpuState(KClientConfig kcc) {
+    public JCpuState(final KClientConfig kcc) {
 	this(new RemoteJKstat(kcc), true);
     }
 
@@ -90,7 +90,7 @@ public final class JCpuState extends JKdemo implements ActionListener {
      * @param standalone a boolean, true if the demo is a standalone
      * application.
      */
-    public JCpuState(JKstat jkstat, boolean standalone) {
+    public JCpuState(final JKstat jkstat, final boolean standalone) {
 	super("jcpustate", 1, standalone, false, false);
 
 	this.jkstat = jkstat;
@@ -165,7 +165,7 @@ public final class JCpuState extends JKdemo implements ActionListener {
      * Put together a label and an accessory in the correct orientation
      * and with the correct spacing.
      */
-    private JPanel buildCPU(JLabel jl, KstatAccessoryPanel kap) {
+    private JPanel buildCPU(final JLabel jl, final KstatAccessoryPanel kap) {
 	JPanel jp = new JPanel();
 	GroupLayout layout = new GroupLayout(jp);
 	jp.setLayout(layout);
@@ -211,7 +211,7 @@ public final class JCpuState extends JKdemo implements ActionListener {
     }
 
     @Override
-    public void setDelay(int i) {
+    public void setDelay(final int i) {
 	kas.setDelay(i);
     }
 
@@ -221,7 +221,7 @@ public final class JCpuState extends JKdemo implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(final ActionEvent e) {
 	super.actionPerformed(e);
 	for (int i = 0; i < ncpus; i++) {
 	    if (e.getSource() == aboutCpuItem[i]) {
@@ -241,21 +241,21 @@ public final class JCpuState extends JKdemo implements ActionListener {
     static class PopupListener extends MouseAdapter {
 	private JPopupMenu popup;
 
-	PopupListener(JPopupMenu popup) {
+	PopupListener(final JPopupMenu popup) {
 	    this.popup = popup;
 	}
 
 	@Override
-	public void mousePressed(MouseEvent e) {
+	public void mousePressed(final MouseEvent e) {
 	    showPopup(e);
 	}
 
 	@Override
-	public void mouseReleased(MouseEvent e) {
+	public void mouseReleased(final MouseEvent e) {
 	    showPopup(e);
 	}
 
-	private void showPopup(MouseEvent e) {
+	private void showPopup(final MouseEvent e) {
 	    if (e.isPopupTrigger()) {
 		popup.show(e.getComponent(), e.getX(), e.getY());
 	    }
@@ -267,7 +267,7 @@ public final class JCpuState extends JKdemo implements ActionListener {
      *
      * @param args Command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
 	for (String s : args) {
 	    if ("chart".equals(s)) {
 		style = STYLE_CHART;

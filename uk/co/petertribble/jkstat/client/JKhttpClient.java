@@ -44,7 +44,7 @@ public class JKhttpClient {
      * @param kcc holds the configuration with details of how to contact the
      * server
      */
-    public JKhttpClient(KClientConfig kcc) {
+    public JKhttpClient(final KClientConfig kcc) {
 	baseURL = kcc.remoteURL();
 	if (!baseURL.endsWith("/")) {
 	    baseURL = baseURL + "/";
@@ -61,7 +61,7 @@ public class JKhttpClient {
      *
      * @throws IOException if there was a problem communicating with the server
      */
-    public String execute(String method) throws IOException {
+    public String execute(final String method) throws IOException {
 	return doGet(method);
     }
 
@@ -76,7 +76,8 @@ public class JKhttpClient {
      *
      * @throws IOException if there was a problem communicating with the server
      */
-    public String execute(String method, String[] args) throws IOException {
+    public String execute(final String method, final String[] args)
+	    throws IOException {
 	StringBuilder sb = new StringBuilder();
 	sb.append(method);
 	for (String s : args) {
@@ -85,7 +86,7 @@ public class JKhttpClient {
 	return doGet(sb.toString());
     }
 
-    private String doGet(String request) throws IOException {
+    private String doGet(final String request) throws IOException {
 	HttpRequest hrequest = HttpRequest.newBuilder()
 	    .uri(URI.create(baseURL + request))
 	    .build();

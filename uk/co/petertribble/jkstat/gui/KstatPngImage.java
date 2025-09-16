@@ -46,8 +46,8 @@ public class KstatPngImage {
      * @param statistic the statistic to be charted
      * @param f the {@code File} to be written to
      */
-    public KstatPngImage(JKstat jkstat, KstatSet kss,
-				String statistic, File f) {
+    public KstatPngImage(final JKstat jkstat, final KstatSet kss,
+			 final String statistic, final File f) {
 	this(jkstat, kss, statistic, f, true);
     }
 
@@ -61,8 +61,8 @@ public class KstatPngImage {
      * @param f the {@code File} to be written to
      * @param rates if true, show rates rather than absolute values
      */
-    public KstatPngImage(JKstat jkstat, KstatSet kss, String statistic,
-		File f, boolean rates) {
+    public KstatPngImage(final JKstat jkstat, final KstatSet kss,
+		final String statistic, final File f, final boolean rates) {
 	saveImage(f, new KstatSetChart(jkstat, kss, statistic, rates));
     }
 
@@ -75,8 +75,8 @@ public class KstatPngImage {
      * @param statistic the statistic to be charted
      * @param f the {@code File} to be written to
      */
-    public KstatPngImage(JKstat jkstat, KstatAggregate ksa,
-				String statistic, File f) {
+    public KstatPngImage(final JKstat jkstat, final KstatAggregate ksa,
+			 final String statistic, final File f) {
 	this(jkstat, ksa, statistic, f, true);
     }
 
@@ -90,8 +90,8 @@ public class KstatPngImage {
      * @param f the {@code File} to be written to
      * @param rates if true, show rates rather than absolute values
      */
-    public KstatPngImage(JKstat jkstat, KstatAggregate ksa, String statistic,
-		File f, boolean rates) {
+    public KstatPngImage(final JKstat jkstat, final KstatAggregate ksa,
+		final String statistic, final File f, final boolean rates) {
 	saveImage(f, new KstatAggregateChart(jkstat, ksa, statistic, rates));
     }
 
@@ -104,7 +104,8 @@ public class KstatPngImage {
      * @param statistic the statistic to be charted
      * @param f the {@code File} to be written to
      */
-    public KstatPngImage(JKstat jkstat, Kstat ks, String statistic, File f) {
+    public KstatPngImage(final JKstat jkstat, final Kstat ks,
+			 final String statistic, final File f) {
 	this(jkstat, ks, statistic, f, true);
     }
 
@@ -117,8 +118,8 @@ public class KstatPngImage {
      * @param f the {@code File} to be written to
      * @param rates if true, show rates rather than absolute values
      */
-    public KstatPngImage(JKstat jkstat, Kstat ks, String statistic,
-		File f, boolean rates) {
+    public KstatPngImage(final JKstat jkstat, final Kstat ks,
+		final String statistic, final File f, final boolean rates) {
 	saveImage(f, new KstatChart(jkstat, ks, statistic, rates));
     }
 
@@ -131,8 +132,8 @@ public class KstatPngImage {
      * @param statistics the {@code List} of statistics to be charted
      * @param f the {@code File} to be written to
      */
-    public KstatPngImage(JKstat jkstat, KstatAggregate ksa,
-				List<String> statistics, File f) {
+    public KstatPngImage(final JKstat jkstat, final KstatAggregate ksa,
+			 final List<String> statistics, final File f) {
 	this(jkstat, ksa, statistics, f, true);
     }
 
@@ -146,8 +147,8 @@ public class KstatPngImage {
      * @param f the {@code File} to be written to
      * @param rates if true, show rates rather than absolute values
      */
-    public KstatPngImage(JKstat jkstat, KstatAggregate ksa,
-		List<String> statistics, File f, boolean rates) {
+    public KstatPngImage(final JKstat jkstat, final KstatAggregate ksa,
+	    final List<String> statistics, final File f, final boolean rates) {
 	saveImage(f, new KstatAggregateChart(jkstat, ksa, statistics, rates));
     }
 
@@ -160,8 +161,8 @@ public class KstatPngImage {
      * @param statistics the {@code List} of statistics to be charted
      * @param f the {@code File} to be written to
      */
-    public KstatPngImage(JKstat jkstat, Kstat ks, List<String> statistics,
-		File f) {
+    public KstatPngImage(final JKstat jkstat, final Kstat ks,
+			 final List<String> statistics, final File f) {
 	this(jkstat, ks, statistics, f, true);
     }
 
@@ -174,12 +175,12 @@ public class KstatPngImage {
      * @param f the {@code File} to be written to
      * @param rates if true, show rates rather than absolute values
      */
-    public KstatPngImage(JKstat jkstat, Kstat ks,
-		List<String> statistics, File f, boolean rates) {
+    public KstatPngImage(final JKstat jkstat, final Kstat ks,
+	    final List<String> statistics, final File f, final boolean rates) {
 	saveImage(f, new KstatChart(jkstat, ks, statistics, rates));
     }
 
-    private static void usage(String message) {
+    private static void usage(final String message) {
 	System.err.println("ERROR: " + message);
 	System.err.println("Usage: png -z source -o output_file kstat_spec");
 	System.err.println("  where kstat_spec is of the form");
@@ -194,7 +195,7 @@ public class KstatPngImage {
      *
      * @param f the File to be written to
      */
-    private void saveImage(File f, KstatBaseChart kbc) {
+    private void saveImage(final File f, final KstatBaseChart kbc) {
 	BufferedImage bi = kbc.getChart().createBufferedImage(500, 300);
 	try {
 	    ImageIO.write(bi, "png", f);
@@ -218,7 +219,8 @@ public class KstatPngImage {
      * @param jkstat a {@code JKstat} object to supply the data
      * @param f the output {@code File}
      */
-    public static void makeGraph(String[] args, JKstat jkstat, File f) {
+    public static void makeGraph(final String[] args, final JKstat jkstat,
+				 final File f) {
 	makeGraph(args, jkstat, f, true);
     }
 
@@ -230,8 +232,8 @@ public class KstatPngImage {
      * @param f the output {@code File}
      * @param rates if true, show rates, else show absolute values
      */
-    public static void makeGraph(String[] args, JKstat jkstat, File f,
-				boolean rates) {
+    public static void makeGraph(final String[] args, final JKstat jkstat,
+				 final File f, final boolean rates) {
 	/*
 	 * We can be called in two ways. The short form is
 	 * module:instance:name:statistic
@@ -289,8 +291,8 @@ public class KstatPngImage {
 	}
     }
 
-    private static void doMain(String oflag, String oname, String[] args,
-			JKstat jkstat) {
+    private static void doMain(final String oflag, final String oname,
+			       final String[] args, final JKstat jkstat) {
 	if ("-o".equals(oflag)) {
 	    makeGraph(args, jkstat, new File(oname));
 	} else {
@@ -304,7 +306,7 @@ public class KstatPngImage {
      *
      * @param args command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
 	if (args.length < 5) {
 	    usage("Missing arguments.");
 	}

@@ -68,7 +68,7 @@ public final class KstatCmd {
      *
      * @param args Command line arguments
      */
-    public KstatCmd(String[] args) {
+    public KstatCmd(final String[] args) {
 	jkstat = new NativeJKstat();
 	Set<String> statspecs = new HashSet<>();
 
@@ -255,7 +255,7 @@ public final class KstatCmd {
      * Differs from kstat(1) output in that class, crtime, and snaptime
      * are not listed.
      */
-    private void printlist(Kstat ks) {
+    private void printlist(final Kstat ks) {
 	String triplet = ks.getTriplet();
 	if (showstatistic == null) {
 	    for (String s : ksf.filteredStatistics(ks)) {
@@ -271,7 +271,7 @@ public final class KstatCmd {
      * Differs from kstat(1) output in that crtime, snaptime and
      * class are missing from the parseable output.
      */
-    private void printkstat(Kstat ks) {
+    private void printkstat(final Kstat ks) {
 	if (pflag) {
 	    String triplet = ks.getTriplet();
 	    if (showstatistic == null) {
@@ -300,7 +300,7 @@ public final class KstatCmd {
     /*
      * Print out a header module, instance, name, class
      */
-    private void printinfo(Kstat ks) {
+    private void printinfo(final Kstat ks) {
 	System.out.println("module:\t" + ks.getModule() + "\tinstance:\t"
 		+ ks.getInstance());
 	System.out.println("name:\t" + ks.getName() + "\tclass:\t"
@@ -313,7 +313,7 @@ public final class KstatCmd {
 	}
     }
 
-    private void usage(String s) {
+    private void usage(final String s) {
 	System.err.println("Error: " + s);
 	usage();
     }
@@ -336,7 +336,7 @@ public final class KstatCmd {
      *
      * @param args Command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
 	new KstatCmd(args);
     }
 }

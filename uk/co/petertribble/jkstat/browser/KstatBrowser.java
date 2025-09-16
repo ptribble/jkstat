@@ -92,7 +92,7 @@ public final class KstatBrowser extends JFrame implements ActionListener {
      *
      * @param kcc The client configuration
      */
-    public KstatBrowser(KClientConfig kcc) {
+    public KstatBrowser(final KClientConfig kcc) {
 	this(new RemoteJKstat(kcc));
     }
 
@@ -108,7 +108,7 @@ public final class KstatBrowser extends JFrame implements ActionListener {
      *
      * @param jkstat a JKstat object
      */
-    public KstatBrowser(JKstat jkstat) {
+    public KstatBrowser(final JKstat jkstat) {
 	super(KstatResources.getString("BROWSERUI.NAME.TEXT"));
 	this.jkstat = jkstat;
 	addWindowListener(new WindowExit());
@@ -202,7 +202,7 @@ public final class KstatBrowser extends JFrame implements ActionListener {
 
     class WindowExit extends WindowAdapter {
 	@Override
-	public void windowClosing(WindowEvent we) {
+	public void windowClosing(final WindowEvent we) {
 	    JingleMultiFrame.unregister(KstatBrowser.this);
 	}
     }
@@ -212,12 +212,12 @@ public final class KstatBrowser extends JFrame implements ActionListener {
      *
      * @param i the desired update interval in seconds
      */
-    public void setDelay(int i) {
+    public void setDelay(final int i) {
 	ktp.setDelay(i);
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(final ActionEvent e) {
 	if (e.getSource() == cloneItem) {
 	    if (jkstat instanceof SequencedJKstat) {
 		new KstatBrowser(((SequencedJKstat) jkstat).newInstance());
@@ -268,7 +268,7 @@ public final class KstatBrowser extends JFrame implements ActionListener {
      *
      * @param args Command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
 	if (args.length == 0) {
 	    new KstatBrowser();
 	} else if (args.length == 1) {

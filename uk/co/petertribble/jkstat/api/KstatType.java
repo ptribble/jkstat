@@ -65,7 +65,7 @@ public final class KstatType {
      *
      * @return the String representation of the requested kstat type
      */
-    public static String getTypeAsString(int type) {
+    public static String getTypeAsString(final int type) {
 	String t;
 	switch (type) {
 	    case KSTAT_TYPE_RAW:
@@ -96,7 +96,7 @@ public final class KstatType {
      *
      * @return the int representation of the requested kstat type
      */
-    public static int getTypeAsInt(String type) {
+    public static int getTypeAsInt(final String type) {
 	int t = 99;
 	if ("KSTAT_TYPE_RAW".equals(type)) {
 	    t = KSTAT_TYPE_RAW;

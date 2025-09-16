@@ -38,7 +38,7 @@ public class ProcessorTree {
      *
      * @param jkstat A JKstat object
      */
-    public ProcessorTree(JKstat jkstat) {
+    public ProcessorTree(final JKstat jkstat) {
 	this.jkstat = jkstat;
 	KstatFilter ksf = new KstatFilter(jkstat);
 	ksf.setFilterClass("misc");
@@ -56,7 +56,7 @@ public class ProcessorTree {
      * We describe non-threaded cores as cores with a single thread.
      */
     @SuppressWarnings("unchecked")
-    private void buildTree(Set<Kstat> kstats) {
+    private void buildTree(final Set<Kstat> kstats) {
 	procmap = new TreeMap<>();
 
 	for (Kstat iks : kstats) {
@@ -197,7 +197,7 @@ public class ProcessorTree {
      *
      * @return the cpu_stat Kstat corresponding to the given cpu_info Kstat
      */
-    public static Kstat makeCpuKstat(Kstat ks) {
+    public static Kstat makeCpuKstat(final Kstat ks) {
 	return new Kstat("cpu_stat", ks.getInst(),
 				  "cpu_stat" + ks.getInstance());
     }
@@ -212,7 +212,7 @@ public class ProcessorTree {
      * @return the Set of cpu_stat Kstats corresponding to the given Set of
      * cpu_info Kstats
      */
-    public static Set<Kstat> makeCpuKstats(Set<Kstat> kss) {
+    public static Set<Kstat> makeCpuKstats(final Set<Kstat> kss) {
 	Set<Kstat> kout = new TreeSet<>();
 	for (Kstat ks : kss) {
 	    kout.add(makeCpuKstat(ks));
@@ -250,7 +250,7 @@ public class ProcessorTree {
      *
      * @return a String similar to psrinfo -vp output for the given chip
      */
-    public String chipDetails(ProcessorChip chip) {
+    public String chipDetails(final ProcessorChip chip) {
 	StringBuilder sb = new StringBuilder(256);
 	sb.append("Physical processor ").append(chip.getChipid())
 	    .append(" has ");

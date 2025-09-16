@@ -39,9 +39,9 @@ public class KstatGet {
      */
     @GET
     @Produces("application/json")
-    public String getKstat(@PathParam("module") String module,
-			   @PathParam("instance") String instance,
-			   @PathParam("name") String name) {
+    public String getKstat(@PathParam("module") final String module,
+			   @PathParam("instance") final String instance,
+			   @PathParam("name") final String name) {
 	Kstat ks = JKSTAT.getKstat(module, Integer.parseInt(instance), name);
 	return ks.toJSON();
     }

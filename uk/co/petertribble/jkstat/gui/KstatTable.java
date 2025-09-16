@@ -55,8 +55,8 @@ public class KstatTable extends JTable {
      * @param interval the update interval in seconds
      * @param jkstat a {@code JKstat}
      */
-    public KstatTable(String module, String instance, String name,
-		int interval, JKstat jkstat) {
+    public KstatTable(final String module, final String instance,
+		final String name, final int interval, final JKstat jkstat) {
 	this(jkstat.getKstat(module, Integer.parseInt(instance), name),
 		interval, jkstat);
     }
@@ -70,7 +70,7 @@ public class KstatTable extends JTable {
      * @param interval the update interval in seconds
      * @param jkstat a {@code JKstat}
      */
-    public KstatTable(Kstat ks, int interval, JKstat jkstat) {
+    public KstatTable(final Kstat ks, final int interval, final JKstat jkstat) {
 	this.jkstat = jkstat;
 	this.ks = ks;
 	if (ks != null) {
@@ -94,16 +94,16 @@ public class KstatTable extends JTable {
     class PopupListener extends MouseAdapter {
 
 	@Override
-	public void mousePressed(MouseEvent e) {
+	public void mousePressed(final MouseEvent e) {
 	    showPopup(e);
 	}
 
 	@Override
-	public void mouseReleased(MouseEvent e) {
+	public void mouseReleased(final MouseEvent e) {
 	    showPopup(e);
 	}
 
-	private void showPopup(MouseEvent e) {
+	private void showPopup(final MouseEvent e) {
 	    if (e.isPopupTrigger()) {
 		// the statistic name is always shown in the first column
 		String s = (String) getValueAt(rowAtPoint(e.getPoint()), 0);
@@ -129,7 +129,7 @@ public class KstatTable extends JTable {
 		KstatResources.getString("TABLE.CHART.TEXT") + " " + s);
 	showChartItem.addActionListener(new ActionListener() {
 	    @Override
-	    public void actionPerformed(ActionEvent e) {
+	    public void actionPerformed(final ActionEvent e) {
 		new KstatChartFrame(jkstat, ks, s);
 	    }
 	});
@@ -169,7 +169,7 @@ public class KstatTable extends JTable {
      *
      * @param interval the desired update delay, in seconds
      */
-    public void setDelay(int interval) {
+    public void setDelay(final int interval) {
 	if (ktm != null) {
 	    ktm.setDelay(interval);
 	}

@@ -62,7 +62,8 @@ public final class AccessoryCpuChart extends KstatAccessoryPanel {
      * @param interval the update interval in seconds
      * @param jkstat a JKstat
      */
-    public AccessoryCpuChart(Kstat ks, int interval, JKstat jkstat) {
+    public AccessoryCpuChart(final Kstat ks, final int interval,
+			     final JKstat jkstat) {
 	super(ks, interval, jkstat);
 	setLayout(new BorderLayout());
 

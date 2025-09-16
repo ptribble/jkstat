@@ -37,7 +37,7 @@ public final class RemoteJKstat extends JKstat {
      *
      * @param kcc the configuration specifying how to contact the server
      */
-    public RemoteJKstat(KClientConfig kcc) {
+    public RemoteJKstat(final KClientConfig kcc) {
 	super();
 	if (kcc.getProtocol() == KClientConfig.CLIENT_XMLRPC) {
 	    childJKstat = new XmlRpcJKstat(kcc);
@@ -49,7 +49,8 @@ public final class RemoteJKstat extends JKstat {
     }
 
     @Override
-    public Kstat getKstatObject(String module, int inst, String name) {
+    public Kstat getKstatObject(final String module, final int inst,
+				final String name) {
 	return childJKstat.getKstatObject(module, inst, name);
     }
 

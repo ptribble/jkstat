@@ -48,7 +48,7 @@ public final class KClientDialog implements ActionListener {
      *
      * @param defproto the default server protocol
      */
-    public KClientDialog(int defproto) {
+    public KClientDialog(final int defproto) {
 	kcc = new KClientConfig();
 	/*
 	 * From the top, we have:
@@ -126,7 +126,7 @@ public final class KClientDialog implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(final ActionEvent e) {
 	if (e.getSource() == authbox) {
 	    ufield.setEditable(authbox.isSelected());
 	    pfield.setEditable(authbox.isSelected());

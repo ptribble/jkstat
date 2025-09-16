@@ -53,7 +53,7 @@ public final class ChartBuilderFrame extends JFrame implements ActionListener {
      *
      * @param kcc the client configuration
      */
-    public ChartBuilderFrame(KClientConfig kcc) {
+    public ChartBuilderFrame(final KClientConfig kcc) {
 	this(new RemoteJKstat(kcc));
     }
 
@@ -62,7 +62,7 @@ public final class ChartBuilderFrame extends JFrame implements ActionListener {
      *
      * @param jkstat a {@code JKstat}
      */
-    public ChartBuilderFrame(JKstat jkstat) {
+    public ChartBuilderFrame(final JKstat jkstat) {
 	setTitle(KstatResources.getString("CHART.BUILDER"));
 	addWindowListener(new WindowExit());
 	JMenuBar jm = new JMenuBar();
@@ -90,13 +90,13 @@ public final class ChartBuilderFrame extends JFrame implements ActionListener {
 
     class WindowExit extends WindowAdapter {
 	@Override
-	public void windowClosing(WindowEvent we) {
+	public void windowClosing(final WindowEvent we) {
 	    dispose();
 	}
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(final ActionEvent e) {
 	if (e.getSource() == exitItem) {
 	    setVisible(false);
 	    dispose();
@@ -114,7 +114,7 @@ public final class ChartBuilderFrame extends JFrame implements ActionListener {
      *
      * @param args command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
 	if (args.length == 0) {
 	    new ChartBuilderFrame();
 	} else if (args.length == 1) {

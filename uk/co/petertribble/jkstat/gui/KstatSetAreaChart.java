@@ -51,7 +51,8 @@ public final class KstatSetAreaChart extends KstatBaseChart {
      * @param kss the {@code KstatSet} supplying the data
      * @param statistic the statistic to be charted
      */
-    public KstatSetAreaChart(JKstat jkstat, KstatSet kss, String statistic) {
+    public KstatSetAreaChart(final JKstat jkstat, final KstatSet kss,
+			     final String statistic) {
 	this(jkstat, kss, statistic, true);
     }
 
@@ -63,8 +64,8 @@ public final class KstatSetAreaChart extends KstatBaseChart {
      * @param statistic the statistic to be charted
      * @param showdelta if true, show rates, else show absolute values
      */
-    public KstatSetAreaChart(JKstat jkstat, KstatSet kss, String statistic,
-		boolean showdelta) {
+    public KstatSetAreaChart(final JKstat jkstat, final KstatSet kss,
+			     final String statistic, final boolean showdelta) {
 	this.jkstat = jkstat;
 	this.kss = kss;
 	this.showdelta = showdelta;
@@ -79,21 +80,21 @@ public final class KstatSetAreaChart extends KstatBaseChart {
      * @param statistics the statistics to be charted
      * @param showdelta if true, show rates, else show absolute values
      */
-    public KstatSetAreaChart(JKstat jkstat, KstatSet kss,
-		List<String> statistics, boolean showdelta) {
+    public KstatSetAreaChart(final JKstat jkstat, final KstatSet kss,
+		final List<String> statistics, final boolean showdelta) {
 	this.jkstat = jkstat;
 	this.kss = kss;
 	this.showdelta = showdelta;
 	init(statistics);
     }
 
-    private void init(String statistic) {
+    private void init(final String statistic) {
 	List<String> statistics = new ArrayList<>();
 	statistics.add(statistic);
 	init(statistics);
     }
 
-    private void init(List<String> statistics) {
+    private void init(final List<String> statistics) {
 	statlist = statistics;
 	dataset = new TimeTableXYDataset();
 	kMap = new HashMap<>();
@@ -129,19 +130,19 @@ public final class KstatSetAreaChart extends KstatBaseChart {
     }
 
     @Override
-    public void addStatistic(String statistic) {
+    public void addStatistic(final String statistic) {
 	statlist.add(statistic);
     }
 
     @Override
-    public void removeStatistic(String statistic) {
+    public void removeStatistic(final String statistic) {
 	statlist.remove(statistic);
     }
 
     /*
      * read all the data from the kstat sequence
      */
-    private void readAll(SequencedJKstat sjkstat) {
+    private void readAll(final SequencedJKstat sjkstat) {
 	for (ChartableKstat ck : kMap.values()) {
 	    ck.setJKstat(sjkstat);
 	}
@@ -165,7 +166,7 @@ public final class KstatSetAreaChart extends KstatBaseChart {
     /*
      * Get and update the appropriate data.
      */
-    private void readOne(Kstat ks, Millisecond ms) {
+    private void readOne(final Kstat ks, final Millisecond ms) {
 	ChartableKstat cks = kMap.get(ks);
 	cks.update();
 	for (String statistic : statlist) {

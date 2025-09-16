@@ -97,7 +97,8 @@ public abstract class JKstat {
      * @throws NullPointerException if the given module or kstat name is
      * {@code null}
      */
-    public Kstat getKstat(String module, int inst, String name) {
+    public Kstat getKstat(final String module, final int inst,
+			  final String name) {
 	if (module == null) {
 	    throw new NullPointerException("module is null");
 	}
@@ -124,7 +125,7 @@ public abstract class JKstat {
      * @return A new {@code Kstat}, or {@code null} if no matching
      * {@code Kstat} is found
      */
-    public Kstat getKstat(Kstat ks) {
+    public Kstat getKstat(final Kstat ks) {
 	if (ks == null) {
 	    return (Kstat) null;
 	}
@@ -165,8 +166,9 @@ public abstract class JKstat {
      * @param type an int specifying the kstat type
      * @param crtime a long specifying the kstat creation time
      */
-    protected void addKstat(String module, int inst, String name,
-			 String kstatClass, int type, long crtime) {
+    protected void addKstat(final String module, final int inst,
+			    final String name, final String kstatClass,
+			    final int type, final long crtime) {
 	Kstat ks = new Kstat(module, inst, name);
 	ks.setStandardInfo(kstatClass, type, crtime, 0L);
 	kstats.add(ks);

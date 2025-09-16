@@ -39,13 +39,14 @@ public final class XmlRpcJKstat extends JKstat {
      *
      * @param kcc the configuration specifying how to contact the server
      */
-    public XmlRpcJKstat(KClientConfig kcc) {
+    public XmlRpcJKstat(final KClientConfig kcc) {
 	super();
 	client = new JKstatClient(kcc);
     }
 
     @Override
-    public Kstat getKstatObject(String module, int inst, String name) {
+    public Kstat getKstatObject(final String module, final int inst,
+				final String name) {
 	try {
 	    return JSONParser.getKstat((String) client.execute("kstat",
 				new Object[] {module, inst, name}));

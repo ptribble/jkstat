@@ -41,7 +41,7 @@ public class JSONParser {
      *
      * @param is the {@code InputStream} to parse
      */
-    public JSONParser(InputStream is) {
+    public JSONParser(final InputStream is) {
 	parse(new BufferedReader(
 			new InputStreamReader(is, StandardCharsets.UTF_8)));
     }
@@ -51,7 +51,7 @@ public class JSONParser {
      * Kstat has objects describing the metadata and data: the data object
      * contains the objects describing the statistics and their values.
      */
-    private void parse(BufferedReader in) {
+    private void parse(final BufferedReader in) {
 	kstats = new HashSet<>();
 	try {
 	    JSONArray ja = new JSONArray(new JSONTokener(in));
@@ -75,7 +75,7 @@ public class JSONParser {
      *
      * @return the Kstat encoded by the supplied String
      */
-    public static Kstat getKstat(String s) {
+    public static Kstat getKstat(final String s) {
 	try {
 	    return getKstat(new JSONObject(s));
 	} catch (JSONException jse) {
@@ -100,7 +100,7 @@ public class JSONParser {
      *
      * @return the Set of Kstats encoded by the supplied String
      */
-    public static Set<Kstat> getKstats(String s) {
+    public static Set<Kstat> getKstats(final String s) {
 	try {
 	    return getKstats(new JSONArray(s));
 	} catch (JSONException jse) {
@@ -108,7 +108,7 @@ public class JSONParser {
 	}
     }
 
-    private static Set<Kstat> getKstats(JSONArray ja) {
+    private static Set<Kstat> getKstats(final JSONArray ja) {
 	Set<Kstat> nkstats = new HashSet<>();
 	try {
 	    for (int i = 0; i < ja.length(); i++) {
@@ -126,7 +126,7 @@ public class JSONParser {
     }
 
     @SuppressWarnings("rawtypes")
-    private static Kstat getKstat(JSONObject jo) {
+    private static Kstat getKstat(final JSONObject jo) {
 	try {
 	    JSONObject jd = jo.getJSONObject("data");
 	    Kstat ks = new Kstat(jo.getString("module"), jo.getInt("instance"),

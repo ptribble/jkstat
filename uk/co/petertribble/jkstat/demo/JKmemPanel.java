@@ -43,7 +43,7 @@ public final class JKmemPanel extends JingleVPanel {
      * @param jkstat A JKstat object
      * @param interval the update interval in seconds
      */
-    public JKmemPanel(JKstat jkstat, int interval) {
+    public JKmemPanel(final JKstat jkstat, final int interval) {
 
 	List<KstatAccessoryPanel> vkstat = new ArrayList<>();
 
@@ -109,7 +109,7 @@ public final class JKmemPanel extends JingleVPanel {
      *
      * @param i the new update interval, in seconds
      */
-    public void setDelay(int i) {
+    public void setDelay(final int i) {
 	kas.setDelay(i);
     }
 

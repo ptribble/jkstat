@@ -54,17 +54,17 @@ public final class KBrowseDialog implements ActionListener {
 
     static class BrowseListener implements ServiceListener {
         @Override
-        public void serviceAdded(ServiceEvent event) {
+        public void serviceAdded(final ServiceEvent event) {
             System.out.println("Service added: " + event.getInfo());
         }
 
         @Override
-        public void serviceRemoved(ServiceEvent event) {
+        public void serviceRemoved(final ServiceEvent event) {
             System.out.println("Service removed: " + event.getInfo());
         }
 
         @Override
-        public void serviceResolved(ServiceEvent event) {
+        public void serviceResolved(final ServiceEvent event) {
             System.out.println("Service resolved: " + event.getInfo());
         }
     }
@@ -166,7 +166,7 @@ public final class KBrowseDialog implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(final ActionEvent e) {
 	if (e.getSource() == authbox) {
 	    ufield.setEditable(authbox.isSelected());
 	    pfield.setEditable(authbox.isSelected());

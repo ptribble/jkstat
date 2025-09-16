@@ -34,8 +34,7 @@ public final class KstatUtil {
     }
 
     /**
-     * Get a Set of the numerical statistics in the given Kstat. If the Kstat
-     * hasn't been read, read it.
+     * Get a Set of the numerical statistics in the given Kstat.
      *
      * @param jkstat a JKstat object
      * @param ks the Kstat of interest
@@ -43,21 +42,17 @@ public final class KstatUtil {
      * @return a Set of those statistics that are of a numeric type
      */
     public static Set<String> numericStatistics(final JKstat jkstat,
-						Kstat ks) {
+						final Kstat ks) {
 	if (ks == null) {
 	    return null;
 	}
-	Set<String> ss = ks.statistics();
-	if (ss.isEmpty()) {
-	    ks = jkstat.getKstat(ks);
-	    if (ks == null) {
-		return null;
-	    }
-	    ss = ks.statistics();
+	Kstat nks = jkstat.getKstat(ks);
+	if (nks == null) {
+	    return null;
 	}
 	Set<String> ns = new TreeSet<>();
-	for (String s : ss) {
-	    if (ks.isNumeric(s)) {
+	for (String s : nks.statistics()) {
+	    if (nks.isNumeric(s)) {
 		ns.add(s);
 	    }
 	}
@@ -65,7 +60,7 @@ public final class KstatUtil {
     }
 
     /**
-     * Get a Set of the numerical statistic in the given KstatAggregate.
+     * Get a Set of the numerical statistics in the given KstatAggregate.
      *
      * @param jkstat a JKstat object
      * @param ksa the KstatAggregate of interest

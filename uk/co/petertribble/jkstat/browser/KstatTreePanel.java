@@ -279,10 +279,10 @@ public final class KstatTreePanel extends JPanel
 	}
     }
 
-    private void showKstat(Kstat ks) {
+    private void showKstat(final Kstat oks) {
 	rpanel.removeAll();
 	rpanel.validate();
-	ks = jkstat.getKstat(ks);
+	Kstat ks = jkstat.getKstat(oks);
 	setKstatInfo(ks);
 	setKstatTable(ks);
 	setKstatAccessory(ks);

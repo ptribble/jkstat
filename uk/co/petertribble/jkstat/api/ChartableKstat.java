@@ -67,25 +67,24 @@ public class ChartableKstat {
     /**
      * Create a ChartableKstat using the given Kstat as the data source.
      *
-     * @param jkstat a {@code JKstat}
-     * @param ks the {@code Kstat} supplying the data
+     * @param njkstat a {@code JKstat}
+     * @param nks the {@code Kstat} to be charted
      */
-    public ChartableKstat(final JKstat jkstat, final Kstat ks) {
-	this(jkstat, ks, true);
+    public ChartableKstat(final JKstat njkstat, final Kstat nks) {
+	this(njkstat, nks, true);
     }
 
     /**
      * Create a ChartableKstat using the given Kstat as the data source.
      *
-     * @param jkstat a {@code JKstat}
-     * @param ks the {@code Kstat} supplying the data
+     * @param njkstat a {@code JKstat}
+     * @param nks the {@code Kstat} to be charted
      * @param init true if the list of values should be initialized to zero
      */
-    public ChartableKstat(final JKstat jkstat, Kstat ks,
+    public ChartableKstat(final JKstat njkstat, final Kstat nks,
 			  final boolean init) {
-	this.jkstat = jkstat;
-	this.ks = ks;
-	ks = jkstat.getKstat(ks);
+	jkstat = njkstat;
+	ks = jkstat.getKstat(nks);
 	lastsnap = ks.getCrtime();
 	if (init) {
 	    for (String statistic : KstatUtil.numericStatistics(jkstat, ks)) {
@@ -99,10 +98,10 @@ public class ChartableKstat {
     /**
      * Resync the JKstat instance.
      *
-     * @param jkstat the new jkstat instance to use
+     * @param njkstat the new jkstat instance to use
      */
-    public void setJKstat(final JKstat jkstat) {
-	this.jkstat = jkstat;
+    public void setJKstat(final JKstat njkstat) {
+	jkstat = njkstat;
     }
 
     /**

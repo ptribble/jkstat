@@ -36,18 +36,18 @@ public final class KstatAccessoryRegistry {
 
     /**
      * Return a suitable KstatAccessoryPanel for a given Kstat. If no
-     * accessory is known for the given kstat, return null.
+     * accessory is known for the given Kstat, return null.
      *
-     * @param ks a kstat
+     * @param nks a Kstat
      * @param interval the update interval in seconds
      * @param jkstat a JKstat object
      *
      * @return a KstatAccessoryPanel object suitable for the given kstat
      */
-    public static KstatAccessoryPanel getAccessoryPanel(Kstat ks,
+    public static KstatAccessoryPanel getAccessoryPanel(final Kstat nks,
 							final int interval,
 							final JKstat jkstat) {
-	ks = jkstat.getKstat(ks);
+	Kstat ks = jkstat.getKstat(nks);
 	if (ks == null) {
 	    return null;
 	}

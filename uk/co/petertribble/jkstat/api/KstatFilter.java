@@ -290,7 +290,7 @@ public class KstatFilter {
      *
      * @return true if the Kstat matches the filter
      */
-    private boolean matchFilter(Kstat ks) {
+    private boolean matchFilter(final Kstat ks) {
 	if (ks == null) {
 	    // invalid kstat, we definitely don't want it
 	    return false;
@@ -325,31 +325,25 @@ public class KstatFilter {
 	/*
 	 * Iterate through the filters,
 	 */
-	boolean smatch;
-	boolean statread = false;
 	for (FilterQuartet fq : filterList) {
 	    /*
 	     * To check against statistics involves reading the data for this
-	     * kstat, which isn't normally done by the enumeration. So we must
-	     * read the kstat to initialize the statistics hash. As this
-	     * operation is expensive, try to avoid it.
+	     * Kstat, which isn't normally done by the enumeration. So we must
+	     * read the Kstat to initialize the statistics hash. As this
+	     * operation is expensive, only do it if we need to.
 	     */
 	    if (matchTriplet(ks, fq)) {
 		if (fq.statistic == null) {
-		    smatch = true;
+		    return true;
 		} else {
-		    if (!statread) {
-			ks = jkstat.getKstat(ks);
-			statread = true;
-		    }
+		    Kstat nks = jkstat.getKstat(ks);
 		    // if not a valid kstat, then it shouldn't match
-		    if (ks == null) {
+		    if (nks == null) {
 			return false;
 		    }
-		    smatch = ks.hasStatistic(fq.statistic);
-		}
-		if (smatch) {
-		    return true;
+		    if (nks.hasStatistic(fq.statistic)) {
+			return true;
+		    }
 		}
 	    }
 	}

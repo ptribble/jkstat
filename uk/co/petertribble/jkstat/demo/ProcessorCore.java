@@ -42,12 +42,12 @@ public class ProcessorCore implements Comparable<ProcessorCore> {
      * Create a new ProcessorCore to store details of a processor
      * core and its constituent threads.
      *
-     * @param chip the ProcessorChip containing this ProcessorCore
-     * @param coreid the core id of this ProcessorCore
+     * @param pchip the ProcessorChip containing this ProcessorCore
+     * @param ncoreid the core id of this ProcessorCore
      */
-    public ProcessorCore(final ProcessorChip chip, final long coreid) {
-	this.chip = chip;
-	this.coreid = coreid;
+    public ProcessorCore(final ProcessorChip pchip, final long ncoreid) {
+	chip = pchip;
+	coreid = ncoreid;
     }
 
     /**

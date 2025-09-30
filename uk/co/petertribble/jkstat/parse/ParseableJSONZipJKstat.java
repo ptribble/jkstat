@@ -59,29 +59,29 @@ public final class ParseableJSONZipJKstat extends SequencedJKstat {
      * Constructs a ParseableJSONZipJKstat object.
      *
      * @param name the name of the zip file to open
-     * @param cached whether caching should be enabled
+     * @param docache whether caching should be enabled
      *
      * @throws IOException if there's a problem opening the zip file
      */
-    public ParseableJSONZipJKstat(final String name, final boolean cached)
+    public ParseableJSONZipJKstat(final String name, final boolean docache)
 		throws IOException {
-	this(new ZipFile(name), new HashMap<>(), cached);
+	this(new ZipFile(name), new HashMap<>(), docache);
     }
 
     /**
      * Constructs a ParseableJSONZipJKstat object.
      *
-     * @param zf the ZipFile containing data
-     * @param ppmap a Map containing parsed zip files
-     * @param cached whether caching should be enabled
+     * @param zfile the ZipFile containing data
+     * @param pmap a Map containing parsed zip files
+     * @param docache whether caching should be enabled
      */
-    public ParseableJSONZipJKstat(final ZipFile zf,
-				final Map<Integer, JSONParser> ppmap,
-				final boolean cached) {
+    public ParseableJSONZipJKstat(final ZipFile zfile,
+				final Map<Integer, JSONParser> pmap,
+				final boolean docache) {
 	super();
-	this.zf = zf;
-	this.ppmap = ppmap;
-	this.cached = cached;
+	zf = zfile;
+	ppmap = pmap;
+	cached = docache;
 	ArrayList<ZipEntry> al = new ArrayList<>();
 	for (Enumeration<? extends ZipEntry> e
 		 = zf.entries(); e.hasMoreElements();) {

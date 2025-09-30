@@ -45,44 +45,44 @@ public final class KstatAggregateChart extends KstatBaseChart {
     /**
      * Create a Chart of the rate of change of the given statistic.
      *
-     * @param jkstat a {@code JKstat}
-     * @param ksa the KstatAggregate supplying the data
+     * @param njkstat a {@code JKstat}
+     * @param nksa the KstatAggregate supplying the data
      * @param statistic the statistic to be charted
      */
-    public KstatAggregateChart(final JKstat jkstat, final KstatAggregate ksa,
+    public KstatAggregateChart(final JKstat njkstat, final KstatAggregate nksa,
 			       final String statistic) {
-	this(jkstat, ksa, statistic, true);
+	this(njkstat, nksa, statistic, true);
     }
 
     /**
      * Create a Chart of the given statistic.
      *
-     * @param jkstat a {@code JKstat}
-     * @param ksa the KstatAggregate supplying the data
+     * @param njkstat a {@code JKstat}
+     * @param nksa the KstatAggregate supplying the data
      * @param statistic the statistic to be charted
-     * @param showdelta if true, show rates, else show absolute values
+     * @param nshowdelta if true, show rates, else show absolute values
      */
-    public KstatAggregateChart(final JKstat jkstat, final KstatAggregate ksa,
-			final String statistic, final boolean showdelta) {
-	this.jkstat = jkstat;
-	this.ksa = ksa;
-	this.showdelta = showdelta;
+    public KstatAggregateChart(final JKstat njkstat, final KstatAggregate nksa,
+			final String statistic, final boolean nshowdelta) {
+	jkstat = njkstat;
+	ksa = nksa;
+	showdelta = nshowdelta;
 	init(statistic);
     }
 
     /**
      * Create a Chart of the given statistics.
      *
-     * @param jkstat a {@code JKstat}
-     * @param ksa the KstatAggregate supplying the data
+     * @param njkstat a {@code JKstat}
+     * @param nksa the KstatAggregate supplying the data
      * @param statistics the statistics to be charted
-     * @param showdelta if true, show rates, else show absolute values
+     * @param sdelta if true, show rates, else show absolute values
      */
-    public KstatAggregateChart(final JKstat jkstat, final KstatAggregate ksa,
-		     final List<String> statistics, final boolean showdelta) {
-	this.jkstat = jkstat;
-	this.ksa = ksa;
-	this.showdelta = showdelta;
+    public KstatAggregateChart(final JKstat njkstat, final KstatAggregate nksa,
+		     final List<String> statistics, final boolean sdelta) {
+	jkstat = njkstat;
+	ksa = nksa;
+	showdelta = sdelta;
 	init(statistics);
     }
 

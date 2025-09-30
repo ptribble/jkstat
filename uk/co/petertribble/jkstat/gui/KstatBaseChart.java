@@ -122,10 +122,10 @@ public abstract class KstatBaseChart implements ActionListener {
      * Set the maximum age of the chart. Only statistics younger than this
      * age will be shown.
      *
-     * @param maxage the required maximum age in milliseconds
+     * @param mage the required maximum age in milliseconds
      */
-    public void setMaxAge(final int maxage) {
-	this.maxage = maxage;
+    public void setMaxAge(final int mage) {
+	maxage = mage;
     }
 
     /**

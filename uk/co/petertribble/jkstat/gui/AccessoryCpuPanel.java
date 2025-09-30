@@ -93,13 +93,13 @@ public final class AccessoryCpuPanel extends KstatAccessoryPanel {
      * @param ks a cpu_stat {@code Kstat}
      * @param interval the update interval in seconds
      * @param jkstat a {@code JKstat}
-     * @param orientation the desired orientation of the accessory, which
+     * @param orient the desired orientation of the accessory, which
      * should be either SwingConstants.VERTICAL or SwingConstants.HORIZONTAL
      */
     public AccessoryCpuPanel(final Kstat ks, final int interval,
-			     final JKstat jkstat, final int orientation) {
+			     final JKstat jkstat, final int orient) {
 	super(ks, interval, jkstat);
-	this.orientation = orientation;
+	orientation = orient;
 
 	if (orientation == SwingConstants.VERTICAL) {
 	    setMinimumSize(new Dimension(12, 48));

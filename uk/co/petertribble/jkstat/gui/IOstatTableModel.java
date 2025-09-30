@@ -55,14 +55,14 @@ public final class IOstatTableModel extends AbstractTableModel
     /**
      * Create a Table Model from the given Kstats.
      *
-     * @param kss the {@code KstatSet} to be represented by this model
+     * @param nkss the {@code KstatSet} to be represented by this model
      * @param interval the desired update interval, in seconds
-     * @param jkstat a {@code JKstat}
+     * @param njkstat a {@code JKstat}
      */
-    public IOstatTableModel(final KstatSet kss, final int interval,
-			    final JKstat jkstat) {
-	this.kss = kss;
-	this.jkstat = jkstat;
+    public IOstatTableModel(final KstatSet nkss, final int interval,
+			    final JKstat njkstat) {
+	kss = nkss;
+	jkstat = njkstat;
 
 	iodata = new ArrayList<>();
 	for (Kstat ks : kss.getKstats(true)) {

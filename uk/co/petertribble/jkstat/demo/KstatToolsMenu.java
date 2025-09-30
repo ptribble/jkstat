@@ -66,23 +66,23 @@ public final class KstatToolsMenu extends JMenu implements ActionListener {
     /**
      * Constructs a KstatToolsMenu object.
      *
-     * @param jkstat a JKstat object
+     * @param njkstat a JKstat object
      */
-    public KstatToolsMenu(final JKstat jkstat) {
-	this(jkstat, true);
+    public KstatToolsMenu(final JKstat njkstat) {
+	this(njkstat, true);
     }
 
     /**
      * Constructs a KstatToolsMenu object.
      *
-     * @param jkstat a JKstat object
+     * @param njkstat a JKstat object
      * @param showbrowser a boolean -- true if the kstat browser is to be shown
      */
-    public KstatToolsMenu(final JKstat jkstat, final boolean showbrowser) {
+    public KstatToolsMenu(final JKstat njkstat, final boolean showbrowser) {
 	super(KstatResources.getString("DEMO.TEXT"));
 	setMnemonic(KeyEvent.VK_D);
 
-	this.jkstat = jkstat;
+	jkstat = njkstat;
 
 	if (showbrowser) {
 	    kstatbrowserItem = new JMenuItem(

@@ -116,63 +116,63 @@ public abstract class JKdemo extends JFrame implements ActionListener {
     /**
      * Constructs a JKdemo object.
      *
-     * @param demoname a String used as the demo title
+     * @param name a String used as the demo title
      */
-    public JKdemo(final String demoname) {
-	this(demoname, DEFAULT_INTERVAL, true);
+    public JKdemo(final String name) {
+	this(name, DEFAULT_INTERVAL, true);
     }
 
     /**
      * Constructs a JKdemo object.
      *
-     * @param demoname a String used as the demo title
-     * @param standalone a boolean, true if the demo is a standalone
+     * @param name a String used as the demo title
+     * @param alone a boolean, true if the demo is a standalone
      * application
      */
-    public JKdemo(final String demoname, final boolean standalone) {
-	this(demoname, DEFAULT_INTERVAL, standalone);
+    public JKdemo(final String name, final boolean alone) {
+	this(name, DEFAULT_INTERVAL, alone);
     }
 
     /**
      * Constructs a JKdemo object.
      *
-     * @param demoname a String used as the demo title
-     * @param interval the update delay in seconds
+     * @param name a String used as the demo title
+     * @param ninterval the update delay in seconds
      */
-    public JKdemo(final String demoname, final int interval) {
-	this(demoname, interval, true);
+    public JKdemo(final String name, final int ninterval) {
+	this(name, ninterval, true);
     }
 
     /**
      * Constructs a JKdemo object.
      *
-     * @param demoname a String used as the demo title
-     * @param interval the update delay in seconds
-     * @param standalone a boolean, true if the demo is a standalone
+     * @param name a String used as the demo title
+     * @param ninterval the update delay in seconds
+     * @param alone a boolean, true if the demo is a standalone
      * application
      */
-    public JKdemo(final String demoname, final int interval,
-		  final boolean standalone) {
-	this(demoname, interval, standalone, true, true);
+    public JKdemo(final String name, final int ninterval,
+		  final boolean alone) {
+	this(name, ninterval, alone, true, true);
     }
 
     /**
      * Constructs a JKdemo object.
      *
-     * @param demoname a String used as the demo title
-     * @param interval the update delay in seconds
-     * @param standalone a boolean, true if the demo is a standalone
+     * @param name a String used as the demo title
+     * @param ninterval the update delay in seconds
+     * @param alone a boolean, true if the demo is a standalone
      * application
      * @param showdelay a boolean determining whether the sleep menu is shown
      * @param showhelp a boolean determining whether the help menu is shown
      */
-    public JKdemo(final String demoname, final int interval,
-		  final boolean standalone, final boolean showdelay,
+    public JKdemo(final String name, final int ninterval,
+		  final boolean alone, final boolean showdelay,
 		  final boolean showhelp) {
-	super(demoname);
-	this.demoname = demoname;
-	this.interval = interval;
-	this.standalone = standalone;
+	super(name);
+	demoname = name;
+	interval = ninterval;
+	standalone = alone;
 
 	jm = new JMenuBar();
 	setJMenuBar(jm);

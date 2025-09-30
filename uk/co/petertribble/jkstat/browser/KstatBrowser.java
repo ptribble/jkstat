@@ -106,11 +106,11 @@ public final class KstatBrowser extends JFrame implements ActionListener {
     /**
      * Constructs a local KstatBrowser.
      *
-     * @param jkstat a JKstat object
+     * @param njkstat a JKstat object
      */
-    public KstatBrowser(final JKstat jkstat) {
+    public KstatBrowser(final JKstat njkstat) {
 	super(KstatResources.getString("BROWSERUI.NAME.TEXT"));
-	this.jkstat = jkstat;
+	jkstat = njkstat;
 	addWindowListener(new WindowExit());
 
 	ktp = new KstatTreePanel(jkstat);

@@ -48,10 +48,10 @@ public class KstatFilter {
      * Create a kstat filter. The filter is initially empty, so that all kstats
      * will be returned.
      *
-     * @param jkstat a JKstat object
+     * @param njkstat a JKstat object
      */
-    public KstatFilter(final JKstat jkstat) {
-	this.jkstat = jkstat;
+    public KstatFilter(final JKstat njkstat) {
+	jkstat = njkstat;
 	filterList = new HashSet<>();
 	antiFilterList = new HashSet<>();
     }
@@ -60,20 +60,20 @@ public class KstatFilter {
      * Filter on this kstat class. Only kstats of this class will be returned
      * by this KstatFilter.
      *
-     * @param filterClass the name of the class of kstat to be matched
+     * @param fClass the name of the class of kstat to be matched
      */
-    public void setFilterClass(final String filterClass) {
-	this.filterClass = filterClass;
+    public void setFilterClass(final String fClass) {
+	filterClass = fClass;
     }
 
     /**
      * Filter on this kstat type. Only kstats that have a kstat type equal to
      * this type will be returned by this KstatFilter.
      *
-     * @param filterType the type of kstat to be matched
+     * @param fType the type of kstat to be matched
      */
-    public void setFilterType(final int filterType) {
-	this.filterType = filterType;
+    public void setFilterType(final int fType) {
+	filterType = fType;
     }
 
     /**
@@ -372,12 +372,12 @@ public class KstatFilter {
 	protected String name;
 	protected String statistic;
 
-	FilterQuartet(final String module, final Integer instance,
-		      final String name, final String statistic) {
-	    this.module = module;
-	    this.instance = instance;
-	    this.name = name;
-	    this.statistic = statistic;
+	FilterQuartet(final String fmodule, final Integer finstance,
+		      final String fname, final String fstatistic) {
+	    module = fmodule;
+	    instance = finstance;
+	    name = fname;
+	    statistic = fstatistic;
 	}
     }
 }

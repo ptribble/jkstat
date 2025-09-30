@@ -83,15 +83,15 @@ public abstract class KstatAccessoryPanel extends JPanel
      * Avoid passing in an interval of 0, as it may be used as the divisor
      * to calculate a rate.
      *
-     * @param ks the Kstat to be represented by this accessory
+     * @param nks the Kstat to be represented by this accessory
      * @param interval the desired update interval, in seconds
-     * @param jkstat a JKstat object
+     * @param njkstat a JKstat object
      */
-    public KstatAccessoryPanel(final Kstat ks, final int interval,
-			       final JKstat jkstat) {
-	this.ks = ks;
+    public KstatAccessoryPanel(final Kstat nks, final int interval,
+			       final JKstat njkstat) {
+	ks = nks;
 	delay = interval * 1000;
-	this.jkstat = jkstat;
+	jkstat = njkstat;
     }
 
     /**

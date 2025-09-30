@@ -45,49 +45,49 @@ public final class KstatChart extends KstatBaseChart {
     /**
      * Create a Chart of the given statistic.
      *
-     * @param jkstat a {@code JKstat}
-     * @param ks the {@code Kstat} supplying the data
+     * @param njkstat a {@code JKstat}
+     * @param nks the {@code Kstat} supplying the data
      * @param statistic the statistic to be charted
-     * @param showdelta if true, show rates, else show absolute values
+     * @param sdelta if true, show rates, else show absolute values
      */
-    public KstatChart(final JKstat jkstat, final Kstat ks,
-		      final String statistic, final boolean showdelta) {
-	this(jkstat, ks, new ChartableKstat(jkstat, ks), statistic, showdelta);
+    public KstatChart(final JKstat njkstat, final Kstat nks,
+		      final String statistic, final boolean sdelta) {
+	this(njkstat, nks, new ChartableKstat(njkstat, nks), statistic, sdelta);
     }
 
     /**
      * Create a Chart of the given statistic.
      *
-     * @param jkstat a {@code JKstat}
-     * @param ks the {@code Kstat} supplying the data
-     * @param cks the {@code ChartableKstat} generating rates from the data
+     * @param njkstat a {@code JKstat}
+     * @param nks the {@code Kstat} supplying the data
+     * @param ncks the {@code ChartableKstat} generating rates from the data
      * @param statistic the statistic to be charted
-     * @param showdelta if true, show rates, else show absolute values
+     * @param sdelta if true, show rates, else show absolute values
      */
-    public KstatChart(final JKstat jkstat, final Kstat ks,
-		      final ChartableKstat cks, final String statistic,
-		      final boolean showdelta) {
-	this.jkstat = jkstat;
-	this.ks = ks;
-	this.cks = cks;
-	this.showdelta = showdelta;
+    public KstatChart(final JKstat njkstat, final Kstat nks,
+		      final ChartableKstat ncks, final String statistic,
+		      final boolean sdelta) {
+	jkstat = njkstat;
+	ks = nks;
+	cks = ncks;
+	showdelta = sdelta;
 	init(statistic);
     }
 
     /**
      * Create a Chart of the given statistics.
      *
-     * @param jkstat a {@code JKstat}
-     * @param ks the {@code Kstat} supplying the data
+     * @param njkstat a {@code JKstat}
+     * @param nks the {@code Kstat} supplying the data
      * @param statistics the statistics to be charted
-     * @param showdelta if true, show rates, else show absolute values
+     * @param sdelta if true, show rates, else show absolute values
      */
-    public KstatChart(final JKstat jkstat, final Kstat ks,
-		      final List<String> statistics, final boolean showdelta) {
-	this.jkstat = jkstat;
-	this.ks = ks;
+    public KstatChart(final JKstat njkstat, final Kstat nks,
+		      final List<String> statistics, final boolean sdelta) {
+	jkstat = njkstat;
+	ks = nks;
 	cks = new ChartableKstat(jkstat, ks);
-	this.showdelta = showdelta;
+	showdelta = sdelta;
 	init(statistics);
     }
 

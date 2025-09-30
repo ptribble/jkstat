@@ -74,9 +74,9 @@ public class KstatData implements Serializable {
         private final int intType;
         private final boolean numeric;
 
-        Type(final int intType, final boolean numeric) {
-            this.intType = intType;
-            this.numeric = numeric;
+        Type(final int iType, final boolean inumeric) {
+            intType = iType;
+            numeric = inumeric;
         }
 
 	/**
@@ -124,12 +124,12 @@ public class KstatData implements Serializable {
     /**
      * Allocates a {@code KstatData} of the given type and data value.
      *
-     * @param type the type of the data
-     * @param data the data
+     * @param itype the type of the data
+     * @param idata the data
      */
-    public KstatData(final Type type, final Object data) {
-        this.type = type;
-        this.data = data;
+    public KstatData(final Type itype, final Object idata) {
+        type = itype;
+        data = idata;
     }
 
     /**

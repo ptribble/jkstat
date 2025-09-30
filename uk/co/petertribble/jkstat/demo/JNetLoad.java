@@ -62,14 +62,14 @@ public final class JNetLoad extends JKdemo implements ActionListener {
     /**
      * Construct a new JNetLoad application.
      *
-     * @param jkstat a JKstat object
+     * @param njkstat a JKstat object
      * @param standalone a boolean, true if the demo is a standalone
      * application.
      */
-    public JNetLoad(final JKstat jkstat, final boolean standalone) {
+    public JNetLoad(final JKstat njkstat, final boolean standalone) {
 	super("JNetLoad", 1, standalone);
 
-	this.jkstat = jkstat;
+	jkstat = njkstat;
 
 	itemMap = new HashMap<>();
 
@@ -143,8 +143,8 @@ public final class JNetLoad extends JKdemo implements ActionListener {
     static class PopupListener extends MouseAdapter {
 	private JPopupMenu popup;
 
-	PopupListener(final JPopupMenu popup) {
-	    this.popup = popup;
+	PopupListener(final JPopupMenu jpopup) {
+	    popup = jpopup;
 	}
 
 	@Override

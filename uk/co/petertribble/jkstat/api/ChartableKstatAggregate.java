@@ -35,11 +35,11 @@ public final class ChartableKstatAggregate extends ChartableKstat {
      * data source.
      *
      * @param jkstat a {@code JKstat}
-     * @param ksa the {@code KstatAggregate} supplying the data
+     * @param nksa the {@code KstatAggregate} supplying the data
      */
     public ChartableKstatAggregate(final JKstat jkstat,
-				   final KstatAggregate ksa) {
-	this.ksa = ksa;
+				   final KstatAggregate nksa) {
+	ksa = nksa;
 	ksa.read();
 	lastsnap = ksa.getCrtime();
 	for (String statistic : KstatUtil.numericStatistics(jkstat, ksa)) {

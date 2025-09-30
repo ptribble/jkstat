@@ -41,10 +41,10 @@ public class ProcessorChip implements Comparable<ProcessorChip> {
      * Create a new ProcessorChip to store details of a processor
      * chip and its constituent cores.
      *
-     * @param chipid the id of this ProcessorChip
+     * @param cid the id of this ProcessorChip
      */
-    public ProcessorChip(final long chipid) {
-	this.chipid = chipid;
+    public ProcessorChip(final long cid) {
+	chipid = cid;
     }
 
     /**

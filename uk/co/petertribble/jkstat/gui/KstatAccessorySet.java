@@ -39,12 +39,12 @@ public final class KstatAccessorySet implements ActionListener {
      * Constructs a KstatAccessorySet object, to manage a collection of
      * KstatAccessoryPanel objects.
      *
-     * @param accessories a Collection of accessories
+     * @param aset a Collection of accessories
      * @param interval the update interval of the accessories
      */
-    public KstatAccessorySet(final Collection<KstatAccessoryPanel> accessories,
+    public KstatAccessorySet(final Collection<KstatAccessoryPanel> aset,
 			     final int interval) {
-	this.accessories = accessories;
+	accessories = aset;
 	delay = interval * 1000;
 	startLoop();
     }

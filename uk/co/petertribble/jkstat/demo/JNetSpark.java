@@ -52,14 +52,14 @@ public final class JNetSpark extends JKdemo implements ActionListener {
     /**
      * Construct a new JNetSpark application.
      *
-     * @param jkstat a JKstat object
+     * @param njkstat a JKstat object
      * @param standalone a boolean, true if the demo is a standalone
      * application.
      */
-    public JNetSpark(final JKstat jkstat, final boolean standalone) {
+    public JNetSpark(final JKstat njkstat, final boolean standalone) {
 	super("JNetSpark", 1, standalone);
 
-	this.jkstat = jkstat;
+	jkstat = njkstat;
 
 	itemMap = new HashMap<>();
 
@@ -131,8 +131,8 @@ public final class JNetSpark extends JKdemo implements ActionListener {
     static class PopupListener extends MouseAdapter {
 	private JPopupMenu popup;
 
-	PopupListener(final JPopupMenu popup) {
-	    this.popup = popup;
+	PopupListener(final JPopupMenu jpopup) {
+	    popup = jpopup;
 	}
 
 	@Override

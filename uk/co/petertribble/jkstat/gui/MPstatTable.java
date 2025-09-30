@@ -42,11 +42,11 @@ public final class MPstatTable extends JTable {
     /**
      * Create a new MPstatTable.
      *
-     * @param jkstat a JKstat object
+     * @param njkstat a JKstat object
      * @param interval the desired update interval
      */
-    public MPstatTable(final JKstat jkstat, final int interval) {
-	this.jkstat = jkstat;
+    public MPstatTable(final JKstat njkstat, final int interval) {
+	jkstat = njkstat;
 	/*
 	 * Filter on all cpu kstats.
 	 */

@@ -164,11 +164,11 @@ public final class KServerConfig {
      * Specify whether the server should register in mdns, so it's
      * discoverable on a network.
      *
-     * @param registermdns a boolean specifying if the server should
+     * @param willregister a boolean specifying if the server should
      * register itself in mdns
      */
-    void setRegister(final boolean registermdns) {
-	this.registermdns = registermdns;
+    void setRegister(final boolean willregister) {
+	registermdns = willregister;
     }
 
     /**
@@ -183,9 +183,9 @@ public final class KServerConfig {
     /**
      * Set the port to listen on.
      *
-     * @param port the port number
+     * @param nport the port number
      */
-    void setPort(final int port) {
-	this.port = port;
+    void setPort(final int nport) {
+	port = nport;
     }
 }

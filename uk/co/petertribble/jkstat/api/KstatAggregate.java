@@ -41,25 +41,25 @@ public class KstatAggregate {
     /**
      * Allocates a {@code KstatAggregate} comprising a Set of kstats.
      *
-     * @param jkstat a {@code JKstat}
-     * @param kss a {@code KstatSet} containing the Kstats to be aggregated
+     * @param njkstat a {@code JKstat}
+     * @param nkss a {@code KstatSet} containing the Kstats to be aggregated
      */
-    public KstatAggregate(final JKstat jkstat, final KstatSet kss) {
-	this(jkstat, kss, "Aggregate");
+    public KstatAggregate(final JKstat njkstat, final KstatSet nkss) {
+	this(njkstat, nkss, "Aggregate");
     }
 
     /**
      * Allocates a {@code KstatAggregate} comprising a Set of kstats.
      *
-     * @param jkstat a {@code JKstat}
-     * @param kss a {@code KstatSet} containing the Kstats to be aggregated
-     * @param title a String that can be used for presentation
+     * @param njkstat a {@code JKstat}
+     * @param nkss a {@code KstatSet} containing the Kstats to be aggregated
+     * @param ntitle a String that can be used for presentation
      */
-    public KstatAggregate(final JKstat jkstat, final KstatSet kss,
-			  final String title) {
-	this.jkstat = jkstat;
-	this.kss = kss;
-	this.title = title;
+    public KstatAggregate(final JKstat njkstat, final KstatSet nkss,
+			  final String ntitle) {
+	jkstat = njkstat;
+	kss = nkss;
+	title = ntitle;
 	inkstats = kss.getKstats();
 	isdynamic = true;
 	kstats = inkstats;
@@ -68,25 +68,25 @@ public class KstatAggregate {
     /**
      * Allocates a {@code KstatAggregate} comprising a Set of kstats.
      *
-     * @param jkstat a {@code JKstat}
-     * @param inkstats a Set of Kstats to be aggregated
+     * @param njkstat a {@code JKstat}
+     * @param instats a Set of Kstats to be aggregated
      */
-    public KstatAggregate(final JKstat jkstat, final Set<Kstat> inkstats) {
-	this(jkstat, inkstats, "Aggregate");
+    public KstatAggregate(final JKstat njkstat, final Set<Kstat> instats) {
+	this(njkstat, instats, "Aggregate");
     }
 
     /**
      * Allocates a {@code KstatAggregate} comprising a Set of kstats.
      *
-     * @param jkstat a {@code JKstat}
-     * @param inkstats a Set of Kstats to be aggregated
-     * @param title a String that can be used for presentation
+     * @param njkstat a {@code JKstat}
+     * @param instats a Set of Kstats to be aggregated
+     * @param ntitle a String that can be used for presentation
      */
-    public KstatAggregate(final JKstat jkstat, final Set<Kstat> inkstats,
-			  final String title) {
-	this.jkstat = jkstat;
-	this.inkstats = inkstats;
-	this.title = title;
+    public KstatAggregate(final JKstat njkstat, final Set<Kstat> instats,
+			  final String ntitle) {
+	jkstat = njkstat;
+	inkstats = instats;
+	title = ntitle;
 	isdynamic = false;
 	kstats = inkstats;
     }
@@ -96,10 +96,10 @@ public class KstatAggregate {
      * but the charts create a new instance of a {@code SequencedJKstat}. This
      * allows them to resync the aggregate jkstat with the one in the chart.
      *
-     * @param jkstat a {@code JKstat}
+     * @param njkstat a {@code JKstat}
      */
-    public void setJKstat(final JKstat jkstat) {
-	this.jkstat = jkstat;
+    public void setJKstat(final JKstat njkstat) {
+	jkstat = njkstat;
 	if (isdynamic) {
 	    kss.setJKstat(jkstat);
 	}

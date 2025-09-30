@@ -36,10 +36,10 @@ public class ProcessorTree {
     /**
      * Create a processor tree.
      *
-     * @param jkstat A JKstat object
+     * @param njkstat A JKstat object
      */
-    public ProcessorTree(final JKstat jkstat) {
-	this.jkstat = jkstat;
+    public ProcessorTree(final JKstat njkstat) {
+	jkstat = njkstat;
 	KstatFilter ksf = new KstatFilter(jkstat);
 	ksf.setFilterClass("misc");
 	ksf.addFilter("cpu_info:::");

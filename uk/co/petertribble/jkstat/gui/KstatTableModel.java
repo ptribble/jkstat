@@ -70,15 +70,15 @@ public final class KstatTableModel extends AbstractTableModel
      * interval. If the interval is zero then the table won't be updated. If
      * the interval is less than zero, then rates won't be shown.
      *
-     * @param ks the {@code Kstat} to be represented by this model
+     * @param nks the {@code Kstat} to be represented by this model
      * @param interval the desired update interval, in seconds
-     * @param jkstat a {@code JKstat}
+     * @param njkstat a {@code JKstat}
      */
-    public KstatTableModel(final Kstat ks, final int interval,
-			   final JKstat jkstat) {
-	this.ks = ks;
+    public KstatTableModel(final Kstat nks, final int interval,
+			   final JKstat njkstat) {
+	ks = nks;
 	delay = interval * 1000;
-	this.jkstat = jkstat;
+	jkstat = njkstat;
 	update();
 	rowNames = ks.statistics().toArray(new String[0]);
 	startLoop();

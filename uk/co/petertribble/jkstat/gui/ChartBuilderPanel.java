@@ -90,10 +90,10 @@ public final class ChartBuilderPanel extends JPanel
     /**
      * Create a ChartBuilderPanel.
      *
-     * @param jkstat a JKstat object
+     * @param njkstat a JKstat object
      */
-    public ChartBuilderPanel(final JKstat jkstat) {
-	this.jkstat = jkstat;
+    public ChartBuilderPanel(final JKstat njkstat) {
+	jkstat = njkstat;
 	/*
 	 * The panel contains the following:
 	 *  a tree to select a kstat

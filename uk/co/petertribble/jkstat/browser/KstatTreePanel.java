@@ -144,21 +144,21 @@ public final class KstatTreePanel extends JPanel
     /**
      * Constructs a KstatTreePanel.
      *
-     * @param jkstat a JKstat object
+     * @param njkstat a JKstat object
      */
-    public KstatTreePanel(final JKstat jkstat) {
-	this(jkstat, new KstatSet(jkstat));
+    public KstatTreePanel(final JKstat njkstat) {
+	this(njkstat, new KstatSet(njkstat));
     }
 
     /**
      * Constructs a KstatTreePanel.
      *
-     * @param jkstat a JKstat object
-     * @param kss a KstatSet object
+     * @param njkstat a JKstat object
+     * @param nkss a KstatSet object
      */
-    public KstatTreePanel(final JKstat jkstat, final KstatSet kss) {
-	this.jkstat = jkstat;
-	this.kss = kss;
+    public KstatTreePanel(final JKstat njkstat, final KstatSet nkss) {
+	jkstat = njkstat;
+	kss = nkss;
 
 	stepping = (jkstat instanceof SequencedJKstat);
 

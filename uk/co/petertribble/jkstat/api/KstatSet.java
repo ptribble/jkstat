@@ -47,21 +47,21 @@ public class KstatSet {
     /**
      * Allocates a KstatSet to manage the kstats in the kstat chain.
      *
-     * @param jkstat a {@code JKstat}
+     * @param njkstat a {@code JKstat}
      */
-    public KstatSet(final JKstat jkstat) {
-	this(jkstat, "all kstats");
+    public KstatSet(final JKstat njkstat) {
+	this(njkstat, "all kstats");
     }
 
     /**
      * Allocates a KstatSet to manage the kstats in the kstat chain.
      *
-     * @param jkstat a {@code JKstat}
-     * @param title a String that can be used for presentation
+     * @param njkstat a {@code JKstat}
+     * @param ntitle a String that can be used for presentation
      */
-    public KstatSet(final JKstat jkstat, final String title) {
-	this.jkstat = jkstat;
-	this.title = title;
+    public KstatSet(final JKstat njkstat, final String ntitle) {
+	jkstat = njkstat;
+	title = ntitle;
 	chainid = jkstat.getKCID();
 	ksf = null;
 	currentKstats = jkstat.getKstats();
@@ -73,28 +73,28 @@ public class KstatSet {
      * Allocates a KstatSet to manage the kstats in the kstat chain that
      * match the given filter.
      *
-     * @param jkstat a {@code JKstat}
-     * @param ksf a {@code KstatFilter}
+     * @param njkstat a {@code JKstat}
+     * @param nksf a {@code KstatFilter}
      */
-    public KstatSet(final JKstat jkstat, final KstatFilter ksf) {
+    public KstatSet(final JKstat njkstat, final KstatFilter nksf) {
 	// if KstatFilter had a toString method we could use that
-	this(jkstat, ksf, (String) null);
+	this(njkstat, nksf, (String) null);
     }
 
     /**
      * Allocates a KstatSet to manage the kstats in the kstat chain that
      * match the given filter.
      *
-     * @param jkstat a {@code JKstat}
-     * @param ksf a {@code KstatFilter}
-     * @param title a String that can be used for presentation
+     * @param njkstat a {@code JKstat}
+     * @param nksf a {@code KstatFilter}
+     * @param ntitle a String that can be used for presentation
      */
-    public KstatSet(final JKstat jkstat, final KstatFilter ksf,
-		    final String title) {
-	this.jkstat = jkstat;
+    public KstatSet(final JKstat njkstat, final KstatFilter nksf,
+		    final String ntitle) {
+	jkstat = njkstat;
 	chainid = jkstat.getKCID();
-	this.ksf = ksf;
-	this.title = title;
+	ksf = nksf;
+	title = ntitle;
 	currentKstats = ksf.getKstats();
 	addedKstats = new HashSet<>();
 	deletedKstats = new HashSet<>();
@@ -158,10 +158,10 @@ public class KstatSet {
      * but the charts create a new instance of a {@code SequencedJKstat}. This
      * allows them to resync jkstat with the one in the chart.
      *
-     * @param jkstat a {@code JKstat}
+     * @param njkstat a {@code JKstat}
      */
-    public void setJKstat(final JKstat jkstat) {
-	this.jkstat = jkstat;
+    public void setJKstat(final JKstat njkstat) {
+	jkstat = njkstat;
     }
 
     /**

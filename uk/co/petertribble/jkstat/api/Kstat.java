@@ -85,14 +85,15 @@ public class Kstat implements Serializable, Comparable<Kstat> {
      * Creates a new {@code Kstat} of the given {@code module},
      * {@code instance}, and {@code name}.
      *
-     * @param module the kstat module
-     * @param instance the kstat instance
-     * @param name the kstat name
+     * @param kmodule the kstat module
+     * @param kinstance the kstat instance
+     * @param kname the kstat name
      */
-    public Kstat(final String module, final int instance, final String name) {
-	this.module = module;
-	this.instance = instance;
-	this.name = name;
+    public Kstat(final String kmodule, final int kinstance,
+		 final String kname) {
+	module = kmodule;
+	instance = kinstance;
+	name = kname;
     }
 
     /**
@@ -231,17 +232,17 @@ public class Kstat implements Serializable, Comparable<Kstat> {
     /**
      * Sets the standard data for this {@code Kstat}.
      *
-     * @param kstatClass the kstat class of this {@code Kstat}
-     * @param type the type of this {@code Kstat}
-     * @param crtime the creation time of this {@code Kstat}
-     * @param snaptime the snap time of this {@code Kstat}
+     * @param kClass the kstat class of this {@code Kstat}
+     * @param ktype the type of this {@code Kstat}
+     * @param kcrtime the creation time of this {@code Kstat}
+     * @param ksnaptime the snap time of this {@code Kstat}
      */
-    public void setStandardInfo(final String kstatClass, final int type,
-				final long crtime, final long snaptime) {
-	this.kstatClass = kstatClass;
-	this.type = type;
-	this.crtime = crtime;
-	this.snaptime = snaptime;
+    public void setStandardInfo(final String kClass, final int ktype,
+				final long kcrtime, final long ksnaptime) {
+	kstatClass = kClass;
+	type = ktype;
+	crtime = kcrtime;
+	snaptime = ksnaptime;
     }
 
     /**

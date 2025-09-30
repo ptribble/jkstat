@@ -86,14 +86,14 @@ public final class JCpuState extends JKdemo implements ActionListener {
     /**
      * Create a new JCpuState application.
      *
-     * @param jkstat a JKstat object
+     * @param njkstat a JKstat object
      * @param standalone a boolean, true if the demo is a standalone
      * application.
      */
-    public JCpuState(final JKstat jkstat, final boolean standalone) {
+    public JCpuState(final JKstat njkstat, final boolean standalone) {
 	super("jcpustate", 1, standalone, false, false);
 
-	this.jkstat = jkstat;
+	jkstat = njkstat;
 
 	KstatFilter ksf = new KstatFilter(jkstat);
 	ksf.setFilterClass("misc");
@@ -241,8 +241,8 @@ public final class JCpuState extends JKdemo implements ActionListener {
     static class PopupListener extends MouseAdapter {
 	private JPopupMenu popup;
 
-	PopupListener(final JPopupMenu popup) {
-	    this.popup = popup;
+	PopupListener(final JPopupMenu jpopup) {
+	    popup = jpopup;
 	}
 
 	@Override

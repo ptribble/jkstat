@@ -48,11 +48,11 @@ public final class IOstatTable extends JTable {
      *
      * @param kss a {@code KstatSet}
      * @param interval the update interval in seconds
-     * @param jkstat a {@code JKstat}
+     * @param njkstat a {@code JKstat}
      */
     public IOstatTable(final KstatSet kss, final int interval,
-		       final JKstat jkstat) {
-	this.jkstat = jkstat;
+		       final JKstat njkstat) {
+	jkstat = njkstat;
 	ktm = new IOstatTableModel(kss, interval, jkstat);
 	setModel(ktm);
 	setAutoCreateRowSorter(true);

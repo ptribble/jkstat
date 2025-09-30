@@ -51,9 +51,9 @@ public class KstatTreeModel extends DefaultTreeModel {
     /*
      * Construct a new KstatTreeModel.
      */
-    private KstatTreeModel(final KstatTreeNode rootNode) {
-	super(rootNode);
-	this.rootNode = rootNode;
+    private KstatTreeModel(final KstatTreeNode nNode) {
+	super(nNode);
+	rootNode = nNode;
     }
 
     /**

@@ -47,44 +47,44 @@ public final class KstatSetAreaChart extends KstatBaseChart {
     /**
      * Create an area Chart of the rate of change of the given statistic.
      *
-     * @param jkstat a {@code JKstat}
-     * @param kss the {@code KstatSet} supplying the data
+     * @param njkstat a {@code JKstat}
+     * @param nkss the {@code KstatSet} supplying the data
      * @param statistic the statistic to be charted
      */
-    public KstatSetAreaChart(final JKstat jkstat, final KstatSet kss,
+    public KstatSetAreaChart(final JKstat njkstat, final KstatSet nkss,
 			     final String statistic) {
-	this(jkstat, kss, statistic, true);
+	this(njkstat, nkss, statistic, true);
     }
 
     /**
      * Create an area Chart of the given statistic.
      *
-     * @param jkstat a {@code JKstat}
-     * @param kss the {@code KstatSet} supplying the data
+     * @param njkstat a {@code JKstat}
+     * @param nkss the {@code KstatSet} supplying the data
      * @param statistic the statistic to be charted
-     * @param showdelta if true, show rates, else show absolute values
+     * @param sdelta if true, show rates, else show absolute values
      */
-    public KstatSetAreaChart(final JKstat jkstat, final KstatSet kss,
-			     final String statistic, final boolean showdelta) {
-	this.jkstat = jkstat;
-	this.kss = kss;
-	this.showdelta = showdelta;
+    public KstatSetAreaChart(final JKstat njkstat, final KstatSet nkss,
+			     final String statistic, final boolean sdelta) {
+	jkstat = njkstat;
+	kss = nkss;
+	showdelta = sdelta;
 	init(statistic);
     }
 
     /**
      * Create an area Chart of the given statistics.
      *
-     * @param jkstat a {@code JKstat}
-     * @param kss the {@code KstatSet} supplying the data
+     * @param njkstat a {@code JKstat}
+     * @param nkss the {@code KstatSet} supplying the data
      * @param statistics the statistics to be charted
-     * @param showdelta if true, show rates, else show absolute values
+     * @param sdelta if true, show rates, else show absolute values
      */
-    public KstatSetAreaChart(final JKstat jkstat, final KstatSet kss,
-		final List<String> statistics, final boolean showdelta) {
-	this.jkstat = jkstat;
-	this.kss = kss;
-	this.showdelta = showdelta;
+    public KstatSetAreaChart(final JKstat njkstat, final KstatSet nkss,
+		final List<String> statistics, final boolean sdelta) {
+	jkstat = njkstat;
+	kss = nkss;
+	showdelta = sdelta;
 	init(statistics);
     }
 

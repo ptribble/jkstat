@@ -65,12 +65,12 @@ public final class SparkValueAccessory extends KstatAccessoryPanel {
      * @param ks a {@code Kstat}
      * @param interval the update interval in seconds
      * @param jkstat a {@code JKstat}
-     * @param stat the statistic to display
+     * @param statistic the statistic to display
      */
     public SparkValueAccessory(final Kstat ks, final int interval,
-			       final JKstat jkstat, final String stat) {
+			       final JKstat jkstat, final String statistic) {
 	super(ks, interval, jkstat);
-	this.stat = stat;
+	stat = statistic;
 	init();
     }
 
@@ -89,26 +89,26 @@ public final class SparkValueAccessory extends KstatAccessoryPanel {
      * Enable tooltips. The value will be displayed as is, unscaled,
      * as an integer.
      *
-     * @param tiptext the initial text of the tooltip, preceding the value
+     * @param ttext the initial text of the tooltip, preceding the value
      */
-    public void enableTips(final String tiptext) {
+    public void enableTips(final String ttext) {
 	dotips = true;
-	this.tiptext = tiptext;
+	tiptext = ttext;
     }
 
     /**
      * Enable tooltips. The value will be displayed as a scaled float to
      * 2 decimal places.
      *
-     * @param tiptext the initial text of the tooltip, preceding the value
-     * @param scale the scale factor to apply to the number displayed in the
+     * @param ttext the initial text of the tooltip, preceding the value
+     * @param dscale the scale factor to apply to the number displayed in the
      * tooltip
      */
-    public void enableTips(final String tiptext, final double scale) {
+    public void enableTips(final String ttext, final double dscale) {
 	dotips = true;
 	doscale = true;
-	this.tiptext = tiptext;
-	this.scale = scale;
+	tiptext = ttext;
+	scale = dscale;
     }
 
     @Override

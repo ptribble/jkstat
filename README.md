@@ -29,7 +29,7 @@ the file LICENSES/CDDL-1.0.txt (also as help/CDDL.txt) for details
 
 JKstat incorporates JFreeChart, Copyright 2000-present by David Gilbert and
 Contributors. JFreeChart is covered by the LGPL - see the file
-LICENSES/LGPL-2.1+.txt - and can be obtained from
+LICENSES/LGPL-2.1-or-later.txt - and can be obtained from
 https://www.jfree.org/jfreechart/.
 
 JKstat incorporates a couple of sets of utility classes. See
@@ -48,4 +48,5 @@ See the file LICENSES/Apache-2.0.txt for the details of the license
 for openjson.
 
 The javascript client uses Flot https://www.flotcharts.org/
-and jsTree https://www.jstree.com/, both under the MIT License.
+and jsTree https://www.jstree.com/, both under the MIT License,
+see the file LICENSES/MIT.txt.

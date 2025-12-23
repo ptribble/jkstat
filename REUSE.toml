@@ -1,0 +1,46 @@
+version = 1
+
+[[annotations]]
+path = [ "jskstat/themes/**", "jskstat/jstree.min.js" ]
+SPDX-FileCopyrightText = "2014 Ivan Bozhanov"
+SPDX-License-Identifier = "MIT"
+
+[[annotations]]
+path = [ "jskstat/flot/**" ]
+SPDX-FileCopyrightText = "2007-2014 IOLA and Ole Laursen"
+SPDX-License-Identifier = "MIT"
+
+[[annotations]]
+path = [ "jskstat/jquery.js" ]
+SPDX-FileCopyrightText = "OpenJS Foundation and other contributors"
+SPDX-License-Identifier = "MIT"
+
+[[annotations]]
+path = [ "README.*", "CHANGES", "USERGUIDE.txt", "WEB-INF/*", "help/*", "jersey/*", "pixmaps/*.png", "pkginfo.*", "lib/*/libkstat_jni.so", "lib/java/jingle.jar", "lib/java/jumble.jar", "lib/java/jstripchart.jar", "lib/java/jkstat.jar", "lib/java/jkstat-api.jar", "groovychart", "properties/jkstat.properties", "jkstat.manifest", "jskstat/README", "jskstat/jskstat.html" ]
+SPDX-FileCopyrightText = "2025 Peter Tribble"
+SPDX-License-Identifier = "CDDL-1.0"
+
+[[annotations]]
+path = [ "lib/java/xmlrpc-*.jar", "lib/java/ws-commons-util-*.jar", "lib/java/commons-logging-*.jar" ]
+SPDX-FileCopyrightText = "1999-2009 The Apache Software Foundation"
+SPDX-License-Identifier = "Apache-2.0"
+
+[[annotations]]
+path = [ "lib/java/jfreechart-*.jar" ]
+SPDX-FileCopyrightText = "2000-present David Gilbert and Contributors"
+SPDX-License-Identifier = "LGPL-2.1-or-later"
+
+[[annotations]]
+path = [ "lib/java/openjson-*.jar" ]
+SPDX-FileCopyrightText = "(C) 2010 The Android Open Source Project"
+SPDX-License-Identifier = "Apache-2.0"
+
+[[annotations]]
+path = [ "lib/java/jmdns-*.jar" ]
+SPDX-FileCopyrightText = "Arthur van Hoff, Rick Blair, Kai Kreuzer"
+SPDX-License-Identifier = "Apache-2.0"
+
+[[annotations]]
+path = [ "lib/java/slf4j-api-*.jar" ]
+SPDX-FileCopyrightText = "2004-2022 QOS.ch Sarl (Switzerland)"
+SPDX-License-Identifier = "MIT"

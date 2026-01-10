@@ -14,13 +14,13 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
 package uk.co.petertribble.jkstat.browser;
 
-import javax.swing.tree.*;
+import javax.swing.tree.DefaultMutableTreeNode;
 import java.util.Map;
 import java.util.HashMap;
 import uk.co.petertribble.jkstat.api.Kstat;

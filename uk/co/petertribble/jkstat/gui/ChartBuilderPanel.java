@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -25,7 +25,8 @@ import uk.co.petertribble.jkstat.browser.*;
 import java.util.List;
 import java.util.ArrayList;
 import javax.swing.*;
-import javax.swing.tree.*;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.TreePath;
 import javax.swing.event.*;
 import java.awt.event.*;
 import java.awt.Component;

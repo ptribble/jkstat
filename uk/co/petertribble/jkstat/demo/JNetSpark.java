@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -23,7 +23,11 @@ package uk.co.petertribble.jkstat.demo;
 import javax.swing.*;
 import java.awt.Dimension;
 import java.awt.event.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import uk.co.petertribble.jkstat.api.*;
 import uk.co.petertribble.jkstat.gui.*;
 

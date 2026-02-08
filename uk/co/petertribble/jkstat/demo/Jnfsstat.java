@@ -14,20 +14,26 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
 package uk.co.petertribble.jkstat.demo;
 
-import javax.swing.*;
-import javax.swing.event.*;
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import uk.co.petertribble.jkstat.api.*;
 import uk.co.petertribble.jkstat.gui.KstatTable;
-import java.util.*;
-import uk.co.petertribble.jkstat.client.*;
+import java.util.ArrayList;
+import java.util.List;
+import uk.co.petertribble.jkstat.client.KClientConfig;
+import uk.co.petertribble.jkstat.client.RemoteJKstat;
 
 /**
  * A tabular representation of nfs activity.

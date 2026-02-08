@@ -14,18 +14,21 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
 package uk.co.petertribble.jkstat.demo;
 
-import javax.swing.*;
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import java.awt.BorderLayout;
 import uk.co.petertribble.jkstat.api.JKstat;
 import uk.co.petertribble.jkstat.api.NativeJKstat;
 import uk.co.petertribble.jkstat.gui.MPstatTable;
-import uk.co.petertribble.jkstat.client.*;
+import uk.co.petertribble.jkstat.client.KClientConfig;
+import uk.co.petertribble.jkstat.client.RemoteJKstat;
 
 /**
  * A tabular representation of the mpstat command.

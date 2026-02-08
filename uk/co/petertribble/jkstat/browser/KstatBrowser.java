@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -25,7 +25,10 @@ import java.awt.event.*;
 import uk.co.petertribble.jingle.JingleMultiFrame;
 import uk.co.petertribble.jingle.JingleInfoFrame;
 import uk.co.petertribble.jkstat.api.*;
-import uk.co.petertribble.jkstat.client.*;
+import uk.co.petertribble.jkstat.client.KBrowseDialog;
+import uk.co.petertribble.jkstat.client.KClientConfig;
+import uk.co.petertribble.jkstat.client.KClientDialog;
+import uk.co.petertribble.jkstat.client.RemoteJKstat;
 import uk.co.petertribble.jkstat.parse.ParseableJSONZipJKstat;
 import uk.co.petertribble.jkstat.gui.KstatResources;
 import uk.co.petertribble.jkstat.demo.*;

@@ -38,57 +38,57 @@ public abstract class JKdemo extends JFrame implements ActionListener {
     /**
      * A menu item to exit the demo.
      */
-    protected JMenuItem exitItem;
+    private JMenuItem exitItem;
 
     /**
      * A menu item to show some help information.
      */
-    protected JMenuItem helpItem;
+    private JMenuItem helpItem;
 
     /**
      * A menu item to show license information.
      */
-    protected JMenuItem licenseItem;
+    private JMenuItem licenseItem;
 
     /**
      * A menu item to sleep for 1s.
      */
-    protected JRadioButtonMenuItem sleepItem1;
+    private JRadioButtonMenuItem sleepItem1;
 
     /**
      * A menu item to sleep for 2s.
      */
-    protected JRadioButtonMenuItem sleepItem2;
+    private JRadioButtonMenuItem sleepItem2;
 
     /**
      * A menu item to sleep for 5s.
      */
-    protected JRadioButtonMenuItem sleepItem5;
+    private JRadioButtonMenuItem sleepItem5;
 
     /**
      * A menu item to sleep for 10s.
      */
-    protected JRadioButtonMenuItem sleepItem10;
+    private JRadioButtonMenuItem sleepItem10;
 
     /**
      * The menubar common to all demos.
      */
-    protected JMenuBar jm;
+    private JMenuBar jm;
 
     /**
      * The File and Exit menu.
      */
-    protected JMenu jme;
+    private JMenu jme;
 
     /**
      * The Sleep menu.
      */
-    protected JMenu jms;
+    private JMenu jms;
 
     /**
      * The Help menu.
      */
-    protected JMenu jmh;
+    private JMenu jmh;
 
     /**
      * A label to show current state.
@@ -189,7 +189,7 @@ public abstract class JKdemo extends JFrame implements ActionListener {
     /**
      * Add the File menu.
      */
-    public void addFileMenu() {
+    private void addFileMenu() {
 	jme = new JMenu(KstatResources.getString("FILE.TEXT"));
 	jme.setMnemonic(KeyEvent.VK_F);
 	if (standalone) {
@@ -208,7 +208,7 @@ public abstract class JKdemo extends JFrame implements ActionListener {
     /**
      * Add the Sleep menu.
      */
-    public void addSleepMenu() {
+    private void addSleepMenu() {
 	jms = new JMenu(KstatResources.getString("SLEEP.TEXT"));
 	jms.setMnemonic(KeyEvent.VK_U);
 
@@ -246,7 +246,7 @@ public abstract class JKdemo extends JFrame implements ActionListener {
     /**
      * Add the Help menu.
      */
-    public void addHelpMenu() {
+    private void addHelpMenu() {
 	jmh = new JMenu(KstatResources.getString("HELP.TEXT"));
 	jmh.setMnemonic(KeyEvent.VK_H);
 	helpItem = new JMenuItem(KstatResources.getString("HELP.ABOUT.TEXT")

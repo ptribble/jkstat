@@ -28,7 +28,9 @@ import java.util.Date;
 import uk.co.petertribble.jkstat.api.*;
 
 import org.jfree.chart.ChartFactory;
-import org.jfree.data.time.*;
+import org.jfree.data.time.Millisecond;
+import org.jfree.data.time.TimeSeries;
+import org.jfree.data.time.TimeSeriesCollection;
 
 /**
  * A graphical chart of a kstat aggregate, showing one or multiple statistics.

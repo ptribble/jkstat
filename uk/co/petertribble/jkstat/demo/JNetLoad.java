@@ -29,7 +29,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import uk.co.petertribble.jkstat.api.*;
-import uk.co.petertribble.jkstat.gui.*;
+import uk.co.petertribble.jkstat.gui.AccessoryNetPanel;
+import uk.co.petertribble.jkstat.gui.KstatAccessoryPanel;
+import uk.co.petertribble.jkstat.gui.KstatAccessorySet;
+import uk.co.petertribble.jkstat.gui.KstatChartFrame;
+import uk.co.petertribble.jkstat.gui.KstatResources;
 import uk.co.petertribble.jkstat.client.KClientConfig;
 import uk.co.petertribble.jkstat.client.RemoteJKstat;
 

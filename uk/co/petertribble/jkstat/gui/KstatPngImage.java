@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -26,7 +26,11 @@ import java.io.IOException;
 import java.io.File;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
-import uk.co.petertribble.jkstat.api.*;
+import uk.co.petertribble.jkstat.api.JKstat;
+import uk.co.petertribble.jkstat.api.Kstat;
+import uk.co.petertribble.jkstat.api.KstatAggregate;
+import uk.co.petertribble.jkstat.api.KstatSet;
+import uk.co.petertribble.jkstat.api.KstatUtil;
 import uk.co.petertribble.jkstat.parse.ParseableJSONZipJKstat;
 
 /**

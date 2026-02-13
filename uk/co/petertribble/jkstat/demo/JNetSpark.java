@@ -20,7 +20,11 @@
 
 package uk.co.petertribble.jkstat.demo;
 
-import javax.swing.*;
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
 import java.awt.Dimension;
 import java.awt.event.*;
 import java.util.ArrayList;
@@ -29,7 +33,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import uk.co.petertribble.jkstat.api.*;
-import uk.co.petertribble.jkstat.gui.*;
+import uk.co.petertribble.jkstat.gui.KstatAccessoryPanel;
+import uk.co.petertribble.jkstat.gui.KstatAccessorySet;
+import uk.co.petertribble.jkstat.gui.KstatChartFrame;
+import uk.co.petertribble.jkstat.gui.KstatResources;
+import uk.co.petertribble.jkstat.gui.SparkRateAccessory;
 
 /**
  * A graphical display of network traffic.

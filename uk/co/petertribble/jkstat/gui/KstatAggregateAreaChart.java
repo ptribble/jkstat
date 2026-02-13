@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -26,7 +26,8 @@ import java.util.Date;
 import uk.co.petertribble.jkstat.api.*;
 
 import org.jfree.chart.ChartFactory;
-import org.jfree.data.time.*;
+import org.jfree.data.time.Millisecond;
+import org.jfree.data.time.TimeTableXYDataset;
 import org.jfree.chart.plot.PlotOrientation;
 
 /**

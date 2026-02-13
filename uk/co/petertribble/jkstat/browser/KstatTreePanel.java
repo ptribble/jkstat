@@ -32,7 +32,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.event.*;
 import uk.co.petertribble.jkstat.api.*;
-import uk.co.petertribble.jkstat.gui.*;
+import uk.co.petertribble.jkstat.gui.KstatAccessoryPanel;
+import uk.co.petertribble.jkstat.gui.KstatAccessoryRegistry;
+import uk.co.petertribble.jkstat.gui.KstatResources;
+import uk.co.petertribble.jkstat.gui.KstatTable;
 import uk.co.petertribble.jingle.JingleTextPane;
 
 /**

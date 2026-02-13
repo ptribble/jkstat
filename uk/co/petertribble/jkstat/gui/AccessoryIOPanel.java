@@ -14,14 +14,19 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
 package uk.co.petertribble.jkstat.gui;
 
-import uk.co.petertribble.jkstat.api.*;
-import javax.swing.*;
+import uk.co.petertribble.jkstat.api.ChartableIOKstat;
+import uk.co.petertribble.jkstat.api.ChartableKstat;
+import uk.co.petertribble.jkstat.api.Kstat;
+import uk.co.petertribble.jkstat.api.JKstat;
+import javax.swing.GroupLayout;
+import javax.swing.JLabel;
+import javax.swing.JProgressBar;
 import java.text.DecimalFormat;
 
 /**

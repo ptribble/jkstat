@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -153,6 +153,8 @@ public class KstatFilter {
 		if (!"".equals(s[0]) && !"*".equals(s[0])) {
 		    module = s[0];
 		}
+	    default:
+		break;
 	}
 	fset.add(new FilterQuartet(module, instance, name, statistic));
     }

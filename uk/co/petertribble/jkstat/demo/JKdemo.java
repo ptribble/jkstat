@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -74,21 +74,6 @@ public abstract class JKdemo extends JFrame implements ActionListener {
      * The menubar common to all demos.
      */
     private JMenuBar jm;
-
-    /**
-     * The File and Exit menu.
-     */
-    private JMenu jme;
-
-    /**
-     * The Sleep menu.
-     */
-    private JMenu jms;
-
-    /**
-     * The Help menu.
-     */
-    private JMenu jmh;
 
     /**
      * A label to show current state.
@@ -190,7 +175,7 @@ public abstract class JKdemo extends JFrame implements ActionListener {
      * Add the File menu.
      */
     private void addFileMenu() {
-	jme = new JMenu(KstatResources.getString("FILE.TEXT"));
+	JMenu jme = new JMenu(KstatResources.getString("FILE.TEXT"));
 	jme.setMnemonic(KeyEvent.VK_F);
 	if (standalone) {
 	    exitItem = new JMenuItem(KstatResources.getString("FILE.EXIT.TEXT"),
@@ -209,7 +194,7 @@ public abstract class JKdemo extends JFrame implements ActionListener {
      * Add the Sleep menu.
      */
     private void addSleepMenu() {
-	jms = new JMenu(KstatResources.getString("SLEEP.TEXT"));
+	JMenu jms = new JMenu(KstatResources.getString("SLEEP.TEXT"));
 	jms.setMnemonic(KeyEvent.VK_U);
 
 	sleepItem1 = new JRadioButtonMenuItem(
@@ -247,7 +232,7 @@ public abstract class JKdemo extends JFrame implements ActionListener {
      * Add the Help menu.
      */
     private void addHelpMenu() {
-	jmh = new JMenu(KstatResources.getString("HELP.TEXT"));
+	JMenu jmh = new JMenu(KstatResources.getString("HELP.TEXT"));
 	jmh.setMnemonic(KeyEvent.VK_H);
 	helpItem = new JMenuItem(KstatResources.getString("HELP.ABOUT.TEXT")
 		+ " " + demoname, KeyEvent.VK_A);
@@ -319,7 +304,7 @@ public abstract class JKdemo extends JFrame implements ActionListener {
     }
 
     /**
-     * Set the desired update delay. Subclasses should use implement this
+     * Set the desired update delay. Subclasses should implement this
      * to propagate the delay to any accessories or gadgets they contain.
      *
      * @param i the update delay in seconds
@@ -327,8 +312,8 @@ public abstract class JKdemo extends JFrame implements ActionListener {
     public abstract void setDelay(int i);
 
     /**
-     * Stop the application updating itself. Implementing classes should
-     * implement this to stop any accessories or gadgets that are updating.
+     * Stop the application updating. Subclasses should implement this
+     * to stop any accessories or gadgetsyjey contain.
      */
     public abstract void stopLoop();
 

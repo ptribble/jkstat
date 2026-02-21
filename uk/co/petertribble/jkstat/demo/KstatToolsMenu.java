@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -25,7 +25,9 @@ import uk.co.petertribble.jkstat.gui.KstatResources;
 import uk.co.petertribble.jkstat.browser.KstatBrowser;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 
 /**
  * Creates a Menu, allowing access to a kstat browser and a number of

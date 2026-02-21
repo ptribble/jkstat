@@ -20,8 +20,11 @@
 
 package uk.co.petertribble.jkstat.demo;
 
-import javax.swing.*;
-import uk.co.petertribble.jkstat.api.*;
+import javax.swing.GroupLayout;
+import javax.swing.JLabel;
+import uk.co.petertribble.jkstat.api.JKstat;
+import uk.co.petertribble.jkstat.api.Kstat;
+import uk.co.petertribble.jkstat.api.KstatFilter;
 import uk.co.petertribble.jkstat.gui.KstatAccessoryPanel;
 import uk.co.petertribble.jkstat.gui.KstatAccessorySet;
 import uk.co.petertribble.jkstat.gui.AccessoryKmemAlloc;

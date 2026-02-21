@@ -20,9 +20,15 @@
 
 package uk.co.petertribble.jkstat.demo;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.Timer;
 import java.awt.event.*;
-import uk.co.petertribble.jkstat.api.*;
+import uk.co.petertribble.jkstat.api.JKstat;
+import uk.co.petertribble.jkstat.api.Kstat;
+import uk.co.petertribble.jkstat.api.NativeJKstat;
 import uk.co.petertribble.jkstat.gui.KstatResources;
 
 import org.jfree.chart.ChartFactory;

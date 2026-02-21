@@ -20,7 +20,12 @@
 
 package uk.co.petertribble.jkstat.demo;
 
-import javax.swing.*;
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
 import java.awt.Dimension;
 import java.awt.event.*;
 import java.util.ArrayList;
@@ -28,7 +33,10 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import uk.co.petertribble.jkstat.api.*;
+import uk.co.petertribble.jkstat.api.JKstat;
+import uk.co.petertribble.jkstat.api.Kstat;
+import uk.co.petertribble.jkstat.api.KstatFilter;
+import uk.co.petertribble.jkstat.api.NativeJKstat;
 import uk.co.petertribble.jkstat.gui.AccessoryNetPanel;
 import uk.co.petertribble.jkstat.gui.KstatAccessoryPanel;
 import uk.co.petertribble.jkstat.gui.KstatAccessorySet;

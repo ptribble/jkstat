@@ -113,8 +113,8 @@ public class ProcessorCore implements Comparable<ProcessorCore> {
      * @return true if this core contains multiple threads, false if it's
      * single threaded
      */
-     public boolean isMultithreaded() {
-	 return threadmap.size() > 1;
+    public boolean isMultithreaded() {
+	return threadmap.size() > 1;
     }
 
     /**

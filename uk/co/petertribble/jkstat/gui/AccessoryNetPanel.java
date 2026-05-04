@@ -50,10 +50,10 @@ public final class AccessoryNetPanel extends KstatAccessoryPanel {
      * Save the value of reads.
      */
     private long r;
-     /**
+    /**
      * Save the value of writes.
      */
-   private long w;
+    private long w;
 
     /**
      * Create a panel showing the input and output traffic on the given network

@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -218,9 +218,9 @@ public final class KClientConfig {
      *
      * @see #setServerURL
      *
-     * @throws MalformedURLException if the URL is invalid
-     *
      * @return the URL of the server to connect to
+     *
+     * @throws MalformedURLException if the URL is invalid
      */
     public URL getServerURL() throws MalformedURLException {
 	try {

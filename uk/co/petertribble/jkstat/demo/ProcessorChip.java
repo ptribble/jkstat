@@ -123,14 +123,14 @@ public class ProcessorChip implements Comparable<ProcessorChip> {
      * @return true if this chip contains multiple threads, false if it's
      * a single thread per core
      */
-     public boolean isMultithreaded() {
-	 boolean bthread = false;
-	 for (ProcessorCore icore : coremap.values()) {
-	     if (icore.isMultithreaded()) {
-		 bthread = true;
-	     }
-	 }
-	 return bthread;
+    public boolean isMultithreaded() {
+	boolean bthread = false;
+	for (ProcessorCore icore : coremap.values()) {
+	    if (icore.isMultithreaded()) {
+		bthread = true;
+	    }
+	}
+	return bthread;
     }
 
     /**

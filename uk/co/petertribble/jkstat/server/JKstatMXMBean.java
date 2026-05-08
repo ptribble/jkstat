@@ -14,14 +14,14 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
 package uk.co.petertribble.jkstat.server;
 
-import uk.co.petertribble.jkstat.api.Kstat;
 import java.util.Set;
+import uk.co.petertribble.jkstat.api.Kstat;
 
 /**
  * An MBean, exposing some JKstat data via JMX.

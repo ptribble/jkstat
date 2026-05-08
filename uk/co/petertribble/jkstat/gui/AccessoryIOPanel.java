@@ -20,14 +20,14 @@
 
 package uk.co.petertribble.jkstat.gui;
 
-import uk.co.petertribble.jkstat.api.ChartableIOKstat;
-import uk.co.petertribble.jkstat.api.ChartableKstat;
-import uk.co.petertribble.jkstat.api.Kstat;
-import uk.co.petertribble.jkstat.api.JKstat;
+import java.text.DecimalFormat;
 import javax.swing.GroupLayout;
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;
-import java.text.DecimalFormat;
+import uk.co.petertribble.jkstat.api.ChartableIOKstat;
+import uk.co.petertribble.jkstat.api.ChartableKstat;
+import uk.co.petertribble.jkstat.api.JKstat;
+import uk.co.petertribble.jkstat.api.Kstat;
 
 /**
  * An accessory panel that graphically represents I/O activity.

@@ -14,16 +14,16 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
 package uk.co.petertribble.jkstat.server;
 
 import java.lang.management.ManagementFactory;
+import javax.management.JMException;
 import javax.management.MBeanServer;
 import javax.management.ObjectName;
-import javax.management.JMException;
 
 /**
  * A standalone JMX server.

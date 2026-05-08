@@ -20,14 +20,14 @@
 
 package uk.co.petertribble.jkstat.demo;
 
-import uk.co.petertribble.jkstat.api.JKstat;
-import uk.co.petertribble.jkstat.gui.KstatResources;
-import uk.co.petertribble.jkstat.browser.KstatBrowser;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import uk.co.petertribble.jkstat.api.JKstat;
+import uk.co.petertribble.jkstat.browser.KstatBrowser;
+import uk.co.petertribble.jkstat.gui.KstatResources;
 
 /**
  * Creates a Menu, allowing access to a kstat browser and a number of

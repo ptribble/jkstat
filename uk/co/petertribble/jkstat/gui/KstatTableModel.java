@@ -20,13 +20,13 @@
 
 package uk.co.petertribble.jkstat.gui;
 
-import javax.swing.table.AbstractTableModel;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.Timer;
+import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
-import uk.co.petertribble.jkstat.api.Kstat;
+import javax.swing.Timer;
+import javax.swing.table.AbstractTableModel;
 import uk.co.petertribble.jkstat.api.JKstat;
+import uk.co.petertribble.jkstat.api.Kstat;
 
 /**
  * The Table Model underlying a KstatTable.

@@ -14,15 +14,15 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
 package uk.co.petertribble.jkstat.client;
 
+import org.apache.xmlrpc.XmlRpcException;
 import uk.co.petertribble.jkstat.api.*;
 import uk.co.petertribble.jkstat.parse.JSONParser;
-import org.apache.xmlrpc.XmlRpcException;
 
 /**
  * An implementation of the JKstat class that retrieves data from a remote

@@ -14,20 +14,20 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
 package uk.co.petertribble.jkstat.server;
 
+import java.io.File;
+import java.io.IOException;
+import javax.jmdns.JmDNS;
+import javax.jmdns.ServiceInfo;
 import org.apache.xmlrpc.server.PropertyHandlerMapping;
 import org.apache.xmlrpc.server.XmlRpcServer;
 import org.apache.xmlrpc.server.XmlRpcServerConfigImpl;
 import org.apache.xmlrpc.webserver.WebServer;
-import java.io.IOException;
-import java.io.File;
-import javax.jmdns.JmDNS;
-import javax.jmdns.ServiceInfo;
 
 /**
  * A simple kstat server using the xml-rpc WebServer class. Taken straight

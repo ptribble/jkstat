@@ -20,9 +20,9 @@
 
 package uk.co.petertribble.jkstat.demo;
 
+import java.awt.BorderLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import java.awt.BorderLayout;
 import uk.co.petertribble.jkstat.api.JKstat;
 import uk.co.petertribble.jkstat.api.NativeJKstat;
 import uk.co.petertribble.jkstat.client.KClientConfig;

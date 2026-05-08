@@ -20,10 +20,10 @@
 
 package uk.co.petertribble.jkstat.gui;
 
-import java.util.Collection;
-import javax.swing.Timer;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Collection;
+import javax.swing.Timer;
 
 /**
  * A class that allows a number of Kstat accessories to be controlled as one.

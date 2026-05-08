@@ -14,17 +14,17 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
 package uk.co.petertribble.jkstat.gui;
 
-import uk.co.petertribble.jkstat.api.*;
-import uk.co.petertribble.jstripchart.JStripChart;
-import uk.co.petertribble.jstripchart.JStackedStripChart2;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import uk.co.petertribble.jkstat.api.*;
+import uk.co.petertribble.jstripchart.JStackedStripChart2;
+import uk.co.petertribble.jstripchart.JStripChart;
 
 /**
  * An accessory panel that graphically charts cpu utilization.

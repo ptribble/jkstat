@@ -20,9 +20,9 @@
 
 package uk.co.petertribble.jkstat.gui;
 
-import uk.co.petertribble.jkstat.api.*;
-import javax.swing.*;
 import java.awt.event.*;
+import javax.swing.*;
+import uk.co.petertribble.jkstat.api.*;
 import uk.co.petertribble.jkstat.client.KClientConfig;
 import uk.co.petertribble.jkstat.client.KClientDialog;
 import uk.co.petertribble.jkstat.client.RemoteJKstat;

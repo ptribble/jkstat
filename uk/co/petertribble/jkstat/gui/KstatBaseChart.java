@@ -14,24 +14,23 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
 package uk.co.petertribble.jkstat.gui;
 
 import java.awt.Color;
-import java.util.List;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.List;
 import javax.swing.Timer;
-import uk.co.petertribble.jkstat.api.*;
-
 import org.jfree.chart.JFreeChart;
-import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.axis.DateAxis;
+import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.XYItemRenderer;
+import uk.co.petertribble.jkstat.api.*;
 
 /**
  * A graphical chart of a Kstat.

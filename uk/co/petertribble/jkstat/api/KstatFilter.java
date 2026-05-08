@@ -20,9 +20,9 @@
 
 package uk.co.petertribble.jkstat.api;
 
+import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
-import java.util.HashSet;
 
 /**
  * Kstats can be filtered by class, type, module, instance, name, and
@@ -82,7 +82,7 @@ public class KstatFilter {
      * that match this filter will be returned. If any component is left
      * unspecified (blank) or is "*", then match any value.
      *
-     * Shortened versions of the filter such as "sd" will result in a match
+     * <p>Shortened versions of the filter such as "sd" will result in a match
      * to just those components specified. Expressions with more than 3
      * occurrences of the : delimiter will be silently ignored.
      *
@@ -98,7 +98,7 @@ public class KstatFilter {
      * that match this filter will not be returned. If any component is left
      * unspecified (blank) or is "*", then match any value.
      *
-     * Shortened versions of the filter such as "sd" will result in a match
+     * <p>Shortened versions of the filter such as "sd" will result in a match
      * to just those components specified. Expressions with more than 3
      * occurrences of the : delimiter will be silently ignored.
      *

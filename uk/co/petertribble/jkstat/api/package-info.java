@@ -21,8 +21,8 @@
 /**
  * The JKstat API allows programmatic access to Solaris kstats from java
  * code.
- * <p>
- * To start, instantiate a JKstat. If working locally, this would be a
+ *
+ * <p>To start, instantiate a JKstat. If working locally, this would be a
  * NativeJKstat.
  * <pre>
  * JKstat jkstat = new NativeJKstat();

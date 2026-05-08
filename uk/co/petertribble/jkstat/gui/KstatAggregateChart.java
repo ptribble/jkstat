@@ -14,23 +14,22 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
 package uk.co.petertribble.jkstat.gui;
 
-import java.util.Map;
-import java.util.HashMap;
-import java.util.List;
 import java.util.ArrayList;
 import java.util.Date;
-import uk.co.petertribble.jkstat.api.*;
-
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import org.jfree.chart.ChartFactory;
 import org.jfree.data.time.Millisecond;
 import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
+import uk.co.petertribble.jkstat.api.*;
 
 /**
  * A graphical chart of a kstat aggregate, showing one or multiple statistics.

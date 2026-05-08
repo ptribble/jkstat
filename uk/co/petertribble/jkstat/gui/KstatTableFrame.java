@@ -20,6 +20,8 @@
 
 package uk.co.petertribble.jkstat.gui;
 
+import java.awt.BorderLayout;
+import java.awt.event.*;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -27,10 +29,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import java.awt.BorderLayout;
-import java.awt.event.*;
-import uk.co.petertribble.jkstat.api.Kstat;
 import uk.co.petertribble.jkstat.api.JKstat;
+import uk.co.petertribble.jkstat.api.Kstat;
 
 /**
  * A JFrame that wraps a KstatTable.

@@ -20,13 +20,13 @@
 
 package uk.co.petertribble.jkstat.demo;
 
-import uk.co.petertribble.jkstat.api.JKstat;
-import uk.co.petertribble.jkstat.api.Kstat;
-import uk.co.petertribble.jkstat.api.KstatFilter;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
+import uk.co.petertribble.jkstat.api.JKstat;
+import uk.co.petertribble.jkstat.api.Kstat;
+import uk.co.petertribble.jkstat.api.KstatFilter;
 
 /**
  * Maintains a description of processor topology.

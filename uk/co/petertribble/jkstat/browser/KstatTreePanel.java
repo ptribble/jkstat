@@ -20,23 +20,23 @@
 
 package uk.co.petertribble.jkstat.browser;
 
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.Map;
 import java.util.SortedMap;
-import java.util.Date;
-import java.text.DateFormat;
 import javax.swing.*;
+import javax.swing.event.*;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreePath;
-import java.awt.*;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.event.*;
+import uk.co.petertribble.jingle.JingleTextPane;
 import uk.co.petertribble.jkstat.api.*;
 import uk.co.petertribble.jkstat.gui.KstatAccessoryPanel;
 import uk.co.petertribble.jkstat.gui.KstatAccessoryRegistry;
 import uk.co.petertribble.jkstat.gui.KstatResources;
 import uk.co.petertribble.jkstat.gui.KstatTable;
-import uk.co.petertribble.jingle.JingleTextPane;
 
 /**
  * A panel showing the kstats in a tree structure in a left pane with

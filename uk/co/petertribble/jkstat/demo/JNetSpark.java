@@ -20,11 +20,6 @@
 
 package uk.co.petertribble.jkstat.demo;
 
-import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
-import javax.swing.JPopupMenu;
 import java.awt.Dimension;
 import java.awt.event.*;
 import java.util.ArrayList;
@@ -32,6 +27,11 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
 import uk.co.petertribble.jkstat.api.JKstat;
 import uk.co.petertribble.jkstat.api.Kstat;
 import uk.co.petertribble.jkstat.api.KstatFilter;

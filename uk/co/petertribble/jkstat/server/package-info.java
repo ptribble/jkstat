@@ -14,18 +14,18 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
 /**
  * Implementations of JKstat servers.
- * <p>
- * The JKstatServer is a standalone server that can also be embedded in
+ *
+ * <p>The JKstatServer is a standalone server that can also be embedded in
  * a servlet engine. It uses Apache XML-RPC for communication. Data is
  * serialized using JSON.
- * <p>
- * There is also an example JMX implementation. The standard JMX
+ *
+ * <p>There is also an example JMX implementation. The standard JMX
  * console can be used, but you will need to add the jkstat jar file to
  * the classpath.
  */

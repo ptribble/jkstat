@@ -20,15 +20,15 @@
 
 package uk.co.petertribble.jkstat.demo;
 
+import java.awt.BorderLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import java.awt.BorderLayout;
 import uk.co.petertribble.jkstat.api.JKstat;
 import uk.co.petertribble.jkstat.api.NativeJKstat;
-import uk.co.petertribble.jkstat.gui.MPstatTable;
 import uk.co.petertribble.jkstat.client.KClientConfig;
 import uk.co.petertribble.jkstat.client.RemoteJKstat;
+import uk.co.petertribble.jkstat.gui.MPstatTable;
 
 /**
  * A tabular representation of the mpstat command.

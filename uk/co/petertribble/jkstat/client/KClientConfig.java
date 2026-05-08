@@ -20,13 +20,13 @@
 
 package uk.co.petertribble.jkstat.client;
 
-import uk.co.petertribble.jumble.JumbleUtils;
 import java.io.File;
-import java.util.Map;
+import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.net.MalformedURLException;
+import java.util.Map;
+import uk.co.petertribble.jumble.JumbleUtils;
 
 /**
  * A class to hold the configuration details a JKstat client needs to
@@ -93,7 +93,7 @@ public final class KClientConfig {
      * The configuration file contains key-value pairs, separated by an
      * = sign, one pair per line.
      *
-     * Valid configuration keys:
+     * <p>Valid configuration keys:
      * URL the url to connect to
      * User a username to use for authentication
      * Pass a password to use for authentication

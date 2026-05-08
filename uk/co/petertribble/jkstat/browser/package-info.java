@@ -14,18 +14,18 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
 /**
  * The JKstat browser allows a user to interactively browse Solaris
  * or illumos kstats.
- * <p>
- * A kstat is a triplet module:instance:name, which is loaded into a
+ *
+ * <p>A kstat is a triplet module:instance:name, which is loaded into a
  * hierarchical set of Maps and then presented to the user as a tree.
- * <p>
- * A kstat is displayed as a table, with an optional accessory to give
+ *
+ * <p>A kstat is displayed as a table, with an optional accessory to give
  * a graphical representation.
  */
 

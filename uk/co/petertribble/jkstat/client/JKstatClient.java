@@ -14,16 +14,16 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
 package uk.co.petertribble.jkstat.client;
 
+import java.net.MalformedURLException;
+import org.apache.xmlrpc.XmlRpcException;
 import org.apache.xmlrpc.client.XmlRpcClient;
 import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
-import org.apache.xmlrpc.XmlRpcException;
-import java.net.MalformedURLException;
 
 /**
  * A class providing access to a remote JKstat server over XML-RPC.

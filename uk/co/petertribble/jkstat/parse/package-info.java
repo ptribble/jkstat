@@ -14,14 +14,14 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
 /**
  * Classes to parse archived kstat data.
- * <p>
- * The classes here allow the user to extract data from archived kstat
+ *
+ * <p>The classes here allow the user to extract data from archived kstat
  * data. The source of the data is JSON output from the collector in
  * <code>kar</code> stored as a zip archive.
  */

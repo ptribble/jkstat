@@ -20,16 +20,16 @@
 
 package uk.co.petertribble.jkstat.demo;
 
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.Set;
+import java.util.TimeZone;
 import uk.co.petertribble.jkstat.api.JKstat;
 import uk.co.petertribble.jkstat.api.Kstat;
 import uk.co.petertribble.jkstat.api.KstatFilter;
 import uk.co.petertribble.jkstat.api.NativeJKstat;
-import java.time.format.DateTimeFormatter;
-import java.util.Set;
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.TimeZone;
 
 /**
  * Emulates psrinfo(8).

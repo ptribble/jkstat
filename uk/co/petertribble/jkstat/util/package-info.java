@@ -14,18 +14,18 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
 /**
  * Some utility classes that JKstat uses.
- * <p>
- * NumericStringComparator allows sensible sorting of Strings
+ *
+ * <p>NumericStringComparator allows sensible sorting of Strings
  * containing numbers. The numeric component is sorted numerically rather
  * than lexicographically.
- * <p>
- * Humanize scales numeric rates into a more readable k/s or m/s
+ *
+ * <p>Humanize scales numeric rates into a more readable k/s or m/s
  * form.</p>
  */
 

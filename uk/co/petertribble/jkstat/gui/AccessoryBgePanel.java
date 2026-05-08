@@ -20,10 +20,10 @@
 
 package uk.co.petertribble.jkstat.gui;
 
-import uk.co.petertribble.jkstat.api.Kstat;
-import uk.co.petertribble.jkstat.api.JKstat;
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
+import uk.co.petertribble.jkstat.api.JKstat;
+import uk.co.petertribble.jkstat.api.Kstat;
 
 /**
  * An accessory panel that graphically represents the distribution of packet

@@ -14,21 +14,21 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
 package uk.co.petertribble.jkstat.server;
 
-import uk.co.petertribble.jumble.JumbleUtils;
+import java.io.File;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
 import java.net.UnknownHostException;
-import java.io.File;
-import java.util.Enumeration;
 import java.util.Collections;
+import java.util.Enumeration;
 import java.util.Map;
+import uk.co.petertribble.jumble.JumbleUtils;
 
 /**
  * Hold the configuration of a JKstat server.

@@ -14,20 +14,20 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
 /**
  * Classes allowing the construction of a client that can retrieve
  * kstat data from a JKstat server.
- * <p>
- * A RemoteJKstat is a JKstat implementation that you can query for the
+ *
+ * <p>A RemoteJKstat is a JKstat implementation that you can query for the
  * data. In normal use, this is the only class that's of interest. It can
  * simply be created using a URL to specify the server, or read its
  * configuration from a KClientConfig.
- * <p>
- * The JKStatClient class handles communication over the wire.
+ *
+ * <p>The JKStatClient class handles communication over the wire.
  */
 
 package uk.co.petertribble.jkstat.client;

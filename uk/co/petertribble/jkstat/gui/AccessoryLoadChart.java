@@ -20,10 +20,10 @@
 
 package uk.co.petertribble.jkstat.gui;
 
+import java.awt.BorderLayout;
 import uk.co.petertribble.jkstat.api.*;
 import uk.co.petertribble.jstripchart.JStripChart;
 import uk.co.petertribble.jstripchart.JStripChart2;
-import java.awt.BorderLayout;
 
 /**
  * An accessory panel that displays a strip chart of the system load average.

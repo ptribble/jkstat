@@ -20,18 +20,18 @@
 
 package uk.co.petertribble.jkstat.demo;
 
+import java.awt.BorderLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import java.awt.BorderLayout;
 import uk.co.petertribble.jkstat.api.JKstat;
 import uk.co.petertribble.jkstat.api.KstatFilter;
 import uk.co.petertribble.jkstat.api.KstatSet;
 import uk.co.petertribble.jkstat.api.KstatType;
 import uk.co.petertribble.jkstat.api.NativeJKstat;
-import uk.co.petertribble.jkstat.gui.IOstatTable;
 import uk.co.petertribble.jkstat.client.KClientConfig;
 import uk.co.petertribble.jkstat.client.RemoteJKstat;
+import uk.co.petertribble.jkstat.gui.IOstatTable;
 
 /**
  * A graphical tabular display of I/O statistics.

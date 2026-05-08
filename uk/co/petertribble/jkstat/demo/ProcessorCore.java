@@ -130,7 +130,7 @@ public class ProcessorCore implements Comparable<ProcessorCore> {
     /**
      * Compare with another ProcessorCore.
      *
-     * Note: this class has a natural ordering that is inconsistent with
+     * <p>Note: this class has a natural ordering that is inconsistent with
      * equals. The comparison is only valid for Cores within a given
      * ProcessorChip, as cores in different chips may have the same core id.
      *

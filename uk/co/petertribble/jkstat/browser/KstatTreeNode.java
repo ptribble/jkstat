@@ -20,9 +20,9 @@
 
 package uk.co.petertribble.jkstat.browser;
 
-import javax.swing.tree.DefaultMutableTreeNode;
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
+import javax.swing.tree.DefaultMutableTreeNode;
 import uk.co.petertribble.jkstat.api.Kstat;
 
 /**

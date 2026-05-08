@@ -20,18 +20,18 @@
 
 package uk.co.petertribble.jkstat.browser;
 
-import javax.swing.*;
 import java.awt.event.*;
-import uk.co.petertribble.jingle.JingleMultiFrame;
+import javax.swing.*;
 import uk.co.petertribble.jingle.JingleInfoFrame;
+import uk.co.petertribble.jingle.JingleMultiFrame;
 import uk.co.petertribble.jkstat.api.*;
 import uk.co.petertribble.jkstat.client.KBrowseDialog;
 import uk.co.petertribble.jkstat.client.KClientConfig;
 import uk.co.petertribble.jkstat.client.KClientDialog;
 import uk.co.petertribble.jkstat.client.RemoteJKstat;
-import uk.co.petertribble.jkstat.parse.ParseableJSONZipJKstat;
-import uk.co.petertribble.jkstat.gui.KstatResources;
 import uk.co.petertribble.jkstat.demo.*;
+import uk.co.petertribble.jkstat.gui.KstatResources;
+import uk.co.petertribble.jkstat.parse.ParseableJSONZipJKstat;
 
 /**
  * A graphical Kstat browser, showing the available kstats as a tree.

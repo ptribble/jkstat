@@ -20,12 +20,12 @@
 
 package uk.co.petertribble.jkstat.gui;
 
+import java.awt.event.*;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 import javax.swing.JTable;
-import java.awt.event.*;
-import uk.co.petertribble.jkstat.api.Kstat;
 import uk.co.petertribble.jkstat.api.JKstat;
+import uk.co.petertribble.jkstat.api.Kstat;
 
 /**
  * A tabular representation of a Kstat.

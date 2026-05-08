@@ -20,19 +20,19 @@
 
 package uk.co.petertribble.jkstat.demo;
 
-import javax.swing.GroupLayout;
-import javax.swing.JLabel;
-import uk.co.petertribble.jkstat.api.JKstat;
-import uk.co.petertribble.jkstat.api.Kstat;
-import uk.co.petertribble.jkstat.api.KstatFilter;
-import uk.co.petertribble.jkstat.gui.KstatAccessoryPanel;
-import uk.co.petertribble.jkstat.gui.KstatAccessorySet;
-import uk.co.petertribble.jkstat.gui.AccessoryKmemAlloc;
-import uk.co.petertribble.jingle.JingleVPanel;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
+import javax.swing.GroupLayout;
+import javax.swing.JLabel;
+import uk.co.petertribble.jingle.JingleVPanel;
+import uk.co.petertribble.jkstat.api.JKstat;
+import uk.co.petertribble.jkstat.api.Kstat;
+import uk.co.petertribble.jkstat.api.KstatFilter;
+import uk.co.petertribble.jkstat.gui.AccessoryKmemAlloc;
+import uk.co.petertribble.jkstat.gui.KstatAccessoryPanel;
+import uk.co.petertribble.jkstat.gui.KstatAccessorySet;
 
 /**
  * A panel to display kernel memory allocation statistics.

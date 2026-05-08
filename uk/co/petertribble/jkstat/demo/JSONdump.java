@@ -14,15 +14,15 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
 package uk.co.petertribble.jkstat.demo;
 
-import uk.co.petertribble.jkstat.api.NativeJKstat;
 import uk.co.petertribble.jkstat.api.JKstat;
 import uk.co.petertribble.jkstat.api.Kstat;
+import uk.co.petertribble.jkstat.api.NativeJKstat;
 
 /**
  * Dump out the entire kstat hierarchy in JSON format.

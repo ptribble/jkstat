@@ -14,17 +14,17 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
 package uk.co.petertribble.jkstat.demo;
 
 import java.text.DecimalFormat;
-import java.time.format.DateTimeFormatter;
 import java.time.LocalTime;
-import uk.co.petertribble.jkstat.api.NativeJKstat;
+import java.time.format.DateTimeFormatter;
 import uk.co.petertribble.jkstat.api.Kstat;
+import uk.co.petertribble.jkstat.api.NativeJKstat;
 
 /**
  * Print out the 1, 5, and 15 minute load averages in the style of uptime.

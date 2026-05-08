@@ -115,6 +115,7 @@ public class KstatData implements Serializable {
                     + intType + ")");
         }
     }
+
     /**
      * The Type of this KstatData.
      */

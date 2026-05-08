@@ -14,28 +14,28 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
 /**
  * Standard graphical user interface components for JKstat.
- * <p>
- * Accessories are little display widgets displaying a specific kstat
+ *
+ * <p>Accessories are little display widgets displaying a specific kstat
  * (or type of kstat). They all extend KstatAccessoryPanel, and you
  * should use the KstatAccessoryPanel interface and its methods to
  * update the data, and to stop and start the updates. Accessories
  * should normally have no other public methods.
- * <p>
- * KstatAccessoryRegistry can be queried to see if an accessory exists for
+ *
+ * <p>KstatAccessoryRegistry can be queried to see if an accessory exists for
  * a given kstat, and to obtain an instance of the correct accessory panel.
  * Again, cast to a KstatAccessoryPanel.
- * <p>
- * There is support for displaying a kstat in tables, see
+ *
+ * <p>There is support for displaying a kstat in tables, see
  * KstatTable. There are also some specific TableModels to support iostat
  * and mpstat.
- * <p>
- * Other classes support the generation of charts, using
+ *
+ * <p>Other classes support the generation of charts, using
  * <a href="https://www.jfree.org/jfreechart/">JFreeChart</a>.
  */
 

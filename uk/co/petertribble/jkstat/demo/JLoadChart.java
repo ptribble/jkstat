@@ -20,26 +20,26 @@
 
 package uk.co.petertribble.jkstat.demo;
 
+import java.awt.event.*;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.Timer;
-import java.awt.event.*;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.DateAxis;
+import org.jfree.chart.axis.NumberAxis;
+import org.jfree.chart.plot.XYPlot;
+import org.jfree.data.time.Millisecond;
+import org.jfree.data.time.TimeSeries;
+import org.jfree.data.time.TimeSeriesCollection;
 import uk.co.petertribble.jkstat.api.JKstat;
 import uk.co.petertribble.jkstat.api.Kstat;
 import uk.co.petertribble.jkstat.api.NativeJKstat;
 import uk.co.petertribble.jkstat.gui.KstatResources;
 
-import org.jfree.chart.ChartFactory;
-import org.jfree.chart.ChartPanel;
-import org.jfree.chart.JFreeChart;
-import org.jfree.data.time.Millisecond;
-import org.jfree.data.time.TimeSeries;
-import org.jfree.data.time.TimeSeriesCollection;
-import org.jfree.chart.axis.NumberAxis;
-import org.jfree.chart.axis.DateAxis;
-import org.jfree.chart.plot.XYPlot;
 /**
  * Show the 1, 5, and 15 minute averages on a chart.
  *

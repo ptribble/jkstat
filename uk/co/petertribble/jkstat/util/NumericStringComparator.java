@@ -17,8 +17,9 @@
  * Copyright 2007 Sun Microsystems, Inc. All rights reserved.
  * Use is subject to license terms.
  *
- * Copyright 2025 Peter Tribble.
+ * Copyright 2026 Peter Tribble.
  */
+
 package uk.co.petertribble.jkstat.util;
 
 import java.util.Comparator;

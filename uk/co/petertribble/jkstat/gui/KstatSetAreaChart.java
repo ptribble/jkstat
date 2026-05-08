@@ -20,17 +20,16 @@
 
 package uk.co.petertribble.jkstat.gui;
 
-import java.util.Map;
-import java.util.HashMap;
-import java.util.List;
 import java.util.ArrayList;
 import java.util.Date;
-import uk.co.petertribble.jkstat.api.*;
-
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import org.jfree.chart.ChartFactory;
+import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.time.Millisecond;
 import org.jfree.data.time.TimeTableXYDataset;
-import org.jfree.chart.plot.PlotOrientation;
+import uk.co.petertribble.jkstat.api.*;
 
 /**
  * A graphical chart of a KstatSet, showing one or multiple statistics. The

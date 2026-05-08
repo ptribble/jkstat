@@ -14,14 +14,14 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
 package uk.co.petertribble.jkstat.api;
 
-import java.util.Set;
 import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Represents an aggregated Set of Kstats, so that we can retrieve both

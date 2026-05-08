@@ -20,12 +20,12 @@
 
 package uk.co.petertribble.jkstat.gui;
 
-import uk.co.petertribble.jkstat.api.Kstat;
-import uk.co.petertribble.jkstat.api.JKstat;
-import javax.swing.JPanel;
-import javax.swing.Timer;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JPanel;
+import javax.swing.Timer;
+import uk.co.petertribble.jkstat.api.JKstat;
+import uk.co.petertribble.jkstat.api.Kstat;
 
 /**
  * A panel to hold a graphical accessory.
@@ -78,11 +78,11 @@ public abstract class KstatAccessoryPanel extends JPanel
      * same arguments as the first part of their constructor, then have code
      * to create the panel contents, and then call startLoop().
      *
-     * If the requested interval is less than or equal to zero, then this
+     * <p>If the requested interval is less than or equal to zero, then this
      * panel will not update itself. In that case, it is assumed that updates
      * are initiated externally, as KstatAccessorySet would.
      *
-     * Avoid passing in an interval of 0, as it may be used as the divisor
+     * <p>Avoid passing in an interval of 0, as it may be used as the divisor
      * to calculate a rate.
      *
      * @param nks the Kstat to be represented by this accessory

@@ -20,12 +20,12 @@
 
 package uk.co.petertribble.jkstat.gui;
 
-import uk.co.petertribble.jkstat.api.JKstat;
-import uk.co.petertribble.jkstat.api.Kstat;
+import java.text.DecimalFormat;
 import javax.swing.GroupLayout;
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;
-import java.text.DecimalFormat;
+import uk.co.petertribble.jkstat.api.JKstat;
+import uk.co.petertribble.jkstat.api.Kstat;
 
 /**
  * An accessory panel that graphically represents the system load average.

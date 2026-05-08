@@ -20,13 +20,13 @@
 
 package uk.co.petertribble.jkstat.gui;
 
-import uk.co.petertribble.jkstat.api.JKstat;
-import uk.co.petertribble.jkstat.api.Kstat;
-import uk.co.petertribble.jkstat.util.Humanize;
+import java.awt.Dimension;
 import javax.swing.GroupLayout;
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;
-import java.awt.Dimension;
+import uk.co.petertribble.jkstat.api.JKstat;
+import uk.co.petertribble.jkstat.api.Kstat;
+import uk.co.petertribble.jkstat.util.Humanize;
 
 /**
  * An accessory panel that graphically represents network activity.

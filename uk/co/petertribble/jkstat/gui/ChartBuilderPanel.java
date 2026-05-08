@@ -20,19 +20,19 @@
 
 package uk.co.petertribble.jkstat.gui;
 
-import uk.co.petertribble.jkstat.api.*;
-import uk.co.petertribble.jkstat.browser.*;
-import java.util.List;
-import java.util.ArrayList;
-import javax.swing.*;
-import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.TreePath;
-import javax.swing.event.*;
-import java.awt.event.*;
+import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.event.*;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.*;
+import javax.swing.event.*;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.TreePath;
+import uk.co.petertribble.jkstat.api.*;
+import uk.co.petertribble.jkstat.browser.*;
 
 /**
  * A graphical chart builder. Allows the user to build a chart by selecting

@@ -25,7 +25,7 @@ import uk.co.petertribble.jkstat.api.*;
 /**
  * This is the core of the Kstat server.
  *
- * XML-RPC has significant limitations on available data types. Using JSON as
+ * <p>XML-RPC has significant limitations on available data types. Using JSON as
  * the serialized form means we just pass Strings, avoiding the limitations.
  *
  * @author Peter Tribble

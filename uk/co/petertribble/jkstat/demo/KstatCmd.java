@@ -20,19 +20,19 @@
 
 package uk.co.petertribble.jkstat.demo;
 
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.TimeZone;
+import java.util.Timer;
+import java.util.TimerTask;
 import uk.co.petertribble.jkstat.api.JKstat;
 import uk.co.petertribble.jkstat.api.Kstat;
 import uk.co.petertribble.jkstat.api.KstatFilter;
 import uk.co.petertribble.jkstat.api.NativeJKstat;
-import java.time.format.DateTimeFormatter;
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.Set;
-import java.util.HashSet;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.TimeZone;
 
 /**
  * An emulation of the kstat cli.

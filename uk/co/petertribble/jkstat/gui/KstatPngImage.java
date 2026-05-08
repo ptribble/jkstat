@@ -20,11 +20,11 @@
 
 package uk.co.petertribble.jkstat.gui;
 
-import java.util.List;
-import java.util.ArrayList;
-import java.io.IOException;
-import java.io.File;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.imageio.ImageIO;
 import uk.co.petertribble.jkstat.api.JKstat;
 import uk.co.petertribble.jkstat.api.Kstat;
@@ -303,7 +303,6 @@ public class KstatPngImage {
 	    usage("Invalid arguments.");
 	}
     }
-
 
     /**
      * Show a chart according to the command line arguments.

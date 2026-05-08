@@ -20,22 +20,22 @@
 
 package uk.co.petertribble.jkstat.demo;
 
+import java.awt.BorderLayout;
+import java.awt.Component;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import java.awt.BorderLayout;
-import java.awt.Component;
 import uk.co.petertribble.jkstat.api.JKstat;
 import uk.co.petertribble.jkstat.api.Kstat;
 import uk.co.petertribble.jkstat.api.NativeJKstat;
-import uk.co.petertribble.jkstat.gui.KstatTable;
-import java.util.ArrayList;
-import java.util.List;
 import uk.co.petertribble.jkstat.client.KClientConfig;
 import uk.co.petertribble.jkstat.client.RemoteJKstat;
+import uk.co.petertribble.jkstat.gui.KstatTable;
 
 /**
  * A tabular representation of nfs activity.

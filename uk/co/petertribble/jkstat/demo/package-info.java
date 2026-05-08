@@ -14,14 +14,14 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
 /**
  * A range of demos showcasing JKstat's abilities.
- * <p>
- * Most of the graphical demos extend JKdemo, which provides standard
+ *
+ * <p>Most of the graphical demos extend JKdemo, which provides standard
  * Menus and update handling.
  */
 

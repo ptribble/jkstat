@@ -20,11 +20,11 @@
 
 package uk.co.petertribble.jkstat.demo;
 
-import javax.swing.*;
 import java.awt.BorderLayout;
 import java.awt.event.*;
-import uk.co.petertribble.jkstat.gui.KstatResources;
+import javax.swing.*;
 import uk.co.petertribble.jingle.JingleInfoFrame;
+import uk.co.petertribble.jkstat.gui.KstatResources;
 
 /**
  * A base class for simple demo applications.
@@ -313,7 +313,7 @@ public abstract class JKdemo extends JFrame implements ActionListener {
 
     /**
      * Stop the application updating. Subclasses should implement this
-     * to stop any accessories or gadgetsyjey contain.
+     * to stop any accessories or gadgets they contain.
      */
     public abstract void stopLoop();
 
@@ -321,10 +321,10 @@ public abstract class JKdemo extends JFrame implements ActionListener {
      * The main action handler. This handles both menu items (exit,
      * license, help) and updating the delay.
      *
-     * The help handler uses the demoname passed in the constructor
+     * <p>The help handler uses the demoname passed in the constructor
      * to find the right help file.
      *
-     * Subclasses wishing to override this method should call
+     * <p>Subclasses wishing to override this method should call
      * super.actionPerformed() to get the delay update handling,
      * and then use their own logic to handle any other changes.
      *

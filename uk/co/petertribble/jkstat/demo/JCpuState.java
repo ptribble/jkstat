@@ -20,6 +20,12 @@
 
 package uk.co.petertribble.jkstat.demo;
 
+import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.awt.event.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -27,21 +33,15 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.SwingConstants;
-import java.awt.Dimension;
-import java.awt.GridLayout;
-import java.awt.event.*;
 import uk.co.petertribble.jkstat.api.*;
+import uk.co.petertribble.jkstat.client.KClientConfig;
+import uk.co.petertribble.jkstat.client.RemoteJKstat;
 import uk.co.petertribble.jkstat.gui.AccessoryCpuChart;
 import uk.co.petertribble.jkstat.gui.AccessoryCpuPanel;
 import uk.co.petertribble.jkstat.gui.KstatAccessoryPanel;
 import uk.co.petertribble.jkstat.gui.KstatAccessorySet;
 import uk.co.petertribble.jkstat.gui.KstatResources;
 import uk.co.petertribble.jkstat.gui.KstatTableFrame;
-import java.util.Set;
-import java.util.List;
-import java.util.ArrayList;
-import uk.co.petertribble.jkstat.client.KClientConfig;
-import uk.co.petertribble.jkstat.client.RemoteJKstat;
 
 /**
  * A java implementation of xcpustate.

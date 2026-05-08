@@ -14,16 +14,16 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
 package uk.co.petertribble.jkstat.gui;
 
-import uk.co.petertribble.jkstat.api.*;
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 import javax.swing.SwingConstants;
+import uk.co.petertribble.jkstat.api.*;
 
 /**
  * An accessory panel that graphically represents cpu activity in the

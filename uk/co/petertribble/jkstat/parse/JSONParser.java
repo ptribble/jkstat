@@ -94,6 +94,32 @@ public class JSONParser {
 	}
     }
 
+    @SuppressWarnings("rawtypes")
+    private static Kstat getKstat(final JSONObject jo) {
+	try {
+	    JSONObject jd = jo.getJSONObject("data");
+	    Kstat ks = new Kstat(jo.getString("module"), jo.getInt("instance"),
+				jo.getString("name"));
+	    ks.setStandardInfo(jo.getString("class"), jo.getInt("type"),
+				jo.getLong("crtime"), jo.getLong("snaptime"));
+	    Iterator it = jd.keys();
+	    while (it.hasNext()) {
+		String key = (String) it.next();
+		Object o = jd.get(key);
+		if (o instanceof Number) {
+		    ks.addDataObject(key, KstatData.Type.KSTAT_DATA_UINT64,
+				((Number) o).longValue());
+		} else {
+		    ks.addDataObject(key, KstatData.Type.KSTAT_DATA_STRING,
+				(String) o);
+		}
+	    }
+	    return ks;
+	} catch (JSONException jse) {
+	    return null;
+	}
+    }
+
     /**
      * Parse the supplied String (in JSON format) and return the encoded
      * Set of Kstats.
@@ -125,32 +151,6 @@ public class JSONParser {
 	    // on error, return whatever we have
 	}
 	return nkstats;
-    }
-
-    @SuppressWarnings("rawtypes")
-    private static Kstat getKstat(final JSONObject jo) {
-	try {
-	    JSONObject jd = jo.getJSONObject("data");
-	    Kstat ks = new Kstat(jo.getString("module"), jo.getInt("instance"),
-				jo.getString("name"));
-	    ks.setStandardInfo(jo.getString("class"), jo.getInt("type"),
-				jo.getLong("crtime"), jo.getLong("snaptime"));
-	    Iterator it = jd.keys();
-	    while (it.hasNext()) {
-		String key = (String) it.next();
-		Object o = jd.get(key);
-		if (o instanceof Number) {
-		    ks.addDataObject(key, KstatData.Type.KSTAT_DATA_UINT64,
-				((Number) o).longValue());
-		} else {
-		    ks.addDataObject(key, KstatData.Type.KSTAT_DATA_STRING,
-				(String) o);
-		}
-	    }
-	    return ks;
-	} catch (JSONException jse) {
-	    return null;
-	}
     }
 
     /**

@@ -40,7 +40,7 @@ public final class SparkRateAccessory extends KstatAccessoryPanel {
     /**
      * The saved rate.
      */
-    private long r;
+    private long rate;
     /**
      * The name of the statistic being displayed.
      */
@@ -77,7 +77,7 @@ public final class SparkRateAccessory extends KstatAccessoryPanel {
     private void init() {
 	// necessary to initialize ks
 	updateKstat();
-	r = ks.longData(stat);
+	rate = ks.longData(stat);
 
 	jsc = new JSparkChart(150, 20);
 	add(jsc);
@@ -111,13 +111,13 @@ public final class SparkRateAccessory extends KstatAccessoryPanel {
     @Override
     public void updateAccessory() {
 	updateKstat();
-	long nr = ks.longData(stat);
-	jsc.add(nr - r);
+	long nrate = ks.longData(stat);
+	jsc.add(nrate - rate);
 	// the delay may be negative if externally driven, hence absolute
 	if (tips) {
 	    setToolTipText(tiptext + " "
-			+ scale * 1000.0 * (nr - r) / Math.abs(delay));
+			+ scale * 1000.0 * (nrate - rate) / Math.abs(delay));
 	}
-	r = nr;
+	rate = nrate;
     }
 }

@@ -42,7 +42,7 @@ public final class KstatSetAreaChart extends KstatBaseChart {
     private KstatSet kss;
     private TimeTableXYDataset dataset;
     private List<String> statlist;
-    private Map<Kstat, ChartableKstat> kMap;
+    private Map<Kstat, ChartableKstat> kmap;
 
     /**
      * Create an area Chart of the rate of change of the given statistic.
@@ -97,10 +97,10 @@ public final class KstatSetAreaChart extends KstatBaseChart {
     private void init(final List<String> statistics) {
 	statlist = statistics;
 	dataset = new TimeTableXYDataset();
-	kMap = new HashMap<>();
+	kmap = new HashMap<>();
 
 	for (Kstat ks : kss.getKstats()) {
-	    kMap.put(ks, new ChartableKstat(jkstat, ks));
+	    kmap.put(ks, new ChartableKstat(jkstat, ks));
 	}
 
 	if (jkstat instanceof SequencedJKstat) {
@@ -143,7 +143,7 @@ public final class KstatSetAreaChart extends KstatBaseChart {
      * read all the data from the kstat sequence
      */
     private void readAll(final SequencedJKstat sjkstat) {
-	for (ChartableKstat ck : kMap.values()) {
+	for (ChartableKstat ck : kmap.values()) {
 	    ck.setJKstat(sjkstat);
 	}
 	do {
@@ -167,7 +167,7 @@ public final class KstatSetAreaChart extends KstatBaseChart {
      * Get and update the appropriate data.
      */
     private void readOne(final Kstat ks, final Millisecond ms) {
-	ChartableKstat cks = kMap.get(ks);
+	ChartableKstat cks = kmap.get(ks);
 	cks.update();
 	for (String statistic : statlist) {
 	    dataset.add(ms, showdelta ? cks.getRate(statistic)

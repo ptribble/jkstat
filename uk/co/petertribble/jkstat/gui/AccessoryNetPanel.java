@@ -49,11 +49,11 @@ public final class AccessoryNetPanel extends KstatAccessoryPanel {
     /**
      * Save the value of reads.
      */
-    private long r;
+    private long reads;
     /**
      * Save the value of writes.
      */
-    private long w;
+    private long writes;
 
     /**
      * Create a panel showing the input and output traffic on the given network
@@ -145,13 +145,13 @@ public final class AccessoryNetPanel extends KstatAccessoryPanel {
 	updateKstat();
 	long nr = ks.longData("rbytes64");
 	long nw = ks.longData("obytes64");
-	jpIn.setValue((int) ((nr - r) * 1000000000 / (1024 * snapdelta)));
-	jpOut.setValue((int) ((nw - w) * 1000000000 / (1024 * snapdelta)));
-	jpIn.setString(Humanize.scale((nr - r) * 1000000000 / snapdelta,
+	jpIn.setValue((int) ((nr - reads) * 1000000000 / (1024 * snapdelta)));
+	jpOut.setValue((int) ((nw - writes) * 1000000000 / (1024 * snapdelta)));
+	jpIn.setString(Humanize.scale((nr - reads) * 1000000000 / snapdelta,
 				"bytes/s"));
-	jpOut.setString(Humanize.scale((nw - w) * 1000000000 / snapdelta,
+	jpOut.setString(Humanize.scale((nw - writes) * 1000000000 / snapdelta,
 				"bytes/s"));
-	r = nr;
-	w = nw;
+	reads = nr;
+	writes = nw;
     }
 }

@@ -41,7 +41,7 @@ public final class KstatSetChart extends KstatBaseChart {
     private KstatSet kss;
     private TimeSeriesCollection dataset;
     private Map<String, TimeSeries> tsmap;
-    private Map<Kstat, ChartableKstat> kMap;
+    private Map<Kstat, ChartableKstat> kmap;
 
     /**
      * Create a Chart of the given statistic.
@@ -84,10 +84,10 @@ public final class KstatSetChart extends KstatBaseChart {
     private void init(final List<String> statistics) {
 	dataset = new TimeSeriesCollection();
 	tsmap = new HashMap<>();
-	kMap = new HashMap<>();
+	kmap = new HashMap<>();
 
 	for (Kstat ks : kss.getKstats()) {
-	    kMap.put(ks, new ChartableKstat(jkstat, ks));
+	    kmap.put(ks, new ChartableKstat(jkstat, ks));
 
 	    for (String statistic : KstatUtil.numericStatistics(jkstat, ks)) {
 		String s = ks.getTriplet() + ":" + statistic;
@@ -150,7 +150,7 @@ public final class KstatSetChart extends KstatBaseChart {
      * read all the data from the kstat sequence
      */
     private void readAll(final SequencedJKstat sjkstat) {
-	for (ChartableKstat ck : kMap.values()) {
+	for (ChartableKstat ck : kmap.values()) {
 	    ck.setJKstat(sjkstat);
 	}
 	do {
@@ -174,7 +174,7 @@ public final class KstatSetChart extends KstatBaseChart {
      * Get and update the appropriate data.
      */
     private void readOne(final Kstat ks, final Millisecond ms) {
-	ChartableKstat cks = kMap.get(ks);
+	ChartableKstat cks = kmap.get(ks);
 	cks.update();
 	for (String statistic : KstatUtil.numericStatistics(jkstat, ks)) {
 	    tsmap.get(ks.getTriplet() + ":" + statistic).add(ms,

@@ -1,7 +1,6 @@
 JKstat - a java jni interface to Solaris/illumos kstats.
 
-
-http://www.petertribble.co.uk/Solaris/jkstat.html
+https://www.petertribble.co.uk/Solaris/jkstat.html
 
 The simplest way to start is using the kstat browser:
 
@@ -33,8 +32,8 @@ LICENSES/LGPL-2.1-or-later.txt - and can be obtained from
 https://www.jfree.org/jfreechart/.
 
 JKstat incorporates a couple of sets of utility classes. See
-http://www.petertribble.co.uk/Solaris/jingle.html
-http://www.petertribble.co.uk/Solaris/jumble.html
+https://www.petertribble.co.uk/Solaris/jingle.html
+https://www.petertribble.co.uk/Solaris/jumble.html
 
 This product includes software developed at
 The Apache Software Foundation (https://www.apache.org/).

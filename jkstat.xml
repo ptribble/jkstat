@@ -64,7 +64,7 @@ JKstat provides a jni interface for Java applications to access Solaris kstats.
                 </common_name>
         <documentation>
           <doc_link name='petertribble.co.uk'
-            uri='http://www.petertribble.co.uk/Solaris/jkstat.html'/>
+            uri='https://www.petertribble.co.uk/Solaris/jkstat.html'/>
         </documentation>
         </template>
 </service>

@@ -232,14 +232,14 @@ public class Kstat implements Serializable, Comparable<Kstat> {
     /**
      * Sets the standard data for this {@code Kstat}.
      *
-     * @param kClass the kstat class of this {@code Kstat}
+     * @param kclass the kstat class of this {@code Kstat}
      * @param ktype the type of this {@code Kstat}
      * @param kcrtime the creation time of this {@code Kstat}
      * @param ksnaptime the snap time of this {@code Kstat}
      */
-    public void setStandardInfo(final String kClass, final int ktype,
+    public void setStandardInfo(final String kclass, final int ktype,
 				final long kcrtime, final long ksnaptime) {
-	kstatClass = kClass;
+	kstatClass = kclass;
 	type = ktype;
 	crtime = kcrtime;
 	snaptime = ksnaptime;

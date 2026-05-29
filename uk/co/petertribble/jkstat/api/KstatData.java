@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -74,8 +74,8 @@ public class KstatData implements Serializable {
         private final int intType;
         private final boolean numeric;
 
-        Type(final int iType, final boolean inumeric) {
-            intType = iType;
+        Type(final int itype, final boolean inumeric) {
+            intType = itype;
             numeric = inumeric;
         }
 

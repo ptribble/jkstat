@@ -60,20 +60,20 @@ public class KstatFilter {
      * Filter on this kstat class. Only kstats of this class will be returned
      * by this KstatFilter.
      *
-     * @param fClass the name of the class of kstat to be matched
+     * @param fclass the name of the class of kstat to be matched
      */
-    public void setFilterClass(final String fClass) {
-	filterClass = fClass;
+    public void setFilterClass(final String fclass) {
+	filterClass = fclass;
     }
 
     /**
      * Filter on this kstat type. Only kstats that have a kstat type equal to
      * this type will be returned by this KstatFilter.
      *
-     * @param fType the type of kstat to be matched
+     * @param ftype the type of kstat to be matched
      */
-    public void setFilterType(final int fType) {
-	filterType = fType;
+    public void setFilterType(final int ftype) {
+	filterType = ftype;
     }
 
     /**

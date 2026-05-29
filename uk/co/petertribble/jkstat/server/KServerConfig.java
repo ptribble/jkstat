@@ -104,9 +104,9 @@ public final class KServerConfig {
 		        && !netIf.isLoopback() && !netIf.isVirtual()) {
 		    Enumeration<InetAddress> inetAddresses
 			= netIf.getInetAddresses();
-		    for (InetAddress iAddr : Collections.list(inetAddresses)) {
-			if (!iAddr.isLinkLocalAddress()) {
-			    return iAddr;
+		    for (InetAddress iaddr : Collections.list(inetAddresses)) {
+			if (!iaddr.isLinkLocalAddress()) {
+			    return iaddr;
 			}
 		    }
 		}
@@ -123,9 +123,9 @@ public final class KServerConfig {
 		        && !netIf.isLoopback()) {
 		    Enumeration<InetAddress> inetAddresses
 			= netIf.getInetAddresses();
-		    for (InetAddress iAddr : Collections.list(inetAddresses)) {
-			if (!iAddr.isLinkLocalAddress()) {
-			    return iAddr;
+		    for (InetAddress iaddr : Collections.list(inetAddresses)) {
+			if (!iaddr.isLinkLocalAddress()) {
+			    return iaddr;
 			}
 		    }
 		}

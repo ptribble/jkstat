@@ -46,8 +46,6 @@ public final class Jnfsstat extends JKdemo implements ChangeListener {
 
     private static final long serialVersionUID = 1L;
 
-    private static final String VERSION = "Jnfsstat version 1.2";
-
     /**
      * A holding tabbed pane.
      */
@@ -162,7 +160,7 @@ public final class Jnfsstat extends JKdemo implements ChangeListener {
 
 	mainPanel.add(nfsstatPane);
 
-	addInfoPanel(mainPanel, VERSION);
+	addInfoPanel(mainPanel, "Jnfsstat");
 
 	/*
 	 * The update interval for all the components above was set to zero

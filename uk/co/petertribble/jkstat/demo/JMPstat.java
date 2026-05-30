@@ -44,8 +44,6 @@ public final class JMPstat extends JKdemo {
      */
     private MPstatTable mptable;
 
-    private static final String VERSION = "JMPstat version 1.2";
-
     /**
      * Construct a client JMPstat application.
      *
@@ -79,7 +77,7 @@ public final class JMPstat extends JKdemo {
 	mainPanel.add(new JScrollPane(mptable));
 	setContentPane(mainPanel);
 
-	addInfoPanel(mainPanel, VERSION);
+	addInfoPanel(mainPanel, "JMPstat");
 
 	setIconImage(new ImageIcon(this.getClass().getClassLoader()
 			.getResource("pixmaps/jmpstat.png")).getImage());

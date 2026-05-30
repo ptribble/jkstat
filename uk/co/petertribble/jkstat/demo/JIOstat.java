@@ -47,8 +47,6 @@ public final class JIOstat extends JKdemo {
      */
     private IOstatTable iotable;
 
-    private static final String VERSION = "JIOstat version 1.2";
-
     /**
      * Construct a new JIOstat application.
      *
@@ -90,7 +88,7 @@ public final class JIOstat extends JKdemo {
 	mainPanel.add(new JScrollPane(iotable));
 	setContentPane(mainPanel);
 
-	addInfoPanel(mainPanel, VERSION);
+	addInfoPanel(mainPanel, "JIOstat");
 
 	setIconImage(new ImageIcon(this.getClass().getClassLoader()
 			.getResource("pixmaps/jiostat.png")).getImage());

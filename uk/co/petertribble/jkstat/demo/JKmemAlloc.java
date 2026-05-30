@@ -40,8 +40,6 @@ public final class JKmemAlloc extends JKdemo {
      */
     private JKmemPanel kmPanel;
 
-    private static final String VERSION = "JKmemAlloc version 1.2";
-
     /**
      * Create a standalone JKmemAlloc application.
      *
@@ -75,7 +73,7 @@ public final class JKmemAlloc extends JKdemo {
 	mainPanel.add(new JScrollPane(kmPanel));
 	setContentPane(mainPanel);
 
-	addInfoPanel(mainPanel, VERSION);
+	addInfoPanel(mainPanel, "JKmemAlloc");
 
 	setSize(620, 550);
 	validate();

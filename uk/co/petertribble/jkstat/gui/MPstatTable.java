@@ -35,11 +35,11 @@ public final class MPstatTable extends JTable {
 
     private static final long serialVersionUID = 1L;
 
+    transient JKstat jkstat;
     /**
      * The underlying data model.
      */
     private MPstatTableModel ktm;
-    transient JKstat jkstat;
 
     /**
      * Create a new MPstatTable.

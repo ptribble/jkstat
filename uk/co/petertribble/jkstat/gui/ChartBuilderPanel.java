@@ -45,14 +45,15 @@ public final class ChartBuilderPanel extends JPanel
 
     private static final long serialVersionUID = 1L;
 
+    private static final int KTAB_ID = 0;
+    private static final int STAB_ID = 1;
+
     private transient JKstat jkstat;
 
     /**
      * The holding tabbed pane.
      */
     private JTabbedPane jtp;
-    private static final int KTAB_ID = 0;
-    private static final int STAB_ID = 1;
     /**
      * A panel to hold the stats display.
      */

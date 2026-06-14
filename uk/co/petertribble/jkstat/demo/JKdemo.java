@@ -33,6 +33,11 @@ import uk.co.petertribble.jkstat.gui.KstatResources;
  */
 public abstract class JKdemo extends JFrame implements ActionListener {
 
+    /**
+     * The default update interval, 5s.
+     */
+    protected static final int DEFAULT_INTERVAL = 5;
+
     private static final long serialVersionUID = 1L;
 
     /**
@@ -79,11 +84,6 @@ public abstract class JKdemo extends JFrame implements ActionListener {
      * A label to show current state.
      */
     private JLabel infoLabel;
-
-    /**
-     * The default update interval, 5s.
-     */
-    protected static final int DEFAULT_INTERVAL = 5;
 
     /**
      * The name of this demo.

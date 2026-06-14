@@ -36,8 +36,6 @@ import uk.co.petertribble.jkstat.api.NativeJKstat;
  */
 public class PsrInfo {
 
-    private JKstat jkstat;
-
     // for arguments
     private static boolean flagC;
     private static boolean flagP;
@@ -47,6 +45,8 @@ public class PsrInfo {
     private static final DateTimeFormatter DT =
 	DateTimeFormatter.ofPattern("LL/dd/yyyy HH:mm:ss");
     private static final ZoneId ZID = TimeZone.getDefault().toZoneId();
+
+    private JKstat jkstat;
 
     /**
      * Emulate psrinfo(8) output.

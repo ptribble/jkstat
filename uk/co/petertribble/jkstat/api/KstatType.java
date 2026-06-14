@@ -30,9 +30,6 @@ package uk.co.petertribble.jkstat.api;
  */
 public final class KstatType {
 
-    private KstatType() {
-    }
-
     /**
      * Anything. If known, massaged to name/value form.
      */
@@ -57,6 +54,9 @@ public final class KstatType {
      * Event timer.
      */
     public static final int KSTAT_TYPE_TIMER = 4;
+
+    private KstatType() {
+    }
 
     /**
      * Returns the kstat type as a String.

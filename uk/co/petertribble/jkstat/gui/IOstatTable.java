@@ -35,11 +35,11 @@ public final class IOstatTable extends JTable {
 
     private static final long serialVersionUID = 1L;
 
+    transient JKstat jkstat;
     /**
      * The underlying data model.
      */
     private IOstatTableModel ktm;
-    transient JKstat jkstat;
 
     /**
      * Wraps a {@code KstatSet} in a {@code JTable}, adding a right-click

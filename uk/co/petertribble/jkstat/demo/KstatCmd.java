@@ -41,6 +41,13 @@ import uk.co.petertribble.jkstat.api.NativeJKstat;
  */
 public final class KstatCmd {
 
+    private static final DateTimeFormatter DTF =
+	DateTimeFormatter.ofPattern("EEE MMM d H:mm:ss yyyy");
+    private static final ZoneId ZID = TimeZone.getDefault().toZoneId();
+
+    // optional count
+    int count;
+
     private JKstat jkstat;
     private KstatFilter ksf;
 
@@ -57,13 +64,6 @@ public final class KstatCmd {
     private String showname;
     private boolean sflag;
     private String showstatistic;
-
-    // optional count
-    int count;
-
-    private static final DateTimeFormatter DTF =
-	DateTimeFormatter.ofPattern("EEE MMM d H:mm:ss yyyy");
-    private static final ZoneId ZID = TimeZone.getDefault().toZoneId();
 
     /**
      * Create a new KstatCmd application, and produce output according to the

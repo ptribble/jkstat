@@ -34,6 +34,8 @@ public final class SparkValueAccessory extends KstatAccessoryPanel {
 
     private static final long serialVersionUID = 1L;
 
+    private static final DecimalFormat DF = new DecimalFormat("##0.00");
+
     /**
      * The chart displaying the values stored by this accessory.
      */
@@ -58,7 +60,6 @@ public final class SparkValueAccessory extends KstatAccessoryPanel {
      * If scaling, the scale factor.
      */
     private double scale;
-    private static final DecimalFormat DF = new DecimalFormat("##0.00");
 
     /**
      * Create a panel showing a sparkline of the value of the given statistic.

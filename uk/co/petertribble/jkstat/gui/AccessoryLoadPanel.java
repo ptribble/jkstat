@@ -36,11 +36,12 @@ public final class AccessoryLoadPanel extends KstatAccessoryPanel {
 
     private static final long serialVersionUID = 1L;
 
+    private static final double LSCALE = 256.0;
+
     /**
      * The maximum load displayed by the progress bars.
      */
     private double lmax = 1.0;
-    private static final double LSCALE = 256.0;
 
     /**
      * A formatter to put numerical labels inside the progress bar.

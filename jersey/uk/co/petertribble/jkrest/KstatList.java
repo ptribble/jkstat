@@ -23,8 +23,16 @@ package uk.co.petertribble.jkrest;
 import javax.ws.rs.*;
 import uk.co.petertribble.jkstat.api.*;
 
+/**
+ * This handles requests of the form list, with no arguments.
+ */
 @Path("list")
 
+/**
+ * An endpoint to retrieve the list of all Kstats.
+ *
+ * @author Peter Tribble
+ */
 public class KstatList {
 
     static final JKstat JKSTAT = new NativeJKstat();

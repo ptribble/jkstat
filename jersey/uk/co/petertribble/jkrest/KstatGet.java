@@ -23,8 +23,17 @@ package uk.co.petertribble.jkrest;
 import javax.ws.rs.*;
 import uk.co.petertribble.jkstat.api.*;
 
+/**
+ * This handles requests of the form get/module/instance/name, where
+ * module, instance, and name identify the kstat.
+ */
 @Path("get/{module}/{instance}/{name}")
 
+/**
+ * An endpoint to retrieve a Kstat for a given module:instance:name.
+ *
+ * @author Peter Tribble
+ */
 public class KstatGet {
 
     static final JKstat JKSTAT = new NativeJKstat();

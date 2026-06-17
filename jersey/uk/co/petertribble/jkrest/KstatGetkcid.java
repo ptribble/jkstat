@@ -23,8 +23,16 @@ package uk.co.petertribble.jkrest;
 import javax.ws.rs.*;
 import uk.co.petertribble.jkstat.api.*;
 
+/**
+ * This handles requests of the form getkcid, with no arguments.
+ */
 @Path("getkcid")
 
+/**
+ * An endpoint to retrieve the current Kstat chain id.
+ *
+ * @author Peter Tribble
+ */
 public class KstatGetkcid {
 
     static final JKstat JKSTAT = new NativeJKstat();

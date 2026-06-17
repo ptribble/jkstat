@@ -23,8 +23,16 @@ package uk.co.petertribble.jkrest;
 import javax.ws.rs.*;
 import uk.co.petertribble.jkstat.api.*;
 
+/**
+ * This handles requests of the form mget/module/instance/specifier.
+ */
 @Path("mget/{module}/{instance}/{namespecifier}")
 
+/**
+ * An endpoint to retrieve multiple Kstats matching the supplied pattern.
+ *
+ * @author Peter Tribble
+ */
 public class KstatMget {
 
     static final JKstat JKSTAT = new NativeJKstat();

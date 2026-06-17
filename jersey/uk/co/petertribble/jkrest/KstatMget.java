@@ -28,11 +28,6 @@ import uk.co.petertribble.jkstat.api.*;
  */
 @Path("mget/{module}/{instance}/{namespecifier}")
 
-/**
- * An endpoint to retrieve multiple Kstats matching the supplied pattern.
- *
- * @author Peter Tribble
- */
 public class KstatMget {
 
     static final JKstat JKSTAT = new NativeJKstat();

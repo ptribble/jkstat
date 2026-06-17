@@ -28,11 +28,6 @@ import uk.co.petertribble.jkstat.api.*;
  */
 @Path("list")
 
-/**
- * An endpoint to retrieve the list of all Kstats.
- *
- * @author Peter Tribble
- */
 public class KstatList {
 
     static final JKstat JKSTAT = new NativeJKstat();

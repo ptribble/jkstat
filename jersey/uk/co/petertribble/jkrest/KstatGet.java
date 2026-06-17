@@ -29,11 +29,6 @@ import uk.co.petertribble.jkstat.api.*;
  */
 @Path("get/{module}/{instance}/{name}")
 
-/**
- * An endpoint to retrieve a Kstat for a given module:instance:name.
- *
- * @author Peter Tribble
- */
 public class KstatGet {
 
     static final JKstat JKSTAT = new NativeJKstat();

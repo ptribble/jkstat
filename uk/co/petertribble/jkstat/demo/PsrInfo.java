@@ -42,8 +42,8 @@ public class PsrInfo {
     private static boolean flagT;
     private static boolean flagV;
 
-    private static final DateTimeFormatter DT =
-	DateTimeFormatter.ofPattern("LL/dd/yyyy HH:mm:ss");
+    private static final DateTimeFormatter DT
+	= DateTimeFormatter.ofPattern("LL/dd/yyyy HH:mm:ss");
     private static final ZoneId ZID = TimeZone.getDefault().toZoneId();
 
     private JKstat jkstat;

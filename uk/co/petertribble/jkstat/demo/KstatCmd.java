@@ -41,8 +41,8 @@ import uk.co.petertribble.jkstat.api.NativeJKstat;
  */
 public final class KstatCmd {
 
-    private static final DateTimeFormatter DTF =
-	DateTimeFormatter.ofPattern("EEE MMM d H:mm:ss yyyy");
+    private static final DateTimeFormatter DTF
+	= DateTimeFormatter.ofPattern("EEE MMM d H:mm:ss yyyy");
     private static final ZoneId ZID = TimeZone.getDefault().toZoneId();
 
     // optional count
@@ -316,11 +316,6 @@ public final class KstatCmd {
 	}
     }
 
-    private void usage(final String s) {
-	System.err.println("Error: " + s);
-	usage();
-    }
-
     private void usage() {
 	System.err.println("Usage:");
 	System.err.println("kstat [-l] [-p] [ -T d|u ] [-c class]");
@@ -332,6 +327,11 @@ public final class KstatCmd {
 	    "      [ module:instance:name:statistic ... ]");
 	System.err.println("      [ interval [ count ] ]");
 	System.exit(1);
+    }
+
+    private void usage(final String s) {
+	System.err.println("Error: " + s);
+	usage();
     }
 
     /**

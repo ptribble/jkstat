@@ -34,8 +34,8 @@ import java.util.Comparator;
  */
 public final class NumericStringComparator implements Comparator<String> {
 
-    private static final NumericStringComparator INSTANCE =
-	    new NumericStringComparator();
+    private static final NumericStringComparator INSTANCE
+	    = new NumericStringComparator();
 
     private NumericStringComparator() {
     }

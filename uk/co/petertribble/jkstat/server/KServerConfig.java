@@ -97,8 +97,8 @@ public final class KServerConfig {
 	 * First try to find an address on a real interface.
 	 */
 	try {
-	    Enumeration<NetworkInterface> nets =
-		NetworkInterface.getNetworkInterfaces();
+	    Enumeration<NetworkInterface> nets
+		= NetworkInterface.getNetworkInterfaces();
 	    for (NetworkInterface netIf : Collections.list(nets)) {
 		if (netIf.isUp() && netIf.supportsMulticast()
 		        && !netIf.isLoopback() && !netIf.isVirtual()) {
@@ -116,8 +116,8 @@ public final class KServerConfig {
 	 * If we're still here, try again, allowing virtual interfaces.
 	 */
 	try {
-	    Enumeration<NetworkInterface> nets =
-		NetworkInterface.getNetworkInterfaces();
+	    Enumeration<NetworkInterface> nets
+		= NetworkInterface.getNetworkInterfaces();
 	    for (NetworkInterface netIf : Collections.list(nets)) {
 		if (netIf.isUp() && netIf.supportsMulticast()
 		        && !netIf.isLoopback()) {

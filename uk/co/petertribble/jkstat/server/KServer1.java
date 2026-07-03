@@ -52,8 +52,8 @@ public final class KServer1 {
 	    PropertyHandlerMapping phm = new PropertyHandlerMapping();
 	    phm.addHandler("JKstatServer", JKstatServer.class);
 	    xmlRpcServer.setHandlerMapping(phm);
-	    XmlRpcServerConfigImpl serverConfig =
-		(XmlRpcServerConfigImpl) xmlRpcServer.getConfig();
+	    XmlRpcServerConfigImpl serverConfig
+		= (XmlRpcServerConfigImpl) xmlRpcServer.getConfig();
 	    serverConfig.setContentLengthOptional(false);
 
 	    webServer.start();

@@ -356,12 +356,12 @@ public class KstatFilter {
     }
 
     private boolean matchTriplet(final Kstat ks, final FilterQuartet fq) {
-	boolean mmatch =
-	    (fq.module == null) || fq.module.equals(ks.getModule());
-	boolean imatch =
-	    (fq.instance == null) || fq.instance == ks.getInst();
-	boolean nmatch =
-	    (fq.name == null) || fq.name.equals(ks.getName());
+	boolean mmatch
+	    = (fq.module == null) || fq.module.equals(ks.getModule());
+	boolean imatch
+	    = (fq.instance == null) || fq.instance == ks.getInst();
+	boolean nmatch
+	    = (fq.name == null) || fq.name.equals(ks.getName());
 	return mmatch && imatch && nmatch;
     }
 

@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -29,8 +29,8 @@ import java.util.ResourceBundle;
  */
 public final class KstatResources {
 
-    private static final ResourceBundle KSTATRES =
-				ResourceBundle.getBundle("properties/jkstat");
+    private static final ResourceBundle KSTATRES
+				= ResourceBundle.getBundle("properties/jkstat");
 
     private KstatResources() {
     }

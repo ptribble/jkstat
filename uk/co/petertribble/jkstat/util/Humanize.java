@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -58,13 +58,12 @@ public final class Humanize {
      * letter to denote k/m/g/t/p/e. The number is scaled by 1024 as many
      * times as necessary.
      *
-     * @param l the number to Humanize
-     * @param suffix a suffix appended to the String produced
+     * @param d the number to Humanize
      *
      * @return a String representing the given number in human readable form
      */
-    public static String scale(final long l, final String suffix) {
-	return scale((double) l, suffix);
+    public static String scale(final double d) {
+	return scale(d, "");
     }
 
     /**
@@ -72,12 +71,13 @@ public final class Humanize {
      * letter to denote k/m/g/t/p/e. The number is scaled by 1024 as many
      * times as necessary.
      *
-     * @param d the number to Humanize
+     * @param l the number to Humanize
+     * @param suffix a suffix appended to the String produced
      *
      * @return a String representing the given number in human readable form
      */
-    public static String scale(final double d) {
-	return scale(d, "");
+    public static String scale(final long l, final String suffix) {
+	return scale((double) l, suffix);
     }
 
     /**

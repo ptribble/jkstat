@@ -190,8 +190,8 @@ public class KstatBaseChartFrame extends JFrame implements ActionListener {
 	JMenu jmstat = new JMenu(KstatResources.getString("CHART.SHOW"));
 	jmstat.setMnemonic(KeyEvent.VK_S);
 	for (String stat : cks.getStatistics()) {
-	    JCheckBoxMenuItem jmi =
-		    new JCheckBoxMenuItem(stat, stat.equals(statistic));
+	    JCheckBoxMenuItem jmi
+		    = new JCheckBoxMenuItem(stat, stat.equals(statistic));
 	    jmi.addActionListener(this);
 	    jmstat.add(jmi);
 	}
@@ -212,8 +212,8 @@ public class KstatBaseChartFrame extends JFrame implements ActionListener {
 	JMenu jmstat = new JMenu(KstatResources.getString("CHART.SHOW"));
 	jmstat.setMnemonic(KeyEvent.VK_S);
 	for (String stat : cks.getStatistics()) {
-	    JCheckBoxMenuItem jmi =
-		    new JCheckBoxMenuItem(stat, statistics.contains(stat));
+	    JCheckBoxMenuItem jmi
+		    = new JCheckBoxMenuItem(stat, statistics.contains(stat));
 	    jmi.addActionListener(this);
 	    jmstat.add(jmi);
 	}

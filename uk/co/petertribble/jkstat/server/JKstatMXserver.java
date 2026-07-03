@@ -43,8 +43,8 @@ public final class JKstatMXserver {
     public static void main(final String[] args) {
 	try {
 	    MBeanServer mbs = ManagementFactory.getPlatformMBeanServer();
-	    ObjectName name =
-	    new ObjectName("uk.co.petertribble.jkstat.server:type=JKstatMX");
+	    ObjectName name
+	    = new ObjectName("uk.co.petertribble.jkstat.server:type=JKstatMX");
 	    JKstatMX mbean = new JKstatMX();
 	    mbs.registerMBean(mbean, name);
 	    System.out.println("JKstatMX server ready.");

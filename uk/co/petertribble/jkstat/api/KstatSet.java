@@ -127,8 +127,8 @@ public class KstatSet {
 	 * what kstats have been added and removed.
 	 */
 	Set<Kstat> oldKstats = currentKstats;
-	Set<Kstat> newKstats =
-	    (ksf == null) ? jkstat.getKstats() : ksf.getKstats();
+	Set<Kstat> newKstats
+	    = (ksf == null) ? jkstat.getKstats() : ksf.getKstats();
 	addedKstats = new HashSet<>(newKstats);
 	addedKstats.removeAll(oldKstats);
 	deletedKstats = new HashSet<>(oldKstats);

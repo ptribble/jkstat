@@ -20,12 +20,12 @@
 
 package uk.co.petertribble.jkstat.parse;
 
-import com.github.openjson.*;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
+import com.github.openjson.*;
 import uk.co.petertribble.jkstat.api.Kstat;
 import uk.co.petertribble.jkstat.api.KstatData;
 
@@ -121,6 +121,15 @@ public class JSONParser {
     }
 
     /**
+     * Return the parsed kstats.
+     *
+     * @return the Set of parsed Kstats
+     */
+    public Set<Kstat> getKstats() {
+	return kstats;
+    }
+
+    /**
      * Parse the supplied String (in JSON format) and return the encoded
      * Set of Kstats.
      *
@@ -151,14 +160,5 @@ public class JSONParser {
 	    // on error, return whatever we have
 	}
 	return nkstats;
-    }
-
-    /**
-     * Return the parsed kstats.
-     *
-     * @return the Set of parsed Kstats
-     */
-    public Set<Kstat> getKstats() {
-	return kstats;
     }
 }

@@ -107,31 +107,6 @@ public final class KstatTreeNode extends DefaultMutableTreeNode {
      * New nodes just get added on the end.
      */
 
-    /**
-     * Add a Kstat to the model.
-     *
-     * @param s the name of the node
-     * @param ks the Kstat to add to the model
-     *
-     * @return a KstatTreeNode object that refers to the highest node in the
-     * tree that changed, or null if the tree didn't change
-     */
-    public KstatTreeNode addKstat(final String s, final Kstat ks) {
-	if (ks == null) {
-	    return null;
-	}
-	if (s == null) {
-	    return addKstat(ks);
-	} else {
-	    KstatTreeNode kn = nodeMap.get(s);
-	    if (kn == null) {
-		kn = new KstatTreeNode(s);
-		addNode(s, kn);
-	    }
-	    return kn.addKstat(ks);
-	}
-    }
-
     /*
      * Add a kstat to the model. This assumes that any top-level layer of the
      * hierarchy has been stripped off. This only gets called from the public
@@ -175,31 +150,27 @@ public final class KstatTreeNode extends DefaultMutableTreeNode {
     }
 
     /**
-     * Remove a Kstat from the model.
+     * Add a Kstat to the model.
      *
      * @param s the name of the node
-     * @param ks the Kstat to be removed from the model
+     * @param ks the Kstat to add to the model
      *
      * @return a KstatTreeNode object that refers to the highest node in the
      * tree that changed, or null if the tree didn't change
      */
-    public KstatTreeNode removeKstat(final String s, final Kstat ks) {
+    public KstatTreeNode addKstat(final String s, final Kstat ks) {
 	if (ks == null) {
 	    return null;
 	}
 	if (s == null) {
-	    return removeKstat(ks);
+	    return addKstat(ks);
 	} else {
 	    KstatTreeNode kn = nodeMap.get(s);
 	    if (kn == null) {
-		return null;
+		kn = new KstatTreeNode(s);
+		addNode(s, kn);
 	    }
-	    KstatTreeNode knr = kn.removeKstat(ks);
-	    if (kn.isEmpty()) {
-		removeNode(s);
-		return this;
-	    }
-	    return knr;
+	    return kn.addKstat(ks);
 	}
     }
 
@@ -267,6 +238,35 @@ public final class KstatTreeNode extends DefaultMutableTreeNode {
 	 * Nothing else changed, just return the instance node.
 	 */
 	return kni;
+    }
+
+    /**
+     * Remove a Kstat from the model.
+     *
+     * @param s the name of the node
+     * @param ks the Kstat to be removed from the model
+     *
+     * @return a KstatTreeNode object that refers to the highest node in the
+     * tree that changed, or null if the tree didn't change
+     */
+    public KstatTreeNode removeKstat(final String s, final Kstat ks) {
+	if (ks == null) {
+	    return null;
+	}
+	if (s == null) {
+	    return removeKstat(ks);
+	} else {
+	    KstatTreeNode kn = nodeMap.get(s);
+	    if (kn == null) {
+		return null;
+	    }
+	    KstatTreeNode knr = kn.removeKstat(ks);
+	    if (kn.isEmpty()) {
+		removeNode(s);
+		return this;
+	    }
+	    return knr;
+	}
     }
 
     /*

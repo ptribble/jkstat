@@ -157,8 +157,8 @@ public final class ChartBuilderPanel extends JPanel
 	rateButton.setSelected(true);
 	bgval.add(rateButton);
 	vpanel.add(rateButton);
-	JRadioButton valueButton =
-	    new JRadioButton(KstatResources.getString("CHART.SHOWVAL"));
+	JRadioButton valueButton
+	    = new JRadioButton(KstatResources.getString("CHART.SHOWVAL"));
 	bgval.add(valueButton);
 	vpanel.add(valueButton);
 	vpanel.setBorder(BorderFactory.createTitledBorder(
@@ -174,8 +174,8 @@ public final class ChartBuilderPanel extends JPanel
 	lineStyle.setSelected(true);
 	bgstyle.add(lineStyle);
 	spanel.add(lineStyle);
-	JRadioButton stackedStyle =
-	    new JRadioButton(KstatResources.getString("CHART.STACK"));
+	JRadioButton stackedStyle
+	    = new JRadioButton(KstatResources.getString("CHART.STACK"));
 	bgstyle.add(stackedStyle);
 	spanel.add(stackedStyle);
 

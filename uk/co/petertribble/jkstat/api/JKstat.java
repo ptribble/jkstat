@@ -88,6 +88,22 @@ public abstract class JKstat {
      * Retrieves a {@code Kstat} and its statistics. Also updates the internal
      * list of {@code Kstat}s.
      *
+     * @param ks A {@code Kstat} that defines the module, instance, and name
+     *
+     * @return A new {@code Kstat}, or {@code null} if no matching
+     * {@code Kstat} is found
+     */
+    public Kstat getKstat(final Kstat ks) {
+	if (ks == null) {
+	    return (Kstat) null;
+	}
+	return getKstat(ks.getModule(), ks.getInst(), ks.getName());
+    }
+
+    /**
+     * Retrieves a {@code Kstat} and its statistics. Also updates the internal
+     * list of {@code Kstat}s.
+     *
      * @param module The kstat module
      * @param inst The kstat instance
      * @param name The name of the kstat
@@ -114,22 +130,6 @@ public abstract class JKstat {
 	    kstats.add(ks);
 	}
 	return ks;
-    }
-
-    /**
-     * Retrieves a {@code Kstat} and its statistics. Also updates the internal
-     * list of {@code Kstat}s.
-     *
-     * @param ks A {@code Kstat} that defines the module, instance, and name
-     *
-     * @return A new {@code Kstat}, or {@code null} if no matching
-     * {@code Kstat} is found
-     */
-    public Kstat getKstat(final Kstat ks) {
-	if (ks == null) {
-	    return (Kstat) null;
-	}
-	return getKstat(ks.getModule(), ks.getInst(), ks.getName());
     }
 
     /**

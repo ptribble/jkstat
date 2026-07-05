@@ -33,6 +33,19 @@ import uk.co.petertribble.jkstat.api.NativeJKstat;
  */
 public final class Uptime {
 
+    /**
+     * The number of seconds in a minute.
+     */
+    private static final long MINSEC = 60;
+    /**
+     * The number of seconds in an hour.
+     */
+    private static final long HRSEC = 60 * 60;
+    /**
+     * The number of seconds in a day.
+     */
+    private static final long DAYSEC = 60 * 60 * 24;
+
     private Uptime() {
     }
 
@@ -51,11 +64,11 @@ public final class Uptime {
 
 	long l = System.currentTimeMillis() / 1000 - ks.longData("boot_time");
 
-	long days = l / (60 * 60 * 24);
-	l %= (60 * 60 * 24);
-	long hrs = l / (60 * 60);
-	l %= (60 * 60);
-	long mins = l / 60;
+	long days = l / DAYSEC;
+	l %= DAYSEC;
+	long hrs = l / HRSEC;
+	l %= HRSEC;
+	long mins = l / MINSEC;
 
 	if (days > 1) {
 	    System.out.print(days + " days ");

@@ -164,7 +164,7 @@ public final class KstatTreePanel extends JPanel
 	jkstat = njkstat;
 	kss = nkss;
 
-	stepping = (jkstat instanceof SequencedJKstat);
+	stepping = jkstat instanceof SequencedJKstat;
 
 	ksm = new KstatTreeMap(kss);
 

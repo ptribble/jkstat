@@ -103,7 +103,7 @@ public final class KClientDialog implements ActionListener {
 	qpanel3.add(pfield);
 	qpanel.add(qpanel3);
 
-	String[] options =  {KstatResources.getString("CLIENT.CONNECT"),
+	String[] options = {KstatResources.getString("CLIENT.CONNECT"),
 			KstatResources.getString("CLIENT.CANCEL")};
 	dialogStatus = JOptionPane.showOptionDialog(null, qpanel,
 				KstatResources.getString("CLIENT.DETAIL"),

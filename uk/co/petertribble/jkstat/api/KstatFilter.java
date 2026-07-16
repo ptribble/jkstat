@@ -275,7 +275,7 @@ public class KstatFilter {
 	 * If we didn't add any statistics then the logic is wrong and we must
 	 * have matched some other way, so return the entire set.
 	 */
-	return nstats.isEmpty()	? ks.statistics() : nstats;
+	return nstats.isEmpty() ? ks.statistics() : nstats;
     }
 
     /*

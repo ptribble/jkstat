@@ -142,7 +142,7 @@ public final class KBrowseDialog implements ActionListener {
 	    qpan3.add(pfield);
 	    qpan.add(qpan3);
 
-	    String[] options =  {KstatResources.getString("CLIENT.CONNECT"),
+	    String[] options = {KstatResources.getString("CLIENT.CONNECT"),
 			KstatResources.getString("CLIENT.CANCEL")};
 	    dialogStatus = JOptionPane.showOptionDialog(null, qpan,
 				KstatResources.getString("CLIENT.DETAIL"),

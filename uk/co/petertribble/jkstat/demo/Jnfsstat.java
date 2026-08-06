@@ -54,18 +54,18 @@ public final class Jnfsstat extends JKdemo implements ChangeListener {
 
     /**
      * Construct a new Jnfsstat application.
+     */
+    public Jnfsstat() {
+	this(new NativeJKstat(), true);
+    }
+
+    /**
+     * Construct a new Jnfsstat application.
      *
      * @param kcc the client configuration
      */
     public Jnfsstat(final KClientConfig kcc) {
 	this(new RemoteJKstat(kcc), true);
-    }
-
-    /**
-     * Construct a new Jnfsstat application.
-     */
-    public Jnfsstat() {
-	this(new NativeJKstat(), true);
     }
 
     /**

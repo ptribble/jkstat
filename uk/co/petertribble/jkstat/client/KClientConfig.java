@@ -78,17 +78,6 @@ public final class KClientConfig {
     }
 
     /**
-     * Create a KClientConfig that is configured to connect to a given url.
-     *
-     * @param s the textual url of the server to connect to
-     * @param proto specifies the communication protocol
-     */
-    public KClientConfig(final String s, final int proto) {
-	urlString = s;
-	protocol = proto;
-    }
-
-    /**
      * Create a PClientConfig that reads its configuration from a file.
      * The configuration file contains key-value pairs, separated by an
      * = sign, one pair per line.
@@ -112,6 +101,17 @@ public final class KClientConfig {
 		protocol = Integer.parseInt(sproto);
 	    }
 	}
+    }
+
+    /**
+     * Create a KClientConfig that is configured to connect to a given url.
+     *
+     * @param s the textual url of the server to connect to
+     * @param proto specifies the communication protocol
+     */
+    public KClientConfig(final String s, final int proto) {
+	urlString = s;
+	protocol = proto;
     }
 
     /**

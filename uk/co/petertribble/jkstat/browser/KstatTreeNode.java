@@ -41,28 +41,6 @@ public final class KstatTreeNode extends DefaultMutableTreeNode {
     private transient Map<String, KstatTreeNode> nodeMap;
 
     /**
-     * Constructs a KstatTreeNode object. Because it's passed a Map, which
-     * contains the Kstat hierarchy, this creates a top-level node.
-     *
-     * @param s the name of the node
-     * @param m a Map containing a Kstat hierarchy
-     */
-    @SuppressWarnings("rawtypes")
-    public KstatTreeNode(final String s, final Map m) {
-	setUserObject(s);
-	nodeMap = new HashMap<>();
-	for (Object o : m.keySet()) {
-	    String ss = (String) o;
-	    Object oo = m.get(o);
-	    if (oo instanceof Map) {
-		addNode(ss, new KstatTreeNode(ss, (Map) oo));
-	    } else if (oo instanceof Kstat) {
-		addNode(ss, new KstatTreeNode((Kstat) oo));
-	    }
-	}
-    }
-
-    /**
      * Constructs a KstatTreeNode object. Because it's passed a String,
      * this represents an intermediate node.
      *
@@ -82,6 +60,28 @@ public final class KstatTreeNode extends DefaultMutableTreeNode {
     public KstatTreeNode(final Kstat ks) {
 	nodeisleaf = true;
 	setUserObject(ks);
+    }
+
+    /**
+     * Constructs a KstatTreeNode object. Because it's passed a Map, which
+     * contains the Kstat hierarchy, this creates a top-level node.
+     *
+     * @param s the name of the node
+     * @param m a Map containing a Kstat hierarchy
+     */
+    @SuppressWarnings("rawtypes")
+    public KstatTreeNode(final String s, final Map m) {
+	setUserObject(s);
+	nodeMap = new HashMap<>();
+	for (Object o : m.keySet()) {
+	    String ss = (String) o;
+	    Object oo = m.get(o);
+	    if (oo instanceof Map) {
+		addNode(ss, new KstatTreeNode(ss, (Map) oo));
+	    } else if (oo instanceof Kstat) {
+		addNode(ss, new KstatTreeNode((Kstat) oo));
+	    }
+	}
     }
 
     @Override

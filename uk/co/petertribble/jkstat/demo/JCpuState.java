@@ -81,18 +81,18 @@ public final class JCpuState extends JKdemo implements ActionListener {
 
     /**
      * Create a new JCpuState application.
+     */
+    public JCpuState() {
+	this(new NativeJKstat(), true);
+    }
+
+    /**
+     * Create a new JCpuState application.
      *
      * @param kcc the client configuration
      */
     public JCpuState(final KClientConfig kcc) {
 	this(new RemoteJKstat(kcc), true);
-    }
-
-    /**
-     * Create a new JCpuState application.
-     */
-    public JCpuState() {
-	this(new NativeJKstat(), true);
     }
 
     /**

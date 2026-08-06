@@ -45,19 +45,19 @@ public final class JMPstat extends JKdemo {
     private MPstatTable mptable;
 
     /**
+     * Construct a new JMPstat application.
+     */
+    public JMPstat() {
+	this(new NativeJKstat(), true);
+    }
+
+    /**
      * Construct a client JMPstat application.
      *
      * @param kcc the client configuration
      */
     public JMPstat(final KClientConfig kcc) {
 	this(new RemoteJKstat(kcc), true);
-    }
-
-    /**
-     * Construct a new JMPstat application.
-     */
-    public JMPstat() {
-	this(new NativeJKstat(), true);
     }
 
     /**

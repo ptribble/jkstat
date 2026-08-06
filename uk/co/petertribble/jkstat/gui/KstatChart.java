@@ -57,6 +57,23 @@ public final class KstatChart extends KstatBaseChart {
     }
 
     /**
+     * Create a Chart of the given statistics.
+     *
+     * @param njkstat a {@code JKstat}
+     * @param nks the {@code Kstat} supplying the data
+     * @param statistics the statistics to be charted
+     * @param sdelta if true, show rates, else show absolute values
+     */
+    public KstatChart(final JKstat njkstat, final Kstat nks,
+		      final List<String> statistics, final boolean sdelta) {
+	jkstat = njkstat;
+	ks = nks;
+	cks = new ChartableKstat(jkstat, ks);
+	showdelta = sdelta;
+	init(statistics);
+    }
+
+    /**
      * Create a Chart of the given statistic.
      *
      * @param njkstat a {@code JKstat}
@@ -73,23 +90,6 @@ public final class KstatChart extends KstatBaseChart {
 	cks = ncks;
 	showdelta = sdelta;
 	init(statistic);
-    }
-
-    /**
-     * Create a Chart of the given statistics.
-     *
-     * @param njkstat a {@code JKstat}
-     * @param nks the {@code Kstat} supplying the data
-     * @param statistics the statistics to be charted
-     * @param sdelta if true, show rates, else show absolute values
-     */
-    public KstatChart(final JKstat njkstat, final Kstat nks,
-		      final List<String> statistics, final boolean sdelta) {
-	jkstat = njkstat;
-	ks = nks;
-	cks = new ChartableKstat(jkstat, ks);
-	showdelta = sdelta;
-	init(statistics);
     }
 
     private void init(final String statistic) {

@@ -50,6 +50,58 @@ public final class KstatChartFrame extends KstatBaseChartFrame {
     }
 
     /**
+     * Create a JFrame containing a graphical chart of a kstat aggregate,
+     * showing the rate of change of the given statistic.
+     *
+     * @param jkstat a {@code JKstat}
+     * @param ksa A KstatAggregate to be charted
+     * @param statistic the statistic to be charted
+     */
+    public KstatChartFrame(final JKstat jkstat, final KstatAggregate ksa,
+				final String statistic) {
+	this(jkstat, ksa, statistic, true);
+    }
+
+    /**
+     * Create a JFrame containing a graphical chart of a Kstat,
+     * showing the rate of change of the given statistic.
+     *
+     * @param jkstat a {@code JKstat}
+     * @param ks A Kstat to be charted
+     * @param statistic the statistic to be charted
+     */
+    public KstatChartFrame(final JKstat jkstat, final Kstat ks,
+			   final String statistic) {
+	this(jkstat, ks, statistic, true);
+    }
+
+    /**
+     * Create a JFrame containing a graphical chart of a kstat aggregate,
+     * showing the rate of change of the given statistics.
+     *
+     * @param jkstat a {@code JKstat}
+     * @param ksa A KstatAggregate to be charted
+     * @param statistics the List of statistics to be charted
+     */
+    public KstatChartFrame(final JKstat jkstat, final KstatAggregate ksa,
+				final List<String> statistics) {
+	this(jkstat, ksa, statistics, true);
+    }
+
+    /**
+     * Create a JFrame containing a graphical chart of a Kstat,
+     * showing the rate of change of the given statistics.
+     *
+     * @param jkstat a {@code JKstat}
+     * @param ks A Kstat to be charted
+     * @param statistics the List of statistics to be charted
+     */
+    public KstatChartFrame(final JKstat jkstat, final Kstat ks,
+			   final List<String> statistics) {
+	this(jkstat, ks, statistics, true);
+    }
+
+    /**
      * Create a JFrame containing a graphical chart of a kstat, showing
      * the given statistic for the given Kstats.
      *
@@ -69,19 +121,6 @@ public final class KstatChartFrame extends KstatBaseChartFrame {
 
     /**
      * Create a JFrame containing a graphical chart of a kstat aggregate,
-     * showing the rate of change of the given statistic.
-     *
-     * @param jkstat a {@code JKstat}
-     * @param ksa A KstatAggregate to be charted
-     * @param statistic the statistic to be charted
-     */
-    public KstatChartFrame(final JKstat jkstat, final KstatAggregate ksa,
-				final String statistic) {
-	this(jkstat, ksa, statistic, true);
-    }
-
-    /**
-     * Create a JFrame containing a graphical chart of a kstat aggregate,
      * showing the given statistic.
      *
      * @param jkstat a {@code JKstat}
@@ -96,19 +135,6 @@ public final class KstatChartFrame extends KstatBaseChartFrame {
 	this.showdelta = showdelta;
 	kbc = new KstatAggregateChart(jkstat, ksa, statistic, showdelta);
 	init(ksa.toString());
-    }
-
-    /**
-     * Create a JFrame containing a graphical chart of a Kstat,
-     * showing the rate of change of the given statistic.
-     *
-     * @param jkstat a {@code JKstat}
-     * @param ks A Kstat to be charted
-     * @param statistic the statistic to be charted
-     */
-    public KstatChartFrame(final JKstat jkstat, final Kstat ks,
-			   final String statistic) {
-	this(jkstat, ks, statistic, true);
     }
 
     /**
@@ -140,39 +166,6 @@ public final class KstatChartFrame extends KstatBaseChartFrame {
     }
 
     /**
-     * Create a JFrame containing a graphical chart of a Kstat,
-     * showing the given statistic.
-     *
-     * @param jkstat a {@code JKstat}
-     * @param ks A Kstat to be charted
-     * @param cks the {@code ChartableKstat} generating rates from the data
-     * @param statistic the statistic to be charted
-     * @param showdelta if true, show rates rather than absolute values
-     */
-    public KstatChartFrame(final JKstat jkstat, final Kstat ks,
-			   final ChartableKstat cks, final String statistic,
-			   final boolean showdelta) {
-	super();
-	this.jkstat = jkstat;
-	this.showdelta = showdelta;
-	kbc = new KstatChart(jkstat, ks, cks, statistic, showdelta);
-	init(ks.getTriplet(), statisticsMenu(cks, statistic));
-    }
-
-    /**
-     * Create a JFrame containing a graphical chart of a kstat aggregate,
-     * showing the rate of change of the given statistics.
-     *
-     * @param jkstat a {@code JKstat}
-     * @param ksa A KstatAggregate to be charted
-     * @param statistics the List of statistics to be charted
-     */
-    public KstatChartFrame(final JKstat jkstat, final KstatAggregate ksa,
-				final List<String> statistics) {
-	this(jkstat, ksa, statistics, true);
-    }
-
-    /**
      * Create a JFrame containing a graphical chart of a kstat aggregate,
      * showing the given statistics.
      *
@@ -192,19 +185,6 @@ public final class KstatChartFrame extends KstatBaseChartFrame {
 
     /**
      * Create a JFrame containing a graphical chart of a Kstat,
-     * showing the rate of change of the given statistics.
-     *
-     * @param jkstat a {@code JKstat}
-     * @param ks A Kstat to be charted
-     * @param statistics the List of statistics to be charted
-     */
-    public KstatChartFrame(final JKstat jkstat, final Kstat ks,
-			   final List<String> statistics) {
-	this(jkstat, ks, statistics, true);
-    }
-
-    /**
-     * Create a JFrame containing a graphical chart of a Kstat,
      * showing the given statistics.
      *
      * @param jkstat a {@code JKstat}
@@ -220,6 +200,26 @@ public final class KstatChartFrame extends KstatBaseChartFrame {
 	kbc = new KstatChart(jkstat, ks, statistics, showdelta);
 	init(ks.getTriplet(), statisticsMenu(new ChartableKstat(jkstat, ks),
 					statistics));
+    }
+
+    /**
+     * Create a JFrame containing a graphical chart of a Kstat,
+     * showing the given statistic.
+     *
+     * @param jkstat a {@code JKstat}
+     * @param ks A Kstat to be charted
+     * @param cks the {@code ChartableKstat} generating rates from the data
+     * @param statistic the statistic to be charted
+     * @param showdelta if true, show rates rather than absolute values
+     */
+    public KstatChartFrame(final JKstat jkstat, final Kstat ks,
+			   final ChartableKstat cks, final String statistic,
+			   final boolean showdelta) {
+	super();
+	this.jkstat = jkstat;
+	this.showdelta = showdelta;
+	kbc = new KstatChart(jkstat, ks, cks, statistic, showdelta);
+	init(ks.getTriplet(), statisticsMenu(cks, statistic));
     }
 
     private static void usage(final String message) {

@@ -91,19 +91,19 @@ public final class KstatBrowser extends JFrame implements ActionListener {
     private JRadioButtonMenuItem sleepItem10;
 
     /**
+     * Constructs a local KstatBrowser.
+     */
+    public KstatBrowser() {
+	this(new NativeJKstat());
+    }
+
+    /**
      * Constructs a client KstatBrowser.
      *
      * @param kcc The client configuration
      */
     public KstatBrowser(final KClientConfig kcc) {
 	this(new RemoteJKstat(kcc));
-    }
-
-    /**
-     * Constructs a local KstatBrowser.
-     */
-    public KstatBrowser() {
-	this(new NativeJKstat());
     }
 
     /**

@@ -52,6 +52,16 @@ public class KstatAggregate {
      * Allocates a {@code KstatAggregate} comprising a Set of kstats.
      *
      * @param njkstat a {@code JKstat}
+     * @param instats a Set of Kstats to be aggregated
+     */
+    public KstatAggregate(final JKstat njkstat, final Set<Kstat> instats) {
+	this(njkstat, instats, "Aggregate");
+    }
+
+    /**
+     * Allocates a {@code KstatAggregate} comprising a Set of kstats.
+     *
+     * @param njkstat a {@code JKstat}
      * @param nkss a {@code KstatSet} containing the Kstats to be aggregated
      * @param ntitle a String that can be used for presentation
      */
@@ -63,16 +73,6 @@ public class KstatAggregate {
 	inkstats = kss.getKstats();
 	isdynamic = true;
 	kstats = inkstats;
-    }
-
-    /**
-     * Allocates a {@code KstatAggregate} comprising a Set of kstats.
-     *
-     * @param njkstat a {@code JKstat}
-     * @param instats a Set of Kstats to be aggregated
-     */
-    public KstatAggregate(final JKstat njkstat, final Set<Kstat> instats) {
-	this(njkstat, instats, "Aggregate");
     }
 
     /**

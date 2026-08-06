@@ -42,18 +42,18 @@ public final class JKmemAlloc extends JKdemo {
 
     /**
      * Create a standalone JKmemAlloc application.
+     */
+    public JKmemAlloc() {
+	this(new NativeJKstat());
+    }
+
+    /**
+     * Create a standalone JKmemAlloc application.
      *
      * @param kcc the client configuration
      */
     public JKmemAlloc(final KClientConfig kcc) {
 	this(new RemoteJKstat(kcc));
-    }
-
-    /**
-     * Create a standalone JKmemAlloc application.
-     */
-    public JKmemAlloc() {
-	this(new NativeJKstat());
     }
 
     /**

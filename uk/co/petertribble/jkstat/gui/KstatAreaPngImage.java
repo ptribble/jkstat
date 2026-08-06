@@ -52,20 +52,6 @@ public class KstatAreaPngImage {
     }
 
     /**
-     * Create an area Chart of the given aggregated statistic.
-     *
-     * @param jkstat a JKstat
-     * @param kss the KstatSet supplying the data
-     * @param statistic the statistic to be charted
-     * @param f the File to be written to
-     * @param rates if true, show rates, else show absolute values
-     */
-    public KstatAreaPngImage(final JKstat jkstat, final KstatSet kss,
-		final String statistic, final File f, final boolean rates) {
-	saveImage(f, new KstatSetAreaChart(jkstat, kss, statistic, rates));
-    }
-
-    /**
      * Create an area Chart of the rate of change of the given aggregated
      * statistic.
      *
@@ -77,6 +63,60 @@ public class KstatAreaPngImage {
     public KstatAreaPngImage(final JKstat jkstat, final KstatAggregate ksa,
 			     final String statistic, final File f) {
 	this(jkstat, ksa, statistic, f, true);
+    }
+
+    /**
+     * Create an area Chart of the rate of change of the given statistic.
+     *
+     * @param jkstat a JKstat
+     * @param ks the Kstat supplying the data
+     * @param statistic the statistic to be charted
+     * @param f the File to be written to
+     */
+    public KstatAreaPngImage(final JKstat jkstat, final Kstat ks,
+			     final String statistic, final File f) {
+	this(jkstat, ks, statistic, f, true);
+    }
+
+    /**
+     * Create an area Chart of the rate of change of the given aggregated
+     * statistics.
+     *
+     * @param jkstat a JKstat
+     * @param ksa the KstatAggregate supplying the data
+     * @param statistics the statistics to be charted
+     * @param f the File to be written to
+     */
+    public KstatAreaPngImage(final JKstat jkstat, final KstatAggregate ksa,
+			     final List<String> statistics, final File f) {
+	this(jkstat, ksa, statistics, f, true);
+    }
+
+    /**
+     * Create an area Chart of the rate of change of the given statistics.
+     *
+     * @param jkstat a JKstat
+     * @param ks the Kstat supplying the data
+     * @param statistics the statistics to be charted
+     * @param f the File to be written to
+     */
+    public KstatAreaPngImage(final JKstat jkstat, final Kstat ks,
+		final List<String> statistics, final File f) {
+	this(jkstat, ks, statistics, f, true);
+    }
+
+    /**
+     * Create an area Chart of the given aggregated statistic.
+     *
+     * @param jkstat a JKstat
+     * @param kss the KstatSet supplying the data
+     * @param statistic the statistic to be charted
+     * @param f the File to be written to
+     * @param rates if true, show rates, else show absolute values
+     */
+    public KstatAreaPngImage(final JKstat jkstat, final KstatSet kss,
+		final String statistic, final File f, final boolean rates) {
+	saveImage(f, new KstatSetAreaChart(jkstat, kss, statistic, rates));
     }
 
     /**
@@ -95,19 +135,6 @@ public class KstatAreaPngImage {
     }
 
     /**
-     * Create an area Chart of the rate of change of the given statistic.
-     *
-     * @param jkstat a JKstat
-     * @param ks the Kstat supplying the data
-     * @param statistic the statistic to be charted
-     * @param f the File to be written to
-     */
-    public KstatAreaPngImage(final JKstat jkstat, final Kstat ks,
-			     final String statistic, final File f) {
-	this(jkstat, ks, statistic, f, true);
-    }
-
-    /**
      * Create an area Chart of the given statistic.
      *
      * @param jkstat a JKstat
@@ -119,20 +146,6 @@ public class KstatAreaPngImage {
     public KstatAreaPngImage(final JKstat jkstat, final Kstat ks,
 		final String statistic, final File f, final boolean rates) {
 	saveImage(f, new KstatAreaChart(jkstat, ks, statistic, rates));
-    }
-
-    /**
-     * Create an area Chart of the rate of change of the given aggregated
-     * statistics.
-     *
-     * @param jkstat a JKstat
-     * @param ksa the KstatAggregate supplying the data
-     * @param statistics the statistics to be charted
-     * @param f the File to be written to
-     */
-    public KstatAreaPngImage(final JKstat jkstat, final KstatAggregate ksa,
-			     final List<String> statistics, final File f) {
-	this(jkstat, ksa, statistics, f, true);
     }
 
     /**
@@ -149,19 +162,6 @@ public class KstatAreaPngImage {
 			     final boolean rates) {
 	saveImage(f, new KstatAggregateAreaChart(jkstat, ksa, statistics,
 						rates));
-    }
-
-    /**
-     * Create an area Chart of the rate of change of the given statistics.
-     *
-     * @param jkstat a JKstat
-     * @param ks the Kstat supplying the data
-     * @param statistics the statistics to be charted
-     * @param f the File to be written to
-     */
-    public KstatAreaPngImage(final JKstat jkstat, final Kstat ks,
-		final List<String> statistics, final File f) {
-	this(jkstat, ks, statistics, f, true);
     }
 
     /**

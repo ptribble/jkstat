@@ -49,18 +49,18 @@ public final class JIOstat extends JKdemo {
 
     /**
      * Construct a new JIOstat application.
+     */
+    public JIOstat() {
+	this(new NativeJKstat(), true);
+    }
+
+    /**
+     * Construct a new JIOstat application.
      *
      * @param kcc the client configuration
      */
     public JIOstat(final KClientConfig kcc) {
 	this(new RemoteJKstat(kcc), true);
-    }
-
-    /**
-     * Construct a new JIOstat application.
-     */
-    public JIOstat() {
-	this(new NativeJKstat(), true);
     }
 
     /**

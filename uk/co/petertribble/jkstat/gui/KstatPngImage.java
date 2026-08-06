@@ -56,6 +56,62 @@ public class KstatPngImage {
     }
 
     /**
+     * Create a graphical chart of a kstat aggregate, showing the rate of
+     * change of the given statistic.
+     *
+     * @param jkstat a {@code JKstat}
+     * @param ksa a {@code KstatAggregate} to be charted
+     * @param statistic the statistic to be charted
+     * @param f the {@code File} to be written to
+     */
+    public KstatPngImage(final JKstat jkstat, final KstatAggregate ksa,
+			 final String statistic, final File f) {
+	this(jkstat, ksa, statistic, f, true);
+    }
+
+    /**
+     * Create a graphical chart of a Kstat, showing the rate of change of the
+     * given statistic.
+     *
+     * @param jkstat a {@code JKstat}
+     * @param ks a {@code Kstat} to be charted
+     * @param statistic the statistic to be charted
+     * @param f the {@code File} to be written to
+     */
+    public KstatPngImage(final JKstat jkstat, final Kstat ks,
+			 final String statistic, final File f) {
+	this(jkstat, ks, statistic, f, true);
+    }
+
+    /**
+     * Create a graphical chart of a kstat aggregate, showing the rate of
+     * change of the given statistics.
+     *
+     * @param jkstat a {@code JKstat}
+     * @param ksa a {@code KstatAggregate} to be charted
+     * @param statistics the {@code List} of statistics to be charted
+     * @param f the {@code File} to be written to
+     */
+    public KstatPngImage(final JKstat jkstat, final KstatAggregate ksa,
+			 final List<String> statistics, final File f) {
+	this(jkstat, ksa, statistics, f, true);
+    }
+
+    /**
+     * Create a graphical chart of a Kstat, showing the rate of change of the
+     * given statistics.
+     *
+     * @param jkstat a {@code JKstat}
+     * @param ks a {@code Kstat} to be charted
+     * @param statistics the {@code List} of statistics to be charted
+     * @param f the {@code File} to be written to
+     */
+    public KstatPngImage(final JKstat jkstat, final Kstat ks,
+			 final List<String> statistics, final File f) {
+	this(jkstat, ks, statistics, f, true);
+    }
+
+    /**
      * Create a graphical chart of a kstat, showing the given statistic for
      * the given Kstats.
      *
@@ -68,20 +124,6 @@ public class KstatPngImage {
     public KstatPngImage(final JKstat jkstat, final KstatSet kss,
 		final String statistic, final File f, final boolean rates) {
 	saveImage(f, new KstatSetChart(jkstat, kss, statistic, rates));
-    }
-
-    /**
-     * Create a graphical chart of a kstat aggregate, showing the rate of
-     * change of the given statistic.
-     *
-     * @param jkstat a {@code JKstat}
-     * @param ksa a {@code KstatAggregate} to be charted
-     * @param statistic the statistic to be charted
-     * @param f the {@code File} to be written to
-     */
-    public KstatPngImage(final JKstat jkstat, final KstatAggregate ksa,
-			 final String statistic, final File f) {
-	this(jkstat, ksa, statistic, f, true);
     }
 
     /**
@@ -100,20 +142,6 @@ public class KstatPngImage {
     }
 
     /**
-     * Create a graphical chart of a Kstat, showing the rate of change of the
-     * given statistic.
-     *
-     * @param jkstat a {@code JKstat}
-     * @param ks a {@code Kstat} to be charted
-     * @param statistic the statistic to be charted
-     * @param f the {@code File} to be written to
-     */
-    public KstatPngImage(final JKstat jkstat, final Kstat ks,
-			 final String statistic, final File f) {
-	this(jkstat, ks, statistic, f, true);
-    }
-
-    /**
      * Create a graphical chart of a Kstat, showing the given statistic.
      *
      * @param jkstat a {@code JKstat}
@@ -125,20 +153,6 @@ public class KstatPngImage {
     public KstatPngImage(final JKstat jkstat, final Kstat ks,
 		final String statistic, final File f, final boolean rates) {
 	saveImage(f, new KstatChart(jkstat, ks, statistic, rates));
-    }
-
-    /**
-     * Create a graphical chart of a kstat aggregate, showing the rate of
-     * change of the given statistics.
-     *
-     * @param jkstat a {@code JKstat}
-     * @param ksa a {@code KstatAggregate} to be charted
-     * @param statistics the {@code List} of statistics to be charted
-     * @param f the {@code File} to be written to
-     */
-    public KstatPngImage(final JKstat jkstat, final KstatAggregate ksa,
-			 final List<String> statistics, final File f) {
-	this(jkstat, ksa, statistics, f, true);
     }
 
     /**
@@ -154,20 +168,6 @@ public class KstatPngImage {
     public KstatPngImage(final JKstat jkstat, final KstatAggregate ksa,
 	    final List<String> statistics, final File f, final boolean rates) {
 	saveImage(f, new KstatAggregateChart(jkstat, ksa, statistics, rates));
-    }
-
-    /**
-     * Create a graphical chart of a Kstat, showing the rate of change of the
-     * given statistics.
-     *
-     * @param jkstat a {@code JKstat}
-     * @param ks a {@code Kstat} to be charted
-     * @param statistics the {@code List} of statistics to be charted
-     * @param f the {@code File} to be written to
-     */
-    public KstatPngImage(final JKstat jkstat, final Kstat ks,
-			 final List<String> statistics, final File f) {
-	this(jkstat, ks, statistics, f, true);
     }
 
     /**

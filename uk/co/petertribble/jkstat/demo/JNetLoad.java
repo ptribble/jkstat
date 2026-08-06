@@ -62,18 +62,18 @@ public final class JNetLoad extends JKdemo implements ActionListener {
 
     /**
      * Construct a new JNetLoad application.
+     */
+    public JNetLoad() {
+	this(new NativeJKstat(), true);
+    }
+
+    /**
+     * Construct a new JNetLoad application.
      *
      * @param kcc the client configuration
      */
     public JNetLoad(final KClientConfig kcc) {
 	this(new RemoteJKstat(kcc), true);
-    }
-
-    /**
-     * Construct a new JNetLoad application.
-     */
-    public JNetLoad() {
-	this(new NativeJKstat(), true);
     }
 
     /**

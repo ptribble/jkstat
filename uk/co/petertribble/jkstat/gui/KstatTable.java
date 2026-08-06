@@ -51,23 +51,6 @@ public class KstatTable extends JTable {
      * popup menu to allow extra functionality such as creating a chart
      * so that the statistics can be displayed over time.
      *
-     * @param module the kstat module
-     * @param instance the kstat instance
-     * @param name the kstat name
-     * @param interval the update interval in seconds
-     * @param njkstat a {@code JKstat}
-     */
-    public KstatTable(final String module, final String instance,
-		final String name, final int interval, final JKstat njkstat) {
-	this(njkstat.getKstat(module, Integer.parseInt(instance), name),
-		interval, njkstat);
-    }
-
-    /**
-     * Wraps a {@code Kstat} in a {@code JTable}, adding a right-click
-     * popup menu to allow extra functionality such as creating a chart
-     * so that the statistics can be displayed over time.
-     *
      * @param nks a {@code Kstat}
      * @param interval the update interval in seconds
      * @param njkstat a {@code JKstat}
@@ -89,6 +72,23 @@ public class KstatTable extends JTable {
 		addMouseListener((MouseListener) new PopupListener());
 	    }
 	}
+    }
+
+    /**
+     * Wraps a {@code Kstat} in a {@code JTable}, adding a right-click
+     * popup menu to allow extra functionality such as creating a chart
+     * so that the statistics can be displayed over time.
+     *
+     * @param module the kstat module
+     * @param instance the kstat instance
+     * @param name the kstat name
+     * @param interval the update interval in seconds
+     * @param njkstat a {@code JKstat}
+     */
+    public KstatTable(final String module, final String instance,
+		final String name, final int interval, final JKstat njkstat) {
+	this(njkstat.getKstat(module, Integer.parseInt(instance), name),
+		interval, njkstat);
     }
 
     /**

@@ -50,22 +50,6 @@ public final class KstatTableFrame extends JFrame implements ActionListener {
      * Wrap a {@code KstatTable} in a {@code JFrame} so that it can be viewed
      * in a separate window.
      *
-     * @param module the kstat module
-     * @param instance the kstat instance
-     * @param name the kstat name
-     * @param interval the update interval in seconds
-     * @param jkstat a {@code JKstat}
-     */
-    public KstatTableFrame(final String module, final String instance,
-		final String name, final int interval, final JKstat jkstat) {
-	this(jkstat.getKstat(module, Integer.parseInt(instance), name),
-		interval, jkstat);
-    }
-
-    /**
-     * Wrap a {@code KstatTable} in a {@code JFrame} so that it can be viewed
-     * in a separate window.
-     *
      * @param ks the {@code Kstat}
      * @param interval the update interval in seconds
      * @param jkstat a {@code JKstat}
@@ -94,6 +78,22 @@ public final class KstatTableFrame extends JFrame implements ActionListener {
 	setSize(420, 320);
 	validate();
 	setVisible(true);
+    }
+
+    /**
+     * Wrap a {@code KstatTable} in a {@code JFrame} so that it can be viewed
+     * in a separate window.
+     *
+     * @param module the kstat module
+     * @param instance the kstat instance
+     * @param name the kstat name
+     * @param interval the update interval in seconds
+     * @param jkstat a {@code JKstat}
+     */
+    public KstatTableFrame(final String module, final String instance,
+		final String name, final int interval, final JKstat jkstat) {
+	this(jkstat.getKstat(module, Integer.parseInt(instance), name),
+		interval, jkstat);
     }
 
     /**

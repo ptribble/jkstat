@@ -51,6 +51,58 @@ public final class KstatAreaChartFrame extends KstatBaseChartFrame {
     }
 
     /**
+     * Create a JFrame containing an area Chart of the rate of change of the
+     * given aggregated statistic.
+     *
+     * @param jkstat a JKstat
+     * @param ksa the KstatAggregate supplying the data
+     * @param statistic the statistic to be charted
+     */
+    public KstatAreaChartFrame(final JKstat jkstat, final KstatAggregate ksa,
+			       final String statistic) {
+	this(jkstat, ksa, statistic, true);
+    }
+
+    /**
+     * Create a JFrame containing an area Chart of the rate of change of the
+     * given statistic.
+     *
+     * @param jkstat a {@code JKstat}
+     * @param ks the Kstat supplying the data
+     * @param statistic the statistic to be charted
+     */
+    public KstatAreaChartFrame(final JKstat jkstat, final Kstat ks,
+			       final String statistic) {
+	this(jkstat, ks, statistic, true);
+    }
+
+    /**
+     * Create a JFrame containing an area Chart of the rate of change of the
+     * given aggregated statistics.
+     *
+     * @param jkstat a {@code JKstat}
+     * @param ksa the KstatAggregate supplying the data
+     * @param statistics the statistics to be charted
+     */
+    public KstatAreaChartFrame(final JKstat jkstat, final KstatAggregate ksa,
+		final List<String> statistics) {
+	this(jkstat, ksa, statistics, true);
+    }
+
+    /**
+     * Create a JFrame containing an area Chart of the rate of change of the
+     * given statistics.
+     *
+     * @param jkstat a JKstat
+     * @param ks the Kstat supplying the data
+     * @param statistics the statistics to be charted
+     */
+    public KstatAreaChartFrame(final JKstat jkstat, final Kstat ks,
+		final List<String> statistics) {
+	this(jkstat, ks, statistics, true);
+    }
+
+    /**
      * Create a JFrame containing an area Chart of the given aggregated
      * statistic.
      *
@@ -69,19 +121,6 @@ public final class KstatAreaChartFrame extends KstatBaseChartFrame {
     }
 
     /**
-     * Create a JFrame containing an area Chart of the rate of change of the
-     * given aggregated statistic.
-     *
-     * @param jkstat a JKstat
-     * @param ksa the KstatAggregate supplying the data
-     * @param statistic the statistic to be charted
-     */
-    public KstatAreaChartFrame(final JKstat jkstat, final KstatAggregate ksa,
-			       final String statistic) {
-	this(jkstat, ksa, statistic, true);
-    }
-
-    /**
      * Create a JFrame containing an area Chart of the given aggregated
      * statistic.
      *
@@ -97,19 +136,6 @@ public final class KstatAreaChartFrame extends KstatBaseChartFrame {
 	this.showdelta = showdelta;
 	kbc = new KstatAggregateAreaChart(jkstat, ksa, statistic, showdelta);
 	init(ksa.toString());
-    }
-
-    /**
-     * Create a JFrame containing an area Chart of the rate of change of the
-     * given statistic.
-     *
-     * @param jkstat a {@code JKstat}
-     * @param ks the Kstat supplying the data
-     * @param statistic the statistic to be charted
-     */
-    public KstatAreaChartFrame(final JKstat jkstat, final Kstat ks,
-			       final String statistic) {
-	this(jkstat, ks, statistic, true);
     }
 
     /**
@@ -140,39 +166,6 @@ public final class KstatAreaChartFrame extends KstatBaseChartFrame {
     }
 
     /**
-     * Create a JFrame containing an area Chart of the given statistic.
-     *
-     * @param jkstat a {@code JKstat}
-     * @param ks the Kstat supplying the data
-     * @param cks the {@code ChartableKstat} generating rates from the data
-     * @param statistic the statistic to be charted
-     * @param showdelta if true, show rates, else show absolute values
-     */
-    public KstatAreaChartFrame(final JKstat jkstat, final Kstat ks,
-			       final ChartableKstat cks,
-			       final String statistic,
-			       final boolean showdelta) {
-	super();
-	this.jkstat = jkstat;
-	this.showdelta = showdelta;
-	kbc = new KstatAreaChart(jkstat, ks, cks, statistic, showdelta);
-	init(ks.getTriplet(), statisticsMenu(cks, statistic));
-    }
-
-    /**
-     * Create a JFrame containing an area Chart of the rate of change of the
-     * given aggregated statistics.
-     *
-     * @param jkstat a {@code JKstat}
-     * @param ksa the KstatAggregate supplying the data
-     * @param statistics the statistics to be charted
-     */
-    public KstatAreaChartFrame(final JKstat jkstat, final KstatAggregate ksa,
-		final List<String> statistics) {
-	this(jkstat, ksa, statistics, true);
-    }
-
-    /**
      * Create a JFrame containing an area Chart of the given aggregated
      * statistics.
      *
@@ -191,19 +184,6 @@ public final class KstatAreaChartFrame extends KstatBaseChartFrame {
     }
 
     /**
-     * Create a JFrame containing an area Chart of the rate of change of the
-     * given statistics.
-     *
-     * @param jkstat a JKstat
-     * @param ks the Kstat supplying the data
-     * @param statistics the statistics to be charted
-     */
-    public KstatAreaChartFrame(final JKstat jkstat, final Kstat ks,
-		final List<String> statistics) {
-	this(jkstat, ks, statistics, true);
-    }
-
-    /**
      * Create a JFrame containing an area Chart of the given statistics.
      *
      * @param jkstat a JKstat
@@ -219,6 +199,26 @@ public final class KstatAreaChartFrame extends KstatBaseChartFrame {
 	kbc = new KstatAreaChart(jkstat, ks, statistics, showdelta);
 	init(ks.getTriplet(), statisticsMenu(new ChartableKstat(jkstat, ks),
 					statistics));
+    }
+
+    /**
+     * Create a JFrame containing an area Chart of the given statistic.
+     *
+     * @param jkstat a {@code JKstat}
+     * @param ks the Kstat supplying the data
+     * @param cks the {@code ChartableKstat} generating rates from the data
+     * @param statistic the statistic to be charted
+     * @param showdelta if true, show rates, else show absolute values
+     */
+    public KstatAreaChartFrame(final JKstat jkstat, final Kstat ks,
+			       final ChartableKstat cks,
+			       final String statistic,
+			       final boolean showdelta) {
+	super();
+	this.jkstat = jkstat;
+	this.showdelta = showdelta;
+	kbc = new KstatAreaChart(jkstat, ks, cks, statistic, showdelta);
+	init(ks.getTriplet(), statisticsMenu(cks, statistic));
     }
 
     private static void usage(final String message) {

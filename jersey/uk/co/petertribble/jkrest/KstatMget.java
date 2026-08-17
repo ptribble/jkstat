@@ -21,7 +21,10 @@
 package uk.co.petertribble.jkrest;
 
 import javax.ws.rs.*;
-import uk.co.petertribble.jkstat.api.*;
+import uk.co.petertribble.jkstat.api.JKstat;
+import uk.co.petertribble.jkstat.api.Kstat;
+import uk.co.petertribble.jkstat.api.KstatFilter;
+import uk.co.petertribble.jkstat.api.NativeJKstat;
 
 /**
  * This handles requests of the form mget/module/instance/specifier.

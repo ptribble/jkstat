@@ -227,10 +227,6 @@ JNIEXPORT jobject JNICALL Java_uk_co_petertribble_jkstat_api_NativeJKstat_getKst
      * unix:*:sfmmu_percpu_stat
      * ufs directio:*:UFS DirectIO Stats
      * sockfs:*:sock_unix_list
-     *
-     * These kstats are on the TODO list:
-     *
-     * unix:*:kstat_headers
      */
     if (!strcmp(kmodule,"unix")) {
       if (!strcmp(kname,"var")) {

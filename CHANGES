@@ -1110,9 +1110,6 @@ can't take an int because an int cannot be null)
 
 Streamlined AccessoryBgePanel
 
-TODO:
- -Xlint:unchecked
-
 From 0.13 to 0.14
 
 Added KstatFilter class

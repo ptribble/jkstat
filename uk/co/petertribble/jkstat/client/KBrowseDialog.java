@@ -83,7 +83,7 @@ public final class KBrowseDialog implements ActionListener {
     public KBrowseDialog() {
 	serviceMap = new HashMap<>();
 	try (JmDNS jmdns
-	    = JmDNS.create(InetAddress.getByAddress(new byte[]{0, 0, 0, 0}))) {
+	    = JmDNS.create(InetAddress.getByAddress(new byte[] {0, 0, 0, 0}))) {
 
 	    jmdns.addServiceListener("_jkstat._tcp.local.",
 				     new BrowseListener());

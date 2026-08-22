@@ -145,7 +145,7 @@ public final class KServerConfig {
 	     * we can't use getLocalHost() because it might (and often does)
 	     * really resolve to localhost.
 	     */
-	    ia = InetAddress.getByAddress(new byte[]{0, 0, 0, 0});
+	    ia = InetAddress.getByAddress(new byte[] {0, 0, 0, 0});
 	} catch (UnknownHostException uhe) { }
 	return ia;
     }

@@ -18,13 +18,10 @@ SPDX-License-Identifier: CDDL-1.0
 
     <rule ref="category/java/security.xml" />
     <rule ref="rulesets/java/quickstart.xml">
-      <exclude name="ClassWithOnlyPrivateConstructorsShouldBeFinal"/>
       <exclude name="CompareObjectsWithEquals"/>
       <exclude name="EmptyCatchBlock"/>
-      <exclude name="FormalParameterNamingConventions"/>
       <exclude name="ImplicitSwitchFallThrough"/>
       <exclude name="LambdaCanBeMethodReference"/>
-      <exclude name="LocalVariableNamingConventions"/>
       <exclude name="LooseCoupling"/>
       <exclude name="ReturnEmptyCollectionRatherThanNull"/>
       <exclude name="SingularField"/>
@@ -32,6 +29,7 @@ SPDX-License-Identifier: CDDL-1.0
       <exclude name="UncommentedEmptyConstructor"/>
       <exclude name="UnsynchronizedStaticFormatter"/>
       <exclude name="PreserveStackTrace"/>
+      <exclude name="UnusedPrivateMethod"/>
     </rule>
     <rule ref="category/java/performance.xml">
       <exclude name="AvoidArrayLoops"/>
@@ -65,7 +63,6 @@ SPDX-License-Identifier: CDDL-1.0
       <exclude name="UseVarargs"/>
       <exclude name="LooseCoupling"/>
       <exclude name="AvoidPrintStackTrace"/>
-      <exclude name="UnusedPrivateField"/>
       <exclude name="UnusedPrivateMethod"/>
       <exclude name="AvoidReassigningParameters"/>
       <exclude name="PreserveStackTrace"/>
